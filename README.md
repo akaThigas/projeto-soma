@@ -497,6 +497,34 @@ O SOMA não realiza despacho policial nem envia pedidos de socorro.
 
 ---
 
+### Saída rápida
+
+Botão **Sair**, fixo no canto superior direito de todas as telas (exceto a splash).
+
+Serve para esconder o SOMA imediatamente caso outra pessoa se aproxime.
+
+Ao ser acionado, o SOMA é substituído por uma página neutra (pesquisa de previsão do tempo):
+
+| Plataforma | Comportamento |
+|---|---|
+| Web / PWA | Abre a página neutra em uma nova aba e substitui a aba atual por ela |
+| Web / PWA | Atalho pelo teclado: tecla **Esc** |
+| Android | Volta o app para a Home, abre a página neutra no navegador e fecha o app |
+| iOS | Volta o app para a Home e abre a página neutra no navegador |
+
+Arquivos:
+
+```text
+src/components/QuickExitButton.tsx   → botão e atalho Esc
+src/utils/quickExit.ts               → lógica de saída e URL neutra
+```
+
+A página neutra pode ser alterada na constante `QUICK_EXIT_URL`.
+
+Limitação: a saída rápida não apaga o histórico do navegador. Orientações sobre como limpar o histórico podem ser incluídas nos conteúdos de segurança digital.
+
+---
+
 ### Rede de Apoio
 
 Apresenta serviços de:
