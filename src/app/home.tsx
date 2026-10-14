@@ -23,7 +23,6 @@ export default function HomeScreen() {
     horizontalPadding,
     topPadding,
     contentMaxWidth,
-    safeBottom,
   } = useResponsiveLayout();
 
   const logoSize = isCompactPhone
@@ -69,7 +68,7 @@ export default function HomeScreen() {
           styles.scrollContent,
           {
             paddingTop: topPadding,
-            paddingBottom: 110 + safeBottom,
+            paddingBottom: 40,
           },
         ]}
         showsVerticalScrollIndicator={false}
@@ -353,114 +352,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
 
-      {/* Menu inferior */}
-
-      <View style={[styles.bottomNavigationShell,
-    {
-      paddingBottom: Math.max(safeBottom, 8),
-    },
-  ]}>
-        <View
-          style={[
-            styles.bottomNavigation,
-
-            {
-              maxWidth:
-                contentMaxWidth,
-            },
-          ]}
-        >
-          <NavigationItem
-            label="Home"
-            icon="home"
-            active
-            compact={isCompactPhone}
-            onPress={() =>
-              router.replace('/home')
-            }
-          />
-
-          <NavigationItem
-            label="Explorar"
-            icon="compass-outline"
-            compact={isCompactPhone}
-            onPress={() =>
-              router.push('/explorar')
-            }
-          />
-
-          <NavigationItem
-            label="Mapa"
-            icon="map-outline"
-            compact={isCompactPhone}
-            onPress={() =>
-              router.push('/mapa')
-            }
-          />
-
-          <NavigationItem
-            label="Canais"
-            icon="call-outline"
-            compact={isCompactPhone}
-            onPress={() =>
-              router.push('/denunciar')
-            }
-          />
-        </View>
-      </View>
     </View>
-  );
-}
-
-type NavigationItemProps = {
-  label: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  active?: boolean;
-  compact?: boolean;
-  onPress: () => void;
-};
-
-function NavigationItem({
-  label,
-  icon,
-  active = false,
-  compact = false,
-  onPress,
-}: NavigationItemProps) {
-  return (
-    <Pressable
-      style={styles.navItem}
-      onPress={onPress}
-    >
-      <Ionicons
-        name={icon}
-        size={
-          compact
-            ? 22
-            : 25
-        }
-        color={
-          active
-            ? colors.primary
-            : '#857A82'
-        }
-      />
-
-      <Text
-        style={[
-          styles.navText,
-
-          compact && {
-            fontSize: 10,
-          },
-
-          active &&
-            styles.navTextActive,
-        ]}
-      >
-        {label}
-      </Text>
-    </Pressable>
   );
 }
 
@@ -636,70 +528,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
 
     rowGap: 14,
-  },
-
-  bottomNavigationShell: {
-    position: 'absolute',
-
-    left: 0,
-    right: 0,
-    bottom: 0,
-
-    alignItems: 'center',
-
-    backgroundColor:
-      colors.white,
-
-    borderTopWidth: 1,
-    borderTopColor: '#E6DDE0',
-
-    shadowColor: '#000',
-
-    shadowOffset: {
-      width: 0,
-      height: -2,
-    },
-
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-
-    elevation: 10,
-  },
-
-  bottomNavigation: {
-    width: '100%',
-
-    minHeight: 82,
-
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
-
-  navItem: {
-    flex: 1,
-
-    minHeight: 55,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    gap: 4,
-  },
-
-  navText: {
-    color: '#857A82',
-
-    fontSize: 12,
-    fontWeight: '500',
-  },
-
-  navTextActive: {
-    color: colors.primary,
-
-    fontWeight: '700',
   },
 });

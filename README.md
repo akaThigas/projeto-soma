@@ -309,6 +309,7 @@ soma/
 │   ├── components/
 │   │   ├── HomeShortcutCard.tsx
 │   │   ├── QuickExitButton.tsx
+│   │   ├── BottomNavigation.tsx
 │   │   ├── MapaInterativo.tsx
 │   │   ├── MapaCalorSP.tsx
 │   │   └── MapaCalorCapital.tsx
@@ -527,6 +528,21 @@ src/utils/quickExit.ts               → lógica de saída e URL neutra
 A página neutra pode ser alterada na constante `QUICK_EXIT_URL`.
 
 Limitação: a saída rápida não apaga o histórico do navegador. Orientações sobre como limpar o histórico podem ser incluídas nos conteúdos de segurança digital.
+
+---
+
+### Menu inferior
+
+Menu fixo na parte de baixo de todas as telas (exceto a splash e o onboarding), com **Home**, **Explorar**, **Mapa** e **Canais**. O item da tela atual fica destacado; os conteúdos educativos (`/conteudo/...`) destacam **Explorar**.
+
+O menu fica fora da área de rolagem: o conteúdo de cada tela rola acima dele, sem ficar escondido.
+
+Arquivos:
+
+```text
+src/components/BottomNavigation.tsx   → menu inferior
+src/app/_layout.tsx                   → exibe o menu abaixo das telas
+```
 
 ---
 

@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { Asset } from 'expo-asset';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { BottomNavigation } from '../components/BottomNavigation';
 import { QuickExitButton } from '../components/QuickExitButton';
 
 SplashScreen.preventAutoHideAsync();
@@ -53,11 +54,17 @@ export default function RootLayout() {
   return (
     // GestureHandlerRootView: necessário para o arraste e a pinça do mapa
     <GestureHandlerRootView style={styles.root}>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
+      {/* As telas ocupam o espaço acima do menu inferior */}
+      <View style={styles.screens}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+      </View>
+
+      {/* Menu inferior: fixo, fora da rolagem das telas */}
+      <BottomNavigation />
 
       {/* Saída rápida: visível em todas as telas */}
       <QuickExitButton />
@@ -67,6 +74,10 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   root: {
+    flex: 1,
+  },
+
+  screens: {
     flex: 1,
   },
 });
