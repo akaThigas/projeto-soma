@@ -16,6 +16,7 @@ Como foram gerados os arquivos de `src/data/mapaCalor/`.
 2. Simplificar com [mapshaper](https://mapshaper.org): `mapshaper geo.json -simplify 10% keep-shapes -o precision=0.0001 geo35_s10.json`.
 3. Rodar `python3 gerar_dados.py geo35_s10.json sysdata.rda popBR2000-2025.long.csv saida.json`.
 4. Converter `saida.json` nos arquivos `municipiosSP.ts` e `feminicidioSP.ts`.
+5. Calcular o ponto do nome de cada município (`lx`, `ly`) com `shapely.ops.polylabel` no maior polígono do município, já na projeção do mapa. É o ponto mais "central" dentro do território, mesmo em formatos irregulares.
 
 ## Cálculo
 

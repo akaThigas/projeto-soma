@@ -210,6 +210,11 @@ export default function MapaScreen() {
               onSelect={selecionar}
             />
 
+            <Text style={styles.mapHint}>
+              Arraste para mover. Use + e − ou o movimento de pinça para
+              aproximar. Mais nomes aparecem conforme você aproxima.
+            </Text>
+
             <View style={styles.zoomRow}>
               <ZoomButton
                 label="Estado inteiro"
@@ -600,11 +605,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
 
+  mapHint: {
+    color: '#6E6170',
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 8,
+  },
+
   zoomRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
-    marginTop: 10,
+    marginTop: 8,
   },
 
   zoomButton: {

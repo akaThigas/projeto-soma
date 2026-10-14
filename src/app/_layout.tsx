@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Asset } from 'expo-asset';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { QuickExitButton } from '../components/QuickExitButton';
 
@@ -50,7 +51,8 @@ export default function RootLayout() {
   }
 
   return (
-    <View style={styles.root}>
+    // GestureHandlerRootView: necessário para o arraste e a pinça do mapa
+    <GestureHandlerRootView style={styles.root}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -59,7 +61,7 @@ export default function RootLayout() {
 
       {/* Saída rápida: visível em todas as telas */}
       <QuickExitButton />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
