@@ -656,6 +656,25 @@ Mostra **mulheres vítimas de violência por distrito do Município de São Paul
 
 **Cálculo (feito pela fonte):** número de mulheres vítimas de violência no distrito ÷ população feminina de 20 a 59 anos do distrito × 10 mil. As ocorrências são contadas pelo distrito onde o crime aconteceu. Os valores são os publicados, sem recálculo; o script confere a média (212,78), o menor valor (Vila Andrade, 103,35) e o maior (Sé, 772,15).
 
+### Relatório por área (Cidade de São Paulo)
+
+Na aba **Cidade de São Paulo**, o botão **Relatório por área** mostra os dados da própria SSP-SP por **área de delegacia** (93 áreas que cobrem a cidade inteira), de janeiro de 2024 a agosto de 2026.
+
+- busca por distrito, bairro ou número da delegacia (um distrito aponta para a área que cobre a maior parte dele);
+- mapa das áreas, colorido pelo número de mulheres vítimas em 2025;
+- relatório da área: **total de mulheres vítimas e crimes por tipo** (ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva etc.), **evolução** de 2024 a 2026 e **comparação com a média** das 93 áreas;
+- **onde buscar atendimento perto dali**: os três serviços mais próximos (Delegacias da Mulher, Casa da Mulher Brasileira, Casas da Mulher, CDCMs), com endereço, horário e telefone, além dos serviços 24 horas, da Defensoria Pública e dos telefones 180 e 190;
+- totais da cidade de feminicídio, tentativa de homicídio e estupro, que a base não separa por área;
+- notas de leitura e fontes na tela.
+
+O relatório **não diz se um lugar é seguro ou perigoso**: mostra boletins registrados, com as ressalvas (subnotificação, contagem pelo local do fato, número de vítimas e não taxa). Contagens de 1 a 4 aparecem como "menos de 5".
+
+| Dado | Fonte |
+|---|---|
+| Vítimas e tipos de crime por área | SSP-SP — base de dados Violência Contra a Mulher (dados a partir de 2024), conferida mês a mês com o painel da SSP |
+| Áreas das delegacias | CEM/USP — Distritos e Delegacias Policiais 2021 (fonte original SSP-SP) |
+| Serviços de apoio | Prefeitura de São Paulo — Secretaria Municipal de Direitos Humanos e Cidadania |
+
 O passo a passo, os cálculos e as limitações dos dois mapas estão em `scripts/mapa-calor/README.md`.
 
 Arquivos:
@@ -665,10 +684,16 @@ src/app/mapa.tsx                              → tela (alternância Estado / Ci
 src/components/MapaInterativo.tsx            → mapa genérico: zoom, arraste, pinça e etiqueta ao tocar
 src/components/MapaCalorSP.tsx               → mapa do estado (municípios)
 src/components/MapaCalorCapital.tsx          → mapa da cidade (distritos)
+src/components/MapaCalorDelegacias.tsx       → mapa das áreas de delegacia, busca e serviços próximos
+src/components/PainelDelegacias.tsx          → relatório por área
 src/data/mapaCalor/feminicidioSP.ts           → números por município e fontes
 src/data/mapaCalor/municipiosSP.ts            → contornos dos municípios
 src/data/mapaCalor/violenciaMulherCapital.ts  → números por distrito e fontes
 src/data/mapaCalor/distritosSP.ts             → contornos dos distritos
+src/data/mapaCalor/delegaciasSP.ts            → contornos das áreas de delegacia
+src/data/mapaCalor/violenciaDelegacias.ts     → números da SSP por área, ano e tipo
+src/data/mapaCalor/servicosMulherSP.ts        → serviços de apoio
+src/data/mapaCalor/distritoParaDelegacia.ts   → distritos × áreas de delegacia
 scripts/mapa-calor/                           → scripts, dados de origem e documentação
 ```
 
@@ -686,9 +711,9 @@ Os nomes das áreas não ficam escritos sobre o mapa: aparecem só na etiqueta, 
 ### Limitações e próximos passos
 
 - Estado: na base do Sinesp, os registros de estupro de SP não têm município, por isso o mapa do estado mostra apenas feminicídio.
-- Cidade: o indicador do Mapa da Desigualdade junta todos os tipos de violência em um único número; ele não separa por tipo.
+- Cidade: o indicador do Mapa da Desigualdade junta todos os tipos de violência em um único número; a separação por tipo está no relatório por área (dados da SSP).
 - Cidade: 33,5% das ocorrências usadas pela fonte não tinham localização e ficaram de fora.
-- A SSP-SP publica uma base de dados de violência contra a mulher a partir de 2024 com o tipo de crime e a delegacia da área do fato; ela pode permitir separar os números por tipo (em avaliação).
+- Relatório por área: feminicídio e estupro não vêm por delegacia na base da SSP; aparecem só como totais da cidade.
 - Também poderá exibir os serviços da rede de apoio.
 
 ---
@@ -1185,7 +1210,7 @@ Próximas evoluções previstas:
 - [x] Implementação do mapa de calor;
 - [x] integração com fontes públicas de dados;
 - [x] visualização territorial por distrito (cidade de São Paulo);
-- [ ] exibição de serviços oficiais no mapa;
+- [x] serviços oficiais próximos no relatório por área;
 - [ ] melhoria da rede de apoio;
 - [ ] validação de dados de atendimento;
 - [ ] modo discreto;

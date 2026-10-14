@@ -28,6 +28,7 @@ import {
   MapaCalorSP,
   ModoMapa,
 } from '../components/MapaCalorSP';
+import { PainelDelegacias } from '../components/PainelDelegacias';
 import { colors } from '../constants/theme';
 import {
   feminicidiosSP,
@@ -416,7 +417,37 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
 /* Cidade de São Paulo: violência contra a mulher por distrito         */
 /* ------------------------------------------------------------------ */
 
+type VisaoCapital = 'distritos' | 'delegacias';
+
 function PainelCapital({ isCompactPhone }: { isCompactPhone: boolean }) {
+  const [visao, setVisao] = useState<VisaoCapital>('distritos');
+
+  return (
+    <>
+      {/* Duas visões da cidade: por distrito ou relatório por área de delegacia */}
+      <View style={styles.segmented} accessibilityRole="tablist">
+        <SegmentButton
+          label="Mapa por distrito"
+          active={visao === 'distritos'}
+          onPress={() => setVisao('distritos')}
+        />
+        <SegmentButton
+          label="Relatório por área"
+          active={visao === 'delegacias'}
+          onPress={() => setVisao('delegacias')}
+        />
+      </View>
+
+      {visao === 'distritos' ? (
+        <PainelDistritos isCompactPhone={isCompactPhone} />
+      ) : (
+        <PainelDelegacias />
+      )}
+    </>
+  );
+}
+
+function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
   const [enquadramento, setEnquadramento] = useState<EnquadramentoCapital>({
     tipo: 'cidade',
   });

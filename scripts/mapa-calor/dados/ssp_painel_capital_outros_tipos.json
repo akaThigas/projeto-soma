@@ -1,0 +1,11 @@
+{
+  "fonte": "SSP-SP, painel Violência Contra a Mulher, coluna Capital (https://www.ssp.sp.gov.br/v1/ViolenciaMulher/RecuperaDadosPorAno?ano=AAAA), consultado em 14/10/2026",
+  "observacao": "Tipos que não estão na base de dados por delegacia; números da cidade inteira, somados mês a mês. 2026 vai de janeiro a agosto.",
+  "meses": {"2024": 12, "2025": 12, "2026": 8},
+  "FEMINICÍDIO": {"2024": 51, "2025": 63, "2026": 34},
+  "TENTATIVA DE HOMICÍDIO": {"2024": 258, "2025": 279, "2026": 188},
+  "ESTUPRO CONSUMADO": {"2024": 759, "2025": 714, "2026": 505},
+  "ESTUPRO TENTADO": {"2024": 100, "2025": 119, "2026": 70},
+  "ESTUPRO DE VULNERÁVEL CONSUMADO": {"2024": 2112, "2025": 1968, "2026": 1474},
+  "ESTUPRO DE VULNERÁVEL TENTADO": {"2024": 50, "2025": 42, "2026": 13}
+}
