@@ -81,6 +81,7 @@ O projeto utiliza:
 | AsyncStorage | Persistência de preferências locais |
 | Expo Vector Icons | Ícones da interface |
 | Expo Linear Gradient | Gradientes visuais |
+| React Native SVG | Desenho do mapa de calor |
 | Safe Area Context | Adaptação às áreas seguras dos dispositivos |
 | EAS Build | Compilação do aplicativo Android |
 | EAS Hosting | Publicação da versão Web/PWA |
@@ -589,36 +590,60 @@ Funcionalidades previstas:
 
 ### Mapa
 
-A versão atual contém uma implementação demonstrativa.
+Tela do **Mapa de Calor do SOMA** (detalhes na seção abaixo).
 
-Na Web, um mapa é apresentado através de conteúdo incorporado.
-
-No aplicativo mobile, o usuário pode abrir o mapa externo.
-
-O desenvolvimento futuro prevê substituir essa implementação pelo **Mapa de Calor do SOMA**.
+Também mantém o atalho para buscar Delegacias da Mulher no Google Maps e o acesso à Rede de Apoio.
 
 ---
 
 # 🗺️ Mapa de Calor
 
-O mapa de calor será uma das principais funcionalidades do projeto.
+Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 2019 a 2023**, a partir de **dados públicos e agregados**.
 
-A proposta é utilizar **dados públicos e agregados** relacionados à violência doméstica.
+### O que a tela oferece
 
-O mapa deverá trabalhar com informações por região, distrito ou bairro.
+- mapa dos 645 municípios paulistas, colorido em cinco faixas;
+- dois modos: **taxa por 100 mil habitantes** (média anual) e **número de vítimas**;
+- toque em um município para ver vítimas, taxa, população e comparação com a média do estado (0,40);
+- busca de município pelo nome, com aproximação no mapa;
+- visão do estado inteiro ou da capital e região;
+- lista dos municípios com mais vítimas;
+- explicação de como ler o mapa e as fontes dos dados.
+
+### Dados
+
+| Dado | Fonte |
+|---|---|
+| Feminicídios por município | Ministério da Justiça e Segurança Pública — Sinesp VDE (via pacote BrazilCrime 0.2.1) |
+| População por município | Estimativas do Ministério da Saúde/RIPSA (DATASUS) |
+| Contornos dos municípios | Malha municipal do IBGE (simplificada) |
+
+O passo a passo, os cálculos e as limitações estão em `scripts/mapa-calor/README.md`.
+
+Arquivos:
+
+```text
+src/app/mapa.tsx                         → tela
+src/components/MapaCalorSP.tsx          → desenho do mapa (react-native-svg)
+src/data/mapaCalor/feminicidioSP.ts      → números por município e fontes
+src/data/mapaCalor/municipiosSP.ts       → contornos dos municípios
+scripts/mapa-calor/                      → script e documentação dos dados
+```
 
 ### Princípios
 
-O mapa não deverá:
+O mapa não:
 
-- apresentar localização individual de vítimas;
-- exibir endereços específicos de ocorrências;
-- utilizar relatos de usuários como pontos públicos;
-- indicar que uma região é individualmente segura ou perigosa.
+- apresenta localização individual de vítimas;
+- exibe endereços específicos de ocorrências;
+- utiliza relatos de usuários como pontos públicos;
+- indica que uma região é individualmente segura ou perigosa.
 
-A visualização deverá utilizar dados territoriais agregados.
+### Limitações e próximos passos
 
-Também poderá futuramente exibir serviços da rede de apoio.
+- Na base do Sinesp, os registros de estupro de SP não têm município, por isso o mapa mostra apenas feminicídio.
+- Dados de violência doméstica por município (lesão corporal, ameaça etc.), publicados pela SSP-SP, podem ser incorporados no futuro.
+- Também poderá exibir os serviços da rede de apoio.
 
 ---
 
