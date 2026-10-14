@@ -13,6 +13,9 @@ export type DelegaciaForma = FormaMapa & {
 export const MAPA_DELEGACIAS_LARGURA = 600;
 export const MAPA_DELEGACIAS_ALTURA = 925.7;
 
+// Projeção (graus -> unidades do mapa): x = (lon - lon0) * kx; y = (lat1 - lat) * ky
+export const PROJECAO_CAPITAL = { lon0: -46.82625158715326, lat1: -23.356585227755446, kx: 1301.0894828773594, ky: 1420.7347679299935 };
+
 // id: número da delegacia (DP)
 export const delegaciasSP: DelegaciaForma[] = [
   {"id":"1","nome":"1º DP – Sé","bairro":"Sé","d":"M260.2 272.3L262.0 276.6L262.1 280.9L259.3 281.2L259.9 286.4L255.9 288.6L251.7 289.3L248.5 290.9L244.0 291.8L248.0 281.5L248.2 277.4L245.1 278.3L239.8 275.7L239.4 274.4L243.9 272.4L250.1 261.7L250.7 254.6L259.7 257.2L257.6 262.4L259.4 264.3Z","bbox":[239.4,254.6,262.1,291.8],"lx":252.8,"ly":271.8,"lat":-23.54787,"lon":-46.63198},

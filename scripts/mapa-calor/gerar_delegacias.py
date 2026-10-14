@@ -182,6 +182,8 @@ def main():
         + "import type { FormaMapa } from '../../components/MapaInterativo';\n\n"
         + 'export type DelegaciaForma = FormaMapa & {\n  bairro: string;\n  lat: number; // ponto da etiqueta, em graus\n  lon: number;\n};\n\n'
         + f'export const MAPA_DELEGACIAS_LARGURA = {LARGURA};\nexport const MAPA_DELEGACIAS_ALTURA = {ALTURA};\n\n'
+        + '// Projeção (graus -> unidades do mapa): x = (lon - lon0) * kx; y = (lat1 - lat) * ky\n'
+        + f'export const PROJECAO_CAPITAL = {{ lon0: {LON0}, lat1: {LAT1}, kx: {KX}, ky: {KY} }};\n\n'
         + '// id: número da delegacia (DP)\nexport const delegaciasSP: DelegaciaForma[] = [\n'
         + ',\n'.join('  ' + ts(f) for f in formas)
         + '\n];\n',

@@ -138,3 +138,24 @@ Os totais da capital calculados a partir da base foram comparados, mês a mês (
 - 3.067 casos (1,5%) foram registrados em delegacias especializadas sem área (DDMs, Delegacia da Mulher Online etc.) e ficam só no total da cidade.
 - A distância até os serviços é em linha reta, a partir do centro da área, e a localização de vários serviços é aproximada (só a rua). A Casa da Mulher Maria de Lourdes Rodrigues não foi localizada e não entra na lista dos mais próximos.
 - A página da Prefeitura escreve o endereço da 2ª DDM como "Avenida Onze de julho, 89"; o OpenStreetMap registra o prédio (16º DP e 2ª DDM) na **Avenida Onze de Junho, 89**, que é o endereço usado no app.
+
+# Busca por lugares e "usar minha localização"
+
+## Lugares (`lugaresSP.ts`)
+
+A busca do relatório por área acha, além de distritos e delegacias, **1.209 lugares** da capital: 555 bairros, 149 estações (metrô, trem e monotrilho), 141 parques, 14 estádios, 223 hospitais e 127 universidades. Cada lugar já vem ligado à área de delegacia em que está, então a busca funciona **sem internet**: o que a pessoa digita não sai do aparelho.
+
+- **Fonte**: OpenStreetMap (© contribuidores do OpenStreetMap, licença ODbL), consultado pela Overpass API em 14/10/2026 (`dados/osm_lugares_capital.json`). Consulta por retângulo da capital (`-24.01,-46.83,-23.35,-46.36`): `place=suburb|neighbourhood|quarter` (só nós), `railway=station`, `leisure=park` (só nomes que começam com "Parque"), `leisure=stadium`, `amenity=hospital`, `amenity=university`, com `out center tags`.
+- **Gerar**: `python3 scripts/mapa-calor/gerar_lugares.py`. O script descarta o que fica fora da cidade (1.579 itens dos municípios vizinhos), liga cada lugar à área de delegacia pelos contornos do CEM e junta repetidos (mesmo nome e tipo a menos de 1 km; estação de metrô e de trem com o mesmo nome a menos de 600 m vira "metrô e trem").
+- **Apelidos**: os nomes alternativos, antigos e oficiais do OpenStreetMap (`alt_name`, `old_name`, `official_name`, `short_name`) entram na busca. Por exemplo, o estádio do Palmeiras está no OSM como **Nubank Parque**, com "Allianz Parque" e "Arena do Palmeiras" como alternativos. O script acrescenta poucos apelidos populares que não estão no OSM ("Estádio do Palmeiras", "Palestra Itália", "Estádio do Corinthians", "Itaquerão", "Estádio do São Paulo", "Estádio da Portuguesa", "Estádio do Juventus").
+- Quando a pessoa escolhe um lugar, os serviços de apoio são ordenados pela distância **a partir desse lugar** (e não do centro da área).
+- Limitação: só acha o que está na lista. Endereços com rua e número não são buscados, porque isso exigiria mandar o texto para um serviço de mapas externo.
+
+## Usar minha localização
+
+- Usa `expo-location` (Expo SDK 57): `requestForegroundPermissionsAsync` e `getCurrentPositionAsync` com precisão `Balanced`. Na web, usa a localização do navegador.
+- A área é calculada no aparelho (`src/utils/areaDoPonto.ts`): a coordenada é convertida para a projeção do mapa (`PROJECAO_CAPITAL`, gerada por `gerar_delegacias.py`) e testada contra os contornos das áreas de delegacia que já vêm no app.
+- A localização **não é enviada nem salva**: fica só na memória da tela enquanto o relatório está aberto. Também não é desenhada no mapa.
+- Fora da cidade, sem permissão ou com erro, o app mostra um aviso e sugere a busca pelo nome.
+- O texto do pedido de permissão no iOS está em `app.json` (plugin `expo-location`) e entra na próxima build do app (EAS). No Expo Go e na web, aparece o pedido padrão do sistema.
+

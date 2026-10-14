@@ -22,7 +22,13 @@
         }
       ],
       "expo-asset",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O SOMA usa sua localização só para mostrar os dados da região e os serviços de apoio mais próximos. A localização não é salva nem enviada."
+        }
+      ]
     ],
 
     "ios": {

@@ -1,7 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { Ionicons } from '@expo/vector-icons';
+import * as Location from 'expo-location';
 import {
+  ActivityIndicator,
   Linking,
   Pressable,
   StyleSheet,
@@ -11,6 +13,7 @@ import {
 } from 'react-native';
 
 import { colors } from '../constants/theme';
+import { FONTE_LUGARES } from '../data/mapaCalor/lugaresSP';
 import { ServicoMulher } from '../data/mapaCalor/servicosMulherSP';
 import {
   AnoDados,
@@ -28,8 +31,11 @@ import {
   EnquadramentoDelegacias,
   legendaDelegacias,
   MapaCalorDelegacias,
+  Origem,
+  ResultadoBusca,
   servicosProximos,
 } from './MapaCalorDelegacias';
+import { areaDoPonto } from '../utils/areaDoPonto';
 
 /**
  * Relatório por área de delegacia (dados da SSP-SP).
@@ -87,14 +93,63 @@ export function PainelDelegacias() {
   const [selecionadoId, setSelecionadoId] = useState<string>();
   const [busca, setBusca] = useState('');
   const [ano, setAno] = useState<AnoDados>(ANO_PADRAO);
+  // Lugar buscado ou localização atual: fica só na memória da tela.
+  const [origem, setOrigem] = useState<Origem>();
+  const [localizando, setLocalizando] = useState(false);
+  const [avisoLocal, setAvisoLocal] = useState<string>();
 
-  const selecionar = useCallback((id: string) => setSelecionadoId(id), []);
+  const selecionar = useCallback((id: string) => {
+    setSelecionadoId(id);
+    setOrigem(undefined);
+    setAvisoLocal(undefined);
+  }, []);
   const resultados = useMemo(() => buscarArea(busca), [busca]);
 
-  function abrirArea(id: string) {
+  function abrirArea(id: string, novaOrigem?: Origem) {
     setSelecionadoId(id);
     setEnquadramento({ tipo: 'area', id });
+    setOrigem(novaOrigem);
     setBusca('');
+  }
+
+  function escolherResultado(r: ResultadoBusca) {
+    setAvisoLocal(undefined);
+    abrirArea(r.dp, r.origem);
+  }
+
+  async function usarMinhaLocalizacao() {
+    setAvisoLocal(undefined);
+    setLocalizando(true);
+    try {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setAvisoLocal(
+          'Sem permissão de localização. Você pode buscar pelo nome do bairro, de uma estação ou de um lugar conhecido.'
+        );
+        return;
+      }
+      const posicao = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Balanced,
+      });
+      const { latitude, longitude } = posicao.coords;
+      const area = areaDoPonto(latitude, longitude);
+      if (!area) {
+        setAvisoLocal(
+          'Sua localização parece estar fora da cidade de São Paulo. Este relatório cobre só a capital.'
+        );
+        return;
+      }
+      abrirArea(area, { nome: 'sua localização', lat: latitude, lon: longitude });
+      setAvisoLocal(
+        'Mostrando a área onde você está. A localização foi usada só neste aparelho e não foi salva nem enviada.'
+      );
+    } catch {
+      setAvisoLocal(
+        'Não foi possível obter a localização agora. Tente de novo ou busque pelo nome do lugar.'
+      );
+    } finally {
+      setLocalizando(false);
+    }
   }
 
   const legenda = legendaDelegacias();
@@ -114,11 +169,11 @@ export function PainelDelegacias() {
         <TextInput
           value={busca}
           onChangeText={setBusca}
-          placeholder="Buscar distrito, bairro ou delegacia"
+          placeholder="Bairro, estação, lugar ou delegacia"
           placeholderTextColor="#857A82"
           style={styles.searchInput}
           autoCorrect={false}
-          accessibilityLabel="Buscar distrito, bairro ou delegacia"
+          accessibilityLabel="Buscar bairro, estação, lugar ou delegacia"
         />
         {busca.length > 0 && (
           <Pressable
@@ -137,7 +192,7 @@ export function PainelDelegacias() {
             <Pressable
               key={r.chave}
               style={({ pressed }) => [styles.resultItem, pressed && styles.pressed]}
-              onPress={() => abrirArea(r.dp)}
+              onPress={() => escolherResultado(r)}
             >
               <Text style={styles.resultName}>{r.titulo}</Text>
               <Text style={styles.resultDetail}>{r.detalhe}</Text>
@@ -148,8 +203,33 @@ export function PainelDelegacias() {
 
       {busca.trim().length >= 2 && resultados.length === 0 && (
         <Text style={styles.emptySearch}>
-          Nada encontrado. Tente o nome do distrito (por exemplo, Itaquera)
-          ou o número da delegacia (por exemplo, 47).
+          Nada encontrado. Tente o nome do bairro ou distrito (por exemplo,
+          Itaquera), de uma estação de metrô ou trem, de um parque, hospital
+          ou estádio, ou o número da delegacia (por exemplo, 47).
+        </Text>
+      )}
+
+      <Pressable
+        style={({ pressed }) => [styles.locateButton, pressed && styles.pressed]}
+        onPress={usarMinhaLocalizacao}
+        disabled={localizando}
+        accessibilityRole="button"
+        accessibilityLabel="Usar minha localização"
+        accessibilityHint="Mostra a área onde você está. A localização não é salva nem enviada."
+      >
+        {localizando ? (
+          <ActivityIndicator size="small" color={colors.primary} />
+        ) : (
+          <Ionicons name="locate-outline" size={19} color={colors.primary} />
+        )}
+        <Text style={styles.locateText}>
+          {localizando ? 'Buscando sua localização…' : 'Usar minha localização'}
+        </Text>
+      </Pressable>
+
+      {avisoLocal && (
+        <Text style={styles.localNote} accessibilityLiveRegion="polite">
+          {avisoLocal}
         </Text>
       )}
 
@@ -192,6 +272,7 @@ export function PainelDelegacias() {
       {selecionadoId ? (
         <Relatorio
           id={selecionadoId}
+          origem={origem}
           ano={ano}
           onAno={setAno}
           onFechar={() => setSelecionadoId(undefined)}
@@ -290,6 +371,12 @@ export function PainelDelegacias() {
           Direitos Humanos e Cidadania), páginas de setembro e outubro de 2026.
           A distância é aproximada, em linha reta.
         </Text>
+        <Text style={styles.sourceText}>
+          Lugares da busca (bairros, estações, parques, estádios, hospitais e
+          universidades): {FONTE_LUGARES}. A busca e a localização funcionam
+          no próprio aparelho: o que você digita e onde você está não são
+          enviados nem salvos.
+        </Text>
       </View>
     </>
   );
@@ -299,11 +386,13 @@ export function PainelDelegacias() {
 
 function Relatorio({
   id,
+  origem,
   ano,
   onAno,
   onFechar,
 }: {
   id: string;
+  origem?: Origem;
   ano: AnoDados;
   onAno: (ano: AnoDados) => void;
   onFechar: () => void;
@@ -327,7 +416,7 @@ function Relatorio({
   const variacao = v24 > 0 ? ((v25 - v24) / v24) * 100 : 0;
   const maiorAno = Math.max(...ANOS.map((a) => indicador.vitimas[a]), 1);
 
-  const servicos = servicosProximos(id, 3);
+  const servicos = servicosProximos(id, 3, origem);
 
   return (
     <View style={styles.report}>
@@ -335,6 +424,11 @@ function Relatorio({
         <View style={styles.detailTitleBox}>
           <Text style={styles.reportEyebrow}>Relatório da área</Text>
           <Text style={styles.detailName}>{forma.nome}</Text>
+          {origem && origem.nome !== 'sua localização' && (
+            <Text style={styles.detailSubtitle}>
+              {origem.nome} fica nesta área.
+            </Text>
+          )}
           {distritos.length > 0 && (
             <Text style={styles.detailSubtitle}>
               Cobre partes dos distritos {distritos.map((d) => d.nome).join(', ')}
@@ -440,7 +534,11 @@ function Relatorio({
       )}
 
       {/* 4. Serviços */}
-      <Text style={styles.blockTitle}>Onde buscar atendimento perto daqui</Text>
+      <Text style={styles.blockTitle}>
+        {origem
+          ? `Onde buscar atendimento perto de ${origem.nome}`
+          : 'Onde buscar atendimento perto daqui'}
+      </Text>
       <View style={styles.services}>
         {servicos.map((s) => (
           <CartaoServico key={s.id} servico={s} km={s.km} />
@@ -522,7 +620,14 @@ const styles = StyleSheet.create({
   },
   resultName: { color: colors.primary, fontSize: 15, fontWeight: '600' },
   resultDetail: { color: '#6E6170', fontSize: 13 },
-  emptySearch: { color: '#6E6170', fontSize: 14, marginBottom: 12, paddingHorizontal: 4 },
+  emptySearch: { color: '#6E6170', fontSize: 14, lineHeight: 20, marginBottom: 12, paddingHorizontal: 4 },
+  locateButton: {
+    flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 8,
+    minHeight: 40, borderRadius: 20, borderWidth: 1.5, borderColor: colors.primary,
+    paddingHorizontal: 14, marginBottom: 10,
+  },
+  locateText: { color: colors.primary, fontSize: 14, fontWeight: '700' },
+  localNote: { color: '#6E6170', fontSize: 13, lineHeight: 19, marginBottom: 12, paddingHorizontal: 4 },
   pressed: { opacity: 0.7 },
 
   mapCard: {

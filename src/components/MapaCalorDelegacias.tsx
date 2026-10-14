@@ -7,6 +7,7 @@ import {
 } from '../data/mapaCalor/delegaciasSP';
 import { distritoParaDelegacia } from '../data/mapaCalor/distritoParaDelegacia';
 import { distritosSP } from '../data/mapaCalor/distritosSP';
+import { lugaresSP, NOMES_TIPOS_LUGAR } from '../data/mapaCalor/lugaresSP';
 import { servicosMulherSP } from '../data/mapaCalor/servicosMulherSP';
 import {
   AnoDados,
@@ -81,11 +82,20 @@ const semAcento = (texto: string) =>
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase();
 
+/** Ponto de referência para ordenar os serviços por distância. */
+export type Origem = {
+  nome: string;
+  lat: number;
+  lon: number;
+};
+
 export type ResultadoBusca = {
   chave: string;
   dp: string;
   titulo: string;
   detalhe: string;
+  /** Presente quando o resultado é um lugar (estação, parque, estádio...). */
+  origem?: Origem;
 };
 
 /**
@@ -132,6 +142,24 @@ export function buscarArea(busca: string): ResultadoBusca[] {
     });
   }
 
+  for (const lugar of lugaresSP) {
+    const nomes = [lugar.nome, ...(lugar.apelidos ?? [])];
+    const indice = nomes.findIndex((n) => semAcento(n).includes(termo));
+    if (indice === -1) continue;
+    const achou = semAcento(nomes[indice]);
+    const forma = formaPorId.get(lugar.dp);
+    resultados.push({
+      chave: `lugar-${lugar.tipo}-${lugar.nome}-${lugar.dp}`,
+      dp: lugar.dp,
+      // se achou pelo apelido, mostra o apelido junto do nome oficial
+      titulo: indice > 0 ? `${lugar.nome} (${nomes[indice]})` : lugar.nome,
+      detalhe: `${NOMES_TIPOS_LUGAR[lugar.tipo]} · área do ${forma?.nome ?? lugar.dp + 'º DP'}`,
+      origem: { nome: lugar.nome, lat: lugar.lat, lon: lugar.lon },
+      // nomes que começam com o termo vêm antes; lugares depois de distritos e DPs
+      ordem: achou.startsWith(termo) ? 1 : 2,
+    });
+  }
+
   return resultados
     .sort((a, b) => a.ordem - b.ordem || a.titulo.localeCompare(b.titulo))
     .slice(0, 8);
@@ -161,17 +189,21 @@ function distanciaKm(lat1: number, lon1: number, lat2: number, lon2: number) {
   return 2 * r * Math.asin(Math.sqrt(a));
 }
 
-/** Serviços ordenados pela distância (em linha reta) ao centro da área. */
-export function servicosProximos(dp: string, quantidade = 3) {
+/**
+ * Serviços ordenados pela distância em linha reta: a partir do ponto de
+ * origem (lugar buscado ou localização) ou, sem ele, do centro da área.
+ */
+export function servicosProximos(dp: string, quantidade = 3, origem?: Origem) {
   const forma = formaPorId.get(dp);
   if (!forma) return [];
+  const de = origem ?? { lat: forma.lat, lon: forma.lon };
   return servicosMulherSP
     .filter((s) => s.lat !== null && s.lon !== null)
     // a Casa da Mulher Brasileira e a 1ª DDM ficam no mesmo endereço
     .filter((s) => s.id !== 'ddm1')
     .map((s) => ({
       ...s,
-      km: distanciaKm(forma.lat, forma.lon, s.lat as number, s.lon as number),
+      km: distanciaKm(de.lat, de.lon, s.lat as number, s.lon as number),
     }))
     .sort((a, b) => a.km - b.km)
     .slice(0, quantidade);

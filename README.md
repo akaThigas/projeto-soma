@@ -82,6 +82,7 @@ O projeto utiliza:
 | Expo Vector Icons | Ícones da interface |
 | Expo Linear Gradient | Gradientes visuais |
 | React Native SVG | Desenho do mapa de calor |
+| Expo Location | Botão "Usar minha localização" (só no aparelho) |
 | Safe Area Context | Adaptação às áreas seguras dos dispositivos |
 | EAS Build | Compilação do aplicativo Android |
 | EAS Hosting | Publicação da versão Web/PWA |
@@ -660,7 +661,8 @@ Mostra **mulheres vítimas de violência por distrito do Município de São Paul
 
 Na aba **Cidade de São Paulo**, o botão **Relatório por área** mostra os dados da própria SSP-SP por **área de delegacia** (93 áreas que cobrem a cidade inteira), de janeiro de 2024 a agosto de 2026.
 
-- busca por distrito, bairro ou número da delegacia (um distrito aponta para a área que cobre a maior parte dele);
+- busca por bairro, distrito, estação de metrô ou trem, parque, estádio, hospital, universidade ou número da delegacia, com nomes alternativos (por exemplo, "estádio do Palmeiras" acha o Nubank Parque, antigo Allianz Parque); um distrito aponta para a área que cobre a maior parte dele;
+- botão **Usar minha localização**: o app descobre a área no próprio aparelho, sem enviar nem salvar a localização;
 - mapa das áreas, colorido pelo número de mulheres vítimas em 2025;
 - relatório da área: **total de mulheres vítimas e crimes por tipo** (ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva etc.), **evolução** de 2024 a 2026 e **comparação com a média** das 93 áreas;
 - **onde buscar atendimento perto dali**: os três serviços mais próximos (Delegacias da Mulher, Casa da Mulher Brasileira, Casas da Mulher, CDCMs), com endereço, horário e telefone, além dos serviços 24 horas, da Defensoria Pública e dos telefones 180 e 190;
@@ -674,6 +676,7 @@ O relatório **não diz se um lugar é seguro ou perigoso**: mostra boletins reg
 | Vítimas e tipos de crime por área | SSP-SP — base de dados Violência Contra a Mulher (dados a partir de 2024), conferida mês a mês com o painel da SSP |
 | Áreas das delegacias | CEM/USP — Distritos e Delegacias Policiais 2021 (fonte original SSP-SP) |
 | Serviços de apoio | Prefeitura de São Paulo — Secretaria Municipal de Direitos Humanos e Cidadania |
+| Lugares da busca | OpenStreetMap (© contribuidores do OpenStreetMap, licença ODbL) |
 
 O passo a passo, os cálculos e as limitações dos dois mapas estão em `scripts/mapa-calor/README.md`.
 
@@ -694,6 +697,8 @@ src/data/mapaCalor/delegaciasSP.ts            → contornos das áreas de delega
 src/data/mapaCalor/violenciaDelegacias.ts     → números da SSP por área, ano e tipo
 src/data/mapaCalor/servicosMulherSP.ts        → serviços de apoio
 src/data/mapaCalor/distritoParaDelegacia.ts   → distritos × áreas de delegacia
+src/data/mapaCalor/lugaresSP.ts               → lugares conhecidos para a busca (OpenStreetMap)
+src/utils/areaDoPonto.ts                      → descobre a área de delegacia de uma coordenada, no aparelho
 scripts/mapa-calor/                           → scripts, dados de origem e documentação
 ```
 
