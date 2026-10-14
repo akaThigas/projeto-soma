@@ -290,7 +290,8 @@ const styles = StyleSheet.create({
   },
 
   skip: {
-    alignSelf: 'flex-end',
+    // À esquerda, para não ficar sob o botão de saída rápida (canto direito)
+    alignSelf: 'flex-start',
     paddingVertical: 8,
     marginBottom: 26,
   },
