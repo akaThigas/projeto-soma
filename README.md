@@ -307,7 +307,11 @@ soma/
 │   │   └── configuracoes.tsx
 │   │
 │   ├── components/
-│   │   └── HomeShortcutCard.tsx
+│   │   ├── HomeShortcutCard.tsx
+│   │   ├── QuickExitButton.tsx
+│   │   ├── MapaInterativo.tsx
+│   │   ├── MapaCalorSP.tsx
+│   │   └── MapaCalorCapital.tsx
 │   │
 │   ├── constants/
 │   │   └── theme.ts
@@ -598,9 +602,11 @@ Também mantém o atalho para buscar Delegacias da Mulher no Google Maps e o ace
 
 # 🗺️ Mapa de Calor
 
-Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 2019 a 2023**, a partir de **dados públicos e agregados**.
+A tela tem dois mapas, escolhidos no topo: **Estado de SP** e **Cidade de São Paulo**. Os dois usam apenas **dados públicos e agregados** e o mesmo componente de mapa (`MapaInterativo`).
 
-### O que a tela oferece
+## Estado de SP
+
+Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 2019 a 2023**.
 
 - mapa dos 645 municípios paulistas, colorido em cinco faixas;
 - dois modos: **taxa por 100 mil habitantes** (média anual) e **número de vítimas**;
@@ -610,24 +616,44 @@ Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 
 - lista dos municípios com mais vítimas;
 - explicação de como ler o mapa e as fontes dos dados.
 
-### Dados
-
 | Dado | Fonte |
 |---|---|
 | Feminicídios por município | Ministério da Justiça e Segurança Pública — Sinesp VDE (via pacote BrazilCrime 0.2.1) |
 | População por município | Estimativas do Ministério da Saúde/RIPSA (DATASUS) |
 | Contornos dos municípios | Malha municipal do IBGE (simplificada) |
 
-O passo a passo, os cálculos e as limitações estão em `scripts/mapa-calor/README.md`.
+## Cidade de São Paulo
+
+Mostra **mulheres vítimas de violência por distrito do Município de São Paulo, em 2024**, somando todos os tipos de violência registrados (física, psicológica, moral, sexual e patrimonial — de ameaça e lesão corporal a estupro e feminicídio).
+
+- mapa dos 96 distritos, colorido em cinco faixas (uma delas marca a média dos distritos, 212,78);
+- toque em um distrito para ver o nome e o coeficiente; o cartão mostra subprefeitura, coeficiente, posição entre os 96 distritos e comparação com a média;
+- busca de distrito pelo nome, com aproximação no mapa;
+- visão da cidade inteira ou do centro;
+- lista dos distritos com os maiores coeficientes;
+- notas de leitura (subnotificação, contagem pelo local do crime, ocorrências sem localização) e fontes na tela.
+
+| Dado | Fonte |
+|---|---|
+| Violência contra a mulher por distrito (ano-base 2024) | Mapa da Desigualdade 2025 — Rede Nossa São Paulo e Instituto Cidades Sustentáveis, lançado em junho de 2026 (na imprensa, "Mapa da Desigualdade 2026"). Fontes originais: SSP-SP e Fundação Seade |
+| Contornos dos distritos | Prefeitura de São Paulo — GeoSampa (simplificados) |
+
+**Cálculo (feito pela fonte):** número de mulheres vítimas de violência no distrito ÷ população feminina de 20 a 59 anos do distrito × 10 mil. As ocorrências são contadas pelo distrito onde o crime aconteceu. Os valores são os publicados, sem recálculo; o script confere a média (212,78), o menor valor (Vila Andrade, 103,35) e o maior (Sé, 772,15).
+
+O passo a passo, os cálculos e as limitações dos dois mapas estão em `scripts/mapa-calor/README.md`.
 
 Arquivos:
 
 ```text
-src/app/mapa.tsx                         → tela
-src/components/MapaCalorSP.tsx          → desenho do mapa (react-native-svg)
-src/data/mapaCalor/feminicidioSP.ts      → números por município e fontes
-src/data/mapaCalor/municipiosSP.ts       → contornos dos municípios
-scripts/mapa-calor/                      → script e documentação dos dados
+src/app/mapa.tsx                              → tela (alternância Estado / Cidade)
+src/components/MapaInterativo.tsx            → mapa genérico: zoom, arraste, pinça e etiqueta ao tocar
+src/components/MapaCalorSP.tsx               → mapa do estado (municípios)
+src/components/MapaCalorCapital.tsx          → mapa da cidade (distritos)
+src/data/mapaCalor/feminicidioSP.ts           → números por município e fontes
+src/data/mapaCalor/municipiosSP.ts            → contornos dos municípios
+src/data/mapaCalor/violenciaMulherCapital.ts  → números por distrito e fontes
+src/data/mapaCalor/distritosSP.ts             → contornos dos distritos
+scripts/mapa-calor/                           → scripts, dados de origem e documentação
 ```
 
 ### Princípios
@@ -639,10 +665,14 @@ O mapa não:
 - utiliza relatos de usuários como pontos públicos;
 - indica que uma região é individualmente segura ou perigosa.
 
+Os nomes das áreas não ficam escritos sobre o mapa: aparecem só na etiqueta, ao tocar.
+
 ### Limitações e próximos passos
 
-- Na base do Sinesp, os registros de estupro de SP não têm município, por isso o mapa mostra apenas feminicídio.
-- Dados de violência doméstica por município (lesão corporal, ameaça etc.), publicados pela SSP-SP, podem ser incorporados no futuro.
+- Estado: na base do Sinesp, os registros de estupro de SP não têm município, por isso o mapa do estado mostra apenas feminicídio.
+- Cidade: o indicador do Mapa da Desigualdade junta todos os tipos de violência em um único número; ele não separa por tipo.
+- Cidade: 33,5% das ocorrências usadas pela fonte não tinham localização e ficaram de fora.
+- A SSP-SP publica uma base de dados de violência contra a mulher a partir de 2024 com o tipo de crime e a delegacia da área do fato; ela pode permitir separar os números por tipo (em avaliação).
 - Também poderá exibir os serviços da rede de apoio.
 
 ---
@@ -1126,7 +1156,6 @@ Algumas informações presentes no MVP são utilizadas apenas para demonstraçã
 Isso inclui principalmente:
 
 - serviços exibidos na Rede de Apoio;
-- localização apresentada no mapa atual;
 - conteúdos territoriais.
 
 Esses dados deverão ser substituídos ou validados antes de qualquer utilização fora do contexto do protótipo.
@@ -1137,9 +1166,9 @@ Esses dados deverão ser substituídos ou validados antes de qualquer utilizaç�
 
 Próximas evoluções previstas:
 
-- [ ] Implementação do mapa de calor;
-- [ ] integração com fontes públicas de dados;
-- [ ] visualização territorial por bairro/distrito;
+- [x] Implementação do mapa de calor;
+- [x] integração com fontes públicas de dados;
+- [x] visualização territorial por distrito (cidade de São Paulo);
 - [ ] exibição de serviços oficiais no mapa;
 - [ ] melhoria da rede de apoio;
 - [ ] validação de dados de atendimento;
@@ -1200,8 +1229,7 @@ Nome — função / área
 🟢 Web
 🟢 PWA
 🟢 Responsividade inicial
-🟡 Mapa demonstrativo
-🔴 Mapa de calor em desenvolvimento
+🟢 Mapa de calor (estado e cidade de São Paulo)
 ```
 
 ---
