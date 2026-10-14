@@ -1,15 +1,15 @@
-import { memo, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import { Ionicons } from '@expo/vector-icons';
 import {
   LayoutChangeEvent,
-  Platform,
   Pressable,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Svg, { G, Path, Text as SvgText } from 'react-native-svg';
+import Svg, { G, Path } from 'react-native-svg';
 
 import { colors } from '../constants/theme';
 import {
@@ -38,7 +38,6 @@ const CORES = ['#EFE6E8', '#E8C8CA', '#CF879E', '#8A4A70', '#3D1E45'];
 
 const COR_DESTAQUE = '#F2B134';
 const COR_BORDA = '#FFFDF1';
-const COR_NOME = '#2A1530';
 
 const formatarTaxa = (valor: number) =>
   valor.toLocaleString('pt-BR', {
@@ -113,6 +112,9 @@ type Vista = {
 
 const PROPORCAO = MAPA_SP_ALTURA / MAPA_SP_LARGURA;
 
+// Área ocupada pelos botões de zoom (canto superior direito), em pixels.
+const AREA_BOTOES = { largura: 52, altura: 134 };
+
 // Zoom máximo: 1/25 da largura do estado.
 const LARGURA_MINIMA = MAPA_SP_LARGURA / 25;
 
@@ -181,125 +183,6 @@ function zoomEm(vista: Vista, fator: number, fx?: number, fy?: number): Vista {
   });
 }
 
-// Nomes: municípios do mais populoso para o menos populoso.
-const municipiosPorPopulacao = [...municipiosSP].sort(
-  (a, b) =>
-    (indicadorPorId.get(b.id)?.populacao ?? 0) -
-    (indicadorPorId.get(a.id)?.populacao ?? 0)
-);
-
-const TAMANHO_NOME = 11; // em pixels na tela
-const MAXIMO_NOMES = 45;
-
-// Fonte sem serifa também na Web (o padrão do SVG no navegador é serifado).
-const FONTE_NOME = Platform.select({
-  web: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
-  default: undefined,
-});
-
-// Área dos botões de zoom (canto superior direito), onde não entram nomes.
-const AREA_BOTOES = { largura: 54, altura: 134 };
-
-/**
- * População mínima para mostrar o nome: 200 mil no estado inteiro,
- * diminuindo conforme o zoom aumenta.
- */
-function populacaoMinima(vista: Vista) {
-  return 200000 * Math.pow(vista.largura / MAPA_SP_LARGURA, 1.5);
-}
-
-type Nome = {
-  id: string;
-  nome: string;
-  x: number;
-  y: number;
-  destaque: boolean;
-};
-
-/**
- * Escolhe quais nomes cabem na tela sem se sobrepor.
- * Os maiores municípios (e o selecionado) têm prioridade;
- * quanto mais perto, mais nomes aparecem.
- */
-function escolherNomes(
-  vista: Vista,
-  pixelsPorUnidade: number,
-  larguraTela: number,
-  selecionadoId?: string
-): Nome[] {
-  const alturaTela = larguraTela * PROPORCAO;
-  const minimo = populacaoMinima(vista);
-
-  const ocupados: [number, number, number, number][] = [
-    [larguraTela - AREA_BOTOES.largura, 0, larguraTela, AREA_BOTOES.altura],
-  ];
-  const nomes: Nome[] = [];
-  const alturaVista = vista.largura * PROPORCAO;
-
-  const candidatos = selecionadoId
-    ? [
-        ...municipiosPorPopulacao.filter((m) => m.id === selecionadoId),
-        ...municipiosPorPopulacao.filter((m) => m.id !== selecionadoId),
-      ]
-    : municipiosPorPopulacao;
-
-  for (const municipio of candidatos) {
-    if (nomes.length >= MAXIMO_NOMES) break;
-
-    const dentro =
-      municipio.lx >= vista.x &&
-      municipio.lx <= vista.x + vista.largura &&
-      municipio.ly >= vista.y &&
-      municipio.ly <= vista.y + alturaVista;
-
-    if (!dentro) continue;
-
-    const destaque = municipio.id === selecionadoId;
-    const populacao = indicadorPorId.get(municipio.id)?.populacao ?? 0;
-
-    if (!destaque && populacao < minimo) continue;
-
-    // Posição e tamanho aproximado do nome na tela, em pixels.
-    const px = (municipio.lx - vista.x) * pixelsPorUnidade;
-    const py = (municipio.ly - vista.y) * pixelsPorUnidade;
-    const meiaLargura = (municipio.nome.length * TAMANHO_NOME * 0.56) / 2 + 3;
-    const meiaAltura = TAMANHO_NOME / 2 + 3;
-
-    const caixa: [number, number, number, number] = [
-      px - meiaLargura,
-      py - meiaAltura,
-      px + meiaLargura,
-      py + meiaAltura,
-    ];
-
-    const cortado =
-      caixa[0] < 2 ||
-      caixa[1] < 2 ||
-      caixa[2] > larguraTela - 2 ||
-      caixa[3] > alturaTela - 2;
-
-    if (cortado) continue;
-
-    const colide = ocupados.some(
-      (o) =>
-        caixa[0] < o[2] && caixa[2] > o[0] && caixa[1] < o[3] && caixa[3] > o[1]
-    );
-
-    if (colide) continue;
-
-    ocupados.push(caixa);
-    nomes.push({
-      id: municipio.id,
-      nome: municipio.nome,
-      x: municipio.lx,
-      y: municipio.ly,
-      destaque,
-    });
-  }
-
-  return nomes;
-}
-
 type CamadaProps = {
   modo: ModoMapa;
   onSelect: (id: string) => void;
@@ -354,8 +237,23 @@ export function MapaCalorSP({
   const [larguraTela, setLarguraTela] = useState(0);
   const [vista, setVista] = useState<Vista>(() => vistaPara(enquadramento));
 
+  // Tamanho da etiqueta com o nome, medido depois de desenhada.
+  const [etiqueta, setEtiqueta] = useState({ largura: 140, altura: 46 });
+
   // Vista no início de um gesto (arraste ou pinça).
   const inicioGesto = useRef<Vista>(vista);
+
+  // Momento do último arraste: o toque que encerra um arraste
+  // não deve selecionar o município que estava sob o dedo.
+  const ultimoArraste = useRef(0);
+
+  const selecionarMunicipio = useCallback(
+    (id: string) => {
+      if (Date.now() - ultimoArraste.current < 350) return;
+      onSelect(id);
+    },
+    [onSelect]
+  );
 
   // Ao escolher "Estado inteiro", "Capital" ou um município da busca,
   // o mapa volta para o enquadramento pedido.
@@ -364,14 +262,6 @@ export function MapaCalorSP({
   }, [enquadramento]);
 
   const pixelsPorUnidade = larguraTela > 0 ? larguraTela / vista.largura : 1;
-
-  const nomes = useMemo(
-    () =>
-      larguraTela > 0
-        ? escolherNomes(vista, pixelsPorUnidade, larguraTela, selecionadoId)
-        : [],
-    [vista, pixelsPorUnidade, selecionadoId, larguraTela]
-  );
 
   const selecionado = selecionadoId
     ? municipiosSP.find((m) => m.id === selecionadoId)
@@ -384,6 +274,7 @@ export function MapaCalorSP({
       inicioGesto.current = vista;
     })
     .onUpdate((evento) => {
+      ultimoArraste.current = Date.now();
       const inicio = inicioGesto.current;
       const unidadesPorPixel = inicio.largura / larguraTela;
 
@@ -402,6 +293,7 @@ export function MapaCalorSP({
       inicioGesto.current = vista;
     })
     .onUpdate((evento) => {
+      ultimoArraste.current = Date.now();
       const inicio = inicioGesto.current;
       const unidadesPorPixel = inicio.largura / larguraTela;
 
@@ -422,7 +314,32 @@ export function MapaCalorSP({
   }
 
   const alturaTela = larguraTela * PROPORCAO;
-  const unidadesPorPixel = 1 / pixelsPorUnidade;
+  // Etiqueta do município tocado: posição do ponto na tela, em pixels.
+  const indicadorSelecionado = selecionado
+    ? indicadorPorId.get(selecionado.id)
+    : undefined;
+  const pontoX = selecionado ? (selecionado.lx - vista.x) * pixelsPorUnidade : 0;
+  const pontoY = selecionado ? (selecionado.ly - vista.y) * pixelsPorUnidade : 0;
+  const pontoVisivel =
+    !!selecionado &&
+    pontoX >= 0 &&
+    pontoX <= larguraTela &&
+    pontoY >= 0 &&
+    pontoY <= alturaTela;
+
+  // A etiqueta fica acima do ponto; se não couber, vai para baixo.
+  const etiquetaEmCima = pontoY - etiqueta.altura - 12 >= 4;
+  const etiquetaTopo = etiquetaEmCima ? pontoY - etiqueta.altura - 12 : pontoY + 12;
+  // Não deixa a etiqueta ficar embaixo dos botões de zoom.
+  const sobreBotoes = etiquetaTopo < AREA_BOTOES.altura;
+  const limiteDireito = sobreBotoes
+    ? larguraTela - AREA_BOTOES.largura
+    : larguraTela - 6;
+  const etiquetaEsquerda = Math.max(
+    Math.min(pontoX - etiqueta.largura / 2, limiteDireito - etiqueta.largura),
+    6
+  );
+
   const noZoomMaximo = vista.largura <= LARGURA_MINIMA + 0.01;
   const noZoomMinimo = vista.largura >= MAPA_SP_LARGURA - 0.01;
 
@@ -440,7 +357,7 @@ export function MapaCalorSP({
               height={alturaTela}
               viewBox={`${vista.x} ${vista.y} ${vista.largura} ${vista.largura * PROPORCAO}`}
             >
-              <CamadaMunicipios modo={modo} onSelect={onSelect} />
+              <CamadaMunicipios modo={modo} onSelect={selecionarMunicipio} />
 
               {selecionado && (
                 <Path
@@ -454,49 +371,52 @@ export function MapaCalorSP({
                 />
               )}
 
-              {/* Nomes das cidades: contorno claro por baixo para ler sobre qualquer cor */}
-              <G pointerEvents="none">
-                {nomes.map((nome) => {
-                  const tamanho =
-                    (nome.destaque ? TAMANHO_NOME + 1 : TAMANHO_NOME) *
-                    unidadesPorPixel;
-
-                  return (
-                    <G key={nome.id}>
-                      <SvgText
-                        x={nome.x}
-                        y={nome.y}
-                        dy={tamanho * 0.35}
-                        fontSize={tamanho}
-                        fontWeight={nome.destaque ? '700' : '600'}
-                        fontFamily={FONTE_NOME}
-                        textAnchor="middle"
-                        fill="none"
-                        stroke={COR_BORDA}
-                        strokeWidth={3 * unidadesPorPixel}
-                        strokeLinejoin="round"
-                      >
-                        {nome.nome}
-                      </SvgText>
-                      <SvgText
-                        x={nome.x}
-                        y={nome.y}
-                        dy={tamanho * 0.35}
-                        fontSize={tamanho}
-                        fontWeight={nome.destaque ? '700' : '600'}
-                        fontFamily={FONTE_NOME}
-                        textAnchor="middle"
-                        fill={COR_NOME}
-                      >
-                        {nome.nome}
-                      </SvgText>
-                    </G>
-                  );
-                })}
-              </G>
             </Svg>
           </View>
         </GestureDetector>
+      )}
+
+      {/* Etiqueta com o nome do município tocado */}
+      {pontoVisivel && selecionado && indicadorSelecionado && (
+        <>
+          <View
+            pointerEvents="none"
+            style={[styles.ponto, { left: pontoX - 5, top: pontoY - 5 }]}
+          />
+          <View
+            pointerEvents="none"
+            accessibilityLiveRegion="polite"
+            onLayout={(evento) => {
+              const { width, height } = evento.nativeEvent.layout;
+              if (
+                Math.abs(width - etiqueta.largura) > 1 ||
+                Math.abs(height - etiqueta.altura) > 1
+              ) {
+                setEtiqueta({ largura: width, altura: height });
+              }
+            }}
+            style={[
+              styles.etiqueta,
+              { left: etiquetaEsquerda, top: etiquetaTopo },
+            ]}
+          >
+            <Text style={styles.etiquetaNome} numberOfLines={1}>
+              {selecionado.nome}
+            </Text>
+            <Text style={styles.etiquetaValor} numberOfLines={1}>
+              {indicadorSelecionado.feminicidios === 0
+                ? 'Nenhum registro (2019–2023)'
+                : modo === 'taxa'
+                ? `${indicadorSelecionado.taxa.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })} por 100 mil hab./ano`
+                : indicadorSelecionado.feminicidios === 1
+                  ? '1 vítima (2019–2023)'
+                  : `${indicadorSelecionado.feminicidios.toLocaleString('pt-BR')} vítimas (2019–2023)`}
+            </Text>
+          </View>
+        </>
       )}
 
       {/* Botões de zoom */}
@@ -563,6 +483,42 @@ const styles = StyleSheet.create({
 
   area: {
     flex: 1,
+  },
+
+  ponto: {
+    position: 'absolute',
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: COR_DESTAQUE,
+    borderWidth: 2,
+    borderColor: colors.white,
+  },
+
+  etiqueta: {
+    position: 'absolute',
+    maxWidth: 200,
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+
+  etiquetaNome: {
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: '700',
+  },
+
+  etiquetaValor: {
+    color: '#F2E8ED',
+    fontSize: 12,
+    marginTop: 1,
   },
 
   zoomControls: {

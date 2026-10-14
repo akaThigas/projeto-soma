@@ -211,8 +211,8 @@ export default function MapaScreen() {
             />
 
             <Text style={styles.mapHint}>
-              Arraste para mover. Use + e − ou o movimento de pinça para
-              aproximar. Mais nomes aparecem conforme você aproxima.
+              Toque em um município para ver o nome. Arraste para mover e use
+              + e − ou o movimento de pinça para aproximar.
             </Text>
 
             <View style={styles.zoomRow}>
