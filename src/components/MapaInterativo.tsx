@@ -196,6 +196,10 @@ export function MapaInterativo({
   // Tamanho da etiqueta com o nome, medido depois de desenhada.
   const [etiqueta, setEtiqueta] = useState({ largura: 140, altura: 46 });
 
+  // Área cuja etiqueta foi fechada no "x". Volta a aparecer quando
+  // uma área (a mesma ou outra) é tocada de novo.
+  const [etiquetaFechada, setEtiquetaFechada] = useState<string>();
+
   // Vista no início de um gesto (arraste ou pinça).
   const inicioGesto = useRef<VistaMapa>(vista);
 
@@ -206,6 +210,7 @@ export function MapaInterativo({
   const selecionar = useCallback(
     (id: string) => {
       if (Date.now() - ultimoArraste.current < 350) return;
+      setEtiquetaFechada(undefined);
       onSelect(id);
     },
     [onSelect]
@@ -445,14 +450,13 @@ export function MapaInterativo({
       {marcadoresNaTela.filter((m) => !m.sempreVisivel).map(desenharMarcador)}
 
       {/* Etiqueta com o nome da área tocada */}
-      {pontoVisivel && selecionado && (
+      {pontoVisivel && selecionado && etiquetaFechada !== selecionado.id && (
         <>
           <View
             pointerEvents="none"
             style={[styles.ponto, { left: pontoX - 5, top: pontoY - 5 }]}
           />
           <View
-            pointerEvents="none"
             accessibilityLiveRegion="polite"
             onLayout={(evento) => {
               const { width, height } = evento.nativeEvent.layout;
@@ -468,12 +472,26 @@ export function MapaInterativo({
               { left: etiquetaEsquerda, top: etiquetaTopo },
             ]}
           >
-            <Text style={styles.etiquetaNome} numberOfLines={1}>
-              {selecionado.nome}
-            </Text>
-            <Text style={styles.etiquetaValor} numberOfLines={1}>
-              {valorDe(selecionado.id)}
-            </Text>
+            <View style={styles.etiquetaTextos}>
+              <Text style={styles.etiquetaNome} numberOfLines={1}>
+                {selecionado.nome}
+              </Text>
+              <Text style={styles.etiquetaValor} numberOfLines={1}>
+                {valorDe(selecionado.id)}
+              </Text>
+            </View>
+            <Pressable
+              onPress={() => setEtiquetaFechada(selecionado.id)}
+              accessibilityRole="button"
+              accessibilityLabel={`Fechar etiqueta de ${selecionado.nome}`}
+              hitSlop={8}
+              style={({ pressed }) => [
+                styles.etiquetaFechar,
+                pressed && styles.etiquetaFecharPressionado,
+              ]}
+            >
+              <Ionicons name="close" size={16} color={colors.white} />
+            </Pressable>
           </View>
         </>
       )}
@@ -558,7 +576,10 @@ const styles = StyleSheet.create({
 
   etiqueta: {
     position: 'absolute',
-    maxWidth: 200,
+    maxWidth: 240,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 6,
     backgroundColor: colors.primary,
     borderRadius: 10,
     paddingHorizontal: 11,
@@ -568,6 +589,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 5,
+  },
+
+  etiquetaTextos: {
+    flexShrink: 1,
+  },
+
+  etiquetaFechar: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: -4,
+    marginTop: -1,
+    backgroundColor: 'rgba(255,255,255,0.14)',
+  },
+
+  etiquetaFecharPressionado: {
+    backgroundColor: 'rgba(255,255,255,0.3)',
   },
 
   etiquetaNome: {

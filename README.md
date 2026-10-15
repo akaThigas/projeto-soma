@@ -713,7 +713,7 @@ O mapa não:
 - utiliza relatos de usuários como pontos públicos;
 - indica que uma região é individualmente segura ou perigosa.
 
-Os nomes das áreas não ficam escritos sobre o mapa: aparecem só na etiqueta, ao tocar.
+Os nomes das áreas não ficam escritos sobre o mapa: aparecem só na etiqueta, ao tocar. A etiqueta tem um botão **×** para fechá-la sem fechar o relatório; ela volta ao tocar de novo em uma área. Vale para o mapa do estado e para os da cidade.
 
 ### Limitações e próximos passos
 
