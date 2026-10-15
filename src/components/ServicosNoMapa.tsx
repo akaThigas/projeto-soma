@@ -69,6 +69,13 @@ export const marcadoresServicos: MarcadorMapa[] = servicosMulherSP
     };
   });
 
+const COR_PINO = '#C0392B';
+
+/** Texto do pino: "Lugar buscado: X" ou "Sua localização". */
+export function textoDoPino(nome: string) {
+  return nome === 'sua localização' ? 'Sua localização' : `Lugar buscado: ${nome}`;
+}
+
 /** Pino do lugar buscado ou da localização atual. */
 export function marcadorOrigem(nome: string, lat: number, lon: number): MarcadorMapa {
   const { x, y } = projetar(lat, lon);
@@ -77,7 +84,7 @@ export function marcadorOrigem(nome: string, lat: number, lon: number): Marcador
     x,
     y,
     icone: 'location',
-    cor: '#C0392B',
+    cor: COR_PINO,
     rotulo: `Ponto buscado: ${nome}`,
     sempreVisivel: true,
   };
@@ -119,10 +126,13 @@ export function FiltroServicos({
   ativas,
   onMudar,
   visiveis,
+  lugarBuscado,
 }: {
   ativas: CategoriaServico[];
   onMudar: (ativas: CategoriaServico[]) => void;
   visiveis: boolean;
+  /** Nome do lugar buscado (ou "sua localização"), quando houver pino. */
+  lugarBuscado?: string;
 }) {
   function alternar(c: CategoriaServico) {
     onMudar(
@@ -182,6 +192,15 @@ export function FiltroServicos({
           );
         })}
       </View>
+      {lugarBuscado && (
+        <View style={styles.pinRow}>
+          <Ionicons name="location" size={18} color={COR_PINO} />
+          <Text style={styles.pinText}>
+            {textoDoPino(lugarBuscado)}
+            <Text style={styles.pinHint}> · distâncias medidas a partir daqui</Text>
+          </Text>
+        </View>
+      )}
       {ativas.length === 0 ? (
         <Text style={styles.legendHint}>Nenhum tipo escolhido: os ícones estão escondidos.</Text>
       ) : (
@@ -191,6 +210,46 @@ export function FiltroServicos({
           </Text>
         )
       )}
+    </View>
+  );
+}
+
+/** Cartão ao tocar no pino do lugar buscado. */
+export function CartaoLugarBuscado({
+  nome,
+  area,
+  onFechar,
+}: {
+  nome: string;
+  area?: string;
+  onFechar: () => void;
+}) {
+  return (
+    <View style={[styles.card, { borderLeftColor: COR_PINO }]}>
+      <View style={styles.cardHeader}>
+        <View style={[styles.cardIcon, { backgroundColor: COR_PINO }]}>
+          <Ionicons name="location" size={18} color={colors.white} />
+        </View>
+        <View style={styles.cardTitleBox}>
+          <Text style={[styles.cardType, { color: COR_PINO }]}>
+            {nome === 'sua localização' ? 'Onde você está' : 'Lugar buscado'}
+          </Text>
+          <Text style={styles.cardName}>
+            {nome === 'sua localização' ? 'Sua localização' : nome}
+          </Text>
+        </View>
+        <Pressable onPress={onFechar} accessibilityLabel="Fechar" hitSlop={8}>
+          <Ionicons name="close" size={20} color={colors.primary} />
+        </Pressable>
+      </View>
+      {area && <Text style={styles.cardText}>Fica na área do {area}.</Text>}
+      <Text style={styles.cardNote}>
+        Os serviços em "Onde buscar atendimento" estão ordenados pela distância
+        a partir deste ponto.
+        {nome === 'sua localização'
+          ? ' A localização não é salva nem enviada.'
+          : ''}
+      </Text>
     </View>
   );
 }
@@ -279,6 +338,9 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', backgroundColor: colors.white,
   },
   legendHint: { color: '#6E6170', fontSize: 12, lineHeight: 17 },
+  pinRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  pinText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '600' },
+  pinHint: { color: '#6E6170', fontWeight: '400' },
 
   card: {
     backgroundColor: colors.white, borderRadius: 16, padding: 14, gap: 4,

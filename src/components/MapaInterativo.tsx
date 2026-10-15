@@ -298,21 +298,54 @@ export function MapaInterativo({
     pontoY >= 0 &&
     pontoY <= alturaTela;
 
-  // A etiqueta fica acima do ponto; se não couber, vai para baixo.
-  const etiquetaEmCima = pontoY - etiqueta.altura - 12 >= 4;
-  const etiquetaTopo = etiquetaEmCima
-    ? pontoY - etiqueta.altura - 12
-    : pontoY + 12;
+  // Pinos fixos (lugar buscado): a etiqueta não deve ficar em cima deles.
+  const pinos = marcadores
+    .filter((m) => m.sempreVisivel)
+    .map((m) => ({
+      x: (m.x - vista.x) * pixelsPorUnidade,
+      y: (m.y - vista.y) * pixelsPorUnidade,
+    }));
 
-  // Não deixa a etiqueta ficar embaixo dos botões de zoom.
-  const sobreBotoes = etiquetaTopo < AREA_BOTOES.altura;
-  const limiteDireito = sobreBotoes
-    ? larguraTela - AREA_BOTOES.largura
-    : larguraTela - 6;
-  const etiquetaEsquerda = Math.max(
-    Math.min(pontoX - etiqueta.largura / 2, limiteDireito - etiqueta.largura),
-    6
-  );
+  /** Posição horizontal da etiqueta para um dado topo. */
+  function esquerdaPara(topo: number) {
+    // Não deixa a etiqueta ficar embaixo dos botões de zoom.
+    const limiteDireito =
+      topo < AREA_BOTOES.altura
+        ? larguraTela - AREA_BOTOES.largura
+        : larguraTela - 6;
+    return Math.max(
+      Math.min(pontoX - etiqueta.largura / 2, limiteDireito - etiqueta.largura),
+      6
+    );
+  }
+
+  function cobrePino(topo: number) {
+    const esquerda = esquerdaPara(topo);
+    const folga = TAMANHO_MARCADOR / 2 + 4;
+    return pinos.some(
+      (p) =>
+        p.x + folga > esquerda &&
+        p.x - folga < esquerda + etiqueta.largura &&
+        p.y + folga > topo &&
+        p.y - folga < topo + etiqueta.altura
+    );
+  }
+
+  // A etiqueta fica acima do ponto; se não couber ou se cobrir o pino do
+  // lugar buscado, vai para baixo.
+  const topoAcima = pontoY - etiqueta.altura - 12;
+  const topoAbaixo = pontoY + 12;
+  const cabeAcima = topoAcima >= 4;
+  const cabeAbaixo = topoAbaixo + etiqueta.altura <= alturaTela - 4;
+  const etiquetaTopo =
+    cabeAcima && !cobrePino(topoAcima)
+      ? topoAcima
+      : cabeAbaixo && !cobrePino(topoAbaixo)
+        ? topoAbaixo
+        : cabeAcima
+          ? topoAcima
+          : topoAbaixo;
+  const etiquetaEsquerda = esquerdaPara(etiquetaTopo);
 
   // Ícones só com o mapa aproximado, para não poluir a visão da cidade inteira.
   const marcadoresVisiveis = vista.largura <= larguraMapa * zoomMarcadores;

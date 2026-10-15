@@ -37,6 +37,7 @@ import {
 } from './MapaCalorDelegacias';
 import { areaDoPonto } from '../utils/areaDoPonto';
 import {
+  CartaoLugarBuscado,
   CartaoServicoMapa,
   CategoriaServico,
   categoriaDoMarcador,
@@ -111,6 +112,7 @@ export function PainelDelegacias() {
   const [localizando, setLocalizando] = useState(false);
   const [avisoLocal, setAvisoLocal] = useState<string>();
   const [servicoId, setServicoId] = useState<string>();
+  const [pinoAberto, setPinoAberto] = useState(false);
   const [iconesVisiveis, setIconesVisiveis] = useState(false);
   const [categorias, setCategorias] = useState<CategoriaServico[]>(TODAS_CATEGORIAS);
 
@@ -132,12 +134,14 @@ export function PainelDelegacias() {
 
   const selecionar = useCallback((id: string) => {
     setSelecionadoId(id);
+    setPinoAberto(false);
     setOrigem(undefined);
     setAvisoLocal(undefined);
   }, []);
   const resultados = useMemo(() => buscarArea(busca), [busca]);
 
   function abrirArea(id: string, novaOrigem?: Origem) {
+    setPinoAberto(false);
     setSelecionadoId(id);
     setEnquadramento({ tipo: 'area', id });
     setOrigem(novaOrigem);
@@ -274,7 +278,15 @@ export function PainelDelegacias() {
             onSelect={selecionar}
             marcadores={filtrarMarcadores(marcadores, categorias)}
             marcadorSelecionadoId={servicoId}
-            onMarcador={(id) => setServicoId(id === 'origem' ? undefined : id)}
+            onMarcador={(id) => {
+              if (id === 'origem') {
+                setServicoId(undefined);
+                setPinoAberto(true);
+              } else {
+                setServicoId(id);
+                setPinoAberto(false);
+              }
+            }}
             onMarcadoresVisiveis={setIconesVisiveis}
           />
         </View>
@@ -286,7 +298,15 @@ export function PainelDelegacias() {
           ativas={categorias}
           onMudar={mudarCategorias}
           visiveis={iconesVisiveis}
+          lugarBuscado={origem?.nome}
         />
+        {pinoAberto && origem && (
+          <CartaoLugarBuscado
+            nome={origem.nome}
+            area={selecionadoId ? dadosDaDelegacia(selecionadoId)?.forma.nome : undefined}
+            onFechar={() => setPinoAberto(false)}
+          />
+        )}
         {servicoTocado && (
           <CartaoServicoMapa
             servico={servicoTocado}
