@@ -666,7 +666,7 @@ Na aba **Cidade de São Paulo**, o botão **Relatório por área** mostra os dad
 - mapa das áreas, colorido pelo número de mulheres vítimas em 2025;
 - relatório da área: **total de mulheres vítimas e crimes por tipo** (ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva etc.), **evolução** de 2024 a 2026 e **comparação com a média** das 93 áreas;
 - **onde buscar atendimento perto dali**: os três serviços mais próximos (Delegacias da Mulher, Casa da Mulher Brasileira, Casas da Mulher, CDCMs), com endereço, horário e telefone, além dos serviços 24 horas, da Defensoria Pública e dos telefones 180 e 190;
-- totais da cidade de feminicídio, tentativa de homicídio e estupro, que a base não separa por área;
+- aviso dentro de cada relatório: estupro, feminicídio e tentativa de homicídio não aparecem na lista da área porque a SSP não publica esses números por delegacia; o aviso mostra os totais da cidade no ano escolhido;
 - notas de leitura e fontes na tela.
 
 O relatório **não diz se um lugar é seguro ou perigoso**: mostra boletins registrados, com as ressalvas (subnotificação, contagem pelo local do fato, número de vítimas e não taxa). Contagens de 1 a 4 aparecem como "menos de 5".

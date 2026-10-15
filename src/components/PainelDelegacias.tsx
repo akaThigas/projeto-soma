@@ -533,6 +533,25 @@ function Relatorio({
         </View>
       )}
 
+      {/* Crimes que a SSP não publica por delegacia */}
+      <View style={styles.missingBox}>
+        <Ionicons name="alert-circle-outline" size={18} color="#8A4A70" />
+        <Text style={styles.missingText}>
+          <Text style={styles.alwaysStrong}>
+            Estupro, feminicídio e tentativa de homicídio não aparecem nesta
+            lista
+          </Text>{' '}
+          porque a SSP não publica esses números por delegacia. Isso não quer
+          dizer que não aconteceram nesta área. Na cidade toda, em{' '}
+          {rotuloAno(ano)}, foram {numero(cidadeOutrosTipos.estupro[ano])}{' '}
+          estupros, {numero(cidadeOutrosTipos.estuproVulneravel[ano])} estupros
+          de vulnerável, {numero(cidadeOutrosTipos.feminicidio[ano])}{' '}
+          feminicídios e {numero(cidadeOutrosTipos.tentativaHomicidio[ano])}{' '}
+          tentativas de homicídio (estupros consumados e tentados; painel da
+          SSP).
+        </Text>
+      </View>
+
       {/* 4. Serviços */}
       <Text style={styles.blockTitle}>
         {origem
@@ -693,6 +712,13 @@ const styles = StyleSheet.create({
   typeHeader: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
   typeName: { flex: 1, color: colors.text, fontSize: 13 },
   typeValue: { color: colors.primary, fontSize: 13, fontWeight: '700', fontVariant: ['tabular-nums'] },
+
+  missingBox: {
+    flexDirection: 'row', alignItems: 'flex-start', gap: 8,
+    backgroundColor: colors.white, borderRadius: 14, padding: 12,
+    borderLeftWidth: 3, borderLeftColor: '#CF879E',
+  },
+  missingText: { flex: 1, color: colors.text, fontSize: 13, lineHeight: 19 },
 
   services: { gap: 10 },
   serviceCard: { backgroundColor: colors.white, borderRadius: 16, padding: 14, gap: 3 },
