@@ -1,0 +1,25 @@
+{
+  "name": "Projeto SOMA",
+  "short_name": "SOMA",
+  "description": "Segurança, Orientação, Monitoramento e Apoio",
+  "start_url": "/projeto-soma/",
+  "scope": "/projeto-soma/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#3D1E45",
+  "theme_color": "#3D1E45",
+  "icons": [
+    {
+      "src": "/projeto-soma/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/projeto-soma/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
