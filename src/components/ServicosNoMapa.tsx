@@ -52,8 +52,10 @@ export function servicoDoMarcador(id: string) {
 /** Marcadores fixos de todos os serviços com localização. */
 export const marcadoresServicos: MarcadorMapa[] = servicosMulherSP
   .filter((s) => s.lat !== null && s.lon !== null)
-  // a 1ª DDM fica dentro da Casa da Mulher Brasileira: um ícone só
-  .filter((s) => s.id !== 'ddm1')
+  // A 1ª DDM fica dentro da Casa da Mulher Brasileira (mesmo ponto). Ela é
+  // desenhada antes, para o ícone da Casa ficar por cima quando os dois
+  // tipos estão ligados; com só "Delegacia" ligado, aparece o da DDM.
+  .sort((a, b) => Number(b.id === 'ddm1') - Number(a.id === 'ddm1'))
   .map((s) => {
     const { x, y } = projetar(s.lat as number, s.lon as number);
     const categoria = CATEGORIAS[categoriaDe(s.tipo)];
@@ -81,23 +83,113 @@ export function marcadorOrigem(nome: string, lat: number, lon: number): Marcador
   };
 }
 
-export function LegendaServicos({ visiveis }: { visiveis: boolean }) {
+export const TODAS_CATEGORIAS = Object.keys(CATEGORIAS) as CategoriaServico[];
+
+/** Quantos serviços de cada tipo estão no mapa. */
+const contagem = marcadoresServicos.reduce(
+  (acc, m) => {
+    const servico = servicoDoMarcador(m.id);
+    if (servico) acc[categoriaDe(servico.tipo)] += 1;
+    return acc;
+  },
+  { delegacia: 0, centro: 0, saude: 0, defensoria: 0 } as Record<CategoriaServico, number>
+);
+
+/** Mantém só os ícones dos tipos escolhidos (o pino do lugar buscado fica sempre). */
+export function filtrarMarcadores(
+  marcadores: MarcadorMapa[],
+  ativas: CategoriaServico[]
+) {
+  return marcadores.filter((m) => {
+    const servico = servicoDoMarcador(m.id);
+    return !servico || ativas.includes(categoriaDe(servico.tipo));
+  });
+}
+
+export function categoriaDoMarcador(id: string): CategoriaServico | undefined {
+  const servico = servicoDoMarcador(id);
+  return servico ? categoriaDe(servico.tipo) : undefined;
+}
+
+/**
+ * Filtro dos ícones: cada tipo de serviço é um botão que liga e desliga.
+ * Também funciona como legenda do mapa.
+ */
+export function FiltroServicos({
+  ativas,
+  onMudar,
+  visiveis,
+}: {
+  ativas: CategoriaServico[];
+  onMudar: (ativas: CategoriaServico[]) => void;
+  visiveis: boolean;
+}) {
+  function alternar(c: CategoriaServico) {
+    onMudar(
+      ativas.includes(c)
+        ? ativas.filter((a) => a !== c)
+        : TODAS_CATEGORIAS.filter((a) => a === c || ativas.includes(a))
+    );
+  }
+
+  const todas = ativas.length === TODAS_CATEGORIAS.length;
+
   return (
     <View style={styles.legend}>
-      <View style={styles.legendRow}>
-        {(Object.keys(CATEGORIAS) as CategoriaServico[]).map((c) => (
-          <View key={c} style={styles.legendItem}>
-            <View style={[styles.legendIcon, { borderColor: CATEGORIAS[c].cor }]}>
-              <Ionicons name={CATEGORIAS[c].icone} size={12} color={CATEGORIAS[c].cor} />
-            </View>
-            <Text style={styles.legendText}>{CATEGORIAS[c].nome}</Text>
-          </View>
-        ))}
+      <View style={styles.filterHeader}>
+        <Text style={styles.filterTitle}>Mostrar no mapa</Text>
+        <Pressable
+          onPress={() => onMudar(todas ? [] : TODAS_CATEGORIAS)}
+          accessibilityRole="button"
+          hitSlop={8}
+        >
+          <Text style={styles.filterAll}>{todas ? 'Esconder todos' : 'Mostrar todos'}</Text>
+        </Pressable>
       </View>
-      {!visiveis && (
-        <Text style={styles.legendHint}>
-          Aproxime o mapa (+ ou pinça) ou busque um lugar para ver os serviços.
-        </Text>
+      <View style={styles.legendRow}>
+        {TODAS_CATEGORIAS.map((c) => {
+          const ligado = ativas.includes(c);
+          const { cor, icone, nome } = CATEGORIAS[c];
+          return (
+            <Pressable
+              key={c}
+              onPress={() => alternar(c)}
+              accessibilityRole="checkbox"
+              accessibilityState={{ checked: ligado }}
+              accessibilityLabel={`${nome}, ${contagem[c]} no mapa`}
+              style={({ pressed }) => [
+                styles.chip,
+                ligado ? { borderColor: cor, backgroundColor: '#FFFFFF' } : styles.chipOff,
+                pressed && styles.chipPressed,
+              ]}
+            >
+              <View
+                style={[
+                  styles.legendIcon,
+                  { borderColor: ligado ? cor : '#C9BEC3', backgroundColor: ligado ? cor : '#FFFFFF' },
+                ]}
+              >
+                <Ionicons
+                  name={icone}
+                  size={12}
+                  color={ligado ? colors.white : '#A99DA3'}
+                />
+              </View>
+              <Text style={[styles.chipText, !ligado && styles.chipTextOff]}>
+                {nome} ({contagem[c]})
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      {ativas.length === 0 ? (
+        <Text style={styles.legendHint}>Nenhum tipo escolhido: os ícones estão escondidos.</Text>
+      ) : (
+        !visiveis && (
+          <Text style={styles.legendHint}>
+            Aproxime o mapa (+ ou pinça) ou busque um lugar para ver os serviços.
+          </Text>
+        )
       )}
     </View>
   );
@@ -170,13 +262,22 @@ export function CartaoServicoMapa({
 
 const styles = StyleSheet.create({
   legend: { gap: 6, marginTop: 10 },
-  legendRow: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 14, rowGap: 6 },
-  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  legendRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  filterHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  filterTitle: { color: colors.primary, fontSize: 13, fontWeight: '700' },
+  filterAll: { color: colors.primary, fontSize: 12, fontWeight: '600', textDecorationLine: 'underline' },
+  chip: {
+    flexDirection: 'row', alignItems: 'center', gap: 6, minHeight: 34,
+    borderWidth: 1.5, borderRadius: 17, paddingLeft: 6, paddingRight: 11,
+  },
+  chipOff: { borderColor: '#E1D8DB', backgroundColor: '#F6F2F3' },
+  chipPressed: { opacity: 0.7 },
+  chipText: { color: colors.text, fontSize: 12, fontWeight: '600' },
+  chipTextOff: { color: '#9A8F95', fontWeight: '500' },
   legendIcon: {
     width: 22, height: 22, borderRadius: 11, borderWidth: 1.5,
     alignItems: 'center', justifyContent: 'center', backgroundColor: colors.white,
   },
-  legendText: { color: colors.text, fontSize: 12 },
   legendHint: { color: '#6E6170', fontSize: 12, lineHeight: 17 },
 
   card: {

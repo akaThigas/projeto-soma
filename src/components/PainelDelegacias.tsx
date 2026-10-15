@@ -38,7 +38,11 @@ import {
 import { areaDoPonto } from '../utils/areaDoPonto';
 import {
   CartaoServicoMapa,
-  LegendaServicos,
+  CategoriaServico,
+  categoriaDoMarcador,
+  filtrarMarcadores,
+  FiltroServicos,
+  TODAS_CATEGORIAS,
   marcadorOrigem,
   marcadoresServicos,
   servicoDoMarcador,
@@ -108,6 +112,14 @@ export function PainelDelegacias() {
   const [avisoLocal, setAvisoLocal] = useState<string>();
   const [servicoId, setServicoId] = useState<string>();
   const [iconesVisiveis, setIconesVisiveis] = useState(false);
+  const [categorias, setCategorias] = useState<CategoriaServico[]>(TODAS_CATEGORIAS);
+
+  function mudarCategorias(novas: CategoriaServico[]) {
+    setCategorias(novas);
+    // fecha o cartão se o tipo do serviço aberto foi escondido
+    const aberta = servicoId ? categoriaDoMarcador(servicoId) : undefined;
+    if (aberta && !novas.includes(aberta)) setServicoId(undefined);
+  }
 
   const marcadores = useMemo(
     () =>
@@ -260,7 +272,7 @@ export function PainelDelegacias() {
             enquadramento={enquadramento}
             selecionadoId={selecionadoId}
             onSelect={selecionar}
-            marcadores={marcadores}
+            marcadores={filtrarMarcadores(marcadores, categorias)}
             marcadorSelecionadoId={servicoId}
             onMarcador={(id) => setServicoId(id === 'origem' ? undefined : id)}
             onMarcadoresVisiveis={setIconesVisiveis}
@@ -270,7 +282,11 @@ export function PainelDelegacias() {
           Cada área é a região atendida por uma delegacia (DP). Toque em uma
           área para ver o relatório ou em um ícone para ver o serviço.
         </Text>
-        <LegendaServicos visiveis={iconesVisiveis} />
+        <FiltroServicos
+          ativas={categorias}
+          onMudar={mudarCategorias}
+          visiveis={iconesVisiveis}
+        />
         {servicoTocado && (
           <CartaoServicoMapa
             servico={servicoTocado}

@@ -31,7 +31,11 @@ import {
 import { PainelDelegacias } from '../components/PainelDelegacias';
 import {
   CartaoServicoMapa,
-  LegendaServicos,
+  CategoriaServico,
+  categoriaDoMarcador,
+  filtrarMarcadores,
+  FiltroServicos,
+  TODAS_CATEGORIAS,
   marcadoresServicos,
   servicoDoMarcador,
 } from '../components/ServicosNoMapa';
@@ -461,6 +465,14 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
   const [busca, setBusca] = useState('');
   const [servicoId, setServicoId] = useState<string>();
   const [iconesVisiveis, setIconesVisiveis] = useState(false);
+  const [categorias, setCategorias] = useState<CategoriaServico[]>(TODAS_CATEGORIAS);
+
+  function mudarCategorias(novas: CategoriaServico[]) {
+    setCategorias(novas);
+    // fecha o cartão se o tipo do serviço aberto foi escondido
+    const aberta = servicoId ? categoriaDoMarcador(servicoId) : undefined;
+    if (aberta && !novas.includes(aberta)) setServicoId(undefined);
+  }
   const servicoTocado = servicoId ? servicoDoMarcador(servicoId) : undefined;
 
   const selecionar = useCallback((id: string) => {
@@ -534,7 +546,7 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
             enquadramento={enquadramento}
             selecionadoId={selecionadoId}
             onSelect={selecionar}
-            marcadores={marcadoresServicos}
+            marcadores={filtrarMarcadores(marcadoresServicos, categorias)}
             marcadorSelecionadoId={servicoId}
             onMarcador={setServicoId}
             onMarcadoresVisiveis={setIconesVisiveis}
@@ -545,7 +557,11 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
           Toque em um distrito para ver o nome. Arraste para mover e use
           + e − ou o movimento de pinça para aproximar.
         </Text>
-        <LegendaServicos visiveis={iconesVisiveis} />
+        <FiltroServicos
+          ativas={categorias}
+          onMudar={mudarCategorias}
+          visiveis={iconesVisiveis}
+        />
         {servicoTocado && (
           <CartaoServicoMapa
             servico={servicoTocado}

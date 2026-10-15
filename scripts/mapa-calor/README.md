@@ -176,4 +176,6 @@ Os mapas da cidade (por distrito e por área de delegacia) mostram os serviços 
 - A Casa da Mulher Maria de Lourdes Rodrigues não foi localizada e não aparece no mapa.
 - Os ícones aparecem quando o mapa está aproximado (largura visível menor que 60% da cidade) ou quando uma busca leva o mapa até uma área; na visão da cidade inteira, a legenda pede para aproximar. O lugar buscado (ou a localização atual) aparece como um pino vermelho.
 - A lista "Onde buscar atendimento perto daqui" do relatório continua com Delegacias da Mulher e centros de referência; hospitais e Defensoria aparecem pelos ícones.
+- **Filtro**: abaixo do mapa, cada tipo é um botão que liga e desliga os ícones, com a quantidade no mapa (Delegacia da Mulher 9, Centro de referência 26, Saúde 6, Defensoria 14). O pino do lugar buscado não é afetado pelo filtro. Se o tipo do serviço aberto for desligado, o cartão fecha.
+- A 1ª DDM fica dentro da Casa da Mulher Brasileira (mesmo ponto). Com os dois tipos ligados, aparece o ícone da Casa por cima; com só "Delegacia" ligado, aparece o da 1ª DDM.
 
