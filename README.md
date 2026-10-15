@@ -663,6 +663,7 @@ Na aba **Cidade de São Paulo**, o botão **Relatório por área** mostra os dad
 
 - busca por bairro, distrito, estação de metrô ou trem, parque, estádio, hospital, universidade ou número da delegacia, com nomes alternativos (por exemplo, "estádio do Palmeiras" acha o Nubank Parque, antigo Allianz Parque); um distrito aponta para a área que cobre a maior parte dele;
 - botão **Usar minha localização**: o app descobre a área no próprio aparelho, sem enviar nem salvar a localização;
+- **ícones dos serviços no mapa**, com os mesmos ícones da Rede de Apoio: Delegacias da Mulher, centros de referência (Casa da Mulher Brasileira, Casas da Mulher e CDCMs), hospitais de referência para violência sexual e unidades da Defensoria Pública. Os ícones aparecem quando o mapa é aproximado ou depois de uma busca (com um pino vermelho no lugar buscado); tocar em um ícone mostra endereço, horário e telefone. Também valem para o mapa por distrito;
 - mapa das áreas, colorido pelo número de mulheres vítimas em 2025;
 - relatório da área: **total de mulheres vítimas e crimes por tipo** (ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva etc.), **evolução** de 2024 a 2026 e **comparação com a média** das 93 áreas;
 - **onde buscar atendimento perto dali**: os três serviços mais próximos (Delegacias da Mulher, Casa da Mulher Brasileira, Casas da Mulher, CDCMs), com endereço, horário e telefone, além dos serviços 24 horas, da Defensoria Pública e dos telefones 180 e 190;
@@ -689,13 +690,14 @@ src/components/MapaCalorSP.tsx               → mapa do estado (municípios)
 src/components/MapaCalorCapital.tsx          → mapa da cidade (distritos)
 src/components/MapaCalorDelegacias.tsx       → mapa das áreas de delegacia, busca e serviços próximos
 src/components/PainelDelegacias.tsx          → relatório por área
+src/components/ServicosNoMapa.tsx            → ícones dos serviços no mapa, legenda e cartão
 src/data/mapaCalor/feminicidioSP.ts           → números por município e fontes
 src/data/mapaCalor/municipiosSP.ts            → contornos dos municípios
 src/data/mapaCalor/violenciaMulherCapital.ts  → números por distrito e fontes
 src/data/mapaCalor/distritosSP.ts             → contornos dos distritos
 src/data/mapaCalor/delegaciasSP.ts            → contornos das áreas de delegacia
 src/data/mapaCalor/violenciaDelegacias.ts     → números da SSP por área, ano e tipo
-src/data/mapaCalor/servicosMulherSP.ts        → serviços de apoio
+src/data/mapaCalor/servicosMulherSP.ts        → serviços de apoio (delegacias, centros, saúde e Defensoria)
 src/data/mapaCalor/distritoParaDelegacia.ts   → distritos × áreas de delegacia
 src/data/mapaCalor/lugaresSP.ts               → lugares conhecidos para a busca (OpenStreetMap)
 src/utils/areaDoPonto.ts                      → descobre a área de delegacia de uma coordenada, no aparelho

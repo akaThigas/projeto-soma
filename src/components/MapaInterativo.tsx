@@ -31,6 +31,18 @@ export type FormaMapa = {
   ly: number;
 };
 
+/** Ícone sobre o mapa (ex.: serviço de apoio), em unidades do mapa. */
+export type MarcadorMapa = {
+  id: string;
+  x: number;
+  y: number;
+  icone: keyof typeof Ionicons.glyphMap;
+  cor: string;
+  rotulo: string; // para leitores de tela
+  /** Aparece mesmo sem zoom (ex.: o lugar buscado). */
+  sempreVisivel?: boolean;
+};
+
 export type VistaMapa = {
   x: number;
   y: number;
@@ -39,6 +51,8 @@ export type VistaMapa = {
 
 const COR_DESTAQUE = '#F2B134';
 const COR_BORDA = '#FFFDF1';
+
+const TAMANHO_MARCADOR = 28;
 
 // Área ocupada pelos botões de zoom (canto superior direito), em pixels.
 const AREA_BOTOES = { largura: 52, altura: 134 };
@@ -145,6 +159,14 @@ type Props = {
   descricao: string;
   /** Quantas vezes é possível aproximar em relação ao mapa inteiro. */
   zoomMaximo?: number;
+  /** Ícones sobre o mapa; aparecem quando o mapa está aproximado. */
+  marcadores?: MarcadorMapa[];
+  /** Fração da largura do mapa abaixo da qual os ícones aparecem. */
+  zoomMarcadores?: number;
+  marcadorSelecionadoId?: string;
+  onMarcador?: (id: string) => void;
+  /** Avisa quem usa o mapa se os ícones estão visíveis. */
+  onMarcadoresVisiveis?: (visiveis: boolean) => void;
 };
 
 export function MapaInterativo({
@@ -159,6 +181,11 @@ export function MapaInterativo({
   onSelect,
   descricao,
   zoomMaximo = 25,
+  marcadores = [],
+  zoomMarcadores = 0.6,
+  marcadorSelecionadoId,
+  onMarcador,
+  onMarcadoresVisiveis,
 }: Props) {
   const proporcao = alturaMapa / larguraMapa;
   const larguraMinima = larguraMapa / zoomMaximo;
@@ -287,6 +314,60 @@ export function MapaInterativo({
     6
   );
 
+  // Ícones só com o mapa aproximado, para não poluir a visão da cidade inteira.
+  const marcadoresVisiveis = vista.largura <= larguraMapa * zoomMarcadores;
+
+  useEffect(() => {
+    onMarcadoresVisiveis?.(marcadoresVisiveis);
+  }, [marcadoresVisiveis, onMarcadoresVisiveis]);
+
+  const marcadoresNaTela = marcadores
+    .filter((m) => m.sempreVisivel || marcadoresVisiveis)
+    .map((m) => ({
+      ...m,
+      px: (m.x - vista.x) * pixelsPorUnidade,
+      py: (m.y - vista.y) * pixelsPorUnidade,
+    }))
+    .filter(
+      (m) =>
+        m.px >= -TAMANHO_MARCADOR &&
+        m.px <= larguraTela + TAMANHO_MARCADOR &&
+        m.py >= -TAMANHO_MARCADOR &&
+        m.py <= alturaTela + TAMANHO_MARCADOR
+    );
+
+  function desenharMarcador(m: (typeof marcadoresNaTela)[number]) {
+    const selecionadoAgora = m.id === marcadorSelecionadoId;
+    const tamanho = selecionadoAgora ? TAMANHO_MARCADOR + 8 : TAMANHO_MARCADOR;
+    return (
+      <Pressable
+        key={m.id}
+        onPress={() => onMarcador?.(m.id)}
+        accessibilityRole="button"
+        accessibilityLabel={m.rotulo}
+        hitSlop={6}
+        style={[
+          styles.marcador,
+          {
+            left: m.px - tamanho / 2,
+            top: m.py - tamanho / 2,
+            width: tamanho,
+            height: tamanho,
+            borderRadius: tamanho / 2,
+            borderColor: m.cor,
+            backgroundColor: selecionadoAgora ? m.cor : colors.white,
+          },
+        ]}
+      >
+        <Ionicons
+          name={m.icone}
+          size={selecionadoAgora ? 18 : 15}
+          color={selecionadoAgora ? colors.white : m.cor}
+        />
+      </Pressable>
+    );
+  }
+
   const noZoomMaximo = vista.largura <= larguraMinima + 0.01;
   const noZoomMinimo = vista.largura >= larguraMapa - 0.01;
 
@@ -327,6 +408,9 @@ export function MapaInterativo({
         </GestureDetector>
       )}
 
+      {/* Ícones dos serviços */}
+      {marcadoresNaTela.filter((m) => !m.sempreVisivel).map(desenharMarcador)}
+
       {/* Etiqueta com o nome da área tocada */}
       {pontoVisivel && selecionado && (
         <>
@@ -360,6 +444,9 @@ export function MapaInterativo({
           </View>
         </>
       )}
+
+      {/* Pino do lugar buscado: por cima da etiqueta */}
+      {marcadoresNaTela.filter((m) => m.sempreVisivel).map(desenharMarcador)}
 
       {/* Botões de zoom */}
       <View style={styles.zoomControls}>
@@ -460,6 +547,18 @@ const styles = StyleSheet.create({
     color: '#F2E8ED',
     fontSize: 12,
     marginTop: 1,
+  },
+
+  marcador: {
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
+    elevation: 4,
   },
 
   zoomControls: {

@@ -14,6 +14,7 @@ import { CORES_MAPA, FaixaLegenda } from './MapaCalorSP';
 import {
   FormaMapa,
   MapaInterativo,
+  MarcadorMapa,
   vistaDaForma,
   vistaInteira,
 } from './MapaInterativo';
@@ -105,6 +106,11 @@ type Props = {
   enquadramento: EnquadramentoCapital;
   selecionadoId?: string;
   onSelect: (id: string) => void;
+  /** Ícones dos serviços de apoio (aparecem com o mapa aproximado). */
+  marcadores?: MarcadorMapa[];
+  marcadorSelecionadoId?: string;
+  onMarcador?: (id: string) => void;
+  onMarcadoresVisiveis?: (visiveis: boolean) => void;
 };
 
 /** Mapa de calor dos 96 distritos do Município de São Paulo. */
@@ -112,6 +118,10 @@ export function MapaCalorCapital({
   enquadramento,
   selecionadoId,
   onSelect,
+  marcadores,
+  marcadorSelecionadoId,
+  onMarcador,
+  onMarcadoresVisiveis,
 }: Props) {
   const vista = useMemo(() => {
     if (enquadramento.tipo === 'cidade') {
@@ -159,6 +169,10 @@ export function MapaCalorCapital({
       onSelect={onSelect}
       descricao="Mapa de calor dos distritos da cidade de São Paulo. Use a busca para consultar um distrito."
       zoomMaximo={8}
+      marcadores={marcadores}
+      marcadorSelecionadoId={marcadorSelecionadoId}
+      onMarcador={onMarcador}
+      onMarcadoresVisiveis={onMarcadoresVisiveis}
     />
   );
 }

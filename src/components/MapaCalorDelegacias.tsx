@@ -16,7 +16,7 @@ import {
   violenciaDelegacias,
 } from '../data/mapaCalor/violenciaDelegacias';
 import { CORES_MAPA, FaixaLegenda } from './MapaCalorSP';
-import { MapaInterativo, vistaDaForma, vistaInteira } from './MapaInterativo';
+import { MapaInterativo, MarcadorMapa, vistaDaForma, vistaInteira } from './MapaInterativo';
 
 /**
  * Mapa das 93 áreas de delegacia (DP) da cidade de São Paulo,
@@ -201,6 +201,9 @@ export function servicosProximos(dp: string, quantidade = 3, origem?: Origem) {
     .filter((s) => s.lat !== null && s.lon !== null)
     // a Casa da Mulher Brasileira e a 1ª DDM ficam no mesmo endereço
     .filter((s) => s.id !== 'ddm1')
+    // a lista "perto daqui" fica com delegacias e centros de referência;
+    // hospitais e Defensoria aparecem como ícones no mapa
+    .filter((s) => s.tipo !== 'saude' && s.tipo !== 'defensoria')
     .map((s) => ({
       ...s,
       km: distanciaKm(de.lat, de.lon, s.lat as number, s.lon as number),
@@ -219,12 +222,21 @@ type Props = {
   enquadramento: EnquadramentoDelegacias;
   selecionadoId?: string;
   onSelect: (id: string) => void;
+  /** Ícones dos serviços de apoio (aparecem com o mapa aproximado). */
+  marcadores?: MarcadorMapa[];
+  marcadorSelecionadoId?: string;
+  onMarcador?: (id: string) => void;
+  onMarcadoresVisiveis?: (visiveis: boolean) => void;
 };
 
 export function MapaCalorDelegacias({
   enquadramento,
   selecionadoId,
   onSelect,
+  marcadores,
+  marcadorSelecionadoId,
+  onMarcador,
+  onMarcadoresVisiveis,
 }: Props) {
   const vista = useMemo(() => {
     if (enquadramento.tipo === 'cidade') {
@@ -267,6 +279,10 @@ export function MapaCalorDelegacias({
       onSelect={onSelect}
       descricao="Mapa das áreas de delegacia da cidade de São Paulo. Use a busca para consultar um bairro, distrito ou delegacia."
       zoomMaximo={8}
+      marcadores={marcadores}
+      marcadorSelecionadoId={marcadorSelecionadoId}
+      onMarcador={onMarcador}
+      onMarcadoresVisiveis={onMarcadoresVisiveis}
     />
   );
 }

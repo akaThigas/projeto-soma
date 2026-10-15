@@ -36,6 +36,13 @@ import {
   servicosProximos,
 } from './MapaCalorDelegacias';
 import { areaDoPonto } from '../utils/areaDoPonto';
+import {
+  CartaoServicoMapa,
+  LegendaServicos,
+  marcadorOrigem,
+  marcadoresServicos,
+  servicoDoMarcador,
+} from './ServicosNoMapa';
 
 /**
  * Relatório por área de delegacia (dados da SSP-SP).
@@ -84,6 +91,8 @@ const NOME_TIPO_SERVICO: Record<ServicoMulher['tipo'], string> = {
   'casa-brasileira': 'Casa da Mulher Brasileira',
   casa: 'Casa da Mulher (centro de referência)',
   cdcm: 'Centro de Defesa e Convivência da Mulher',
+  saude: 'Hospital de referência para violência sexual',
+  defensoria: 'Defensoria Pública',
 };
 
 export function PainelDelegacias() {
@@ -97,6 +106,17 @@ export function PainelDelegacias() {
   const [origem, setOrigem] = useState<Origem>();
   const [localizando, setLocalizando] = useState(false);
   const [avisoLocal, setAvisoLocal] = useState<string>();
+  const [servicoId, setServicoId] = useState<string>();
+  const [iconesVisiveis, setIconesVisiveis] = useState(false);
+
+  const marcadores = useMemo(
+    () =>
+      origem
+        ? [...marcadoresServicos, marcadorOrigem(origem.nome, origem.lat, origem.lon)]
+        : marcadoresServicos,
+    [origem]
+  );
+  const servicoTocado = servicoId ? servicoDoMarcador(servicoId) : undefined;
 
   const selecionar = useCallback((id: string) => {
     setSelecionadoId(id);
@@ -240,12 +260,23 @@ export function PainelDelegacias() {
             enquadramento={enquadramento}
             selecionadoId={selecionadoId}
             onSelect={selecionar}
+            marcadores={marcadores}
+            marcadorSelecionadoId={servicoId}
+            onMarcador={(id) => setServicoId(id === 'origem' ? undefined : id)}
+            onMarcadoresVisiveis={setIconesVisiveis}
           />
         </View>
         <Text style={styles.mapHint}>
           Cada área é a região atendida por uma delegacia (DP). Toque em uma
-          área para ver o relatório.
+          área para ver o relatório ou em um ícone para ver o serviço.
         </Text>
+        <LegendaServicos visiveis={iconesVisiveis} />
+        {servicoTocado && (
+          <CartaoServicoMapa
+            servico={servicoTocado}
+            onFechar={() => setServicoId(undefined)}
+          />
+        )}
         {enquadramento.tipo === 'area' && (
           <Pressable
             style={styles.linkButton}

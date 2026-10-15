@@ -29,6 +29,12 @@ import {
   ModoMapa,
 } from '../components/MapaCalorSP';
 import { PainelDelegacias } from '../components/PainelDelegacias';
+import {
+  CartaoServicoMapa,
+  LegendaServicos,
+  marcadoresServicos,
+  servicoDoMarcador,
+} from '../components/ServicosNoMapa';
 import { colors } from '../constants/theme';
 import {
   feminicidiosSP,
@@ -453,6 +459,9 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
   });
   const [selecionadoId, setSelecionadoId] = useState<string>();
   const [busca, setBusca] = useState('');
+  const [servicoId, setServicoId] = useState<string>();
+  const [iconesVisiveis, setIconesVisiveis] = useState(false);
+  const servicoTocado = servicoId ? servicoDoMarcador(servicoId) : undefined;
 
   const selecionar = useCallback((id: string) => {
     setSelecionadoId(id);
@@ -525,6 +534,10 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
             enquadramento={enquadramento}
             selecionadoId={selecionadoId}
             onSelect={selecionar}
+            marcadores={marcadoresServicos}
+            marcadorSelecionadoId={servicoId}
+            onMarcador={setServicoId}
+            onMarcadoresVisiveis={setIconesVisiveis}
           />
         </View>
 
@@ -532,6 +545,13 @@ function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
           Toque em um distrito para ver o nome. Arraste para mover e use
           + e − ou o movimento de pinça para aproximar.
         </Text>
+        <LegendaServicos visiveis={iconesVisiveis} />
+        {servicoTocado && (
+          <CartaoServicoMapa
+            servico={servicoTocado}
+            onFechar={() => setServicoId(undefined)}
+          />
+        )}
 
         <View style={styles.zoomRow}>
           <ZoomButton

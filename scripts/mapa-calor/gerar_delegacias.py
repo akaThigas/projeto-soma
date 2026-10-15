@@ -231,7 +231,7 @@ def main():
     (SAIDA / 'servicosMulherSP.ts').write_text(
         cab
         + '// Fonte: Prefeitura de São Paulo (SMDHC). Localização aproximada (OpenStreetMap).\n\n'
-        + "export type TipoServico = 'ddm' | 'casa-brasileira' | 'casa' | 'cdcm';\n\n"
+        + "export type TipoServico = 'ddm' | 'casa-brasileira' | 'casa' | 'cdcm' | 'saude' | 'defensoria';\n\n"
         + 'export type ServicoMulher = {\n  id: string;\n  tipo: TipoServico;\n  nome: string;\n  endereco: string;\n  telefone: string;\n  horario: string;\n  lat: number | null;\n  lon: number | null;\n  precisao: string;\n  fonte: string;\n  nota?: string;\n};\n\n'
         + f'export const FONTES_SERVICOS = {ts(servicos["fontes"])};\n\n'
         + 'export const servicosMulherSP: ServicoMulher[] = [\n'

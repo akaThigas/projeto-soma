@@ -159,3 +159,21 @@ A busca do relatório por área acha, além de distritos e delegacias, **1.209 l
 - Fora da cidade, sem permissão ou com erro, o app mostra um aviso e sugere a busca pelo nome.
 - O texto do pedido de permissão no iOS está em `app.json` (plugin `expo-location`) e entra na próxima build do app (EAS). No Expo Go e na web, aparece o pedido padrão do sistema.
 
+# Ícones dos serviços no mapa
+
+Os mapas da cidade (por distrito e por área de delegacia) mostram os serviços da rede de apoio com os mesmos ícones da tela Rede de Apoio (`src/app/rede-apoio.tsx`):
+
+| Ícone (Ionicons) | Categoria | Serviços | Fonte |
+|---|---|---|---|
+| `business-outline` | Delegacia da Mulher | 9 DDMs | Prefeitura de SP (SMDHC), 29/09/2026 |
+| `heart-outline` | Centro de referência | Casa da Mulher Brasileira, 11 Casas da Mulher (CRCM) e 15 CDCMs | Prefeitura de SP (SMDHC), 25/09 e 01/10/2026 |
+| `medkit-outline` | Saúde | 6 hospitais de referência para violência sexual e aborto legal (5 municipais e o Hospital da Mulher, estadual) | [Prefeitura de SP (SMDHC), 29/09/2026](https://prefeitura.sp.gov.br/web/direitos_humanos/w/mulheres/rede_de_protecao/saude/357170) |
+| `scale-outline` | Defensoria Pública | Núcleo da Mulher (NUDEM), Atendimento Inicial Cível e 12 unidades regionais da capital | [Defensoria Pública de SP — Endereços e Telefones](https://www.defensoria.sp.def.br/institucional/enderecos-e-telefones), 15/10/2026 |
+
+- Na Defensoria ficaram de fora as salas de fórum e as unidades criminais (júri, execução penal etc.), que não fazem atendimento ao público em geral. O atendimento é só com agendamento, e o cartão avisa isso.
+- A Prefeitura informa que todas as UBS têm Núcleos de Prevenção à Violência; elas não foram colocadas no mapa (são centenas de unidades).
+- A posição de cada serviço vem do OpenStreetMap a partir do endereço oficial (campo `precisao`: `endereco`, `rua` ou `bairro`). Quando não é o número exato, o cartão diz "posição no mapa aproximada".
+- A Casa da Mulher Maria de Lourdes Rodrigues não foi localizada e não aparece no mapa.
+- Os ícones aparecem quando o mapa está aproximado (largura visível menor que 60% da cidade) ou quando uma busca leva o mapa até uma área; na visão da cidade inteira, a legenda pede para aproximar. O lugar buscado (ou a localização atual) aparece como um pino vermelho.
+- A lista "Onde buscar atendimento perto daqui" do relatório continua com Delegacias da Mulher e centros de referência; hospitais e Defensoria aparecem pelos ícones.
+
