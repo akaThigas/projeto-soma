@@ -241,6 +241,23 @@ ou execute:
 npx expo start --web
 ```
 
+### Site público (GitHub Pages do fork)
+
+A versão web também fica publicada em **https://akathigas.github.io/projeto-soma/** (por exemplo, `/projeto-soma/onboarding` e `/projeto-soma/mapa`). Para atualizar depois de uma mudança:
+
+```bash
+bash scripts/publicar-github-pages.sh
+```
+
+O script:
+
+- gera o site com `SOMA_BASE_URL=/projeto-soma`, que o `app.config.js` transforma em `experiments.baseUrl` (sem a variável, a configuração é a mesma do `app.json`);
+- ajusta os links do manifest e do ícone do iPhone para o subcaminho;
+- cria o `.nojekyll`, para o GitHub servir a pasta `_expo`, e o `404.html`;
+- envia o resultado para a branch `gh-pages`, que só tem os arquivos do site.
+
+Na primeira vez, é preciso ligar o site no GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → `gh-pages` / `(root)` → Save**.
+
 ---
 
 ## 📱 Expo Go
