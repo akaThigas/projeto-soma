@@ -527,11 +527,11 @@ Botão **Sair**, fixo no canto superior direito de todas as telas (exceto a spla
 
 Serve para esconder o SOMA imediatamente caso outra pessoa se aproxime.
 
-Ao ser acionado, o SOMA é substituído por uma página neutra (pesquisa de previsão do tempo):
+Ao ser acionado, o SOMA é substituído por uma página neutra de previsão do tempo:
 
 | Plataforma | Comportamento |
 |---|---|
-| Web / PWA | Troca a aba atual pela pesquisa de previsão do tempo no Google (uma página só, sem abrir outra aba); o "voltar" não retorna ao SOMA |
+| Web / PWA | Troca a aba atual por uma "máscara" do próprio site (`public/tempo.html`): previsão do tempo de São Paulo, sem nome, cores nem ícone do SOMA. Não abre o Google nem outra aba, e funciona também com o SOMA salvo na tela inicial |
 | Web / PWA | Atalho pelo teclado: tecla **Esc** |
 | Android | Volta o app para a Home, abre a página neutra no navegador e fecha o app |
 | iOS | Volta o app para a Home e abre a página neutra no navegador |
@@ -540,12 +540,13 @@ Arquivos:
 
 ```text
 src/components/QuickExitButton.tsx   → botão e atalho Esc
-src/utils/quickExit.ts               → lógica de saída e URL neutra
+src/utils/quickExit.ts               → lógica de saída e endereços neutros
+public/tempo.html                    → página "máscara" da web
 ```
 
-A página neutra pode ser alterada na constante `QUICK_EXIT_URL`.
+A máscara mostra a previsão de São Paulo pela [Open-Meteo](https://open-meteo.com/) (dados públicos, sem chave); a localização da pessoa não é pedida nem enviada. Sem internet, ela mostra só "Não foi possível atualizar a previsão agora", sem números inventados. No Android e no iOS, a página neutra continua sendo a pesquisa da constante `QUICK_EXIT_URL`.
 
-Limitação: a saída rápida não apaga o histórico do navegador. Orientações sobre como limpar o histórico podem ser incluídas nos conteúdos de segurança digital.
+Limitação: a saída rápida não apaga o histórico do navegador. Na web, a máscara substitui só a página atual: o botão "voltar" do navegador pode levar a telas do SOMA abertas antes. Orientações sobre como limpar o histórico podem ser incluídas nos conteúdos de segurança digital.
 
 ---
 
