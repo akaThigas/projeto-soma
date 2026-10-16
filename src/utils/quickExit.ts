@@ -14,9 +14,9 @@ export const QUICK_EXIT_URL =
  * Sai rapidamente do SOMA e mostra uma página neutra.
  *
  * Web / PWA:
- * - abre a página neutra em uma nova aba, sem histórico do SOMA;
- * - substitui a aba atual pela mesma página (location.replace),
- *   para que o SOMA não fique visível na tela.
+ * - troca a aba atual pela página neutra (location.replace).
+ *   Abre uma página só, no mesmo navegador, sem abrir outra aba nem
+ *   o app do Google; e o "voltar" do navegador não retorna ao SOMA.
  *
  * Android / iOS:
  * - volta o app para a Home, para que nenhuma tela sensível
@@ -28,13 +28,6 @@ export function quickExit() {
   if (Platform.OS === 'web') {
     if (typeof window === 'undefined') {
       return;
-    }
-
-    try {
-      window.open(QUICK_EXIT_URL, '_blank', 'noopener,noreferrer');
-    } catch {
-      // Se o navegador bloquear a nova aba, a substituição abaixo
-      // ainda tira o SOMA da tela.
     }
 
     window.location.replace(QUICK_EXIT_URL);

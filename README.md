@@ -531,7 +531,7 @@ Ao ser acionado, o SOMA é substituído por uma página neutra (pesquisa de prev
 
 | Plataforma | Comportamento |
 |---|---|
-| Web / PWA | Abre a página neutra em uma nova aba e substitui a aba atual por ela |
+| Web / PWA | Troca a aba atual pela pesquisa de previsão do tempo no Google (uma página só, sem abrir outra aba); o "voltar" não retorna ao SOMA |
 | Web / PWA | Atalho pelo teclado: tecla **Esc** |
 | Android | Volta o app para a Home, abre a página neutra no navegador e fecha o app |
 | iOS | Volta o app para a Home e abre a página neutra no navegador |
