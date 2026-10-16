@@ -258,6 +258,16 @@ O script:
 
 Na primeira vez, é preciso ligar o site no GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → `gh-pages` / `(root)` → Save**.
 
+Para publicar no endereço próprio **https://projeto-soma.github.io/** (repositório `projeto-soma/projeto-soma.github.io`, site na raiz do domínio):
+
+```bash
+SOMA_BASE_URL= \
+SOMA_PAGES_REMOTO=https://github.com/projeto-soma/projeto-soma.github.io.git \
+SOMA_PAGES_BRANCH=main \
+SOMA_PAGES_URL=https://projeto-soma.github.io \
+bash scripts/publicar-github-pages.sh
+```
+
 ---
 
 ## 📱 Expo Go
