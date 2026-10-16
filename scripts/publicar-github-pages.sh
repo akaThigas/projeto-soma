@@ -33,7 +33,7 @@ git worktree add --detach "$TMP" >/dev/null
 (
   cd "$TMP"
   if git ls-remote --exit-code origin gh-pages >/dev/null 2>&1; then
-    git fetch -q origin gh-pages && git checkout -q -B gh-pages origin/gh-pages
+    git fetch -q origin gh-pages:refs/remotes/origin/gh-pages && git checkout -q -B gh-pages origin/gh-pages
   else
     git checkout -q --orphan gh-pages
   fi
