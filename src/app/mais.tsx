@@ -29,6 +29,8 @@ function MenuItem({
 }: MenuItemProps) {
   return (
     <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${title}. ${description}`}
       style={({ pressed }) => [
         styles.menuItem,
 
@@ -129,6 +131,8 @@ export default function MaisScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -144,6 +148,7 @@ export default function MaisScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -172,7 +177,7 @@ export default function MaisScreen() {
             o SOMA com mais segurança.
           </Text>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Informações e apoio
           </Text>
 
@@ -262,7 +267,7 @@ export default function MaisScreen() {
             </View>
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Aplicativo
           </Text>
 
@@ -280,7 +285,7 @@ export default function MaisScreen() {
             />
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Sobre o SOMA
           </Text>
 
@@ -320,7 +325,7 @@ export default function MaisScreen() {
             </Text>
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Privacidade e segurança
           </Text>
 

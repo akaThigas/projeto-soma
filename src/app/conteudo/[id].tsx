@@ -6,6 +6,7 @@ import {
 } from 'expo-router';
 
 import {
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -39,6 +40,8 @@ export default function ConteudoScreen() {
         </Text>
 
         <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Voltar"
           onPress={() => router.back()}
         >
           <Text style={styles.backLink}>
@@ -70,6 +73,8 @@ export default function ConteudoScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -121,6 +126,7 @@ export default function ConteudoScreen() {
           </Text>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -155,8 +161,52 @@ export default function ConteudoScreen() {
 
           <View style={styles.divider} />
 
-          {conteudo.texto.map(
-            (paragrafo, index) => (
+          {conteudo.blocos.map((bloco, index) => {
+            if (bloco.tipo === 'subtitulo') {
+              return (
+                <Text
+                  key={index}
+                  accessibilityRole="header"
+                  style={styles.subtitle}
+                >
+                  {bloco.texto}
+                </Text>
+              );
+            }
+
+            if (bloco.tipo === 'lista') {
+              return (
+                <View key={index} style={styles.list}>
+                  {bloco.itens.map((item) => (
+                    <View key={item} style={styles.listItem}>
+                      <Text
+                        style={styles.bullet}
+                        accessibilityElementsHidden
+                        importantForAccessibility="no"
+                      >
+                        •
+                      </Text>
+
+                      <Text
+                        style={[
+                          styles.listText,
+                          {
+                            fontSize:
+                              isCompactPhone
+                                ? 15
+                                : 17,
+                          },
+                        ]}
+                      >
+                        {item}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              );
+            }
+
+            return (
               <Text
                 key={index}
                 style={[
@@ -169,9 +219,42 @@ export default function ConteudoScreen() {
                   },
                 ]}
               >
-                {paragrafo}
+                {bloco.texto}
               </Text>
-            )
+            );
+          })}
+
+          {conteudo.fontes.length > 0 && (
+            <View style={styles.sources}>
+              <Text
+                accessibilityRole="header"
+                style={styles.sourcesTitle}
+              >
+                Fontes
+              </Text>
+
+              <Text style={styles.sourcesNote}>
+                Consultadas em outubro de 2026. Os
+                procedimentos podem variar conforme
+                a localidade.
+              </Text>
+
+              {conteudo.fontes.map((fonte) => (
+                <Pressable
+                  key={fonte.url}
+                  accessibilityRole="link"
+                  accessibilityLabel={`Abrir fonte: ${fonte.rotulo}`}
+                  hitSlop={6}
+                  onPress={() =>
+                    Linking.openURL(fonte.url).catch(() => {})
+                  }
+                >
+                  <Text style={styles.sourceLink}>
+                    {fonte.rotulo}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
           )}
 
           <View style={styles.warning}>
@@ -190,6 +273,7 @@ export default function ConteudoScreen() {
           </View>
 
           <Pressable
+            accessibilityRole="button"
             style={styles.helpButton}
             onPress={() =>
               router.push('/denunciar')
@@ -292,6 +376,75 @@ const styles = StyleSheet.create({
     lineHeight: 26,
 
     marginBottom: 17,
+  },
+
+  subtitle: {
+    color: colors.primary,
+
+    fontSize: 20,
+    fontWeight: '700',
+
+    marginTop: 8,
+    marginBottom: 12,
+  },
+
+  list: {
+    gap: 12,
+
+    marginBottom: 20,
+  },
+
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+
+    gap: 10,
+  },
+
+  bullet: {
+    color: colors.pink,
+
+    fontSize: 20,
+    lineHeight: 26,
+    fontWeight: '700',
+  },
+
+  listText: {
+    flex: 1,
+
+    color: colors.text,
+
+    lineHeight: 26,
+  },
+
+  sources: {
+    gap: 8,
+
+    marginTop: 12,
+    marginBottom: 20,
+  },
+
+  sourcesTitle: {
+    color: colors.primary,
+
+    fontSize: 15,
+    fontWeight: '700',
+  },
+
+  sourcesNote: {
+    color: '#6E6170',
+
+    fontSize: 12,
+    lineHeight: 18,
+  },
+
+  sourceLink: {
+    color: colors.primary,
+
+    fontSize: 13,
+    lineHeight: 19,
+
+    textDecorationLine: 'underline',
   },
 
   warning: {

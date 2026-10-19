@@ -82,6 +82,8 @@ export default function TiposViolenciaScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -97,6 +99,7 @@ export default function TiposViolenciaScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -216,6 +219,7 @@ export default function TiposViolenciaScreen() {
           </View>
 
           <Pressable
+            accessibilityRole="button"
             style={styles.helpButton}
             onPress={() =>
               router.push('/denunciar')

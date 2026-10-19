@@ -61,6 +61,8 @@ export function HomeShortcutCard({
 
   return (
     <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={title}
       style={({ pressed }) => [
         styles.card,
 

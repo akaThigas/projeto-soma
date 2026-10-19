@@ -107,6 +107,8 @@ export default function OnboardingScreen() {
         ]}
       >
         <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Pular apresentação"
           style={styles.skip}
           onPress={pular}
         >
@@ -116,6 +118,7 @@ export default function OnboardingScreen() {
         </Pressable>
 
         <Text
+          accessibilityRole="header"
           style={[
             styles.title,
             {
@@ -219,6 +222,9 @@ export default function OnboardingScreen() {
         </View>
 
         <Pressable
+          accessibilityRole="checkbox"
+          accessibilityState={{ checked: naoMostrarNovamente }}
+          accessibilityLabel="Não mostrar esta tela novamente"
           style={styles.checkboxContainer}
           onPress={() =>
             setNaoMostrarNovamente(
@@ -248,6 +254,7 @@ export default function OnboardingScreen() {
         </Pressable>
 
         <Pressable
+          accessibilityRole="button"
           style={({ pressed }) => [
             styles.button,
             pressed &&

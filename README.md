@@ -338,6 +338,8 @@ soma/
 │   │   ├── HomeShortcutCard.tsx
 │   │   ├── QuickExitButton.tsx
 │   │   ├── BottomNavigation.tsx
+│   │   ├── MapaDestaque.tsx
+│   │   ├── ServicosNoMapa.tsx
 │   │   ├── MapaInterativo.tsx
 │   │   ├── MapaCalorSP.tsx
 │   │   └── MapaCalorCapital.tsx
@@ -348,8 +350,8 @@ soma/
 │   ├── data/
 │   │   ├── conteudos.ts
 │   │   ├── canaisDenuncia.ts
-│   │   ├── servicosApoio.ts
-│   │   └── tiposViolencia.ts
+│   │   ├── tiposViolencia.ts
+│   │   └── mapaCalor/          → dados do mapa e dos serviços da Rede de Apoio
 │   │
 │   └── hooks/
 │       └── useResponsiveLayout.ts
@@ -427,6 +429,8 @@ src/data/conteudos.ts
 
 Isso evita a criação de uma página diferente para cada conteúdo.
 
+Cada conteúdo é escrito em **blocos** (parágrafos, subtítulos e listas) e traz a lista de **fontes** oficiais, que aparece no fim da tela. Os textos sobre direitos e procedimentos (Lei Maria da Penha, Lei 14.550/2023, Ligue 180, SAMU) foram escritos a partir de fontes consultadas em outubro de 2026. Antes de mudar um desses textos, confira a fonte de novo e peça a validação do orientador.
+
 ---
 
 # 📱 Telas implementadas
@@ -475,6 +479,8 @@ Chave utilizada:
 
 Tela principal da aplicação.
 
+No topo, logo abaixo da boas-vindas, fica o cartão em destaque **Mapa de São Paulo** (`MapaDestaque`), o caminho principal para encontrar atendimento perto de você. O mesmo cartão aparece em **Canais** e na **Rede de Apoio**.
+
 Contém atalhos para:
 
 - Tipos de Violência;
@@ -505,13 +511,12 @@ Apresenta informações sobre:
 
 Centraliza diferentes canais de atendimento.
 
-Entre os canais demonstrados estão:
+A tela começa com o cartão **Mapa de São Paulo** e reúne:
 
 - Ligue 180;
 - Polícia Militar — 190;
-- Delegacia da Mulher;
-- canais digitais de denúncia;
-- rede de apoio.
+- Rede de apoio (lista de delegacias, casas da mulher, hospitais e defensorias);
+- Web Denúncia (canal online do Estado de São Paulo).
 
 O SOMA apenas direciona o usuário para esses canais.
 
@@ -524,7 +529,9 @@ Tela simplificada destinada a situações de risco imediato.
 Permite abrir diretamente a chamada para:
 
 ```text
-190
+190   Polícia Militar (perigo imediato)
+192   SAMU (urgência médica: pessoa ferida ou passando mal)
+180   Orientação e atendimento à mulher
 ```
 
 O SOMA não realiza despacho policial nem envia pedidos de socorro.
@@ -577,15 +584,16 @@ src/app/_layout.tsx                   → exibe o menu abaixo das telas
 
 ### Rede de Apoio
 
-Apresenta serviços de:
+Lista os serviços da **cidade de São Paulo**, com os mesmos dados que aparecem como ícones no mapa (`src/data/mapaCalor/servicosMulherSP.ts`):
 
-- delegacia;
-- defensoria;
-- centros de apoio;
-- saúde;
-- acolhimento.
+- Delegacias de Defesa da Mulher;
+- Casa da Mulher Brasileira, Casas da Mulher e Centros de Defesa e Convivência da Mulher (CDCMs);
+- hospitais de referência para violência sexual;
+- Defensoria Pública (incluindo o NUDEM).
 
-A versão atual utiliza alguns dados demonstrativos.
+Cada serviço mostra endereço, horário e telefone, com os botões **Ligar** e **Ver no mapa** (o mapa abre aproximado no serviço escolhido). A tela tem busca por nome, bairro ou rua, filtros por tipo e o botão **Mostrar mais**.
+
+Fontes: Prefeitura de São Paulo (SMDHC) e Defensoria Pública do Estado de São Paulo, consultadas em setembro e outubro de 2026. As posições no mapa são aproximadas (OpenStreetMap), e a Casa da Mulher Maria de Lourdes Rodrigues está sem posição porque a fonte não trouxe uma localização.
 
 ---
 
@@ -639,7 +647,9 @@ Funcionalidades previstas:
 
 ### Mapa
 
-Tela do **Mapa de Calor do SOMA** (detalhes na seção abaixo).
+Tela do **Mapa de São Paulo** do SOMA (detalhes na seção abaixo). Ela abre na aba **Cidade de São Paulo**, o mapa mais detalhado, com os ícones dos serviços.
+
+Chegando pelo botão **Ver no mapa** da Rede de Apoio (`/mapa?servico=<id>`), o mapa já abre aproximado no serviço escolhido, com o cartão dele aberto.
 
 Também mantém o atalho para buscar Delegacias da Mulher no Google Maps e o acesso à Rede de Apoio.
 
@@ -647,7 +657,7 @@ Também mantém o atalho para buscar Delegacias da Mulher no Google Maps e o ace
 
 # 🗺️ Mapa de Calor
 
-A tela tem dois mapas, escolhidos no topo: **Estado de SP** e **Cidade de São Paulo**. Os dois usam apenas **dados públicos e agregados** e o mesmo componente de mapa (`MapaInterativo`).
+A tela tem dois mapas, escolhidos no topo: **Cidade de São Paulo** (o principal, aberto por padrão) e **Estado de SP**. Os dois usam apenas **dados públicos e agregados** e o mesmo componente de mapa (`MapaInterativo`).
 
 ## Estado de SP
 
@@ -962,8 +972,11 @@ O projeto considera requisitos como:
 - contraste;
 - navegação simplificada;
 - interface responsiva;
+- papéis e rótulos para leitores de tela (`accessibilityRole` e `accessibilityLabel`) nos botões, links, títulos, caixa de seleção e campos de busca das telas;
 - compatibilidade futura com ajustes de fonte;
 - modo de alto contraste planejado.
+
+Ainda falta testar com leitores de tela reais (TalkBack e VoiceOver).
 
 ---
 
@@ -1225,16 +1238,17 @@ Home
 
 ---
 
-# ⚠️ Dados demonstrativos
+# ⚠️ Dados e validação
 
-Algumas informações presentes no MVP são utilizadas apenas para demonstração da experiência.
+Os serviços da Rede de Apoio e os ícones do mapa usam endereços e telefones de páginas oficiais da Prefeitura de São Paulo e da Defensoria Pública, consultadas em setembro e outubro de 2026. As posições no mapa são aproximadas.
 
-Isso inclui principalmente:
+Os conteúdos educativos foram escritos a partir de fontes oficiais, que aparecem no fim de cada conteúdo.
 
-- serviços exibidos na Rede de Apoio;
-- conteúdos territoriais.
+Mesmo assim, o SOMA continua sendo um protótipo acadêmico. Antes de qualquer uso fora desse contexto:
 
-Esses dados deverão ser substituídos ou validados antes de qualquer utilização fora do contexto do protótipo.
+- confirmar endereços, horários e telefones dos serviços;
+- validar os conteúdos com profissionais da área;
+- revisar tudo de novo quando as fontes forem atualizadas.
 
 ---
 
@@ -1246,12 +1260,16 @@ Próximas evoluções previstas:
 - [x] integração com fontes públicas de dados;
 - [x] visualização territorial por distrito (cidade de São Paulo);
 - [x] serviços oficiais próximos no relatório por área;
-- [ ] melhoria da rede de apoio;
-- [ ] validação de dados de atendimento;
+- [x] melhoria da rede de apoio (serviços oficiais, busca, filtros e ligação);
+- [x] mapa detalhado de São Paulo como caminho principal;
+- [x] conteúdos educativos ampliados, com fontes oficiais;
+- [x] SAMU (192) na tela de Emergência;
+- [ ] validação de dados de atendimento (confirmar telefones e horários);
 - [ ] modo discreto;
 - [ ] alto contraste;
 - [ ] ajuste de tamanho de texto;
-- [ ] revisão de acessibilidade;
+- [x] papéis e rótulos de acessibilidade nas telas;
+- [ ] revisão de acessibilidade com leitores de tela reais;
 - [ ] melhorias de segurança digital;
 - [ ] configuração de EAS Update;
 - [ ] refinamento da PWA;
@@ -1306,6 +1324,7 @@ Nome — função / área
 🟢 PWA
 🟢 Responsividade inicial
 🟢 Mapa de calor (estado e cidade de São Paulo)
+🟢 Rede de apoio com serviços oficiais
 ```
 
 ---

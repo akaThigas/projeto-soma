@@ -109,6 +109,8 @@ export default function ConfiguracoesScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -124,6 +126,7 @@ export default function ConfiguracoesScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -151,7 +154,7 @@ export default function ConfiguracoesScreen() {
             Ajuste preferências de uso do aplicativo.
           </Text>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Preferências
           </Text>
 
@@ -179,7 +182,7 @@ export default function ConfiguracoesScreen() {
             />
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Acessibilidade
           </Text>
 
@@ -201,7 +204,7 @@ export default function ConfiguracoesScreen() {
             />
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Privacidade
           </Text>
 
@@ -223,7 +226,7 @@ export default function ConfiguracoesScreen() {
             />
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Dados locais
           </Text>
 
@@ -286,6 +289,8 @@ function SettingItem({
 }: SettingItemProps) {
   return (
     <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${title}. ${description}`}
       style={({ pressed }) => [
         styles.settingItem,
         pressed && {
@@ -385,7 +390,12 @@ function DisabledSettingItem({
   compact = false,
 }: DisabledSettingItemProps) {
   return (
-    <View style={styles.disabledItem}>
+    <View
+      style={styles.disabledItem}
+      accessible
+      accessibilityLabel={`${title}, em breve. ${description}`}
+      accessibilityState={{ disabled: true }}
+    >
       <View
         style={[
           styles.disabledIcon,

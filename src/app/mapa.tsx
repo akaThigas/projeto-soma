@@ -126,6 +126,8 @@ export default function MapaScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -134,6 +136,7 @@ export default function MapaScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[styles.title, { fontSize: isCompactPhone ? 30 : 36 }]}
           >
             Mapa de São Paulo
@@ -166,6 +169,7 @@ export default function MapaScreen() {
 
           {/* Atendimento */}
           <Pressable
+            accessibilityRole="button"
             style={styles.supportButton}
             onPress={() => router.push('/rede-apoio')}
           >
@@ -177,6 +181,7 @@ export default function MapaScreen() {
           </Pressable>
 
           <Pressable
+            accessibilityRole="button"
             style={styles.secondaryButton}
             onPress={() => Linking.openURL(GOOGLE_MAPS_URL)}
           >
@@ -258,6 +263,7 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
         <View style={styles.results}>
           {resultados.map((m) => (
             <Pressable
+              accessibilityRole="button"
               key={m.id}
               style={({ pressed }) => [
                 styles.resultItem,
@@ -325,6 +331,7 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
           <View style={styles.detailHeader}>
             <Text style={styles.detailName}>{selecionado.nome}</Text>
             <Pressable
+              accessibilityRole="button"
               onPress={() => setSelecionadoId(undefined)}
               accessibilityLabel="Fechar detalhes do município"
               hitSlop={8}
@@ -363,6 +370,7 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
 
           {enquadramento.tipo === 'municipio' && (
             <Pressable
+              accessibilityRole="button"
               style={styles.linkButton}
               onPress={() => setEnquadramento({ tipo: 'estado' })}
             >
@@ -376,10 +384,11 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
       )}
 
       {/* Ranking */}
-      <Text style={styles.sectionTitle}>Municípios com mais vítimas</Text>
+      <Text accessibilityRole="header" style={styles.sectionTitle}>Municípios com mais vítimas</Text>
       <View style={styles.rankList}>
         {maisVitimas.map((m, indice) => (
           <Pressable
+            accessibilityRole="button"
             key={m.id}
             style={({ pressed }) => [
               styles.rankItem,
@@ -551,6 +560,7 @@ function PainelDistritos({
         <View style={styles.results}>
           {resultados.map((d) => (
             <Pressable
+              accessibilityRole="button"
               key={d.id}
               style={({ pressed }) => [
                 styles.resultItem,
@@ -632,6 +642,7 @@ function PainelDistritos({
               </Text>
             </View>
             <Pressable
+              accessibilityRole="button"
               onPress={() => setSelecionadoId(undefined)}
               accessibilityLabel="Fechar detalhes do distrito"
               hitSlop={8}
@@ -668,6 +679,7 @@ function PainelDistritos({
 
           {enquadramento.tipo === 'distrito' && (
             <Pressable
+              accessibilityRole="button"
               style={styles.linkButton}
               onPress={() => setEnquadramento({ tipo: 'cidade' })}
             >
@@ -681,10 +693,11 @@ function PainelDistritos({
       )}
 
       {/* Ranking */}
-      <Text style={styles.sectionTitle}>Distritos com os maiores coeficientes</Text>
+      <Text accessibilityRole="header" style={styles.sectionTitle}>Distritos com os maiores coeficientes</Text>
       <View style={styles.rankList}>
         {maioresCoeficientes.map((d, indice) => (
           <Pressable
+            accessibilityRole="button"
             key={d.id}
             style={({ pressed }) => [
               styles.rankItem,
@@ -758,6 +771,7 @@ function CampoBusca({
       />
       {valor.length > 0 && (
         <Pressable
+          accessibilityRole="button"
           onPress={() => onChange('')}
           accessibilityLabel="Limpar busca"
           hitSlop={8}

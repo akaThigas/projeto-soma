@@ -93,6 +93,7 @@ export default function SplashScreen() {
     >
       <View style={styles.content}>
         <Image
+          accessibilityLabel="Logo do SOMA"
           source={require(
             '../../assets/images/logo-soma.png'
           )}

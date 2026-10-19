@@ -134,12 +134,13 @@ export default function RedeApoioScreen() {
             },
           ]}
         >
-          <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Pressable accessibilityRole="button" accessibilityLabel="Voltar" style={styles.backButton} onPress={() => router.back()}>
             <Ionicons name="chevron-back" size={26} color={colors.primary} />
             <Text style={styles.backText}>Voltar</Text>
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[styles.title, { fontSize: isCompactPhone ? 30 : 36 }]}
           >
             Rede de apoio
@@ -173,6 +174,7 @@ export default function RedeApoioScreen() {
 
             {busca.length > 0 && (
               <Pressable
+                accessibilityRole="button"
                 onPress={() => mudarBusca('')}
                 accessibilityLabel="Limpar busca"
                 hitSlop={8}
@@ -353,6 +355,7 @@ function CartaoServico({
 
       <View style={styles.actions}>
         <Pressable
+          accessibilityRole="button"
           style={styles.mapButton}
           onPress={() =>
             router.push({ pathname: '/mapa', params: { servico: servico.id } })
@@ -364,6 +367,7 @@ function CartaoServico({
         </Pressable>
 
         <Pressable
+          accessibilityRole="button"
           style={styles.callButton}
           onPress={() => Linking.openURL(`tel:${telefone}`)}
           accessibilityLabel={`Ligar para ${servico.nome}`}

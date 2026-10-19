@@ -75,6 +75,8 @@ export default function ExplorarScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -90,6 +92,7 @@ export default function ExplorarScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -131,11 +134,15 @@ export default function ExplorarScreen() {
               value={busca}
               onChangeText={setBusca}
               placeholder="Buscar assunto"
+              accessibilityLabel="Buscar assunto"
               placeholderTextColor="#918991"
             />
 
             {busca.length > 0 && (
               <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Limpar busca"
+                hitSlop={8}
                 onPress={() =>
                   setBusca('')
                 }
@@ -149,7 +156,7 @@ export default function ExplorarScreen() {
             )}
           </View>
 
-          <Text style={styles.sectionTitle}>
+          <Text accessibilityRole="header" style={styles.sectionTitle}>
             Informações importantes
           </Text>
 
@@ -157,6 +164,8 @@ export default function ExplorarScreen() {
             {resultados.map(
               (conteudo) => (
                 <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`${conteudo.categoria}: ${conteudo.titulo}. ${conteudo.resumo}`}
                   key={conteudo.id}
                   style={({ pressed }) => [
                     styles.card,
@@ -261,6 +270,8 @@ export default function ExplorarScreen() {
           )}
 
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Precisa de ajuda agora? Ver canais de ajuda."
             style={styles.helpCard}
             onPress={() =>
               router.push('/denunciar')

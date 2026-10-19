@@ -101,6 +101,7 @@ export default function HomeScreen() {
             ]}
           >
             <Image
+              accessibilityLabel="Logo do SOMA"
               source={require(
                 '../../assets/images/logo-soma.png'
               )}
@@ -135,6 +136,7 @@ export default function HomeScreen() {
           {/* Boas-vindas */}
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.welcomeTitle,
 
@@ -179,6 +181,8 @@ export default function HomeScreen() {
           {/* Destaque */}
 
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Reconheça os sinais de violência. Saiba mais."
             style={({ pressed }) => [
               styles.heroCard,
 
@@ -206,6 +210,7 @@ export default function HomeScreen() {
           >
             <View style={styles.heroContent}>
               <Text
+                accessibilityRole="header"
                 style={[
                   styles.heroText,
 
@@ -281,6 +286,7 @@ export default function HomeScreen() {
             ]}
           >
             <Text
+              accessibilityRole="header"
               style={[
                 styles.sectionTitle,
 

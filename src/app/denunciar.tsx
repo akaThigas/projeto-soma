@@ -105,6 +105,8 @@ export default function DenunciarScreen() {
           ]}
         >
           <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Voltar"
             style={styles.backButton}
             onPress={() => router.back()}
           >
@@ -120,6 +122,7 @@ export default function DenunciarScreen() {
           </Pressable>
 
           <Text
+            accessibilityRole="header"
             style={[
               styles.title,
               {
@@ -222,6 +225,8 @@ export default function DenunciarScreen() {
                 </Text>
 
                 <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`${canal.botao}: ${canal.titulo}`}
                   style={({ pressed }) => [
                     styles.cardButton,
                     pressed &&
@@ -263,6 +268,7 @@ export default function DenunciarScreen() {
           </View>
 
           <Pressable
+            accessibilityRole="button"
             style={styles.emergencyButton}
             onPress={() =>
               router.push('/emergencia')
