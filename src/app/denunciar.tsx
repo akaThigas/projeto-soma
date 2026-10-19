@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 
+import { MapaDestaque } from '../components/MapaDestaque';
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
 
@@ -34,13 +35,13 @@ const canais = [
     botao: 'Ligar para 190',
   },
   {
-    titulo: 'Delegacia da Mulher',
+    titulo: 'Rede de apoio',
     descricao:
-      'Consulte serviços de atendimento e unidades disponíveis.',
+      'Lista de delegacias, casas da mulher, hospitais e defensorias, com endereço e telefone.',
     icone: 'business-outline',
     acao: 'route',
     valor: '/rede-apoio',
-    botao: 'Ver rede de apoio',
+    botao: 'Ver a lista',
   },
   {
     titulo: 'Web Denúncia',
@@ -147,6 +148,12 @@ export default function DenunciarScreen() {
             caminho diferente. Escolha o canal
             mais adequado para o momento.
           </Text>
+
+          {/* O mapa é o caminho principal */}
+          <MapaDestaque
+            titulo="Encontre atendimento no mapa"
+            texto="Delegacias da Mulher, casas da mulher, hospitais e defensorias de São Paulo, com o telefone de cada um."
+          />
 
           <View style={styles.cards}>
             {canais.map((canal) => (

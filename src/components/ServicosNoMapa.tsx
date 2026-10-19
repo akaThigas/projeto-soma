@@ -34,7 +34,7 @@ export function categoriaDe(tipo: TipoServico): CategoriaServico {
   return 'centro';
 }
 
-const NOME_TIPO: Record<TipoServico, string> = {
+export const NOME_TIPO: Record<TipoServico, string> = {
   ddm: 'Delegacia de Defesa da Mulher',
   'casa-brasileira': 'Casa da Mulher Brasileira',
   casa: 'Casa da Mulher (centro de referência)',

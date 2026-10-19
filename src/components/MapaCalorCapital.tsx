@@ -100,7 +100,9 @@ const CENTRO: FormaMapa = (() => {
 export type EnquadramentoCapital =
   | { tipo: 'cidade' }
   | { tipo: 'centro' }
-  | { tipo: 'distrito'; id: string };
+  | { tipo: 'distrito'; id: string }
+  /** Aproxima o mapa de um ponto (em unidades do mapa), ex.: um serviço. */
+  | { tipo: 'ponto'; x: number; y: number };
 
 type Props = {
   enquadramento: EnquadramentoCapital;
@@ -126,6 +128,26 @@ export function MapaCalorCapital({
   const vista = useMemo(() => {
     if (enquadramento.tipo === 'cidade') {
       return vistaInteira(MAPA_CAPITAL_LARGURA);
+    }
+
+    if (enquadramento.tipo === 'ponto') {
+      const { x, y } = enquadramento;
+      const ponto: FormaMapa = {
+        id: 'ponto',
+        nome: 'Serviço',
+        d: '',
+        bbox: [x - 1, y - 1, x + 1, y + 1],
+        lx: 0,
+        ly: 0,
+      };
+
+      return vistaDaForma(
+        ponto,
+        MAPA_CAPITAL_LARGURA,
+        MAPA_CAPITAL_ALTURA,
+        1,
+        MAPA_CAPITAL_LARGURA / 6
+      );
     }
 
     const alvo =

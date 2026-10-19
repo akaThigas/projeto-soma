@@ -31,12 +31,12 @@ export const canaisDenuncia: CanalDenuncia[] = [
   },
   {
     id: 'delegacia',
-    titulo: 'Delegacia da Mulher',
-    descricao: 'Encontre serviços de atendimento próximos de você.',
+    titulo: 'Mapa de São Paulo',
+    descricao: 'Encontre delegacias, casas da mulher, hospitais e defensorias.',
     icone: 'location-outline',
     cor: '#C9829C',
     tipoAcao: 'rota',
-    destino: '/rede-apoio',
+    destino: '/mapa',
   },
   {
     id: 'web-denuncia',

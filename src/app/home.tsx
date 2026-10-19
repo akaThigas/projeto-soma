@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { HomeShortcutCard } from '../components/HomeShortcutCard';
+import { MapaDestaque } from '../components/MapaDestaque';
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
 
@@ -170,6 +171,10 @@ export default function HomeScreen() {
             Você não está sozinha.
             Estamos aqui para te apoiar.
           </Text>
+
+          {/* Mapa de São Paulo: caminho principal para encontrar atendimento */}
+
+          <MapaDestaque />
 
           {/* Destaque */}
 

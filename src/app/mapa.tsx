@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import {
   Linking,
@@ -101,7 +101,10 @@ export default function MapaScreen() {
     contentMaxWidth,
   } = useResponsiveLayout();
 
-  const [area, setArea] = useState<Area>('estado');
+  // O mapa detalhado da cidade de São Paulo é o principal; chegando de um
+  // serviço da Rede de apoio (?servico=id), ele já abre aproximado no ponto.
+  const { servico } = useLocalSearchParams<{ servico?: string }>();
+  const [area, setArea] = useState<Area>('capital');
 
   return (
     <View style={styles.container}>
@@ -133,29 +136,32 @@ export default function MapaScreen() {
           <Text
             style={[styles.title, { fontSize: isCompactPhone ? 30 : 36 }]}
           >
-            Mapa de calor
+            Mapa de São Paulo
           </Text>
 
           {/* Qual mapa */}
           <View style={styles.areaTabs} accessibilityRole="tablist">
-            <AreaButton
-              icone="map-outline"
-              label="Estado de SP"
-              active={area === 'estado'}
-              onPress={() => setArea('estado')}
-            />
             <AreaButton
               icone="business-outline"
               label="Cidade de São Paulo"
               active={area === 'capital'}
               onPress={() => setArea('capital')}
             />
+            <AreaButton
+              icone="map-outline"
+              label="Estado de SP"
+              active={area === 'estado'}
+              onPress={() => setArea('estado')}
+            />
           </View>
 
-          {area === 'estado' ? (
-            <PainelEstado isCompactPhone={isCompactPhone} />
+          {area === 'capital' ? (
+            <PainelCapital
+              isCompactPhone={isCompactPhone}
+              servicoInicialId={servico}
+            />
           ) : (
-            <PainelCapital isCompactPhone={isCompactPhone} />
+            <PainelEstado isCompactPhone={isCompactPhone} />
           )}
 
           {/* Atendimento */}
@@ -429,7 +435,13 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
 
 type VisaoCapital = 'distritos' | 'delegacias';
 
-function PainelCapital({ isCompactPhone }: { isCompactPhone: boolean }) {
+function PainelCapital({
+  isCompactPhone,
+  servicoInicialId,
+}: {
+  isCompactPhone: boolean;
+  servicoInicialId?: string;
+}) {
   const [visao, setVisao] = useState<VisaoCapital>('distritos');
 
   return (
@@ -449,7 +461,10 @@ function PainelCapital({ isCompactPhone }: { isCompactPhone: boolean }) {
       </View>
 
       {visao === 'distritos' ? (
-        <PainelDistritos isCompactPhone={isCompactPhone} />
+        <PainelDistritos
+          isCompactPhone={isCompactPhone}
+          servicoInicialId={servicoInicialId}
+        />
       ) : (
         <PainelDelegacias />
       )}
@@ -457,13 +472,31 @@ function PainelCapital({ isCompactPhone }: { isCompactPhone: boolean }) {
   );
 }
 
-function PainelDistritos({ isCompactPhone }: { isCompactPhone: boolean }) {
-  const [enquadramento, setEnquadramento] = useState<EnquadramentoCapital>({
-    tipo: 'cidade',
-  });
+function PainelDistritos({
+  isCompactPhone,
+  servicoInicialId,
+}: {
+  isCompactPhone: boolean;
+  servicoInicialId?: string;
+}) {
+  // Serviço vindo da Rede de apoio: abre o cartão e aproxima o mapa dele.
+  const servicoInicial = servicoInicialId
+    ? servicoDoMarcador(servicoInicialId)
+    : undefined;
+  const marcadorInicial = servicoInicial
+    ? marcadoresServicos.find((m) => m.id === `servico-${servicoInicial.id}`)
+    : undefined;
+
+  const [enquadramento, setEnquadramento] = useState<EnquadramentoCapital>(
+    marcadorInicial
+      ? { tipo: 'ponto', x: marcadorInicial.x, y: marcadorInicial.y }
+      : { tipo: 'cidade' }
+  );
   const [selecionadoId, setSelecionadoId] = useState<string>();
   const [busca, setBusca] = useState('');
-  const [servicoId, setServicoId] = useState<string>();
+  const [servicoId, setServicoId] = useState<string | undefined>(
+    servicoInicial ? `servico-${servicoInicial.id}` : undefined
+  );
   const [iconesVisiveis, setIconesVisiveis] = useState(false);
   const [categorias, setCategorias] = useState<CategoriaServico[]>(TODAS_CATEGORIAS);
 
