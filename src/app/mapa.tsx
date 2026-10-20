@@ -8,10 +8,10 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
+import { Text } from '../components/AppText';
 
 import {
   EnquadramentoCapital,
@@ -851,6 +851,7 @@ function AreaButton({
       onPress={onPress}
       accessibilityRole="tab"
       accessibilityState={{ selected: active }}
+      aria-selected={active}
       style={({ pressed }) => [
         styles.areaTab,
         active && styles.areaTabActive,
@@ -883,6 +884,7 @@ function SegmentButton({
       onPress={onPress}
       accessibilityRole="tab"
       accessibilityState={{ selected: active }}
+      aria-selected={active}
       style={[styles.segment, active && styles.segmentActive]}
     >
       <Text style={[styles.segmentText, active && styles.segmentTextActive]}>
@@ -906,6 +908,7 @@ function ZoomButton({
       onPress={onPress}
       accessibilityRole="button"
       accessibilityState={{ selected: active }}
+      aria-selected={active}
       style={[styles.zoomButton, active && styles.zoomButtonActive]}
     >
       <Text style={[styles.zoomText, active && styles.zoomTextActive]}>

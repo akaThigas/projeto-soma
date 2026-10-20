@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router, usePathname } from 'expo-router';
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
@@ -77,6 +78,7 @@ export function BottomNavigation() {
               accessibilityRole="tab"
               accessibilityLabel={item.rotulo}
               accessibilityState={{ selected: selecionado }}
+              aria-selected={selecionado}
             >
               <Ionicons
                 name={selecionado ? item.iconeAtivo : item.icone}

@@ -337,6 +337,7 @@ soma/
 │   ├── components/
 │   │   ├── HomeShortcutCard.tsx
 │   │   ├── QuickExitButton.tsx
+│   │   ├── AppText.tsx
 │   │   ├── BottomNavigation.tsx
 │   │   ├── MapaDestaque.tsx
 │   │   ├── ServicosNoMapa.tsx
@@ -634,14 +635,16 @@ Atualmente implementado:
 
 - visualizar novamente o onboarding;
 - mostrar onboarding na próxima abertura;
-- limpar preferências locais.
+- **tamanho do texto** (Normal, Grande ou Muito grande), com um exemplo na própria tela;
+- limpar preferências locais (também volta o texto ao tamanho Normal).
 
-Funcionalidades previstas:
+O tamanho do texto vale para todas as telas e fica salvo só no aparelho. Para isso, as telas usam o componente `Text` de `src/components/AppText.tsx`, e não o `Text` do `react-native`. Texto novo deve importar de lá:
 
-- tamanho de texto;
-- alto contraste;
-- notificações discretas;
-- modo discreto.
+```tsx
+import { Text } from '../components/AppText';
+```
+
+Funcionalidades previstas: alto contraste, modo discreto e notificações discretas (o app ainda não envia notificações). Os itens "Em breve" foram tirados da tela e ficam no roadmap.
 
 ---
 
@@ -916,7 +919,12 @@ Preferências simples são armazenadas utilizando:
 @react-native-async-storage/async-storage
 ```
 
-Atualmente é utilizado principalmente para controlar a exibição do onboarding.
+Chaves utilizadas:
+
+```text
+@soma:hide-onboarding   exibição do onboarding
+@soma:text-scale        tamanho do texto (grande ou muito-grande; ausente = normal)
+```
 
 Nenhum banco de dados foi implementado nesta etapa.
 
@@ -974,6 +982,8 @@ O projeto considera requisitos como:
 - interface responsiva;
 - papéis e rótulos para leitores de tela (`accessibilityRole` e `accessibilityLabel`) nos botões, links, títulos, caixa de seleção e campos de busca das telas;
 - compatibilidade futura com ajustes de fonte;
+- tamanho do texto ajustável em Configurações (Normal, Grande e Muito grande);
+- estado de seleção exposto com `aria-selected`, `aria-checked` e `aria-disabled`, porque o React Native Web não repassa o `accessibilityState` para a web;
 - modo de alto contraste planejado.
 
 Ainda falta testar com leitores de tela reais (TalkBack e VoiceOver).
@@ -1267,7 +1277,7 @@ Próximas evoluções previstas:
 - [ ] validação de dados de atendimento (confirmar telefones e horários);
 - [ ] modo discreto;
 - [ ] alto contraste;
-- [ ] ajuste de tamanho de texto;
+- [x] ajuste de tamanho de texto;
 - [x] papéis e rótulos de acessibilidade nas telas;
 - [ ] revisão de acessibilidade com leitores de tela reais;
 - [ ] melhorias de segurança digital;

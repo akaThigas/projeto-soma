@@ -3,10 +3,10 @@ import { Ionicons } from '@expo/vector-icons';
 import {
   Pressable,
   StyleSheet,
-  Text,
   useWindowDimensions,
   View,
 } from 'react-native';
+import { Text } from './AppText';
 
 import { colors } from '../constants/theme';
 

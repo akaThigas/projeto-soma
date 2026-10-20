@@ -7,9 +7,9 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { Text } from '../components/AppText';
 
 import { MapaDestaque } from '../components/MapaDestaque';
 import { colors } from '../constants/theme';

@@ -6,10 +6,10 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
+import { Text } from '../components/AppText';
 
 import { useMemo, useState } from 'react';
 
@@ -204,6 +204,7 @@ export default function RedeApoioScreen() {
                   onPress={() => mudarFiltro(item.id)}
                   accessibilityRole="button"
                   accessibilityState={{ selected: ativo }}
+                  aria-selected={ativo}
                 >
                   <Text
                     style={[styles.filterText, ativo && styles.filterTextActive]}

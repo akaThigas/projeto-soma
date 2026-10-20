@@ -7,10 +7,10 @@ import {
   Linking,
   Pressable,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
+import { Text } from './AppText';
 
 import { colors } from '../constants/theme';
 import { FONTE_LUGARES } from '../data/mapaCalor/lugaresSP';
@@ -515,6 +515,7 @@ function Relatorio({
             onPress={() => onAno(a)}
             accessibilityRole="tab"
             accessibilityState={{ selected: a === ano }}
+            aria-selected={a === ano}
             style={[styles.yearChip, a === ano && styles.yearChipActive]}
           >
             <Text style={[styles.yearText, a === ano && styles.yearTextActive]}>

@@ -4,12 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+import { Text } from '../components/AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';

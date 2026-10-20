@@ -5,9 +5,9 @@ import {
   LayoutChangeEvent,
   Pressable,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { Text } from './AppText';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Svg, { G, Path } from 'react-native-svg';
 
@@ -542,6 +542,7 @@ function BotaoZoom({
       accessibilityRole="button"
       accessibilityLabel={rotulo}
       accessibilityState={{ disabled: desativado }}
+      aria-disabled={desativado}
       style={({ pressed }) => [
         styles.zoomButton,
         desativado && styles.zoomButtonDisabled,

@@ -1,5 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Linking,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
+import { Text } from './AppText';
 
 import { colors } from '../constants/theme';
 import {
@@ -166,6 +172,7 @@ export function FiltroServicos({
               onPress={() => alternar(c)}
               accessibilityRole="checkbox"
               accessibilityState={{ checked: ligado }}
+              aria-checked={ligado}
               accessibilityLabel={`${nome}, ${contagem[c]} no mapa`}
               style={({ pressed }) => [
                 styles.chip,

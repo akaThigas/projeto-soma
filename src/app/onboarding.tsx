@@ -8,9 +8,9 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { Text } from '../components/AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
@@ -224,6 +224,7 @@ export default function OnboardingScreen() {
         <Pressable
           accessibilityRole="checkbox"
           accessibilityState={{ checked: naoMostrarNovamente }}
+          aria-checked={naoMostrarNovamente}
           accessibilityLabel="Não mostrar esta tela novamente"
           style={styles.checkboxContainer}
           onPress={() =>

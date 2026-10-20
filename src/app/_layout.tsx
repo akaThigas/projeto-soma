@@ -6,6 +6,11 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import {
+  carregarEscalaTexto,
+  EscalaTextoId,
+  TextScaleProvider,
+} from '../components/AppText';
 import { BottomNavigation } from '../components/BottomNavigation';
 import { QuickExitButton } from '../components/QuickExitButton';
 
@@ -20,9 +25,15 @@ export default function RootLayout() {
   const [appReady, setAppReady] =
     useState(false);
 
+  // Tamanho do texto salvo, lido antes da primeira tela para não "piscar".
+  const [escalaInicial, setEscalaInicial] =
+    useState<EscalaTextoId>('normal');
+
   useEffect(() => {
     async function prepareApp() {
       try {
+        setEscalaInicial(await carregarEscalaTexto());
+
         await Asset.fromModule(
           require(
             '../../assets/images/logo-soma.png'
@@ -53,6 +64,7 @@ export default function RootLayout() {
 
   return (
     // GestureHandlerRootView: necessário para o arraste e a pinça do mapa
+    <TextScaleProvider inicial={escalaInicial}>
     <GestureHandlerRootView style={styles.root}>
       {/* As telas ocupam o espaço acima do menu inferior */}
       <View style={styles.screens}>
@@ -69,6 +81,7 @@ export default function RootLayout() {
       {/* Saída rápida: visível em todas as telas */}
       <QuickExitButton />
     </GestureHandlerRootView>
+    </TextScaleProvider>
   );
 }
 

@@ -3,12 +3,8 @@ import { useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { usePathname } from 'expo-router';
 
-import {
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
+import { Text } from './AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';

@@ -10,9 +10,9 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { Text } from '../../components/AppText';
 
 import { colors } from '../../constants/theme';
 import { conteudos } from '../../data/conteudos';
