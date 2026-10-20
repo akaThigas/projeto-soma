@@ -251,7 +251,7 @@ export function CartaoLugarBuscado({
       </View>
       {area && <Text style={styles.cardText}>Fica na área do {area}.</Text>}
       <Text style={styles.cardNote}>
-        Os serviços em "Onde buscar atendimento" estão ordenados pela distância
+        Os serviços em “Onde buscar atendimento” estão ordenados pela distância
         a partir deste ponto.
         {nome === 'sua localização'
           ? ' A localização não é salva nem enviada.'

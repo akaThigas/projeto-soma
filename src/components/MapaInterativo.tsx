@@ -216,9 +216,12 @@ export function MapaInterativo({
     [onSelect]
   );
 
-  useEffect(() => {
+  // Quando a tela pede outra vista (ex.: lugar buscado), o mapa vai para ela.
+  const [vistaPedidaAnterior, setVistaPedidaAnterior] = useState(vistaPedida);
+  if (vistaPedida !== vistaPedidaAnterior) {
+    setVistaPedidaAnterior(vistaPedida);
     setVista(vistaPedida);
-  }, [vistaPedida]);
+  }
 
   const ajustar = (v: VistaMapa) =>
     limitar(v, larguraMapa, alturaMapa, larguraMinima);
@@ -240,6 +243,9 @@ export function MapaInterativo({
     });
   };
 
+  // Os gestos só rodam durante o toque, nunca na renderização,
+  // então ler refs e Date.now() dentro deles é seguro.
+  /* eslint-disable react-hooks/refs, react-hooks/purity */
   const arrastar = Gesture.Pan()
     .minDistance(6)
     .runOnJS(true)
@@ -279,6 +285,8 @@ export function MapaInterativo({
         )
       );
     });
+
+  /* eslint-enable react-hooks/refs, react-hooks/purity */
 
   const gestos = Gesture.Simultaneous(arrastar, pinca);
 

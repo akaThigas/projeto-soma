@@ -12,11 +12,9 @@ import {
 } from 'react-native';
 import { Text } from '../components/AppText';
 
+import { ONBOARDING_STORAGE_KEY } from '../constants/storage';
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
-
-const ONBOARDING_STORAGE_KEY =
-  '@soma:hide-onboarding';
 
 const items = [
   {

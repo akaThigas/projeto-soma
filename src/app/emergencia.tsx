@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 
 import {
-  Alert,
   Linking,
   Pressable,
   ScrollView,
@@ -13,6 +12,8 @@ import { Text } from '../components/AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { avisar } from '../utils/alerta';
+import { voltar } from '../utils/voltar';
 
 export default function EmergenciaScreen() {
   const {
@@ -29,7 +30,7 @@ export default function EmergenciaScreen() {
         `tel:${numero}`
       );
     } catch {
-      Alert.alert(
+      avisar(
         'Não foi possível realizar a ligação',
         `Ligue diretamente para ${numero}.`
       );
@@ -61,7 +62,7 @@ export default function EmergenciaScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"
