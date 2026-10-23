@@ -17,6 +17,15 @@ import { Text } from '../../components/AppText';
 import { colors } from '../../constants/theme';
 import { conteudos } from '../../data/conteudos';
 import { useResponsiveLayout } from '../../hooks/useResponsiveLayout';
+import { voltar } from '../../utils/voltar';
+
+/**
+ * Na versão web (saída estática), gera uma página para cada conteúdo.
+ * Assim, links diretos como /conteudo/medida-protetiva funcionam no GitHub Pages.
+ */
+export function generateStaticParams() {
+  return conteudos.map((item) => ({ id: item.id }));
+}
 
 export default function ConteudoScreen() {
   const { id } =
@@ -42,7 +51,7 @@ export default function ConteudoScreen() {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Voltar"
-          onPress={() => router.back()}
+          onPress={voltar}
         >
           <Text style={styles.backLink}>
             Voltar
@@ -76,7 +85,7 @@ export default function ConteudoScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"

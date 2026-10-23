@@ -346,16 +346,22 @@ soma/
 │   │   └── MapaCalorCapital.tsx
 │   │
 │   ├── constants/
+│   │   ├── storage.ts
 │   │   └── theme.ts
 │   │
 │   ├── data/
 │   │   ├── conteudos.ts
-│   │   ├── canaisDenuncia.ts
 │   │   ├── tiposViolencia.ts
 │   │   └── mapaCalor/          → dados do mapa e dos serviços da Rede de Apoio
 │   │
-│   └── hooks/
-│       └── useResponsiveLayout.ts
+│   ├── hooks/
+│   │   └── useResponsiveLayout.ts
+│   │
+│   └── utils/
+│       ├── alerta.ts           → avisos que funcionam também na web
+│       ├── areaDoPonto.ts
+│       ├── quickExit.ts
+│       └── voltar.ts           → botão Voltar (vai para a Home sem histórico)
 │
 ├── app.json
 ├── eas.json

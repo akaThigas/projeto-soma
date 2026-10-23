@@ -11,6 +11,7 @@ import { Text } from '../components/AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { voltar } from '../utils/voltar';
 
 const tipos = [
   {
@@ -85,7 +86,7 @@ export default function TiposViolenciaScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"

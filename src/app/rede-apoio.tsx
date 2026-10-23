@@ -27,6 +27,7 @@ import {
   servicosMulherSP,
 } from '../data/mapaCalor/servicosMulherSP';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { voltar } from '../utils/voltar';
 
 /**
  * Lista da rede de apoio da cidade de São Paulo, com os mesmos dados
@@ -134,7 +135,7 @@ export default function RedeApoioScreen() {
             },
           ]}
         >
-          <Pressable accessibilityRole="button" accessibilityLabel="Voltar" style={styles.backButton} onPress={() => router.back()}>
+          <Pressable accessibilityRole="button" accessibilityLabel="Voltar" style={styles.backButton} onPress={voltar}>
             <Ionicons name="chevron-back" size={26} color={colors.primary} />
             <Text style={styles.backText}>Voltar</Text>
           </Pressable>

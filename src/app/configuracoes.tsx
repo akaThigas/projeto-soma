@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 
 import {
-  Alert,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -18,11 +17,12 @@ import {
   useEscalaTexto,
 } from '../components/AppText';
 
+import { ONBOARDING_STORAGE_KEY } from '../constants/storage';
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { avisar, confirmar } from '../utils/alerta';
+import { voltar } from '../utils/voltar';
 
-const ONBOARDING_STORAGE_KEY =
-  '@soma:hide-onboarding';
 
 export default function ConfiguracoesScreen() {
   const {
@@ -44,12 +44,12 @@ export default function ConfiguracoesScreen() {
         ONBOARDING_STORAGE_KEY
       );
 
-      Alert.alert(
+      avisar(
         'Preferência atualizada',
         'A apresentação inicial voltará a aparecer quando o aplicativo for aberto novamente.'
       );
     } catch {
-      Alert.alert(
+      avisar(
         'Não foi possível alterar a preferência',
         'Tente novamente.'
       );
@@ -57,20 +57,11 @@ export default function ConfiguracoesScreen() {
   }
 
   function confirmarLimpeza() {
-    Alert.alert(
+    confirmar(
       'Limpar preferências?',
       'As preferências locais do SOMA serão restauradas para o padrão.',
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
-        {
-          text: 'Limpar',
-          style: 'destructive',
-          onPress: limparPreferencias,
-        },
-      ]
+      'Limpar',
+      limparPreferencias
     );
   }
 
@@ -83,12 +74,12 @@ export default function ConfiguracoesScreen() {
 
       await definirEscala('normal');
 
-      Alert.alert(
+      avisar(
         'Preferências removidas',
         'As configurações locais do SOMA foram restauradas.'
       );
     } catch {
-      Alert.alert(
+      avisar(
         'Erro',
         'Não foi possível limpar as preferências.'
       );
@@ -122,7 +113,7 @@ export default function ConfiguracoesScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"

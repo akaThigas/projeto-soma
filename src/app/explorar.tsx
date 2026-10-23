@@ -18,6 +18,7 @@ import {
 import { colors } from '../constants/theme';
 import { conteudos } from '../data/conteudos';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { voltar } from '../utils/voltar';
 
 export default function ExplorarScreen() {
   const [busca, setBusca] =
@@ -78,7 +79,7 @@ export default function ExplorarScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"

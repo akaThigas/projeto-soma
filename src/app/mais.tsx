@@ -11,6 +11,7 @@ import { Text } from '../components/AppText';
 
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { voltar } from '../utils/voltar';
 
 type MenuItemProps = {
   title: string;
@@ -134,7 +135,7 @@ export default function MaisScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"

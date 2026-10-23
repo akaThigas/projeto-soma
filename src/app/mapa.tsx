@@ -49,6 +49,7 @@ import {
   violenciaMulherCapital,
 } from '../data/mapaCalor/violenciaMulherCapital';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { voltar } from '../utils/voltar';
 
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=Delegacia+da+Mulher+São+Paulo';
@@ -129,7 +130,7 @@ export default function MapaScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons name="chevron-back" size={26} color={colors.primary} />
             <Text style={styles.backText}>Voltar</Text>

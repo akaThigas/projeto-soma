@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 
 import {
-  Alert,
   Linking,
   Pressable,
   ScrollView,
@@ -14,6 +13,8 @@ import { Text } from '../components/AppText';
 import { MapaDestaque } from '../components/MapaDestaque';
 import { colors } from '../constants/theme';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
+import { avisar } from '../utils/alerta';
+import { voltar } from '../utils/voltar';
 
 const canais = [
   {
@@ -76,7 +77,7 @@ export default function DenunciarScreen() {
 
       await Linking.openURL(valor);
     } catch {
-      Alert.alert(
+      avisar(
         'Não foi possível abrir',
         'Tente novamente ou utilize o canal diretamente.'
       );
@@ -108,7 +109,7 @@ export default function DenunciarScreen() {
             accessibilityRole="button"
             accessibilityLabel="Voltar"
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={voltar}
           >
             <Ionicons
               name="chevron-back"
