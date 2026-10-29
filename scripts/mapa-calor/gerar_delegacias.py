@@ -85,6 +85,8 @@ def main():
     dps_geo = json.loads((DADOS / 'delegacias_cem_2021_simplificado.geojson').read_text(encoding='utf-8'))
     ssp = json.loads((DADOS / 'ssp_violencia_mulher_capital_agregado.json').read_text(encoding='utf-8'))
     painel = json.loads((DADOS / 'ssp_painel_capital_outros_tipos.json').read_text(encoding='utf-8'))
+    # 2023: base do SPJ recebida pelo Fala.SP (ver agregar_falasp_2023.py)
+    f23 = json.loads((DADOS / 'falasp_spj_2023_agregado.json').read_text(encoding='utf-8'))['capital']
     servicos = json.loads((DADOS / 'servicos_mulher_capital.json').read_text(encoding='utf-8'))
 
     # ---------- contornos das delegacias ----------
@@ -118,22 +120,27 @@ def main():
     # ---------- números por área ----------
     assert set(ssp['dp']) == set(geoms_dp), 'números de DP diferentes entre SSP e CEM'
     anos = ['2024', '2025', '2026']
+    assert set(f23['dp']) == set(geoms_dp), 'números de DP diferentes entre 2023 e CEM'
     por_dp = []
     soma_casos = 0
     for num in sorted(ssp['dp'], key=int):
         d = ssp['dp'][num]
-        tipos = {}
+        tipos = {'2023': f23['dp'][num]['casos']}
         for ano in anos:
             tipos[ano] = {TIPOS[k]: v for k, v in d['anoNat'].get(ano, {}).items()}
             soma_casos += sum(tipos[ano].values())
-        por_dp.append({'id': num, 'vitimas': {a: d['anoVitimas'].get(a, 0) for a in anos}, 'casos': tipos})
+        vit = {'2023': f23['dp'][num]['vitimas']}
+        vit.update({a: d['anoVitimas'].get(a, 0) for a in anos})
+        por_dp.append({'id': num, 'vitimas': vit, 'casos': tipos})
 
     sem_area = sum(sum(v.values()) for v in ssp['semArea'].values())
     total_cidade = sum(sum(o.values()) for o in ssp['cidadeMesNat'].values())
     assert soma_casos + sem_area == total_cidade == ssp['linhasCapital']
 
-    cidade_ano_tipo = {a: {} for a in anos}
-    cidade_mes = {}
+    cidade_ano_tipo = {'2023': f23['casosPorTipo']}
+    cidade_ano_tipo.update({a: {} for a in anos})
+    cidade_mes = dict(f23['casosPorMes'])
+    assert sum(f23['casosPorMes'].values()) == sum(f23['casosPorTipo'].values())
     for am, o in ssp['cidadeMesNat'].items():
         ano = am[:4]
         for k, v in o.items():
@@ -143,11 +150,14 @@ def main():
     vitimas_2025 = [p['vitimas']['2025'] for p in por_dp]
     media_2025 = round(sum(vitimas_2025) / len(vitimas_2025), 1)
 
+    # 2023: o arquivo do Fala.SP não separa feminicídio nem tentativa de homicídio (null)
     outros = {
-        'feminicidio': painel['FEMINICÍDIO'],
-        'tentativaHomicidio': painel['TENTATIVA DE HOMICÍDIO'],
-        'estupro': {a: painel['ESTUPRO CONSUMADO'][a] + painel['ESTUPRO TENTADO'][a] for a in anos},
-        'estuproVulneravel': {a: painel['ESTUPRO DE VULNERÁVEL CONSUMADO'][a] + painel['ESTUPRO DE VULNERÁVEL TENTADO'][a] for a in anos},
+        'feminicidio': {'2023': None, **painel['FEMINICÍDIO']},
+        'tentativaHomicidio': {'2023': None, **painel['TENTATIVA DE HOMICÍDIO']},
+        'estupro': {'2023': f23['outrosTipos']['estupro'],
+                    **{a: painel['ESTUPRO CONSUMADO'][a] + painel['ESTUPRO TENTADO'][a] for a in anos}},
+        'estuproVulneravel': {'2023': f23['outrosTipos']['estuproVulneravel'],
+                              **{a: painel['ESTUPRO DE VULNERÁVEL CONSUMADO'][a] + painel['ESTUPRO DE VULNERÁVEL TENTADO'][a] for a in anos}},
     }
 
     # ---------- distrito -> áreas de delegacia ----------
@@ -192,11 +202,12 @@ def main():
 
     (SAIDA / 'violenciaDelegacias.ts').write_text(
         cab
-        + '// Fonte: SSP-SP, base de dados "Violência Contra a Mulher (dados a partir de 2024)".\n'
+        + '// Fonte: SSP-SP, base de dados "Violência Contra a Mulher (dados a partir de 2024)";\n'
+        + '// 2023: base do SPJ recebida pelo Fala.SP (FALASP 2026092522204826), mesma regra de tipos.\n'
         + '// Ver scripts/mapa-calor/README.md para a regra de contagem e a conferência com o painel.\n\n'
         + 'export type TipoCrime =\n'
         + '\n'.join(f"  | '{v}'" for v in TIPOS.values()) + ';\n\n'
-        + 'export type AnoDados = \'2024\' | \'2025\' | \'2026\';\n\n'
+        + 'export type AnoDados = \'2023\' | \'2024\' | \'2025\' | \'2026\';\n\n'
         + 'export type IndicadorDelegacia = {\n  id: string;\n  vitimas: Record<AnoDados, number>;\n  casos: Record<AnoDados, Partial<Record<TipoCrime, number>>>;\n};\n\n'
         + 'export const FONTE_DELEGACIAS = {\n'
         + "  fonte: 'Secretaria da Segurança Pública do Estado de São Paulo (SSP-SP) — base de dados Violência Contra a Mulher (dados a partir de 2024)',\n"
@@ -210,18 +221,27 @@ def main():
         + f"  casosCidade: {total_cidade},\n"
         + "  link: 'https://www.ssp.sp.gov.br/estatistica/violencia-contra-a-mulher',\n"
         + '};\n\n'
+        + '// 2023 vem de outra base, com a mesma regra de tipos, mas contada pela data de registro do boletim\n'
+        + 'export const FONTE_2023 = {\n'
+        + "  ano: '2023' as AnoDados,\n"
+        + "  fonte: 'SSP-SP, resposta ao pedido de acesso à informação Fala.SP nº FALASP 2026092522204826 — base do Sistema de Polícia Judiciária (SPJ), vítimas do sexo feminino',\n"
+        + "  criterio: 'ano de registro do boletim',\n"
+        + f"  casosSemArea: {f23['semArea']['casos']},\n"
+        + f"  casosCidade: {sum(f23['casosPorTipo'].values())},\n"
+        + '};\n\n'
         + 'export const NOMES_TIPOS: Record<TipoCrime, string> = {\n'
         + "  ameaca: 'Ameaça',\n  lesao: 'Lesão corporal (agressão)',\n  injuria: 'Calúnia, difamação ou injúria',\n"
         + "  perseguicao: 'Perseguição (stalking)',\n  medidaProtetiva: 'Descumprimento de medida protetiva',\n"
         + "  dano: 'Dano a bens',\n  psicologica: 'Violência psicológica',\n  invasao: 'Invasão de domicílio',\n"
         + "  dignidadeSexual: 'Outros crimes contra a dignidade sexual',\n  imagensIntimas: 'Divulgação de fotos ou vídeos íntimos',\n"
         + "  mausTratos: 'Maus-tratos',\n  constrangimento: 'Constrangimento ilegal',\n};\n\n"
-        + f'export const cidadeVitimasPorAno: Record<AnoDados, number> = {ts(ssp["cidadeAnoVitimas"])};\n\n'
+        + f'export const cidadeVitimasPorAno: Record<AnoDados, number> = {ts({"2023": f23["vitimas"], **ssp["cidadeAnoVitimas"]})};\n\n'
         + f'export const cidadeCasosPorAnoETipo: Record<AnoDados, Partial<Record<TipoCrime, number>>> = {ts(cidade_ano_tipo)};\n\n'
         + '// Casos por mês na cidade (todos os tipos da base), AAAA-MM\n'
         + f'export const cidadeCasosPorMes: Record<string, number> = {ts(dict(sorted(cidade_mes.items())))};\n\n'
         + '// Tipos que não vêm por delegacia na base: totais da cidade, do painel da SSP\n'
-        + f'export const cidadeOutrosTipos = {ts(outros)};\n\n'
+        + '// (2023: do arquivo do Fala.SP; null = não disponível nesse arquivo)\n'
+        + f"export const cidadeOutrosTipos: Record<'feminicidio' | 'tentativaHomicidio' | 'estupro' | 'estuproVulneravel', Record<AnoDados, number | null>> = {ts(outros)};\n\n"
         + 'export const violenciaDelegacias: IndicadorDelegacia[] = [\n'
         + ',\n'.join('  ' + ts(p) for p in por_dp)
         + '\n];\n',

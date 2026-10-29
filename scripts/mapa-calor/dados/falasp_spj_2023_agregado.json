@@ -1,0 +1,10227 @@
+{
+ "fonte": "SSP-SP, resposta ao pedido de acesso à informação Fala.SP nº FALASP 2026092522204826 — base do Sistema de Polícia Judiciária (SPJ), vítimas do sexo feminino, 2023",
+ "arquivo": "FALASP 2026092522204826 - SPJ 2023.xlsx",
+ "regra": "(a mesma da base \"Violência Contra a Mulher (dados a partir de 2024)\" da SSP):\n  - mesmos 12 tipos da base; lesão, ameaça, calúnia/difamação/injúria, dano, invasão,\n    maus-tratos, constrangimento, imagens íntimas e outros crimes contra a dignidade sexual\n    só quando o boletim marca violência doméstica; perseguição, violência psicológica e\n    descumprimento de medida protetiva entram com ou sem essa marca (nota técnica da SSP);\n  - casos = linhas por natureza (RUBRICA); vítimas = pessoas únicas\n    (ID_DELEGACIA + ANO_BO + NUM_BO + CONT_PESSOA);\n  - local = NOME_MUNICIPIO_CIRC (município do fato) e, na capital, o número do DP em\n    NOME_DELEGACIA_CIRC;\n  - ano/mês = data do registro do boletim (DATAHORA_REGISTRO_BO) — critério do pedido;\n  - estupro e estupro de vulnerável (todos, como no painel) só como total da cidade.",
+ "periodo": "registros de 01/01/2023 a 31/12/2023 (data do registro do boletim)",
+ "linhasArquivo": 639319,
+ "sexo": {
+  "F": 639319
+ },
+ "excluidas": {
+  "(sem marca de violência doméstica) ameaca": 108840,
+  "(sem marca de violência doméstica) injuria": 95836,
+  "(sem marca de violência doméstica) lesao": 54911,
+  "(sem marca de violência doméstica) dano": 16989,
+  "(sem marca de violência doméstica) dignidadeSexual": 10546,
+  "(sem marca de violência doméstica) mausTratos": 3647,
+  "(sem marca de violência doméstica) invasao": 3637,
+  "Homicídio (art. 121)": 3350,
+  "Homicídio culposo na direção de veículo automotor (Art. 302)": 1453,
+  "(sem marca de violência doméstica) imagensIntimas": 1096,
+  "(sem marca de violência doméstica) constrangimento": 713,
+  "Caput - Aliciar, assediar, instigar ou constranger (Art.241D)": 391,
+  "Calúnia (Art. 20)": 29,
+  "Injúria (Art. 22)": 5,
+  "Lesão corporal (Art. 27)": 3,
+  "Difamação (Art. 21)": 1
+ },
+ "capital": {
+  "vitimas": 41455,
+  "casosPorTipo": {
+   "lesao": 17300,
+   "ameaca": 23782,
+   "perseguicao": 6888,
+   "injuria": 19797,
+   "dano": 1827,
+   "psicologica": 611,
+   "medidaProtetiva": 2008,
+   "imagensIntimas": 191,
+   "dignidadeSexual": 177,
+   "mausTratos": 155,
+   "invasao": 462,
+   "constrangimento": 28
+  },
+  "casosPorMes": {
+   "2023-01": 5892,
+   "2023-02": 5604,
+   "2023-03": 6553,
+   "2023-04": 5859,
+   "2023-05": 5822,
+   "2023-06": 5792,
+   "2023-07": 5722,
+   "2023-08": 6099,
+   "2023-09": 6008,
+   "2023-10": 6082,
+   "2023-11": 6690,
+   "2023-12": 7103
+  },
+  "outrosTipos": {
+   "estuproVulneravel": 2295,
+   "estupro": 900
+  },
+  "dp": {
+   "1": {
+    "vitimas": 260,
+    "casos": {
+     "ameaca": 131,
+     "lesao": 139,
+     "injuria": 113,
+     "psicologica": 3,
+     "medidaProtetiva": 9,
+     "dano": 18,
+     "perseguicao": 59,
+     "dignidadeSexual": 2,
+     "mausTratos": 2,
+     "imagensIntimas": 1,
+     "invasao": 1
+    }
+   },
+   "2": {
+    "vitimas": 100,
+    "casos": {
+     "ameaca": 49,
+     "injuria": 38,
+     "lesao": 59,
+     "dano": 4,
+     "perseguicao": 18,
+     "medidaProtetiva": 4,
+     "dignidadeSexual": 1
+    }
+   },
+   "3": {
+    "vitimas": 63,
+    "casos": {
+     "lesao": 32,
+     "ameaca": 21,
+     "injuria": 22,
+     "dano": 4,
+     "perseguicao": 18,
+     "psicologica": 3,
+     "medidaProtetiva": 4,
+     "imagensIntimas": 1
+    }
+   },
+   "4": {
+    "vitimas": 181,
+    "casos": {
+     "injuria": 80,
+     "lesao": 93,
+     "ameaca": 70,
+     "perseguicao": 47,
+     "medidaProtetiva": 10,
+     "dano": 7,
+     "psicologica": 4,
+     "imagensIntimas": 3,
+     "dignidadeSexual": 2
+    }
+   },
+   "5": {
+    "vitimas": 193,
+    "casos": {
+     "ameaca": 85,
+     "lesao": 85,
+     "injuria": 83,
+     "perseguicao": 58,
+     "dano": 13,
+     "dignidadeSexual": 1,
+     "medidaProtetiva": 10,
+     "mausTratos": 1,
+     "invasao": 1,
+     "psicologica": 2
+    }
+   },
+   "6": {
+    "vitimas": 141,
+    "casos": {
+     "ameaca": 47,
+     "injuria": 54,
+     "lesao": 57,
+     "perseguicao": 51,
+     "dano": 7,
+     "psicologica": 3,
+     "medidaProtetiva": 1
+    }
+   },
+   "7": {
+    "vitimas": 156,
+    "casos": {
+     "lesao": 43,
+     "perseguicao": 48,
+     "medidaProtetiva": 11,
+     "injuria": 64,
+     "ameaca": 71,
+     "imagensIntimas": 3,
+     "psicologica": 10,
+     "dano": 6,
+     "invasao": 3
+    }
+   },
+   "8": {
+    "vitimas": 295,
+    "casos": {
+     "ameaca": 141,
+     "dano": 10,
+     "injuria": 141,
+     "medidaProtetiva": 12,
+     "perseguicao": 42,
+     "lesao": 180,
+     "psicologica": 3,
+     "invasao": 1,
+     "dignidadeSexual": 2
+    }
+   },
+   "9": {
+    "vitimas": 138,
+    "casos": {
+     "perseguicao": 39,
+     "injuria": 61,
+     "lesao": 49,
+     "ameaca": 64,
+     "medidaProtetiva": 4,
+     "dignidadeSexual": 3,
+     "dano": 4,
+     "psicologica": 2,
+     "invasao": 1
+    }
+   },
+   "10": {
+    "vitimas": 502,
+    "casos": {
+     "lesao": 247,
+     "dano": 27,
+     "perseguicao": 83,
+     "psicologica": 7,
+     "ameaca": 251,
+     "injuria": 226,
+     "medidaProtetiva": 20,
+     "mausTratos": 3,
+     "dignidadeSexual": 1,
+     "invasao": 5,
+     "imagensIntimas": 4
+    }
+   },
+   "11": {
+    "vitimas": 266,
+    "casos": {
+     "injuria": 146,
+     "lesao": 69,
+     "ameaca": 144,
+     "perseguicao": 76,
+     "medidaProtetiva": 21,
+     "psicologica": 9,
+     "dignidadeSexual": 1,
+     "dano": 8,
+     "invasao": 2,
+     "mausTratos": 1,
+     "imagensIntimas": 1
+    }
+   },
+   "12": {
+    "vitimas": 308,
+    "casos": {
+     "lesao": 181,
+     "injuria": 143,
+     "ameaca": 152,
+     "dano": 16,
+     "medidaProtetiva": 13,
+     "perseguicao": 47,
+     "mausTratos": 3,
+     "invasao": 2,
+     "constrangimento": 1,
+     "dignidadeSexual": 1,
+     "psicologica": 3
+    }
+   },
+   "13": {
+    "vitimas": 105,
+    "casos": {
+     "perseguicao": 44,
+     "lesao": 16,
+     "ameaca": 45,
+     "injuria": 43,
+     "medidaProtetiva": 6,
+     "imagensIntimas": 1,
+     "dano": 4,
+     "psicologica": 1
+    }
+   },
+   "14": {
+    "vitimas": 228,
+    "casos": {
+     "injuria": 104,
+     "lesao": 54,
+     "dignidadeSexual": 3,
+     "ameaca": 78,
+     "perseguicao": 88,
+     "psicologica": 11,
+     "medidaProtetiva": 14,
+     "dano": 8,
+     "constrangimento": 1,
+     "invasao": 4
+    }
+   },
+   "15": {
+    "vitimas": 118,
+    "casos": {
+     "ameaca": 65,
+     "perseguicao": 45,
+     "medidaProtetiva": 4,
+     "injuria": 59,
+     "lesao": 33,
+     "psicologica": 8,
+     "imagensIntimas": 1,
+     "dano": 1
+    }
+   },
+   "16": {
+    "vitimas": 245,
+    "casos": {
+     "injuria": 120,
+     "dano": 10,
+     "perseguicao": 76,
+     "ameaca": 113,
+     "lesao": 97,
+     "medidaProtetiva": 11,
+     "invasao": 3,
+     "psicologica": 3,
+     "imagensIntimas": 1,
+     "dignidadeSexual": 1,
+     "constrangimento": 1
+    }
+   },
+   "17": {
+    "vitimas": 175,
+    "casos": {
+     "ameaca": 69,
+     "injuria": 61,
+     "perseguicao": 43,
+     "psicologica": 10,
+     "medidaProtetiva": 11,
+     "lesao": 61,
+     "dano": 4,
+     "mausTratos": 3,
+     "imagensIntimas": 1,
+     "constrangimento": 1,
+     "dignidadeSexual": 2
+    }
+   },
+   "18": {
+    "vitimas": 91,
+    "casos": {
+     "lesao": 35,
+     "perseguicao": 23,
+     "ameaca": 37,
+     "injuria": 46,
+     "dano": 7,
+     "medidaProtetiva": 4,
+     "mausTratos": 1
+    }
+   },
+   "19": {
+    "vitimas": 260,
+    "casos": {
+     "lesao": 129,
+     "ameaca": 135,
+     "injuria": 104,
+     "perseguicao": 48,
+     "invasao": 3,
+     "medidaProtetiva": 12,
+     "constrangimento": 1,
+     "imagensIntimas": 3,
+     "dano": 16,
+     "psicologica": 1
+    }
+   },
+   "20": {
+    "vitimas": 423,
+    "casos": {
+     "dano": 23,
+     "injuria": 204,
+     "perseguicao": 84,
+     "lesao": 171,
+     "ameaca": 201,
+     "invasao": 3,
+     "medidaProtetiva": 23,
+     "psicologica": 5,
+     "dignidadeSexual": 3,
+     "imagensIntimas": 2
+    }
+   },
+   "21": {
+    "vitimas": 276,
+    "casos": {
+     "injuria": 117,
+     "lesao": 128,
+     "ameaca": 154,
+     "medidaProtetiva": 5,
+     "perseguicao": 48,
+     "imagensIntimas": 1,
+     "dano": 14,
+     "invasao": 5,
+     "psicologica": 2,
+     "mausTratos": 1,
+     "dignidadeSexual": 1
+    }
+   },
+   "22": {
+    "vitimas": 431,
+    "casos": {
+     "dano": 14,
+     "injuria": 228,
+     "ameaca": 271,
+     "lesao": 153,
+     "medidaProtetiva": 24,
+     "perseguicao": 71,
+     "imagensIntimas": 3,
+     "psicologica": 4,
+     "dignidadeSexual": 1,
+     "invasao": 3,
+     "mausTratos": 1
+    }
+   },
+   "23": {
+    "vitimas": 236,
+    "casos": {
+     "mausTratos": 2,
+     "injuria": 115,
+     "lesao": 67,
+     "perseguicao": 73,
+     "ameaca": 90,
+     "medidaProtetiva": 20,
+     "dano": 2,
+     "psicologica": 1,
+     "imagensIntimas": 1,
+     "invasao": 1
+    }
+   },
+   "24": {
+    "vitimas": 299,
+    "casos": {
+     "injuria": 106,
+     "lesao": 136,
+     "ameaca": 162,
+     "medidaProtetiva": 13,
+     "psicologica": 3,
+     "perseguicao": 58,
+     "constrangimento": 3,
+     "invasao": 6,
+     "dano": 21,
+     "mausTratos": 6,
+     "imagensIntimas": 2
+    }
+   },
+   "25": {
+    "vitimas": 743,
+    "casos": {
+     "ameaca": 517,
+     "injuria": 358,
+     "perseguicao": 79,
+     "lesao": 312,
+     "medidaProtetiva": 39,
+     "dano": 46,
+     "invasao": 11,
+     "psicologica": 4,
+     "dignidadeSexual": 2,
+     "imagensIntimas": 2
+    }
+   },
+   "26": {
+    "vitimas": 216,
+    "casos": {
+     "injuria": 101,
+     "lesao": 112,
+     "ameaca": 97,
+     "dano": 8,
+     "mausTratos": 2,
+     "medidaProtetiva": 14,
+     "psicologica": 6,
+     "perseguicao": 34
+    }
+   },
+   "27": {
+    "vitimas": 255,
+    "casos": {
+     "lesao": 82,
+     "injuria": 123,
+     "ameaca": 109,
+     "dano": 9,
+     "perseguicao": 69,
+     "psicologica": 14,
+     "medidaProtetiva": 14,
+     "mausTratos": 2,
+     "dignidadeSexual": 8
+    }
+   },
+   "28": {
+    "vitimas": 435,
+    "casos": {
+     "ameaca": 243,
+     "injuria": 212,
+     "perseguicao": 83,
+     "lesao": 186,
+     "dano": 16,
+     "medidaProtetiva": 28,
+     "imagensIntimas": 2,
+     "invasao": 2,
+     "mausTratos": 1,
+     "psicologica": 2
+    }
+   },
+   "29": {
+    "vitimas": 161,
+    "casos": {
+     "injuria": 72,
+     "ameaca": 82,
+     "medidaProtetiva": 14,
+     "lesao": 73,
+     "psicologica": 2,
+     "perseguicao": 34,
+     "imagensIntimas": 1,
+     "dano": 7,
+     "mausTratos": 2,
+     "invasao": 1
+    }
+   },
+   "30": {
+    "vitimas": 242,
+    "casos": {
+     "perseguicao": 55,
+     "lesao": 92,
+     "ameaca": 114,
+     "injuria": 118,
+     "dano": 6,
+     "psicologica": 5,
+     "invasao": 1,
+     "medidaProtetiva": 7,
+     "mausTratos": 1,
+     "imagensIntimas": 1
+    }
+   },
+   "31": {
+    "vitimas": 141,
+    "casos": {
+     "ameaca": 75,
+     "injuria": 55,
+     "lesao": 58,
+     "dano": 6,
+     "psicologica": 10,
+     "perseguicao": 22,
+     "medidaProtetiva": 5
+    }
+   },
+   "32": {
+    "vitimas": 442,
+    "casos": {
+     "injuria": 240,
+     "medidaProtetiva": 25,
+     "ameaca": 276,
+     "lesao": 168,
+     "perseguicao": 43,
+     "dano": 28,
+     "invasao": 6,
+     "dignidadeSexual": 2,
+     "imagensIntimas": 3,
+     "psicologica": 2
+    }
+   },
+   "33": {
+    "vitimas": 181,
+    "casos": {
+     "perseguicao": 43,
+     "ameaca": 100,
+     "lesao": 49,
+     "injuria": 86,
+     "dano": 9,
+     "medidaProtetiva": 8,
+     "invasao": 3,
+     "psicologica": 6,
+     "dignidadeSexual": 2,
+     "constrangimento": 1
+    }
+   },
+   "34": {
+    "vitimas": 227,
+    "casos": {
+     "perseguicao": 47,
+     "ameaca": 110,
+     "lesao": 73,
+     "injuria": 115,
+     "invasao": 2,
+     "dano": 5,
+     "mausTratos": 1,
+     "psicologica": 15,
+     "medidaProtetiva": 19,
+     "imagensIntimas": 2,
+     "dignidadeSexual": 1
+    }
+   },
+   "35": {
+    "vitimas": 422,
+    "casos": {
+     "dano": 26,
+     "ameaca": 235,
+     "dignidadeSexual": 2,
+     "lesao": 165,
+     "injuria": 194,
+     "perseguicao": 60,
+     "medidaProtetiva": 26,
+     "invasao": 3,
+     "imagensIntimas": 1,
+     "psicologica": 11,
+     "mausTratos": 4
+    }
+   },
+   "36": {
+    "vitimas": 55,
+    "casos": {
+     "lesao": 16,
+     "perseguicao": 17,
+     "injuria": 13,
+     "ameaca": 19,
+     "psicologica": 4,
+     "medidaProtetiva": 6
+    }
+   },
+   "37": {
+    "vitimas": 866,
+    "casos": {
+     "lesao": 343,
+     "imagensIntimas": 4,
+     "dano": 41,
+     "injuria": 416,
+     "ameaca": 513,
+     "dignidadeSexual": 1,
+     "perseguicao": 158,
+     "psicologica": 24,
+     "medidaProtetiva": 29,
+     "invasao": 8,
+     "mausTratos": 4
+    }
+   },
+   "38": {
+    "vitimas": 678,
+    "casos": {
+     "ameaca": 365,
+     "injuria": 314,
+     "lesao": 285,
+     "perseguicao": 100,
+     "dano": 23,
+     "medidaProtetiva": 44,
+     "psicologica": 12,
+     "imagensIntimas": 3,
+     "invasao": 10,
+     "dignidadeSexual": 3
+    }
+   },
+   "39": {
+    "vitimas": 580,
+    "casos": {
+     "perseguicao": 123,
+     "ameaca": 346,
+     "lesao": 242,
+     "injuria": 245,
+     "imagensIntimas": 2,
+     "medidaProtetiva": 38,
+     "dano": 38,
+     "invasao": 4,
+     "mausTratos": 1,
+     "psicologica": 3,
+     "dignidadeSexual": 1
+    }
+   },
+   "40": {
+    "vitimas": 211,
+    "casos": {
+     "injuria": 97,
+     "perseguicao": 23,
+     "lesao": 118,
+     "ameaca": 116,
+     "dano": 9,
+     "medidaProtetiva": 14,
+     "mausTratos": 1,
+     "psicologica": 1,
+     "dignidadeSexual": 1,
+     "invasao": 1
+    }
+   },
+   "41": {
+    "vitimas": 533,
+    "casos": {
+     "injuria": 239,
+     "ameaca": 316,
+     "lesao": 206,
+     "perseguicao": 101,
+     "medidaProtetiva": 26,
+     "imagensIntimas": 3,
+     "dano": 16,
+     "psicologica": 5,
+     "dignidadeSexual": 3,
+     "invasao": 7,
+     "mausTratos": 3
+    }
+   },
+   "42": {
+    "vitimas": 285,
+    "casos": {
+     "ameaca": 166,
+     "injuria": 132,
+     "perseguicao": 41,
+     "lesao": 127,
+     "dano": 23,
+     "medidaProtetiva": 9,
+     "invasao": 3,
+     "imagensIntimas": 1,
+     "psicologica": 5
+    }
+   },
+   "43": {
+    "vitimas": 306,
+    "casos": {
+     "injuria": 145,
+     "perseguicao": 70,
+     "lesao": 139,
+     "ameaca": 148,
+     "medidaProtetiva": 14,
+     "dano": 9,
+     "invasao": 4,
+     "dignidadeSexual": 2,
+     "imagensIntimas": 1,
+     "psicologica": 1
+    }
+   },
+   "44": {
+    "vitimas": 554,
+    "casos": {
+     "lesao": 264,
+     "ameaca": 355,
+     "injuria": 254,
+     "psicologica": 6,
+     "perseguicao": 62,
+     "medidaProtetiva": 20,
+     "invasao": 5,
+     "dano": 27,
+     "mausTratos": 6,
+     "imagensIntimas": 3,
+     "dignidadeSexual": 3
+    }
+   },
+   "45": {
+    "vitimas": 381,
+    "casos": {
+     "ameaca": 216,
+     "dano": 21,
+     "injuria": 159,
+     "lesao": 170,
+     "perseguicao": 52,
+     "invasao": 6,
+     "medidaProtetiva": 8,
+     "mausTratos": 3,
+     "psicologica": 1
+    }
+   },
+   "46": {
+    "vitimas": 1071,
+    "casos": {
+     "injuria": 530,
+     "ameaca": 694,
+     "medidaProtetiva": 49,
+     "dano": 49,
+     "perseguicao": 160,
+     "lesao": 415,
+     "imagensIntimas": 6,
+     "mausTratos": 6,
+     "dignidadeSexual": 4,
+     "invasao": 11,
+     "psicologica": 5
+    }
+   },
+   "47": {
+    "vitimas": 890,
+    "casos": {
+     "psicologica": 9,
+     "ameaca": 555,
+     "perseguicao": 122,
+     "injuria": 392,
+     "lesao": 398,
+     "imagensIntimas": 9,
+     "invasao": 23,
+     "medidaProtetiva": 38,
+     "dignidadeSexual": 4,
+     "dano": 28,
+     "mausTratos": 1
+    }
+   },
+   "48": {
+    "vitimas": 252,
+    "casos": {
+     "injuria": 137,
+     "ameaca": 145,
+     "lesao": 84,
+     "medidaProtetiva": 11,
+     "invasao": 3,
+     "perseguicao": 45,
+     "imagensIntimas": 2,
+     "psicologica": 5,
+     "dano": 5,
+     "mausTratos": 1
+    }
+   },
+   "49": {
+    "vitimas": 925,
+    "casos": {
+     "ameaca": 516,
+     "injuria": 412,
+     "lesao": 414,
+     "dano": 41,
+     "perseguicao": 128,
+     "invasao": 17,
+     "medidaProtetiva": 54,
+     "imagensIntimas": 2,
+     "dignidadeSexual": 5,
+     "psicologica": 11,
+     "mausTratos": 2
+    }
+   },
+   "50": {
+    "vitimas": 923,
+    "casos": {
+     "lesao": 357,
+     "injuria": 447,
+     "ameaca": 573,
+     "perseguicao": 154,
+     "dano": 44,
+     "medidaProtetiva": 71,
+     "psicologica": 17,
+     "dignidadeSexual": 3,
+     "invasao": 11,
+     "mausTratos": 3,
+     "imagensIntimas": 3
+    }
+   },
+   "51": {
+    "vitimas": 376,
+    "casos": {
+     "ameaca": 196,
+     "injuria": 189,
+     "lesao": 128,
+     "perseguicao": 72,
+     "medidaProtetiva": 22,
+     "dano": 11,
+     "psicologica": 2,
+     "dignidadeSexual": 11,
+     "invasao": 1,
+     "mausTratos": 5
+    }
+   },
+   "52": {
+    "vitimas": 132,
+    "casos": {
+     "lesao": 57,
+     "injuria": 62,
+     "imagensIntimas": 1,
+     "ameaca": 57,
+     "perseguicao": 22,
+     "medidaProtetiva": 2,
+     "dano": 3,
+     "psicologica": 2,
+     "dignidadeSexual": 2
+    }
+   },
+   "53": {
+    "vitimas": 576,
+    "casos": {
+     "lesao": 230,
+     "ameaca": 367,
+     "perseguicao": 84,
+     "injuria": 259,
+     "medidaProtetiva": 25,
+     "dano": 30,
+     "dignidadeSexual": 2,
+     "mausTratos": 1,
+     "psicologica": 4,
+     "invasao": 6,
+     "imagensIntimas": 5
+    }
+   },
+   "54": {
+    "vitimas": 931,
+    "casos": {
+     "lesao": 423,
+     "ameaca": 560,
+     "medidaProtetiva": 37,
+     "injuria": 422,
+     "dano": 43,
+     "invasao": 13,
+     "perseguicao": 119,
+     "mausTratos": 4,
+     "psicologica": 7,
+     "dignidadeSexual": 6,
+     "constrangimento": 1,
+     "imagensIntimas": 4
+    }
+   },
+   "55": {
+    "vitimas": 475,
+    "casos": {
+     "injuria": 202,
+     "lesao": 211,
+     "ameaca": 271,
+     "invasao": 15,
+     "medidaProtetiva": 23,
+     "psicologica": 2,
+     "dignidadeSexual": 2,
+     "perseguicao": 48,
+     "dano": 20,
+     "mausTratos": 2
+    }
+   },
+   "56": {
+    "vitimas": 213,
+    "casos": {
+     "ameaca": 109,
+     "injuria": 93,
+     "lesao": 96,
+     "perseguicao": 49,
+     "dano": 9,
+     "psicologica": 5,
+     "invasao": 2,
+     "medidaProtetiva": 10,
+     "dignidadeSexual": 1,
+     "constrangimento": 1
+    }
+   },
+   "57": {
+    "vitimas": 179,
+    "casos": {
+     "lesao": 87,
+     "perseguicao": 35,
+     "medidaProtetiva": 6,
+     "ameaca": 82,
+     "injuria": 81,
+     "imagensIntimas": 1,
+     "dano": 13,
+     "psicologica": 3
+    }
+   },
+   "58": {
+    "vitimas": 193,
+    "casos": {
+     "lesao": 81,
+     "ameaca": 102,
+     "injuria": 93,
+     "perseguicao": 32,
+     "dano": 18,
+     "medidaProtetiva": 14,
+     "psicologica": 7,
+     "imagensIntimas": 1
+    }
+   },
+   "59": {
+    "vitimas": 487,
+    "casos": {
+     "ameaca": 320,
+     "lesao": 224,
+     "injuria": 263,
+     "dano": 21,
+     "dignidadeSexual": 3,
+     "invasao": 7,
+     "perseguicao": 53,
+     "medidaProtetiva": 26,
+     "psicologica": 6,
+     "imagensIntimas": 1,
+     "constrangimento": 1
+    }
+   },
+   "62": {
+    "vitimas": 527,
+    "casos": {
+     "lesao": 213,
+     "injuria": 273,
+     "ameaca": 330,
+     "perseguicao": 98,
+     "dano": 29,
+     "dignidadeSexual": 2,
+     "psicologica": 4,
+     "medidaProtetiva": 21,
+     "invasao": 4,
+     "constrangimento": 1,
+     "imagensIntimas": 2,
+     "mausTratos": 1
+    }
+   },
+   "63": {
+    "vitimas": 337,
+    "casos": {
+     "injuria": 140,
+     "dano": 23,
+     "lesao": 164,
+     "ameaca": 185,
+     "medidaProtetiva": 19,
+     "perseguicao": 20,
+     "psicologica": 7,
+     "invasao": 2,
+     "imagensIntimas": 1,
+     "constrangimento": 1
+    }
+   },
+   "64": {
+    "vitimas": 426,
+    "casos": {
+     "dano": 15,
+     "ameaca": 254,
+     "perseguicao": 62,
+     "injuria": 198,
+     "imagensIntimas": 2,
+     "lesao": 180,
+     "psicologica": 6,
+     "medidaProtetiva": 27,
+     "invasao": 5
+    }
+   },
+   "65": {
+    "vitimas": 318,
+    "casos": {
+     "lesao": 144,
+     "dano": 18,
+     "injuria": 137,
+     "perseguicao": 63,
+     "ameaca": 183,
+     "invasao": 5,
+     "medidaProtetiva": 14,
+     "psicologica": 6,
+     "mausTratos": 1,
+     "dignidadeSexual": 2
+    }
+   },
+   "66": {
+    "vitimas": 580,
+    "casos": {
+     "ameaca": 318,
+     "lesao": 214,
+     "perseguicao": 67,
+     "injuria": 283,
+     "medidaProtetiva": 27,
+     "psicologica": 6,
+     "dano": 23,
+     "mausTratos": 8,
+     "imagensIntimas": 3,
+     "invasao": 6,
+     "constrangimento": 2,
+     "dignidadeSexual": 3
+    }
+   },
+   "67": {
+    "vitimas": 460,
+    "casos": {
+     "lesao": 198,
+     "injuria": 225,
+     "perseguicao": 57,
+     "ameaca": 285,
+     "invasao": 7,
+     "medidaProtetiva": 25,
+     "dano": 23,
+     "psicologica": 8,
+     "imagensIntimas": 5
+    }
+   },
+   "68": {
+    "vitimas": 713,
+    "casos": {
+     "ameaca": 466,
+     "injuria": 360,
+     "lesao": 293,
+     "dano": 34,
+     "imagensIntimas": 5,
+     "perseguicao": 74,
+     "medidaProtetiva": 23,
+     "invasao": 9,
+     "psicologica": 3,
+     "mausTratos": 2,
+     "dignidadeSexual": 1
+    }
+   },
+   "69": {
+    "vitimas": 578,
+    "casos": {
+     "injuria": 248,
+     "ameaca": 330,
+     "lesao": 261,
+     "dano": 26,
+     "medidaProtetiva": 38,
+     "perseguicao": 87,
+     "invasao": 9,
+     "dignidadeSexual": 3,
+     "mausTratos": 3,
+     "psicologica": 3,
+     "constrangimento": 1
+    }
+   },
+   "70": {
+    "vitimas": 445,
+    "casos": {
+     "injuria": 201,
+     "ameaca": 261,
+     "lesao": 207,
+     "medidaProtetiva": 19,
+     "perseguicao": 77,
+     "dano": 16,
+     "invasao": 13,
+     "mausTratos": 3,
+     "psicologica": 4,
+     "imagensIntimas": 1
+    }
+   },
+   "72": {
+    "vitimas": 534,
+    "casos": {
+     "lesao": 245,
+     "injuria": 234,
+     "ameaca": 310,
+     "psicologica": 5,
+     "perseguicao": 69,
+     "medidaProtetiva": 23,
+     "dano": 23,
+     "constrangimento": 2,
+     "dignidadeSexual": 3,
+     "imagensIntimas": 3,
+     "invasao": 8
+    }
+   },
+   "73": {
+    "vitimas": 950,
+    "casos": {
+     "lesao": 425,
+     "perseguicao": 183,
+     "injuria": 433,
+     "ameaca": 574,
+     "invasao": 10,
+     "medidaProtetiva": 43,
+     "dano": 42,
+     "dignidadeSexual": 10,
+     "imagensIntimas": 1,
+     "psicologica": 7,
+     "mausTratos": 1
+    }
+   },
+   "74": {
+    "vitimas": 1026,
+    "casos": {
+     "lesao": 467,
+     "ameaca": 657,
+     "medidaProtetiva": 24,
+     "injuria": 449,
+     "perseguicao": 129,
+     "invasao": 11,
+     "imagensIntimas": 4,
+     "dano": 40,
+     "psicologica": 10,
+     "mausTratos": 3,
+     "dignidadeSexual": 3
+    }
+   },
+   "75": {
+    "vitimas": 514,
+    "casos": {
+     "ameaca": 287,
+     "injuria": 255,
+     "lesao": 192,
+     "psicologica": 7,
+     "perseguicao": 75,
+     "invasao": 2,
+     "medidaProtetiva": 29,
+     "dano": 19,
+     "imagensIntimas": 2,
+     "dignidadeSexual": 2,
+     "mausTratos": 1
+    }
+   },
+   "77": {
+    "vitimas": 277,
+    "casos": {
+     "lesao": 134,
+     "injuria": 127,
+     "ameaca": 115,
+     "dano": 13,
+     "medidaProtetiva": 10,
+     "psicologica": 6,
+     "imagensIntimas": 2,
+     "perseguicao": 62,
+     "mausTratos": 5,
+     "invasao": 2,
+     "dignidadeSexual": 1
+    }
+   },
+   "78": {
+    "vitimas": 113,
+    "casos": {
+     "injuria": 42,
+     "ameaca": 42,
+     "lesao": 37,
+     "perseguicao": 39,
+     "dano": 2,
+     "medidaProtetiva": 6,
+     "psicologica": 4,
+     "invasao": 1,
+     "imagensIntimas": 1,
+     "dignidadeSexual": 2
+    }
+   },
+   "80": {
+    "vitimas": 336,
+    "casos": {
+     "ameaca": 201,
+     "lesao": 136,
+     "injuria": 158,
+     "perseguicao": 44,
+     "invasao": 4,
+     "dano": 9,
+     "medidaProtetiva": 11,
+     "psicologica": 6,
+     "dignidadeSexual": 1,
+     "constrangimento": 1
+    }
+   },
+   "81": {
+    "vitimas": 63,
+    "casos": {
+     "lesao": 32,
+     "ameaca": 22,
+     "perseguicao": 15,
+     "injuria": 19,
+     "dano": 4,
+     "medidaProtetiva": 3,
+     "invasao": 1,
+     "psicologica": 1,
+     "mausTratos": 1
+    }
+   },
+   "83": {
+    "vitimas": 371,
+    "casos": {
+     "lesao": 143,
+     "perseguicao": 63,
+     "injuria": 151,
+     "ameaca": 187,
+     "psicologica": 10,
+     "medidaProtetiva": 33,
+     "dano": 4,
+     "invasao": 3,
+     "mausTratos": 2,
+     "dignidadeSexual": 1
+    }
+   },
+   "85": {
+    "vitimas": 862,
+    "casos": {
+     "injuria": 427,
+     "lesao": 346,
+     "ameaca": 572,
+     "perseguicao": 111,
+     "medidaProtetiva": 27,
+     "dano": 37,
+     "invasao": 9,
+     "imagensIntimas": 3,
+     "psicologica": 12,
+     "dignidadeSexual": 4
+    }
+   },
+   "87": {
+    "vitimas": 262,
+    "casos": {
+     "dano": 9,
+     "ameaca": 159,
+     "lesao": 78,
+     "injuria": 132,
+     "medidaProtetiva": 11,
+     "perseguicao": 48,
+     "dignidadeSexual": 2,
+     "mausTratos": 5,
+     "invasao": 3,
+     "imagensIntimas": 2
+    }
+   },
+   "89": {
+    "vitimas": 352,
+    "casos": {
+     "ameaca": 179,
+     "injuria": 172,
+     "perseguicao": 78,
+     "lesao": 111,
+     "medidaProtetiva": 19,
+     "psicologica": 12,
+     "dano": 12,
+     "invasao": 5,
+     "dignidadeSexual": 1,
+     "mausTratos": 1,
+     "imagensIntimas": 3
+    }
+   },
+   "90": {
+    "vitimas": 221,
+    "casos": {
+     "lesao": 119,
+     "ameaca": 124,
+     "injuria": 81,
+     "perseguicao": 27,
+     "dano": 11,
+     "medidaProtetiva": 7,
+     "invasao": 3,
+     "psicologica": 4,
+     "dignidadeSexual": 2
+    }
+   },
+   "91": {
+    "vitimas": 147,
+    "casos": {
+     "psicologica": 4,
+     "dano": 4,
+     "medidaProtetiva": 15,
+     "injuria": 65,
+     "perseguicao": 44,
+     "lesao": 48,
+     "ameaca": 63,
+     "mausTratos": 1,
+     "imagensIntimas": 1,
+     "invasao": 1
+    }
+   },
+   "92": {
+    "vitimas": 1045,
+    "casos": {
+     "ameaca": 654,
+     "perseguicao": 147,
+     "lesao": 421,
+     "injuria": 590,
+     "medidaProtetiva": 39,
+     "psicologica": 8,
+     "dano": 29,
+     "invasao": 14,
+     "imagensIntimas": 6,
+     "mausTratos": 2,
+     "dignidadeSexual": 4
+    }
+   },
+   "93": {
+    "vitimas": 309,
+    "casos": {
+     "lesao": 116,
+     "injuria": 161,
+     "ameaca": 147,
+     "medidaProtetiva": 14,
+     "dignidadeSexual": 4,
+     "dano": 18,
+     "perseguicao": 73,
+     "psicologica": 8,
+     "invasao": 1,
+     "imagensIntimas": 3,
+     "mausTratos": 4
+    }
+   },
+   "95": {
+    "vitimas": 381,
+    "casos": {
+     "ameaca": 213,
+     "imagensIntimas": 4,
+     "perseguicao": 61,
+     "injuria": 205,
+     "lesao": 141,
+     "medidaProtetiva": 20,
+     "dano": 22,
+     "mausTratos": 3,
+     "invasao": 1,
+     "psicologica": 8,
+     "constrangimento": 1
+    }
+   },
+   "96": {
+    "vitimas": 178,
+    "casos": {
+     "ameaca": 68,
+     "injuria": 73,
+     "perseguicao": 60,
+     "dano": 9,
+     "lesao": 57,
+     "medidaProtetiva": 6,
+     "psicologica": 11,
+     "dignidadeSexual": 2,
+     "invasao": 3,
+     "imagensIntimas": 2,
+     "constrangimento": 1
+    }
+   },
+   "97": {
+    "vitimas": 408,
+    "casos": {
+     "ameaca": 229,
+     "lesao": 190,
+     "perseguicao": 54,
+     "dano": 22,
+     "injuria": 186,
+     "imagensIntimas": 2,
+     "psicologica": 15,
+     "medidaProtetiva": 22,
+     "dignidadeSexual": 3,
+     "invasao": 3
+    }
+   },
+   "98": {
+    "vitimas": 657,
+    "casos": {
+     "lesao": 296,
+     "ameaca": 406,
+     "injuria": 300,
+     "perseguicao": 99,
+     "invasao": 3,
+     "medidaProtetiva": 20,
+     "dignidadeSexual": 4,
+     "imagensIntimas": 3,
+     "dano": 23,
+     "psicologica": 9,
+     "mausTratos": 3,
+     "constrangimento": 1
+    }
+   },
+   "99": {
+    "vitimas": 215,
+    "casos": {
+     "ameaca": 125,
+     "injuria": 112,
+     "perseguicao": 56,
+     "lesao": 47,
+     "medidaProtetiva": 18,
+     "dignidadeSexual": 2,
+     "invasao": 4,
+     "dano": 4,
+     "psicologica": 6,
+     "mausTratos": 2,
+     "imagensIntimas": 1
+    }
+   },
+   "100": {
+    "vitimas": 865,
+    "casos": {
+     "lesao": 384,
+     "ameaca": 553,
+     "injuria": 385,
+     "perseguicao": 133,
+     "dano": 31,
+     "medidaProtetiva": 36,
+     "psicologica": 8,
+     "invasao": 11,
+     "imagensIntimas": 2,
+     "constrangimento": 2,
+     "mausTratos": 2
+    }
+   },
+   "101": {
+    "vitimas": 784,
+    "casos": {
+     "ameaca": 484,
+     "mausTratos": 4,
+     "injuria": 405,
+     "lesao": 312,
+     "perseguicao": 110,
+     "dano": 40,
+     "medidaProtetiva": 23,
+     "psicologica": 8,
+     "imagensIntimas": 6,
+     "invasao": 7,
+     "dignidadeSexual": 2
+    }
+   },
+   "102": {
+    "vitimas": 164,
+    "casos": {
+     "injuria": 102,
+     "ameaca": 77,
+     "lesao": 69,
+     "imagensIntimas": 2,
+     "dano": 10,
+     "perseguicao": 25,
+     "invasao": 2,
+     "psicologica": 3,
+     "medidaProtetiva": 8
+    }
+   },
+   "103": {
+    "vitimas": 176,
+    "casos": {
+     "injuria": 61,
+     "dano": 6,
+     "ameaca": 92,
+     "lesao": 62,
+     "medidaProtetiva": 17,
+     "constrangimento": 2,
+     "perseguicao": 27,
+     "psicologica": 9,
+     "invasao": 3,
+     "imagensIntimas": 1,
+     "dignidadeSexual": 1
+    }
+   }
+  },
+  "semArea": {
+   "casos": 8967,
+   "vitimas": 4864,
+   "porDelegacia": {
+    "07ª DDM ITAQUERA": 3018,
+    "04ª DDM NORTE": 1578,
+    "01ª DDM CENTRO": 1186,
+    "09ª DDM OESTE": 1079,
+    "06ª DDM SANTO AMARO": 972,
+    "05ª DDM LESTE": 455,
+    "02ª DDM SUL": 306,
+    "08ª DDM SAO MATEUS": 232,
+    "DELEGACIA DA MULHER ONLINE": 65,
+    "03ª DDM OESTE": 56,
+    "01º DDM-DIA INTERN. DA MULHER": 13,
+    "DEL.POL.METROPOLITANO": 4,
+    "DOPE - 02ª DP DEATUR CONGONHAS": 2,
+    "DEL.SEC.1ª CENTRO": 1
+   }
+  }
+ },
+ "municipios": {
+  "3500105": {
+   "nomeSSP": "ADAMANTINA",
+   "vitimas": 207,
+   "casos": {
+    "lesao": 78,
+    "dano": 20,
+    "ameaca": 99,
+    "injuria": 46,
+    "perseguicao": 44,
+    "medidaProtetiva": 19,
+    "psicologica": 10,
+    "invasao": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3500204": {
+   "nomeSSP": "ADOLFO",
+   "vitimas": 15,
+   "casos": {
+    "medidaProtetiva": 2,
+    "lesao": 4,
+    "ameaca": 7,
+    "perseguicao": 3,
+    "injuria": 2
+   }
+  },
+  "3500303": {
+   "nomeSSP": "AGUAI",
+   "vitimas": 152,
+   "casos": {
+    "perseguicao": 14,
+    "lesao": 65,
+    "ameaca": 62,
+    "medidaProtetiva": 29,
+    "dano": 8,
+    "injuria": 19,
+    "invasao": 1,
+    "psicologica": 1,
+    "constrangimento": 1
+   }
+  },
+  "3500402": {
+   "nomeSSP": "AGUAS DA PRATA",
+   "vitimas": 22,
+   "casos": {
+    "lesao": 13,
+    "dano": 9,
+    "injuria": 7,
+    "ameaca": 14,
+    "perseguicao": 2
+   }
+  },
+  "3500501": {
+   "nomeSSP": "AGUAS DE LINDOIA",
+   "vitimas": 76,
+   "casos": {
+    "ameaca": 41,
+    "injuria": 33,
+    "invasao": 3,
+    "perseguicao": 11,
+    "dano": 4,
+    "psicologica": 2,
+    "medidaProtetiva": 11,
+    "lesao": 19
+   }
+  },
+  "3500550": {
+   "nomeSSP": "AGUAS DE SANTA BARBARA",
+   "vitimas": 42,
+   "casos": {
+    "ameaca": 18,
+    "medidaProtetiva": 10,
+    "lesao": 15,
+    "psicologica": 2,
+    "invasao": 1,
+    "dano": 6,
+    "perseguicao": 3,
+    "injuria": 7
+   }
+  },
+  "3500600": {
+   "nomeSSP": "AGUAS DE SAO PEDRO",
+   "vitimas": 11,
+   "casos": {
+    "medidaProtetiva": 2,
+    "lesao": 2,
+    "ameaca": 5,
+    "injuria": 2,
+    "perseguicao": 2
+   }
+  },
+  "3500709": {
+   "nomeSSP": "AGUDOS",
+   "vitimas": 264,
+   "casos": {
+    "lesao": 54,
+    "ameaca": 146,
+    "injuria": 84,
+    "dano": 6,
+    "psicologica": 1,
+    "medidaProtetiva": 33,
+    "perseguicao": 34
+   }
+  },
+  "3500758": {
+   "nomeSSP": "ALAMBARI",
+   "vitimas": 25,
+   "casos": {
+    "ameaca": 16,
+    "injuria": 4,
+    "medidaProtetiva": 2,
+    "lesao": 11,
+    "invasao": 2,
+    "perseguicao": 4,
+    "dano": 2
+   }
+  },
+  "3500808": {
+   "nomeSSP": "ALFREDO MARCONDES",
+   "vitimas": 25,
+   "casos": {
+    "ameaca": 12,
+    "lesao": 8,
+    "medidaProtetiva": 9,
+    "injuria": 6,
+    "dano": 1,
+    "psicologica": 1,
+    "perseguicao": 3
+   }
+  },
+  "3500907": {
+   "nomeSSP": "ALTAIR",
+   "vitimas": 10,
+   "casos": {
+    "lesao": 6,
+    "ameaca": 7,
+    "dano": 1,
+    "injuria": 2,
+    "medidaProtetiva": 1
+   }
+  },
+  "3501004": {
+   "nomeSSP": "ALTINOPOLIS",
+   "vitimas": 69,
+   "casos": {
+    "ameaca": 43,
+    "injuria": 18,
+    "medidaProtetiva": 9,
+    "lesao": 28,
+    "psicologica": 1,
+    "dano": 6,
+    "perseguicao": 4
+   }
+  },
+  "3501103": {
+   "nomeSSP": "ALTO ALEGRE",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 4,
+    "injuria": 1,
+    "perseguicao": 4,
+    "psicologica": 1,
+    "dignidadeSexual": 1,
+    "lesao": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3501152": {
+   "nomeSSP": "ALUMINIO",
+   "vitimas": 79,
+   "casos": {
+    "ameaca": 47,
+    "psicologica": 6,
+    "injuria": 39,
+    "lesao": 31,
+    "perseguicao": 7,
+    "dano": 7,
+    "medidaProtetiva": 3
+   }
+  },
+  "3501202": {
+   "nomeSSP": "ALVARES FLORENCE",
+   "vitimas": 21,
+   "casos": {
+    "ameaca": 17,
+    "injuria": 6,
+    "lesao": 8,
+    "medidaProtetiva": 1,
+    "dano": 1
+   }
+  },
+  "3501301": {
+   "nomeSSP": "ALVARES MACHADO",
+   "vitimas": 113,
+   "casos": {
+    "lesao": 46,
+    "ameaca": 69,
+    "injuria": 56,
+    "dano": 12,
+    "perseguicao": 5,
+    "medidaProtetiva": 16,
+    "psicologica": 1,
+    "mausTratos": 1,
+    "invasao": 1
+   }
+  },
+  "3501400": {
+   "nomeSSP": "ALVARO DE CARVALHO",
+   "vitimas": 30,
+   "casos": {
+    "ameaca": 21,
+    "injuria": 6,
+    "medidaProtetiva": 2,
+    "lesao": 5,
+    "invasao": 2,
+    "perseguicao": 2,
+    "dano": 2,
+    "mausTratos": 2,
+    "psicologica": 1
+   }
+  },
+  "3501509": {
+   "nomeSSP": "ALVINLANDIA",
+   "vitimas": 9,
+   "casos": {
+    "lesao": 4,
+    "ameaca": 8,
+    "injuria": 5,
+    "medidaProtetiva": 2,
+    "invasao": 1
+   }
+  },
+  "3501608": {
+   "nomeSSP": "AMERICANA",
+   "vitimas": 1274,
+   "casos": {
+    "lesao": 371,
+    "dano": 70,
+    "ameaca": 663,
+    "injuria": 468,
+    "perseguicao": 128,
+    "medidaProtetiva": 161,
+    "invasao": 16,
+    "mausTratos": 3,
+    "psicologica": 34,
+    "dignidadeSexual": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3501707": {
+   "nomeSSP": "AMERICO BRASILIENSE",
+   "vitimas": 190,
+   "casos": {
+    "injuria": 133,
+    "medidaProtetiva": 21,
+    "ameaca": 146,
+    "lesao": 62,
+    "dano": 20,
+    "perseguicao": 9
+   }
+  },
+  "3501806": {
+   "nomeSSP": "AMERICO DE CAMPOS",
+   "vitimas": 17,
+   "casos": {
+    "perseguicao": 2,
+    "ameaca": 10,
+    "medidaProtetiva": 5,
+    "injuria": 1,
+    "lesao": 5,
+    "dano": 2
+   }
+  },
+  "3501905": {
+   "nomeSSP": "AMPARO",
+   "vitimas": 350,
+   "casos": {
+    "medidaProtetiva": 42,
+    "lesao": 111,
+    "injuria": 158,
+    "dano": 40,
+    "ameaca": 208,
+    "perseguicao": 35,
+    "dignidadeSexual": 1,
+    "invasao": 14,
+    "imagensIntimas": 1,
+    "psicologica": 6
+   }
+  },
+  "3502002": {
+   "nomeSSP": "ANALANDIA",
+   "vitimas": 20,
+   "casos": {
+    "ameaca": 7,
+    "lesao": 6,
+    "dano": 1,
+    "medidaProtetiva": 4,
+    "perseguicao": 4,
+    "injuria": 1
+   }
+  },
+  "3502101": {
+   "nomeSSP": "ANDRADINA",
+   "vitimas": 437,
+   "casos": {
+    "lesao": 154,
+    "ameaca": 223,
+    "dano": 52,
+    "injuria": 179,
+    "perseguicao": 51,
+    "medidaProtetiva": 32,
+    "psicologica": 8,
+    "invasao": 19,
+    "dignidadeSexual": 2,
+    "mausTratos": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3502200": {
+   "nomeSSP": "ANGATUBA",
+   "vitimas": 100,
+   "casos": {
+    "ameaca": 61,
+    "lesao": 24,
+    "injuria": 24,
+    "medidaProtetiva": 15,
+    "dano": 9,
+    "perseguicao": 18,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3502309": {
+   "nomeSSP": "ANHEMBI",
+   "vitimas": 18,
+   "casos": {
+    "lesao": 6,
+    "perseguicao": 4,
+    "ameaca": 8,
+    "medidaProtetiva": 1,
+    "injuria": 2
+   }
+  },
+  "3502408": {
+   "nomeSSP": "ANHUMAS",
+   "vitimas": 19,
+   "casos": {
+    "lesao": 5,
+    "medidaProtetiva": 5,
+    "dano": 3,
+    "ameaca": 11,
+    "injuria": 2,
+    "perseguicao": 4
+   }
+  },
+  "3502507": {
+   "nomeSSP": "APARECIDA",
+   "vitimas": 209,
+   "casos": {
+    "ameaca": 121,
+    "injuria": 100,
+    "perseguicao": 17,
+    "lesao": 62,
+    "invasao": 5,
+    "medidaProtetiva": 18,
+    "psicologica": 3,
+    "dano": 30
+   }
+  },
+  "3502606": {
+   "nomeSSP": "APARECIDA D OESTE",
+   "vitimas": 23,
+   "casos": {
+    "perseguicao": 2,
+    "lesao": 11,
+    "injuria": 9,
+    "ameaca": 6,
+    "medidaProtetiva": 1,
+    "dano": 2
+   }
+  },
+  "3502705": {
+   "nomeSSP": "APIAI",
+   "vitimas": 93,
+   "casos": {
+    "dano": 6,
+    "perseguicao": 18,
+    "lesao": 38,
+    "ameaca": 41,
+    "injuria": 26,
+    "medidaProtetiva": 5,
+    "invasao": 3,
+    "psicologica": 2
+   }
+  },
+  "3502754": {
+   "nomeSSP": "ARACARIGUAMA",
+   "vitimas": 76,
+   "casos": {
+    "ameaca": 49,
+    "lesao": 25,
+    "injuria": 23,
+    "dano": 6,
+    "perseguicao": 4,
+    "medidaProtetiva": 5,
+    "psicologica": 1
+   }
+  },
+  "3502804": {
+   "nomeSSP": "ARACATUBA",
+   "vitimas": 1338,
+   "casos": {
+    "ameaca": 794,
+    "injuria": 407,
+    "lesao": 383,
+    "medidaProtetiva": 185,
+    "perseguicao": 230,
+    "psicologica": 99,
+    "dano": 97,
+    "mausTratos": 16,
+    "invasao": 33,
+    "dignidadeSexual": 3,
+    "imagensIntimas": 4,
+    "constrangimento": 2
+   }
+  },
+  "3502903": {
+   "nomeSSP": "ARACOIABA DA SERRA",
+   "vitimas": 132,
+   "casos": {
+    "lesao": 60,
+    "medidaProtetiva": 5,
+    "ameaca": 100,
+    "perseguicao": 11,
+    "injuria": 22,
+    "imagensIntimas": 1,
+    "dignidadeSexual": 1,
+    "invasao": 2,
+    "dano": 4,
+    "psicologica": 2
+   }
+  },
+  "3503000": {
+   "nomeSSP": "ARAMINA",
+   "vitimas": 30,
+   "casos": {
+    "lesao": 10,
+    "ameaca": 23,
+    "injuria": 3,
+    "medidaProtetiva": 2,
+    "dano": 4,
+    "perseguicao": 1
+   }
+  },
+  "3503109": {
+   "nomeSSP": "ARANDU",
+   "vitimas": 32,
+   "casos": {
+    "lesao": 9,
+    "ameaca": 13,
+    "medidaProtetiva": 8,
+    "injuria": 9,
+    "dano": 4
+   }
+  },
+  "3503158": {
+   "nomeSSP": "ARAPEI",
+   "vitimas": 20,
+   "casos": {
+    "lesao": 4,
+    "ameaca": 11,
+    "medidaProtetiva": 2,
+    "injuria": 7,
+    "psicologica": 3,
+    "perseguicao": 3,
+    "dano": 3
+   }
+  },
+  "3503208": {
+   "nomeSSP": "ARARAQUARA",
+   "vitimas": 1025,
+   "casos": {
+    "medidaProtetiva": 150,
+    "injuria": 463,
+    "ameaca": 630,
+    "perseguicao": 94,
+    "lesao": 393,
+    "dano": 109,
+    "invasao": 42,
+    "psicologica": 38,
+    "constrangimento": 3,
+    "mausTratos": 4,
+    "dignidadeSexual": 5,
+    "imagensIntimas": 2
+   }
+  },
+  "3503307": {
+   "nomeSSP": "ARARAS",
+   "vitimas": 634,
+   "casos": {
+    "lesao": 177,
+    "dano": 18,
+    "ameaca": 358,
+    "injuria": 123,
+    "perseguicao": 68,
+    "medidaProtetiva": 67,
+    "psicologica": 7,
+    "invasao": 4,
+    "constrangimento": 3
+   }
+  },
+  "3503356": {
+   "nomeSSP": "ARCO-IRIS",
+   "vitimas": 1,
+   "casos": {
+    "ameaca": 1
+   }
+  },
+  "3503406": {
+   "nomeSSP": "AREALVA",
+   "vitimas": 17,
+   "casos": {
+    "lesao": 4,
+    "perseguicao": 8,
+    "ameaca": 7,
+    "medidaProtetiva": 3,
+    "injuria": 3,
+    "dano": 1
+   }
+  },
+  "3503505": {
+   "nomeSSP": "AREIAS",
+   "vitimas": 13,
+   "casos": {
+    "injuria": 8,
+    "ameaca": 8,
+    "perseguicao": 1,
+    "lesao": 7,
+    "medidaProtetiva": 1
+   }
+  },
+  "3503604": {
+   "nomeSSP": "AREIOPOLIS",
+   "vitimas": 38,
+   "casos": {
+    "ameaca": 19,
+    "injuria": 16,
+    "dano": 4,
+    "lesao": 12,
+    "psicologica": 4,
+    "medidaProtetiva": 4,
+    "perseguicao": 1
+   }
+  },
+  "3503703": {
+   "nomeSSP": "ARIRANHA",
+   "vitimas": 56,
+   "casos": {
+    "injuria": 35,
+    "perseguicao": 7,
+    "lesao": 13,
+    "ameaca": 40,
+    "dano": 8,
+    "medidaProtetiva": 6,
+    "dignidadeSexual": 3,
+    "invasao": 1
+   }
+  },
+  "3503802": {
+   "nomeSSP": "ARTUR NOGUEIRA",
+   "vitimas": 292,
+   "casos": {
+    "lesao": 120,
+    "psicologica": 39,
+    "ameaca": 160,
+    "injuria": 54,
+    "perseguicao": 29,
+    "dano": 18,
+    "medidaProtetiva": 39,
+    "invasao": 8,
+    "dignidadeSexual": 2
+   }
+  },
+  "3503901": {
+   "nomeSSP": "ARUJA",
+   "vitimas": 358,
+   "casos": {
+    "ameaca": 167,
+    "perseguicao": 51,
+    "lesao": 142,
+    "injuria": 96,
+    "medidaProtetiva": 33,
+    "dano": 19,
+    "psicologica": 6,
+    "mausTratos": 2,
+    "invasao": 2
+   }
+  },
+  "3503950": {
+   "nomeSSP": "ASPASIA",
+   "vitimas": 6,
+   "casos": {
+    "injuria": 5,
+    "lesao": 2,
+    "ameaca": 3
+   }
+  },
+  "3504008": {
+   "nomeSSP": "ASSIS",
+   "vitimas": 718,
+   "casos": {
+    "ameaca": 372,
+    "lesao": 237,
+    "dano": 36,
+    "injuria": 255,
+    "medidaProtetiva": 73,
+    "perseguicao": 99,
+    "mausTratos": 3,
+    "invasao": 7,
+    "psicologica": 6,
+    "imagensIntimas": 1
+   }
+  },
+  "3504107": {
+   "nomeSSP": "ATIBAIA",
+   "vitimas": 703,
+   "casos": {
+    "perseguicao": 98,
+    "injuria": 316,
+    "lesao": 320,
+    "ameaca": 389,
+    "medidaProtetiva": 60,
+    "psicologica": 15,
+    "mausTratos": 5,
+    "dano": 39,
+    "invasao": 4,
+    "constrangimento": 1
+   }
+  },
+  "3504206": {
+   "nomeSSP": "AURIFLAMA",
+   "vitimas": 48,
+   "casos": {
+    "lesao": 10,
+    "medidaProtetiva": 13,
+    "ameaca": 18,
+    "perseguicao": 8,
+    "injuria": 4,
+    "dano": 3
+   }
+  },
+  "3504305": {
+   "nomeSSP": "AVAI",
+   "vitimas": 28,
+   "casos": {
+    "ameaca": 15,
+    "medidaProtetiva": 3,
+    "dano": 4,
+    "lesao": 16,
+    "injuria": 8,
+    "perseguicao": 2
+   }
+  },
+  "3504404": {
+   "nomeSSP": "AVANHANDAVA",
+   "vitimas": 37,
+   "casos": {
+    "ameaca": 19,
+    "lesao": 11,
+    "perseguicao": 12,
+    "medidaProtetiva": 7,
+    "invasao": 1,
+    "dano": 1,
+    "injuria": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3504503": {
+   "nomeSSP": "AVARE",
+   "vitimas": 637,
+   "casos": {
+    "lesao": 238,
+    "ameaca": 315,
+    "perseguicao": 103,
+    "injuria": 122,
+    "dano": 39,
+    "medidaProtetiva": 59,
+    "dignidadeSexual": 4,
+    "psicologica": 33,
+    "imagensIntimas": 2,
+    "invasao": 9
+   }
+  },
+  "3504602": {
+   "nomeSSP": "BADY BASSITT",
+   "vitimas": 118,
+   "casos": {
+    "injuria": 30,
+    "medidaProtetiva": 11,
+    "lesao": 50,
+    "perseguicao": 8,
+    "ameaca": 71,
+    "dano": 8,
+    "invasao": 3,
+    "psicologica": 1
+   }
+  },
+  "3504701": {
+   "nomeSSP": "BALBINOS",
+   "vitimas": 7,
+   "casos": {
+    "ameaca": 7,
+    "dano": 1,
+    "injuria": 5,
+    "lesao": 2
+   }
+  },
+  "3504800": {
+   "nomeSSP": "BALSAMO",
+   "vitimas": 50,
+   "casos": {
+    "ameaca": 38,
+    "medidaProtetiva": 7,
+    "lesao": 11,
+    "injuria": 31,
+    "dano": 1,
+    "perseguicao": 8
+   }
+  },
+  "3504909": {
+   "nomeSSP": "BANANAL",
+   "vitimas": 55,
+   "casos": {
+    "ameaca": 24,
+    "lesao": 24,
+    "injuria": 20,
+    "invasao": 1,
+    "perseguicao": 3,
+    "medidaProtetiva": 7,
+    "dano": 2,
+    "mausTratos": 1
+   }
+  },
+  "3505005": {
+   "nomeSSP": "BARAO DE ANTONINA",
+   "vitimas": 14,
+   "casos": {
+    "ameaca": 8,
+    "injuria": 4,
+    "medidaProtetiva": 3,
+    "psicologica": 1,
+    "lesao": 4,
+    "dano": 1
+   }
+  },
+  "3505104": {
+   "nomeSSP": "BARBOSA",
+   "vitimas": 20,
+   "casos": {
+    "lesao": 6,
+    "ameaca": 10,
+    "injuria": 5,
+    "invasao": 2,
+    "perseguicao": 6,
+    "medidaProtetiva": 1,
+    "dano": 2
+   }
+  },
+  "3505203": {
+   "nomeSSP": "BARIRI",
+   "vitimas": 264,
+   "casos": {
+    "ameaca": 184,
+    "medidaProtetiva": 34,
+    "injuria": 154,
+    "lesao": 62,
+    "perseguicao": 28,
+    "dano": 15,
+    "invasao": 6,
+    "mausTratos": 1,
+    "constrangimento": 1
+   }
+  },
+  "3505302": {
+   "nomeSSP": "BARRA BONITA",
+   "vitimas": 117,
+   "casos": {
+    "ameaca": 48,
+    "lesao": 43,
+    "medidaProtetiva": 7,
+    "injuria": 51,
+    "dano": 13,
+    "perseguicao": 15,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3505351": {
+   "nomeSSP": "BARRA DO CHAPEU",
+   "vitimas": 20,
+   "casos": {
+    "perseguicao": 3,
+    "ameaca": 7,
+    "lesao": 6,
+    "medidaProtetiva": 4,
+    "dano": 1,
+    "injuria": 3
+   }
+  },
+  "3505401": {
+   "nomeSSP": "BARRA DO TURVO",
+   "vitimas": 39,
+   "casos": {
+    "ameaca": 16,
+    "lesao": 14,
+    "injuria": 7,
+    "medidaProtetiva": 7,
+    "dano": 1,
+    "psicologica": 2,
+    "perseguicao": 3,
+    "invasao": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3505500": {
+   "nomeSSP": "BARRETOS",
+   "vitimas": 960,
+   "casos": {
+    "dano": 75,
+    "ameaca": 528,
+    "perseguicao": 158,
+    "medidaProtetiva": 165,
+    "lesao": 298,
+    "injuria": 207,
+    "psicologica": 27,
+    "dignidadeSexual": 10,
+    "invasao": 19,
+    "mausTratos": 15,
+    "imagensIntimas": 1
+   }
+  },
+  "3505609": {
+   "nomeSSP": "BARRINHA",
+   "vitimas": 127,
+   "casos": {
+    "lesao": 61,
+    "ameaca": 82,
+    "dano": 8,
+    "injuria": 11,
+    "medidaProtetiva": 17,
+    "perseguicao": 5,
+    "psicologica": 4
+   }
+  },
+  "3505708": {
+   "nomeSSP": "BARUERI",
+   "vitimas": 1570,
+   "casos": {
+    "medidaProtetiva": 92,
+    "ameaca": 821,
+    "lesao": 527,
+    "perseguicao": 301,
+    "injuria": 745,
+    "dignidadeSexual": 17,
+    "dano": 85,
+    "psicologica": 40,
+    "imagensIntimas": 8,
+    "mausTratos": 13,
+    "invasao": 32,
+    "constrangimento": 3
+   }
+  },
+  "3505807": {
+   "nomeSSP": "BASTOS",
+   "vitimas": 99,
+   "casos": {
+    "ameaca": 57,
+    "lesao": 35,
+    "dano": 9,
+    "injuria": 39,
+    "perseguicao": 12,
+    "psicologica": 3,
+    "medidaProtetiva": 7,
+    "mausTratos": 1,
+    "invasao": 1
+   }
+  },
+  "3505906": {
+   "nomeSSP": "BATATAIS",
+   "vitimas": 250,
+   "casos": {
+    "medidaProtetiva": 50,
+    "ameaca": 103,
+    "lesao": 88,
+    "perseguicao": 53,
+    "dano": 19,
+    "constrangimento": 1,
+    "psicologica": 22,
+    "injuria": 27,
+    "invasao": 2
+   }
+  },
+  "3506003": {
+   "nomeSSP": "BAURU",
+   "vitimas": 2167,
+   "casos": {
+    "perseguicao": 346,
+    "ameaca": 1232,
+    "medidaProtetiva": 203,
+    "lesao": 803,
+    "injuria": 804,
+    "invasao": 21,
+    "dano": 86,
+    "dignidadeSexual": 8,
+    "psicologica": 13,
+    "mausTratos": 11,
+    "imagensIntimas": 3
+   }
+  },
+  "3506102": {
+   "nomeSSP": "BEBEDOURO",
+   "vitimas": 561,
+   "casos": {
+    "ameaca": 363,
+    "medidaProtetiva": 75,
+    "dano": 45,
+    "injuria": 203,
+    "perseguicao": 33,
+    "lesao": 146,
+    "imagensIntimas": 1,
+    "invasao": 18,
+    "mausTratos": 3,
+    "psicologica": 1
+   }
+  },
+  "3506201": {
+   "nomeSSP": "BENTO DE ABREU",
+   "vitimas": 4,
+   "casos": {
+    "ameaca": 4,
+    "lesao": 1
+   }
+  },
+  "3506300": {
+   "nomeSSP": "BERNARDINO DE CAMPOS",
+   "vitimas": 96,
+   "casos": {
+    "invasao": 3,
+    "ameaca": 46,
+    "lesao": 29,
+    "dano": 9,
+    "injuria": 24,
+    "medidaProtetiva": 23,
+    "mausTratos": 1,
+    "dignidadeSexual": 1,
+    "imagensIntimas": 1,
+    "perseguicao": 3
+   }
+  },
+  "3506359": {
+   "nomeSSP": "BERTIOGA",
+   "vitimas": 397,
+   "casos": {
+    "lesao": 188,
+    "injuria": 90,
+    "ameaca": 212,
+    "dano": 21,
+    "psicologica": 12,
+    "perseguicao": 42,
+    "medidaProtetiva": 20,
+    "invasao": 1
+   }
+  },
+  "3506409": {
+   "nomeSSP": "BILAC",
+   "vitimas": 28,
+   "casos": {
+    "ameaca": 23,
+    "lesao": 12,
+    "injuria": 11,
+    "dano": 3
+   }
+  },
+  "3506508": {
+   "nomeSSP": "BIRIGUI",
+   "vitimas": 604,
+   "casos": {
+    "medidaProtetiva": 69,
+    "injuria": 157,
+    "ameaca": 380,
+    "lesao": 196,
+    "perseguicao": 37,
+    "dano": 38,
+    "psicologica": 1,
+    "mausTratos": 3,
+    "invasao": 7,
+    "dignidadeSexual": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3506607": {
+   "nomeSSP": "BIRITIBA-MIRIM",
+   "vitimas": 125,
+   "casos": {
+    "ameaca": 68,
+    "lesao": 57,
+    "medidaProtetiva": 20,
+    "perseguicao": 19,
+    "injuria": 40,
+    "dano": 9,
+    "invasao": 5,
+    "psicologica": 3,
+    "mausTratos": 3,
+    "dignidadeSexual": 5
+   }
+  },
+  "3506706": {
+   "nomeSSP": "BOA ESPERANCA DO SUL",
+   "vitimas": 103,
+   "casos": {
+    "ameaca": 81,
+    "lesao": 48,
+    "mausTratos": 3,
+    "invasao": 2,
+    "injuria": 44,
+    "dano": 9,
+    "perseguicao": 5,
+    "medidaProtetiva": 7
+   }
+  },
+  "3506805": {
+   "nomeSSP": "BOCAINA",
+   "vitimas": 51,
+   "casos": {
+    "injuria": 19,
+    "ameaca": 28,
+    "lesao": 27,
+    "medidaProtetiva": 3,
+    "dano": 7,
+    "psicologica": 2,
+    "invasao": 1,
+    "perseguicao": 2
+   }
+  },
+  "3506904": {
+   "nomeSSP": "BOFETE",
+   "vitimas": 56,
+   "casos": {
+    "medidaProtetiva": 10,
+    "lesao": 24,
+    "injuria": 11,
+    "invasao": 3,
+    "dano": 5,
+    "ameaca": 30,
+    "psicologica": 2,
+    "dignidadeSexual": 2,
+    "perseguicao": 2
+   }
+  },
+  "3507001": {
+   "nomeSSP": "BOITUVA",
+   "vitimas": 316,
+   "casos": {
+    "ameaca": 185,
+    "lesao": 112,
+    "injuria": 71,
+    "perseguicao": 17,
+    "invasao": 6,
+    "medidaProtetiva": 34,
+    "dano": 14,
+    "psicologica": 7
+   }
+  },
+  "3507100": {
+   "nomeSSP": "BOM JESUS DOS PERDOES",
+   "vitimas": 114,
+   "casos": {
+    "injuria": 57,
+    "dano": 13,
+    "ameaca": 64,
+    "medidaProtetiva": 20,
+    "lesao": 44,
+    "perseguicao": 8,
+    "invasao": 2
+   }
+  },
+  "3507159": {
+   "nomeSSP": "BOM SUCESSO DE ITARARE",
+   "vitimas": 9,
+   "casos": {
+    "lesao": 4,
+    "ameaca": 7,
+    "psicologica": 1,
+    "perseguicao": 1,
+    "medidaProtetiva": 1,
+    "injuria": 1
+   }
+  },
+  "3507209": {
+   "nomeSSP": "BORA",
+   "vitimas": 2,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 1,
+    "lesao": 1
+   }
+  },
+  "3507308": {
+   "nomeSSP": "BORACEIA",
+   "vitimas": 36,
+   "casos": {
+    "perseguicao": 5,
+    "ameaca": 22,
+    "lesao": 11,
+    "injuria": 8,
+    "medidaProtetiva": 5,
+    "dano": 3
+   }
+  },
+  "3507407": {
+   "nomeSSP": "BORBOREMA",
+   "vitimas": 64,
+   "casos": {
+    "ameaca": 30,
+    "medidaProtetiva": 13,
+    "lesao": 18,
+    "injuria": 14,
+    "perseguicao": 9,
+    "invasao": 5,
+    "dano": 5,
+    "psicologica": 1
+   }
+  },
+  "3507456": {
+   "nomeSSP": "BOREBI",
+   "vitimas": 12,
+   "casos": {
+    "lesao": 7,
+    "dano": 5,
+    "injuria": 1,
+    "ameaca": 9,
+    "perseguicao": 2,
+    "psicologica": 1
+   }
+  },
+  "3507506": {
+   "nomeSSP": "BOTUCATU",
+   "vitimas": 1158,
+   "casos": {
+    "injuria": 574,
+    "lesao": 409,
+    "perseguicao": 114,
+    "ameaca": 731,
+    "dano": 102,
+    "medidaProtetiva": 75,
+    "psicologica": 15,
+    "invasao": 37,
+    "mausTratos": 12,
+    "dignidadeSexual": 4,
+    "imagensIntimas": 8,
+    "constrangimento": 1
+   }
+  },
+  "3507605": {
+   "nomeSSP": "BRAGANCA PAULISTA",
+   "vitimas": 1059,
+   "casos": {
+    "injuria": 318,
+    "ameaca": 584,
+    "invasao": 14,
+    "lesao": 334,
+    "dignidadeSexual": 8,
+    "medidaProtetiva": 160,
+    "psicologica": 32,
+    "mausTratos": 9,
+    "dano": 84,
+    "perseguicao": 108,
+    "imagensIntimas": 4,
+    "constrangimento": 1
+   }
+  },
+  "3507704": {
+   "nomeSSP": "BRAUNA",
+   "vitimas": 15,
+   "casos": {
+    "ameaca": 9,
+    "perseguicao": 4,
+    "lesao": 3,
+    "injuria": 1
+   }
+  },
+  "3507753": {
+   "nomeSSP": "BREJO ALEGRE",
+   "vitimas": 7,
+   "casos": {
+    "psicologica": 2,
+    "injuria": 1,
+    "lesao": 2,
+    "ameaca": 2,
+    "perseguicao": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3507803": {
+   "nomeSSP": "BRODOWSKI",
+   "vitimas": 145,
+   "casos": {
+    "lesao": 41,
+    "ameaca": 92,
+    "injuria": 51,
+    "medidaProtetiva": 27,
+    "perseguicao": 24,
+    "invasao": 4,
+    "dano": 6,
+    "psicologica": 1
+   }
+  },
+  "3507902": {
+   "nomeSSP": "BROTAS",
+   "vitimas": 121,
+   "casos": {
+    "injuria": 18,
+    "lesao": 48,
+    "dano": 16,
+    "ameaca": 57,
+    "perseguicao": 9,
+    "medidaProtetiva": 24,
+    "psicologica": 6,
+    "invasao": 2
+   }
+  },
+  "3508009": {
+   "nomeSSP": "BURI",
+   "vitimas": 139,
+   "casos": {
+    "injuria": 38,
+    "perseguicao": 32,
+    "lesao": 50,
+    "medidaProtetiva": 14,
+    "ameaca": 51,
+    "invasao": 2,
+    "dano": 4,
+    "imagensIntimas": 1,
+    "mausTratos": 1,
+    "psicologica": 1
+   }
+  },
+  "3508108": {
+   "nomeSSP": "BURITAMA",
+   "vitimas": 107,
+   "casos": {
+    "injuria": 24,
+    "ameaca": 67,
+    "medidaProtetiva": 17,
+    "lesao": 48,
+    "perseguicao": 3,
+    "dano": 8,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3508207": {
+   "nomeSSP": "BURITIZAL",
+   "vitimas": 15,
+   "casos": {
+    "ameaca": 10,
+    "medidaProtetiva": 1,
+    "lesao": 5,
+    "perseguicao": 2,
+    "injuria": 2
+   }
+  },
+  "3508306": {
+   "nomeSSP": "CABRALIA PAULISTA",
+   "vitimas": 22,
+   "casos": {
+    "medidaProtetiva": 7,
+    "ameaca": 11,
+    "dano": 1,
+    "mausTratos": 3,
+    "lesao": 6,
+    "injuria": 2,
+    "perseguicao": 2
+   }
+  },
+  "3508405": {
+   "nomeSSP": "CABREUVA",
+   "vitimas": 189,
+   "casos": {
+    "lesao": 60,
+    "injuria": 57,
+    "ameaca": 94,
+    "medidaProtetiva": 23,
+    "invasao": 1,
+    "constrangimento": 4,
+    "psicologica": 6,
+    "perseguicao": 17,
+    "dano": 11,
+    "dignidadeSexual": 1
+   }
+  },
+  "3508504": {
+   "nomeSSP": "CACAPAVA",
+   "vitimas": 298,
+   "casos": {
+    "perseguicao": 43,
+    "lesao": 103,
+    "injuria": 76,
+    "ameaca": 170,
+    "medidaProtetiva": 19,
+    "psicologica": 5,
+    "dano": 10,
+    "invasao": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3508603": {
+   "nomeSSP": "CACHOEIRA PAULISTA",
+   "vitimas": 195,
+   "casos": {
+    "ameaca": 135,
+    "lesao": 54,
+    "injuria": 91,
+    "perseguicao": 8,
+    "dano": 11,
+    "medidaProtetiva": 26,
+    "invasao": 3,
+    "mausTratos": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3508702": {
+   "nomeSSP": "CACONDE",
+   "vitimas": 107,
+   "casos": {
+    "ameaca": 67,
+    "dano": 7,
+    "lesao": 22,
+    "injuria": 37,
+    "perseguicao": 5,
+    "medidaProtetiva": 12,
+    "psicologica": 1
+   }
+  },
+  "3508801": {
+   "nomeSSP": "CAFELANDIA",
+   "vitimas": 84,
+   "casos": {
+    "ameaca": 59,
+    "injuria": 25,
+    "lesao": 26,
+    "medidaProtetiva": 3,
+    "perseguicao": 7,
+    "invasao": 1,
+    "dano": 6
+   }
+  },
+  "3508900": {
+   "nomeSSP": "CAIABU",
+   "vitimas": 16,
+   "casos": {
+    "injuria": 4,
+    "ameaca": 9,
+    "lesao": 5,
+    "psicologica": 1,
+    "medidaProtetiva": 1,
+    "invasao": 1,
+    "dano": 1
+   }
+  },
+  "3509007": {
+   "nomeSSP": "CAIEIRAS",
+   "vitimas": 389,
+   "casos": {
+    "dano": 27,
+    "ameaca": 229,
+    "lesao": 163,
+    "injuria": 135,
+    "psicologica": 7,
+    "medidaProtetiva": 21,
+    "perseguicao": 37,
+    "dignidadeSexual": 2,
+    "imagensIntimas": 1,
+    "invasao": 2
+   }
+  },
+  "3509106": {
+   "nomeSSP": "CAIUA",
+   "vitimas": 17,
+   "casos": {
+    "lesao": 6,
+    "ameaca": 12,
+    "injuria": 9,
+    "medidaProtetiva": 1,
+    "invasao": 1,
+    "perseguicao": 2
+   }
+  },
+  "3509205": {
+   "nomeSSP": "CAJAMAR",
+   "vitimas": 451,
+   "casos": {
+    "lesao": 229,
+    "injuria": 185,
+    "ameaca": 256,
+    "medidaProtetiva": 54,
+    "psicologica": 17,
+    "perseguicao": 50,
+    "dano": 30,
+    "invasao": 2,
+    "dignidadeSexual": 1,
+    "constrangimento": 3
+   }
+  },
+  "3509254": {
+   "nomeSSP": "CAJATI",
+   "vitimas": 180,
+   "casos": {
+    "injuria": 53,
+    "medidaProtetiva": 21,
+    "lesao": 69,
+    "ameaca": 103,
+    "dano": 10,
+    "psicologica": 6,
+    "mausTratos": 4,
+    "dignidadeSexual": 2,
+    "perseguicao": 8,
+    "invasao": 3
+   }
+  },
+  "3509304": {
+   "nomeSSP": "CAJOBI",
+   "vitimas": 56,
+   "casos": {
+    "injuria": 8,
+    "lesao": 20,
+    "dano": 4,
+    "ameaca": 27,
+    "medidaProtetiva": 11,
+    "perseguicao": 2
+   }
+  },
+  "3509403": {
+   "nomeSSP": "CAJURU",
+   "vitimas": 144,
+   "casos": {
+    "ameaca": 83,
+    "medidaProtetiva": 24,
+    "injuria": 32,
+    "lesao": 44,
+    "perseguicao": 18,
+    "dano": 14
+   }
+  },
+  "3509452": {
+   "nomeSSP": "CAMPINA MONTE ALEGRE",
+   "vitimas": 32,
+   "casos": {
+    "ameaca": 22,
+    "injuria": 11,
+    "lesao": 7,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "dano": 2,
+    "dignidadeSexual": 1,
+    "perseguicao": 1
+   }
+  },
+  "3509502": {
+   "nomeSSP": "CAMPINAS",
+   "vitimas": 5240,
+   "casos": {
+    "ameaca": 3040,
+    "lesao": 1901,
+    "injuria": 2228,
+    "perseguicao": 847,
+    "medidaProtetiva": 457,
+    "dano": 221,
+    "invasao": 50,
+    "psicologica": 88,
+    "dignidadeSexual": 14,
+    "mausTratos": 25,
+    "imagensIntimas": 12,
+    "constrangimento": 2
+   }
+  },
+  "3509601": {
+   "nomeSSP": "CAMPO LIMPO PAULISTA",
+   "vitimas": 373,
+   "casos": {
+    "injuria": 130,
+    "psicologica": 35,
+    "perseguicao": 47,
+    "lesao": 134,
+    "ameaca": 195,
+    "dano": 19,
+    "medidaProtetiva": 29,
+    "dignidadeSexual": 2,
+    "invasao": 3,
+    "constrangimento": 1,
+    "mausTratos": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3509700": {
+   "nomeSSP": "CAMPOS DO JORDAO",
+   "vitimas": 159,
+   "casos": {
+    "perseguicao": 30,
+    "lesao": 44,
+    "medidaProtetiva": 30,
+    "ameaca": 67,
+    "injuria": 26,
+    "dano": 7,
+    "psicologica": 4,
+    "invasao": 1
+   }
+  },
+  "3509809": {
+   "nomeSSP": "CAMPOS NOVOS PAULISTA",
+   "vitimas": 19,
+   "casos": {
+    "medidaProtetiva": 2,
+    "lesao": 7,
+    "injuria": 5,
+    "ameaca": 8,
+    "dignidadeSexual": 1,
+    "perseguicao": 1
+   }
+  },
+  "3509908": {
+   "nomeSSP": "CANANEIA",
+   "vitimas": 106,
+   "casos": {
+    "injuria": 32,
+    "dano": 12,
+    "perseguicao": 15,
+    "lesao": 53,
+    "medidaProtetiva": 20,
+    "ameaca": 56,
+    "invasao": 3,
+    "psicologica": 3
+   }
+  },
+  "3509957": {
+   "nomeSSP": "CANAS",
+   "vitimas": 15,
+   "casos": {
+    "lesao": 3,
+    "ameaca": 10,
+    "injuria": 6,
+    "medidaProtetiva": 4,
+    "perseguicao": 3
+   }
+  },
+  "3510005": {
+   "nomeSSP": "CANDIDO MOTA",
+   "vitimas": 186,
+   "casos": {
+    "injuria": 38,
+    "invasao": 8,
+    "ameaca": 100,
+    "lesao": 54,
+    "dano": 12,
+    "medidaProtetiva": 25,
+    "perseguicao": 24,
+    "psicologica": 8
+   }
+  },
+  "3510104": {
+   "nomeSSP": "CANDIDO RODRIGUES",
+   "vitimas": 9,
+   "casos": {
+    "dano": 3,
+    "ameaca": 5,
+    "lesao": 5,
+    "medidaProtetiva": 2,
+    "injuria": 2,
+    "perseguicao": 1
+   }
+  },
+  "3510153": {
+   "nomeSSP": "CANITAR",
+   "vitimas": 43,
+   "casos": {
+    "lesao": 16,
+    "ameaca": 28,
+    "perseguicao": 4,
+    "invasao": 3,
+    "injuria": 9,
+    "dano": 3,
+    "medidaProtetiva": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3510203": {
+   "nomeSSP": "CAPAO BONITO",
+   "vitimas": 215,
+   "casos": {
+    "ameaca": 125,
+    "lesao": 63,
+    "injuria": 41,
+    "perseguicao": 8,
+    "psicologica": 4,
+    "dano": 17,
+    "medidaProtetiva": 26,
+    "imagensIntimas": 1,
+    "invasao": 1,
+    "constrangimento": 1
+   }
+  },
+  "3510302": {
+   "nomeSSP": "CAPELA DO ALTO",
+   "vitimas": 61,
+   "casos": {
+    "lesao": 23,
+    "ameaca": 27,
+    "perseguicao": 17,
+    "injuria": 6,
+    "medidaProtetiva": 6,
+    "psicologica": 1,
+    "dano": 3
+   }
+  },
+  "3510401": {
+   "nomeSSP": "CAPIVARI",
+   "vitimas": 266,
+   "casos": {
+    "lesao": 95,
+    "ameaca": 121,
+    "injuria": 106,
+    "invasao": 13,
+    "medidaProtetiva": 25,
+    "perseguicao": 20,
+    "psicologica": 4,
+    "dano": 15,
+    "mausTratos": 1,
+    "dignidadeSexual": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3510500": {
+   "nomeSSP": "CARAGUATATUBA",
+   "vitimas": 817,
+   "casos": {
+    "injuria": 250,
+    "lesao": 335,
+    "ameaca": 456,
+    "dignidadeSexual": 2,
+    "invasao": 37,
+    "medidaProtetiva": 89,
+    "perseguicao": 140,
+    "dano": 64,
+    "psicologica": 8,
+    "imagensIntimas": 1,
+    "mausTratos": 4
+   }
+  },
+  "3510609": {
+   "nomeSSP": "CARAPICUIBA",
+   "vitimas": 1663,
+   "casos": {
+    "lesao": 557,
+    "ameaca": 1073,
+    "injuria": 1131,
+    "dano": 73,
+    "perseguicao": 237,
+    "medidaProtetiva": 46,
+    "psicologica": 8,
+    "constrangimento": 3,
+    "invasao": 18,
+    "mausTratos": 3,
+    "imagensIntimas": 9
+   }
+  },
+  "3510708": {
+   "nomeSSP": "CARDOSO",
+   "vitimas": 73,
+   "casos": {
+    "lesao": 33,
+    "medidaProtetiva": 8,
+    "ameaca": 46,
+    "injuria": 22,
+    "invasao": 1,
+    "dano": 6,
+    "perseguicao": 3
+   }
+  },
+  "3510807": {
+   "nomeSSP": "CASA BRANCA",
+   "vitimas": 196,
+   "casos": {
+    "ameaca": 104,
+    "injuria": 26,
+    "lesao": 55,
+    "psicologica": 4,
+    "medidaProtetiva": 39,
+    "dano": 10,
+    "perseguicao": 14
+   }
+  },
+  "3510906": {
+   "nomeSSP": "CASSIA DOS COQUEIROS",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 3,
+    "perseguicao": 1,
+    "lesao": 2
+   }
+  },
+  "3511003": {
+   "nomeSSP": "CASTILHO",
+   "vitimas": 119,
+   "casos": {
+    "ameaca": 80,
+    "injuria": 35,
+    "lesao": 34,
+    "invasao": 2,
+    "dano": 14,
+    "medidaProtetiva": 6,
+    "psicologica": 2,
+    "perseguicao": 7
+   }
+  },
+  "3511102": {
+   "nomeSSP": "CATANDUVA",
+   "vitimas": 970,
+   "casos": {
+    "dano": 77,
+    "lesao": 318,
+    "injuria": 428,
+    "ameaca": 614,
+    "psicologica": 39,
+    "perseguicao": 109,
+    "medidaProtetiva": 135,
+    "invasao": 17,
+    "mausTratos": 3,
+    "dignidadeSexual": 6,
+    "imagensIntimas": 4
+   }
+  },
+  "3511201": {
+   "nomeSSP": "CATIGUA",
+   "vitimas": 42,
+   "casos": {
+    "perseguicao": 2,
+    "ameaca": 23,
+    "injuria": 17,
+    "dano": 4,
+    "psicologica": 5,
+    "invasao": 3,
+    "medidaProtetiva": 11,
+    "lesao": 9
+   }
+  },
+  "3511300": {
+   "nomeSSP": "CEDRAL",
+   "vitimas": 72,
+   "casos": {
+    "perseguicao": 8,
+    "lesao": 29,
+    "ameaca": 40,
+    "medidaProtetiva": 10,
+    "injuria": 17,
+    "dano": 7,
+    "constrangimento": 1
+   }
+  },
+  "3511409": {
+   "nomeSSP": "CERQUEIRA CESAR",
+   "vitimas": 156,
+   "casos": {
+    "medidaProtetiva": 21,
+    "lesao": 57,
+    "ameaca": 87,
+    "dano": 11,
+    "perseguicao": 25,
+    "injuria": 38,
+    "invasao": 4,
+    "psicologica": 2,
+    "dignidadeSexual": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3511508": {
+   "nomeSSP": "CERQUILHO",
+   "vitimas": 173,
+   "casos": {
+    "lesao": 72,
+    "ameaca": 67,
+    "psicologica": 9,
+    "injuria": 34,
+    "medidaProtetiva": 24,
+    "perseguicao": 22,
+    "dano": 8
+   }
+  },
+  "3511607": {
+   "nomeSSP": "CESARIO LANGE",
+   "vitimas": 42,
+   "casos": {
+    "ameaca": 23,
+    "injuria": 19,
+    "perseguicao": 10,
+    "lesao": 11,
+    "dano": 3,
+    "psicologica": 1,
+    "medidaProtetiva": 2
+   }
+  },
+  "3511706": {
+   "nomeSSP": "CHARQUEADA",
+   "vitimas": 59,
+   "casos": {
+    "medidaProtetiva": 16,
+    "lesao": 22,
+    "ameaca": 33,
+    "perseguicao": 5,
+    "dano": 3,
+    "injuria": 12,
+    "invasao": 1
+   }
+  },
+  "3557204": {
+   "nomeSSP": "CHAVANTES",
+   "vitimas": 96,
+   "casos": {
+    "dano": 11,
+    "ameaca": 51,
+    "lesao": 32,
+    "injuria": 34,
+    "medidaProtetiva": 15,
+    "invasao": 3,
+    "perseguicao": 4
+   }
+  },
+  "3511904": {
+   "nomeSSP": "CLEMENTINA",
+   "vitimas": 41,
+   "casos": {
+    "lesao": 14,
+    "ameaca": 29,
+    "perseguicao": 6,
+    "dano": 10,
+    "injuria": 8,
+    "psicologica": 2,
+    "medidaProtetiva": 2,
+    "invasao": 2
+   }
+  },
+  "3512001": {
+   "nomeSSP": "COLINA",
+   "vitimas": 60,
+   "casos": {
+    "ameaca": 42,
+    "perseguicao": 5,
+    "lesao": 17,
+    "injuria": 8,
+    "medidaProtetiva": 6,
+    "dano": 2,
+    "invasao": 1
+   }
+  },
+  "3512100": {
+   "nomeSSP": "COLOMBIA",
+   "vitimas": 20,
+   "casos": {
+    "medidaProtetiva": 4,
+    "lesao": 5,
+    "ameaca": 12,
+    "perseguicao": 3,
+    "mausTratos": 1,
+    "injuria": 3,
+    "dano": 1
+   }
+  },
+  "3512209": {
+   "nomeSSP": "CONCHAL",
+   "vitimas": 102,
+   "casos": {
+    "ameaca": 54,
+    "dano": 4,
+    "medidaProtetiva": 12,
+    "injuria": 7,
+    "lesao": 47,
+    "perseguicao": 8
+   }
+  },
+  "3512308": {
+   "nomeSSP": "CONCHAS",
+   "vitimas": 83,
+   "casos": {
+    "injuria": 42,
+    "perseguicao": 10,
+    "ameaca": 54,
+    "lesao": 36,
+    "medidaProtetiva": 6,
+    "constrangimento": 1,
+    "invasao": 1,
+    "dano": 4,
+    "mausTratos": 4,
+    "imagensIntimas": 1
+   }
+  },
+  "3512407": {
+   "nomeSSP": "CORDEIROPOLIS",
+   "vitimas": 130,
+   "casos": {
+    "medidaProtetiva": 17,
+    "ameaca": 85,
+    "lesao": 52,
+    "perseguicao": 3,
+    "injuria": 23,
+    "dano": 5,
+    "psicologica": 1
+   }
+  },
+  "3512506": {
+   "nomeSSP": "COROADOS",
+   "vitimas": 40,
+   "casos": {
+    "ameaca": 24,
+    "lesao": 13,
+    "injuria": 8,
+    "perseguicao": 3,
+    "dano": 3,
+    "invasao": 1,
+    "medidaProtetiva": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3512605": {
+   "nomeSSP": "CORONEL MACEDO",
+   "vitimas": 24,
+   "casos": {
+    "ameaca": 10,
+    "injuria": 5,
+    "lesao": 11,
+    "dano": 1,
+    "invasao": 3,
+    "medidaProtetiva": 5
+   }
+  },
+  "3512704": {
+   "nomeSSP": "CORUMBATAI",
+   "vitimas": 16,
+   "casos": {
+    "lesao": 12,
+    "psicologica": 4,
+    "injuria": 1,
+    "perseguicao": 3,
+    "ameaca": 4,
+    "dano": 3
+   }
+  },
+  "3512803": {
+   "nomeSSP": "COSMOPOLIS",
+   "vitimas": 342,
+   "casos": {
+    "ameaca": 193,
+    "lesao": 133,
+    "injuria": 80,
+    "dano": 28,
+    "invasao": 7,
+    "medidaProtetiva": 43,
+    "perseguicao": 28,
+    "psicologica": 8
+   }
+  },
+  "3512902": {
+   "nomeSSP": "COSMORAMA",
+   "vitimas": 42,
+   "casos": {
+    "injuria": 10,
+    "lesao": 12,
+    "ameaca": 26,
+    "perseguicao": 4,
+    "medidaProtetiva": 5,
+    "dano": 1
+   }
+  },
+  "3513009": {
+   "nomeSSP": "COTIA",
+   "vitimas": 1157,
+   "casos": {
+    "injuria": 527,
+    "lesao": 409,
+    "perseguicao": 165,
+    "ameaca": 645,
+    "dano": 57,
+    "medidaProtetiva": 49,
+    "invasao": 4,
+    "psicologica": 16,
+    "mausTratos": 1,
+    "dignidadeSexual": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3513108": {
+   "nomeSSP": "CRAVINHOS",
+   "vitimas": 197,
+   "casos": {
+    "invasao": 1,
+    "injuria": 59,
+    "lesao": 65,
+    "ameaca": 123,
+    "medidaProtetiva": 28,
+    "dano": 9,
+    "perseguicao": 15,
+    "dignidadeSexual": 3,
+    "mausTratos": 1,
+    "psicologica": 3
+   }
+  },
+  "3513207": {
+   "nomeSSP": "CRISTAIS PAULISTA",
+   "vitimas": 23,
+   "casos": {
+    "constrangimento": 1,
+    "perseguicao": 2,
+    "injuria": 3,
+    "ameaca": 12,
+    "lesao": 7,
+    "medidaProtetiva": 2
+   }
+  },
+  "3513306": {
+   "nomeSSP": "CRUZALIA",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 3,
+    "lesao": 5,
+    "dano": 1
+   }
+  },
+  "3513405": {
+   "nomeSSP": "CRUZEIRO",
+   "vitimas": 538,
+   "casos": {
+    "lesao": 175,
+    "ameaca": 330,
+    "injuria": 271,
+    "imagensIntimas": 1,
+    "mausTratos": 8,
+    "invasao": 9,
+    "dignidadeSexual": 8,
+    "perseguicao": 46,
+    "dano": 45,
+    "psicologica": 6,
+    "medidaProtetiva": 35
+   }
+  },
+  "3513504": {
+   "nomeSSP": "CUBATAO",
+   "vitimas": 346,
+   "casos": {
+    "lesao": 142,
+    "ameaca": 184,
+    "perseguicao": 32,
+    "dano": 16,
+    "injuria": 126,
+    "medidaProtetiva": 26,
+    "psicologica": 14,
+    "invasao": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3513603": {
+   "nomeSSP": "CUNHA",
+   "vitimas": 85,
+   "casos": {
+    "lesao": 26,
+    "ameaca": 63,
+    "injuria": 46,
+    "dano": 7,
+    "medidaProtetiva": 7,
+    "invasao": 1,
+    "perseguicao": 7,
+    "psicologica": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3513702": {
+   "nomeSSP": "DESCALVADO",
+   "vitimas": 178,
+   "casos": {
+    "lesao": 62,
+    "ameaca": 113,
+    "medidaProtetiva": 23,
+    "injuria": 106,
+    "dano": 5,
+    "perseguicao": 2,
+    "imagensIntimas": 1,
+    "mausTratos": 3,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3513801": {
+   "nomeSSP": "DIADEMA",
+   "vitimas": 1447,
+   "casos": {
+    "ameaca": 890,
+    "injuria": 666,
+    "lesao": 495,
+    "perseguicao": 206,
+    "invasao": 18,
+    "medidaProtetiva": 125,
+    "dano": 48,
+    "dignidadeSexual": 5,
+    "psicologica": 11,
+    "constrangimento": 2,
+    "imagensIntimas": 8,
+    "mausTratos": 1
+   }
+  },
+  "3513850": {
+   "nomeSSP": "DIRCE REIS",
+   "vitimas": 10,
+   "casos": {
+    "ameaca": 7,
+    "injuria": 4,
+    "perseguicao": 2,
+    "lesao": 4
+   }
+  },
+  "3513900": {
+   "nomeSSP": "DIVINOLANDIA",
+   "vitimas": 41,
+   "casos": {
+    "perseguicao": 6,
+    "lesao": 10,
+    "ameaca": 19,
+    "injuria": 15,
+    "dano": 2,
+    "medidaProtetiva": 3
+   }
+  },
+  "3514007": {
+   "nomeSSP": "DOBRADA",
+   "vitimas": 17,
+   "casos": {
+    "ameaca": 10,
+    "lesao": 4,
+    "injuria": 1,
+    "perseguicao": 3,
+    "psicologica": 1
+   }
+  },
+  "3514106": {
+   "nomeSSP": "DOIS CORREGOS",
+   "vitimas": 87,
+   "casos": {
+    "ameaca": 56,
+    "dano": 4,
+    "medidaProtetiva": 12,
+    "perseguicao": 9,
+    "lesao": 23,
+    "imagensIntimas": 2,
+    "injuria": 8,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3514205": {
+   "nomeSSP": "DOLCINOPOLIS",
+   "vitimas": 17,
+   "casos": {
+    "ameaca": 11,
+    "lesao": 9,
+    "invasao": 1,
+    "injuria": 3,
+    "dano": 3
+   }
+  },
+  "3514304": {
+   "nomeSSP": "DOURADO",
+   "vitimas": 43,
+   "casos": {
+    "ameaca": 19,
+    "injuria": 6,
+    "perseguicao": 4,
+    "medidaProtetiva": 9,
+    "lesao": 17,
+    "dano": 5
+   }
+  },
+  "3514403": {
+   "nomeSSP": "DRACENA",
+   "vitimas": 254,
+   "casos": {
+    "injuria": 65,
+    "lesao": 72,
+    "ameaca": 122,
+    "medidaProtetiva": 46,
+    "dano": 17,
+    "invasao": 2,
+    "perseguicao": 18,
+    "psicologica": 2,
+    "mausTratos": 1,
+    "constrangimento": 1
+   }
+  },
+  "3514502": {
+   "nomeSSP": "DUARTINA",
+   "vitimas": 66,
+   "casos": {
+    "lesao": 23,
+    "ameaca": 40,
+    "medidaProtetiva": 8,
+    "injuria": 17,
+    "dano": 2,
+    "perseguicao": 4,
+    "mausTratos": 1
+   }
+  },
+  "3514601": {
+   "nomeSSP": "DUMONT",
+   "vitimas": 31,
+   "casos": {
+    "ameaca": 19,
+    "lesao": 6,
+    "injuria": 12,
+    "dano": 1,
+    "medidaProtetiva": 1,
+    "perseguicao": 3
+   }
+  },
+  "3514700": {
+   "nomeSSP": "ECHAPORA",
+   "vitimas": 29,
+   "casos": {
+    "perseguicao": 10,
+    "ameaca": 10,
+    "medidaProtetiva": 7,
+    "lesao": 7,
+    "injuria": 9,
+    "dano": 3,
+    "psicologica": 1
+   }
+  },
+  "3514809": {
+   "nomeSSP": "ELDORADO",
+   "vitimas": 75,
+   "casos": {
+    "ameaca": 28,
+    "perseguicao": 15,
+    "psicologica": 23,
+    "medidaProtetiva": 9,
+    "dano": 7,
+    "lesao": 34,
+    "injuria": 10
+   }
+  },
+  "3514908": {
+   "nomeSSP": "ELIAS FAUSTO",
+   "vitimas": 53,
+   "casos": {
+    "injuria": 14,
+    "lesao": 28,
+    "ameaca": 28,
+    "dano": 5,
+    "perseguicao": 3,
+    "medidaProtetiva": 3
+   }
+  },
+  "3514924": {
+   "nomeSSP": "ELISIARIO",
+   "vitimas": 27,
+   "casos": {
+    "injuria": 15,
+    "lesao": 10,
+    "ameaca": 16,
+    "perseguicao": 3,
+    "medidaProtetiva": 1,
+    "dano": 2,
+    "psicologica": 1
+   }
+  },
+  "3514957": {
+   "nomeSSP": "EMBAUBA",
+   "vitimas": 4,
+   "casos": {
+    "lesao": 2,
+    "medidaProtetiva": 2,
+    "ameaca": 3
+   }
+  },
+  "3515004": {
+   "nomeSSP": "EMBU DAS ARTES",
+   "vitimas": 1215,
+   "casos": {
+    "dano": 54,
+    "lesao": 476,
+    "injuria": 512,
+    "ameaca": 773,
+    "medidaProtetiva": 71,
+    "perseguicao": 110,
+    "psicologica": 14,
+    "constrangimento": 1,
+    "invasao": 23,
+    "mausTratos": 9,
+    "imagensIntimas": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3515103": {
+   "nomeSSP": "EMBU-GUACU",
+   "vitimas": 252,
+   "casos": {
+    "lesao": 86,
+    "ameaca": 153,
+    "medidaProtetiva": 20,
+    "injuria": 110,
+    "perseguicao": 24,
+    "psicologica": 3,
+    "constrangimento": 1,
+    "dano": 12,
+    "invasao": 5,
+    "imagensIntimas": 2
+   }
+  },
+  "3515129": {
+   "nomeSSP": "EMILIANOPOLIS",
+   "vitimas": 16,
+   "casos": {
+    "injuria": 8,
+    "medidaProtetiva": 1,
+    "perseguicao": 1,
+    "lesao": 5,
+    "invasao": 2,
+    "ameaca": 11
+   }
+  },
+  "3515152": {
+   "nomeSSP": "ENGENHEIRO COELHO",
+   "vitimas": 63,
+   "casos": {
+    "psicologica": 15,
+    "ameaca": 31,
+    "perseguicao": 8,
+    "lesao": 22,
+    "medidaProtetiva": 4,
+    "injuria": 12,
+    "dano": 3,
+    "invasao": 1
+   }
+  },
+  "3515194": {
+   "nomeSSP": "ESPIRITO S.DO TURVO",
+   "vitimas": 22,
+   "casos": {
+    "injuria": 8,
+    "ameaca": 9,
+    "lesao": 7,
+    "imagensIntimas": 1,
+    "perseguicao": 1,
+    "medidaProtetiva": 4,
+    "dano": 1,
+    "psicologica": 1
+   }
+  },
+  "3515186": {
+   "nomeSSP": "ESPIRITO STO. PINHAL",
+   "vitimas": 217,
+   "casos": {
+    "ameaca": 116,
+    "medidaProtetiva": 34,
+    "lesao": 73,
+    "dano": 15,
+    "injuria": 62,
+    "perseguicao": 18,
+    "constrangimento": 1,
+    "psicologica": 2
+   }
+  },
+  "3557303": {
+   "nomeSSP": "ESTIVA GERBI",
+   "vitimas": 55,
+   "casos": {
+    "injuria": 11,
+    "psicologica": 2,
+    "ameaca": 24,
+    "lesao": 13,
+    "medidaProtetiva": 9,
+    "perseguicao": 11,
+    "dano": 2
+   }
+  },
+  "3515202": {
+   "nomeSSP": "ESTRELA D OESTE",
+   "vitimas": 33,
+   "casos": {
+    "lesao": 16,
+    "ameaca": 24,
+    "psicologica": 1,
+    "perseguicao": 3,
+    "injuria": 9,
+    "medidaProtetiva": 1,
+    "dano": 2,
+    "invasao": 1
+   }
+  },
+  "3515301": {
+   "nomeSSP": "ESTRELA DO NORTE",
+   "vitimas": 3,
+   "casos": {
+    "injuria": 3,
+    "ameaca": 2
+   }
+  },
+  "3515350": {
+   "nomeSSP": "EUCLIDES DA CUNHA PTA",
+   "vitimas": 43,
+   "casos": {
+    "lesao": 17,
+    "ameaca": 24,
+    "medidaProtetiva": 8,
+    "dano": 3,
+    "perseguicao": 3,
+    "injuria": 3
+   }
+  },
+  "3515400": {
+   "nomeSSP": "FARTURA",
+   "vitimas": 149,
+   "casos": {
+    "psicologica": 12,
+    "medidaProtetiva": 19,
+    "perseguicao": 31,
+    "ameaca": 62,
+    "lesao": 50,
+    "dano": 12,
+    "injuria": 36,
+    "invasao": 9
+   }
+  },
+  "3515608": {
+   "nomeSSP": "FERNANDO PRESTES",
+   "vitimas": 9,
+   "casos": {
+    "dano": 2,
+    "medidaProtetiva": 2,
+    "ameaca": 4,
+    "injuria": 2,
+    "lesao": 3,
+    "perseguicao": 1,
+    "invasao": 1
+   }
+  },
+  "3515509": {
+   "nomeSSP": "FERNANDOPOLIS",
+   "vitimas": 354,
+   "casos": {
+    "medidaProtetiva": 50,
+    "injuria": 139,
+    "perseguicao": 36,
+    "lesao": 133,
+    "ameaca": 199,
+    "dano": 21,
+    "mausTratos": 1,
+    "psicologica": 9,
+    "dignidadeSexual": 3,
+    "invasao": 1
+   }
+  },
+  "3515657": {
+   "nomeSSP": "FERNAO",
+   "vitimas": 9,
+   "casos": {
+    "medidaProtetiva": 4,
+    "ameaca": 7,
+    "dignidadeSexual": 2,
+    "lesao": 1,
+    "injuria": 3
+   }
+  },
+  "3515707": {
+   "nomeSSP": "FERRAZ DE VASCONCELOS",
+   "vitimas": 653,
+   "casos": {
+    "ameaca": 405,
+    "lesao": 243,
+    "injuria": 204,
+    "perseguicao": 82,
+    "dano": 30,
+    "medidaProtetiva": 62,
+    "psicologica": 6,
+    "mausTratos": 7,
+    "dignidadeSexual": 6,
+    "invasao": 7,
+    "imagensIntimas": 2,
+    "constrangimento": 2
+   }
+  },
+  "3515806": {
+   "nomeSSP": "FLORA RICA",
+   "vitimas": 8,
+   "casos": {
+    "injuria": 2,
+    "ameaca": 3,
+    "perseguicao": 1,
+    "lesao": 2,
+    "medidaProtetiva": 4
+   }
+  },
+  "3515905": {
+   "nomeSSP": "FLOREAL",
+   "vitimas": 23,
+   "casos": {
+    "dano": 2,
+    "ameaca": 11,
+    "injuria": 6,
+    "lesao": 6,
+    "perseguicao": 2,
+    "medidaProtetiva": 2
+   }
+  },
+  "3516002": {
+   "nomeSSP": "FLORIDA PAULISTA",
+   "vitimas": 63,
+   "casos": {
+    "dano": 5,
+    "injuria": 16,
+    "lesao": 19,
+    "ameaca": 39,
+    "mausTratos": 2,
+    "medidaProtetiva": 5,
+    "psicologica": 1,
+    "invasao": 2,
+    "perseguicao": 1
+   }
+  },
+  "3516101": {
+   "nomeSSP": "FLORINIA",
+   "vitimas": 17,
+   "casos": {
+    "injuria": 7,
+    "ameaca": 8,
+    "lesao": 11,
+    "medidaProtetiva": 1,
+    "perseguicao": 4
+   }
+  },
+  "3516200": {
+   "nomeSSP": "FRANCA",
+   "vitimas": 1848,
+   "casos": {
+    "lesao": 537,
+    "injuria": 858,
+    "ameaca": 1249,
+    "perseguicao": 246,
+    "medidaProtetiva": 170,
+    "dano": 88,
+    "psicologica": 36,
+    "mausTratos": 12,
+    "imagensIntimas": 5,
+    "dignidadeSexual": 6,
+    "invasao": 4,
+    "constrangimento": 3
+   }
+  },
+  "3516309": {
+   "nomeSSP": "FRANCISCO MORATO",
+   "vitimas": 891,
+   "casos": {
+    "ameaca": 520,
+    "injuria": 210,
+    "perseguicao": 84,
+    "lesao": 468,
+    "dano": 42,
+    "psicologica": 23,
+    "dignidadeSexual": 6,
+    "medidaProtetiva": 54,
+    "invasao": 31,
+    "mausTratos": 1
+   }
+  },
+  "3516408": {
+   "nomeSSP": "FRANCO DA ROCHA",
+   "vitimas": 664,
+   "casos": {
+    "injuria": 163,
+    "lesao": 301,
+    "ameaca": 369,
+    "perseguicao": 86,
+    "medidaProtetiva": 55,
+    "dano": 30,
+    "invasao": 10,
+    "psicologica": 13,
+    "mausTratos": 1,
+    "constrangimento": 2
+   }
+  },
+  "3516507": {
+   "nomeSSP": "GABRIEL MONTEIRO",
+   "vitimas": 19,
+   "casos": {
+    "ameaca": 10,
+    "dano": 3,
+    "perseguicao": 2,
+    "lesao": 5,
+    "medidaProtetiva": 4,
+    "psicologica": 2,
+    "injuria": 1
+   }
+  },
+  "3516606": {
+   "nomeSSP": "GALIA",
+   "vitimas": 36,
+   "casos": {
+    "lesao": 11,
+    "ameaca": 21,
+    "medidaProtetiva": 10,
+    "dano": 2,
+    "injuria": 8,
+    "perseguicao": 4
+   }
+  },
+  "3516705": {
+   "nomeSSP": "GARCA",
+   "vitimas": 312,
+   "casos": {
+    "ameaca": 202,
+    "perseguicao": 62,
+    "lesao": 85,
+    "medidaProtetiva": 40,
+    "injuria": 128,
+    "invasao": 11,
+    "dano": 37,
+    "mausTratos": 3,
+    "imagensIntimas": 1,
+    "psicologica": 11,
+    "constrangimento": 1
+   }
+  },
+  "3516804": {
+   "nomeSSP": "GASTAO VIDIGAL",
+   "vitimas": 15,
+   "casos": {
+    "ameaca": 11,
+    "psicologica": 2,
+    "perseguicao": 2,
+    "lesao": 2,
+    "medidaProtetiva": 1,
+    "dano": 1,
+    "injuria": 3
+   }
+  },
+  "3516853": {
+   "nomeSSP": "GAVIAO PEIXOTO",
+   "vitimas": 26,
+   "casos": {
+    "lesao": 8,
+    "injuria": 10,
+    "perseguicao": 2,
+    "ameaca": 17,
+    "medidaProtetiva": 7,
+    "dano": 1
+   }
+  },
+  "3516903": {
+   "nomeSSP": "GENERAL SALGADO",
+   "vitimas": 35,
+   "casos": {
+    "ameaca": 18,
+    "lesao": 8,
+    "psicologica": 5,
+    "medidaProtetiva": 6,
+    "perseguicao": 2,
+    "dano": 1
+   }
+  },
+  "3517000": {
+   "nomeSSP": "GETULINA",
+   "vitimas": 69,
+   "casos": {
+    "injuria": 14,
+    "medidaProtetiva": 12,
+    "lesao": 18,
+    "ameaca": 43,
+    "perseguicao": 4,
+    "psicologica": 2,
+    "dano": 2
+   }
+  },
+  "3517109": {
+   "nomeSSP": "GLICERIO",
+   "vitimas": 15,
+   "casos": {
+    "medidaProtetiva": 4,
+    "ameaca": 14,
+    "injuria": 3,
+    "lesao": 1
+   }
+  },
+  "3517208": {
+   "nomeSSP": "GUAICARA",
+   "vitimas": 76,
+   "casos": {
+    "medidaProtetiva": 8,
+    "dano": 14,
+    "ameaca": 52,
+    "lesao": 31,
+    "injuria": 39,
+    "invasao": 3,
+    "perseguicao": 5,
+    "psicologica": 1
+   }
+  },
+  "3517307": {
+   "nomeSSP": "GUAIMBE",
+   "vitimas": 45,
+   "casos": {
+    "ameaca": 31,
+    "lesao": 15,
+    "medidaProtetiva": 6,
+    "perseguicao": 3,
+    "dano": 2,
+    "injuria": 3,
+    "constrangimento": 2
+   }
+  },
+  "3517406": {
+   "nomeSSP": "GUAIRA",
+   "vitimas": 188,
+   "casos": {
+    "ameaca": 79,
+    "medidaProtetiva": 30,
+    "mausTratos": 3,
+    "perseguicao": 53,
+    "lesao": 51,
+    "injuria": 23,
+    "dano": 8,
+    "psicologica": 23
+   }
+  },
+  "3517505": {
+   "nomeSSP": "GUAPIACU",
+   "vitimas": 75,
+   "casos": {
+    "injuria": 25,
+    "ameaca": 42,
+    "lesao": 20,
+    "medidaProtetiva": 17,
+    "perseguicao": 8,
+    "psicologica": 2,
+    "dano": 2
+   }
+  },
+  "3517604": {
+   "nomeSSP": "GUAPIARA",
+   "vitimas": 57,
+   "casos": {
+    "ameaca": 39,
+    "dano": 4,
+    "injuria": 16,
+    "lesao": 23,
+    "medidaProtetiva": 6,
+    "mausTratos": 1,
+    "invasao": 1,
+    "perseguicao": 2
+   }
+  },
+  "3517703": {
+   "nomeSSP": "GUARA",
+   "vitimas": 187,
+   "casos": {
+    "injuria": 52,
+    "ameaca": 97,
+    "lesao": 80,
+    "dano": 11,
+    "psicologica": 12,
+    "medidaProtetiva": 36,
+    "perseguicao": 8,
+    "invasao": 3
+   }
+  },
+  "3517802": {
+   "nomeSSP": "GUARACAI",
+   "vitimas": 15,
+   "casos": {
+    "lesao": 6,
+    "medidaProtetiva": 1,
+    "ameaca": 11,
+    "injuria": 6
+   }
+  },
+  "3517901": {
+   "nomeSSP": "GUARACI",
+   "vitimas": 77,
+   "casos": {
+    "ameaca": 35,
+    "injuria": 13,
+    "lesao": 24,
+    "perseguicao": 10,
+    "medidaProtetiva": 11,
+    "dano": 1,
+    "psicologica": 1
+   }
+  },
+  "3518008": {
+   "nomeSSP": "GUARANI D OESTE",
+   "vitimas": 4,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 3,
+    "psicologica": 1,
+    "perseguicao": 1
+   }
+  },
+  "3518107": {
+   "nomeSSP": "GUARANTA",
+   "vitimas": 57,
+   "casos": {
+    "dano": 9,
+    "lesao": 12,
+    "ameaca": 33,
+    "injuria": 11,
+    "medidaProtetiva": 13,
+    "perseguicao": 5,
+    "psicologica": 1
+   }
+  },
+  "3518206": {
+   "nomeSSP": "GUARARAPES",
+   "vitimas": 150,
+   "casos": {
+    "ameaca": 90,
+    "dano": 14,
+    "lesao": 66,
+    "medidaProtetiva": 14,
+    "injuria": 33,
+    "perseguicao": 9,
+    "psicologica": 2,
+    "invasao": 2
+   }
+  },
+  "3518305": {
+   "nomeSSP": "GUARAREMA",
+   "vitimas": 165,
+   "casos": {
+    "lesao": 61,
+    "dano": 12,
+    "perseguicao": 15,
+    "ameaca": 89,
+    "injuria": 47,
+    "medidaProtetiva": 10,
+    "psicologica": 2,
+    "invasao": 2,
+    "dignidadeSexual": 2
+   }
+  },
+  "3518404": {
+   "nomeSSP": "GUARATINGUETA",
+   "vitimas": 560,
+   "casos": {
+    "lesao": 125,
+    "medidaProtetiva": 50,
+    "injuria": 204,
+    "ameaca": 297,
+    "psicologica": 31,
+    "dignidadeSexual": 2,
+    "dano": 30,
+    "invasao": 14,
+    "perseguicao": 48,
+    "mausTratos": 6,
+    "constrangimento": 1
+   }
+  },
+  "3518503": {
+   "nomeSSP": "GUAREI",
+   "vitimas": 60,
+   "casos": {
+    "medidaProtetiva": 13,
+    "ameaca": 37,
+    "lesao": 16,
+    "injuria": 11,
+    "dano": 7,
+    "dignidadeSexual": 2,
+    "invasao": 6,
+    "perseguicao": 7
+   }
+  },
+  "3518602": {
+   "nomeSSP": "GUARIBA",
+   "vitimas": 179,
+   "casos": {
+    "ameaca": 105,
+    "lesao": 67,
+    "perseguicao": 9,
+    "medidaProtetiva": 20,
+    "imagensIntimas": 1,
+    "injuria": 38,
+    "dano": 9,
+    "mausTratos": 1,
+    "invasao": 1
+   }
+  },
+  "3518701": {
+   "nomeSSP": "GUARUJA",
+   "vitimas": 958,
+   "casos": {
+    "lesao": 395,
+    "injuria": 249,
+    "ameaca": 452,
+    "perseguicao": 125,
+    "medidaProtetiva": 90,
+    "psicologica": 40,
+    "dano": 26,
+    "invasao": 6,
+    "imagensIntimas": 1,
+    "mausTratos": 4
+   }
+  },
+  "3518800": {
+   "nomeSSP": "GUARULHOS",
+   "vitimas": 4746,
+   "casos": {
+    "mausTratos": 15,
+    "lesao": 1886,
+    "perseguicao": 851,
+    "ameaca": 2769,
+    "injuria": 1876,
+    "dano": 208,
+    "medidaProtetiva": 170,
+    "invasao": 56,
+    "imagensIntimas": 19,
+    "psicologica": 52,
+    "dignidadeSexual": 17,
+    "constrangimento": 2
+   }
+  },
+  "3518859": {
+   "nomeSSP": "GUATAPARA",
+   "vitimas": 32,
+   "casos": {
+    "lesao": 11,
+    "injuria": 8,
+    "ameaca": 19,
+    "perseguicao": 5,
+    "medidaProtetiva": 2,
+    "psicologica": 2
+   }
+  },
+  "3518909": {
+   "nomeSSP": "GUZOLANDIA",
+   "vitimas": 24,
+   "casos": {
+    "psicologica": 1,
+    "lesao": 2,
+    "ameaca": 14,
+    "perseguicao": 3,
+    "injuria": 1,
+    "medidaProtetiva": 7,
+    "dano": 1
+   }
+  },
+  "3519006": {
+   "nomeSSP": "HERCULANDIA",
+   "vitimas": 20,
+   "casos": {
+    "injuria": 4,
+    "ameaca": 13,
+    "dano": 1,
+    "medidaProtetiva": 3,
+    "lesao": 4
+   }
+  },
+  "3519055": {
+   "nomeSSP": "HOLAMBRA",
+   "vitimas": 26,
+   "casos": {
+    "ameaca": 10,
+    "lesao": 11,
+    "injuria": 7,
+    "psicologica": 1,
+    "medidaProtetiva": 1,
+    "perseguicao": 4
+   }
+  },
+  "3519071": {
+   "nomeSSP": "HORTOLANDIA",
+   "vitimas": 1182,
+   "casos": {
+    "ameaca": 725,
+    "lesao": 377,
+    "medidaProtetiva": 138,
+    "perseguicao": 134,
+    "injuria": 442,
+    "mausTratos": 6,
+    "invasao": 19,
+    "dano": 53,
+    "constrangimento": 3,
+    "imagensIntimas": 3,
+    "dignidadeSexual": 11,
+    "psicologica": 8
+   }
+  },
+  "3519105": {
+   "nomeSSP": "IACANGA",
+   "vitimas": 68,
+   "casos": {
+    "ameaca": 39,
+    "injuria": 15,
+    "lesao": 22,
+    "medidaProtetiva": 15,
+    "dano": 2,
+    "perseguicao": 10,
+    "psicologica": 1
+   }
+  },
+  "3519204": {
+   "nomeSSP": "IACRI",
+   "vitimas": 24,
+   "casos": {
+    "ameaca": 11,
+    "lesao": 10,
+    "injuria": 4,
+    "perseguicao": 3,
+    "psicologica": 1,
+    "dano": 1
+   }
+  },
+  "3519253": {
+   "nomeSSP": "IARAS",
+   "vitimas": 33,
+   "casos": {
+    "ameaca": 19,
+    "perseguicao": 2,
+    "lesao": 16,
+    "injuria": 6,
+    "medidaProtetiva": 8,
+    "dano": 3,
+    "psicologica": 1
+   }
+  },
+  "3519303": {
+   "nomeSSP": "IBATE",
+   "vitimas": 137,
+   "casos": {
+    "ameaca": 81,
+    "injuria": 21,
+    "lesao": 61,
+    "perseguicao": 14,
+    "dano": 7,
+    "medidaProtetiva": 12
+   }
+  },
+  "3519402": {
+   "nomeSSP": "IBIRA",
+   "vitimas": 41,
+   "casos": {
+    "ameaca": 28,
+    "medidaProtetiva": 6,
+    "lesao": 12,
+    "injuria": 12,
+    "perseguicao": 7,
+    "psicologica": 2,
+    "dano": 2
+   }
+  },
+  "3519501": {
+   "nomeSSP": "IBIRAREMA",
+   "vitimas": 43,
+   "casos": {
+    "ameaca": 30,
+    "medidaProtetiva": 7,
+    "lesao": 15,
+    "injuria": 4
+   }
+  },
+  "3519600": {
+   "nomeSSP": "IBITINGA",
+   "vitimas": 466,
+   "casos": {
+    "lesao": 190,
+    "perseguicao": 23,
+    "ameaca": 272,
+    "injuria": 176,
+    "medidaProtetiva": 55,
+    "dano": 28,
+    "mausTratos": 2,
+    "psicologica": 12,
+    "invasao": 5,
+    "dignidadeSexual": 2
+   }
+  },
+  "3519709": {
+   "nomeSSP": "IBIUNA",
+   "vitimas": 395,
+   "casos": {
+    "lesao": 174,
+    "injuria": 118,
+    "ameaca": 237,
+    "medidaProtetiva": 39,
+    "psicologica": 8,
+    "dano": 18,
+    "perseguicao": 18,
+    "invasao": 6,
+    "mausTratos": 3,
+    "dignidadeSexual": 2
+   }
+  },
+  "3519808": {
+   "nomeSSP": "ICEM",
+   "vitimas": 31,
+   "casos": {
+    "lesao": 20,
+    "injuria": 8,
+    "ameaca": 13,
+    "medidaProtetiva": 3,
+    "perseguicao": 2
+   }
+  },
+  "3519907": {
+   "nomeSSP": "IEPE",
+   "vitimas": 27,
+   "casos": {
+    "ameaca": 17,
+    "injuria": 7,
+    "lesao": 5,
+    "medidaProtetiva": 5,
+    "dano": 3,
+    "invasao": 1
+   }
+  },
+  "3520004": {
+   "nomeSSP": "IGARACU DO TIETE",
+   "vitimas": 156,
+   "casos": {
+    "ameaca": 83,
+    "injuria": 43,
+    "medidaProtetiva": 33,
+    "perseguicao": 26,
+    "lesao": 40,
+    "dano": 13,
+    "invasao": 4,
+    "dignidadeSexual": 1
+   }
+  },
+  "3520103": {
+   "nomeSSP": "IGARAPAVA",
+   "vitimas": 174,
+   "casos": {
+    "dano": 19,
+    "medidaProtetiva": 24,
+    "lesao": 54,
+    "ameaca": 109,
+    "injuria": 39,
+    "perseguicao": 13,
+    "invasao": 4,
+    "psicologica": 4
+   }
+  },
+  "3520202": {
+   "nomeSSP": "IGARATA",
+   "vitimas": 40,
+   "casos": {
+    "psicologica": 1,
+    "ameaca": 13,
+    "lesao": 17,
+    "perseguicao": 4,
+    "injuria": 13,
+    "invasao": 1,
+    "medidaProtetiva": 5,
+    "dano": 3
+   }
+  },
+  "3520301": {
+   "nomeSSP": "IGUAPE",
+   "vitimas": 190,
+   "casos": {
+    "invasao": 10,
+    "ameaca": 90,
+    "medidaProtetiva": 25,
+    "injuria": 64,
+    "lesao": 65,
+    "perseguicao": 19,
+    "constrangimento": 2,
+    "dano": 20,
+    "psicologica": 5
+   }
+  },
+  "3520426": {
+   "nomeSSP": "ILHA COMPRIDA",
+   "vitimas": 102,
+   "casos": {
+    "injuria": 42,
+    "lesao": 36,
+    "ameaca": 47,
+    "medidaProtetiva": 12,
+    "psicologica": 2,
+    "perseguicao": 11,
+    "constrangimento": 1,
+    "dano": 3
+   }
+  },
+  "3520442": {
+   "nomeSSP": "ILHA SOLTEIRA",
+   "vitimas": 183,
+   "casos": {
+    "medidaProtetiva": 18,
+    "ameaca": 81,
+    "perseguicao": 34,
+    "injuria": 84,
+    "lesao": 41,
+    "dano": 14,
+    "invasao": 9,
+    "imagensIntimas": 1
+   }
+  },
+  "3520400": {
+   "nomeSSP": "ILHABELA",
+   "vitimas": 268,
+   "casos": {
+    "lesao": 100,
+    "injuria": 55,
+    "ameaca": 123,
+    "medidaProtetiva": 27,
+    "dano": 27,
+    "perseguicao": 47,
+    "psicologica": 11,
+    "imagensIntimas": 3,
+    "invasao": 6
+   }
+  },
+  "3520509": {
+   "nomeSSP": "INDAIATUBA",
+   "vitimas": 1241,
+   "casos": {
+    "lesao": 519,
+    "ameaca": 559,
+    "injuria": 321,
+    "perseguicao": 180,
+    "medidaProtetiva": 136,
+    "dano": 65,
+    "psicologica": 24,
+    "constrangimento": 4,
+    "invasao": 9,
+    "dignidadeSexual": 4,
+    "mausTratos": 2,
+    "imagensIntimas": 2
+   }
+  },
+  "3520608": {
+   "nomeSSP": "INDIANA",
+   "vitimas": 19,
+   "casos": {
+    "ameaca": 11,
+    "imagensIntimas": 1,
+    "lesao": 7,
+    "invasao": 1,
+    "medidaProtetiva": 4,
+    "injuria": 2,
+    "perseguicao": 4
+   }
+  },
+  "3520707": {
+   "nomeSSP": "INDIAPORA",
+   "vitimas": 28,
+   "casos": {
+    "injuria": 9,
+    "ameaca": 16,
+    "lesao": 19,
+    "mausTratos": 1,
+    "dano": 3,
+    "medidaProtetiva": 1
+   }
+  },
+  "3520806": {
+   "nomeSSP": "INUBIA PAULISTA",
+   "vitimas": 9,
+   "casos": {
+    "injuria": 3,
+    "ameaca": 5,
+    "lesao": 2,
+    "invasao": 1,
+    "dano": 2
+   }
+  },
+  "3520905": {
+   "nomeSSP": "IPAUSSU",
+   "vitimas": 58,
+   "casos": {
+    "ameaca": 33,
+    "lesao": 16,
+    "injuria": 11,
+    "medidaProtetiva": 4,
+    "dano": 8,
+    "perseguicao": 6,
+    "invasao": 1
+   }
+  },
+  "3521002": {
+   "nomeSSP": "IPERO",
+   "vitimas": 217,
+   "casos": {
+    "lesao": 77,
+    "injuria": 70,
+    "ameaca": 133,
+    "perseguicao": 36,
+    "psicologica": 12,
+    "dano": 19,
+    "medidaProtetiva": 21,
+    "mausTratos": 3,
+    "invasao": 3
+   }
+  },
+  "3521101": {
+   "nomeSSP": "IPEUNA",
+   "vitimas": 29,
+   "casos": {
+    "ameaca": 16,
+    "injuria": 10,
+    "lesao": 15,
+    "medidaProtetiva": 7,
+    "perseguicao": 4,
+    "constrangimento": 1,
+    "dano": 2
+   }
+  },
+  "3521150": {
+   "nomeSSP": "IPIGUA",
+   "vitimas": 25,
+   "casos": {
+    "ameaca": 16,
+    "perseguicao": 2,
+    "medidaProtetiva": 3,
+    "mausTratos": 2,
+    "lesao": 7,
+    "injuria": 3,
+    "dano": 1
+   }
+  },
+  "3521200": {
+   "nomeSSP": "IPORANGA",
+   "vitimas": 24,
+   "casos": {
+    "medidaProtetiva": 4,
+    "ameaca": 12,
+    "injuria": 6,
+    "lesao": 11,
+    "psicologica": 1,
+    "perseguicao": 3,
+    "dano": 2
+   }
+  },
+  "3521309": {
+   "nomeSSP": "IPUA",
+   "vitimas": 111,
+   "casos": {
+    "lesao": 43,
+    "ameaca": 73,
+    "injuria": 47,
+    "perseguicao": 3,
+    "medidaProtetiva": 13,
+    "dano": 6,
+    "invasao": 2,
+    "imagensIntimas": 1,
+    "psicologica": 1
+   }
+  },
+  "3521408": {
+   "nomeSSP": "IRACEMAPOLIS",
+   "vitimas": 79,
+   "casos": {
+    "ameaca": 44,
+    "lesao": 31,
+    "perseguicao": 13,
+    "injuria": 23,
+    "dano": 10,
+    "medidaProtetiva": 8,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3521507": {
+   "nomeSSP": "IRAPUA",
+   "vitimas": 33,
+   "casos": {
+    "ameaca": 23,
+    "lesao": 5,
+    "injuria": 6,
+    "invasao": 1,
+    "dano": 4,
+    "medidaProtetiva": 1,
+    "perseguicao": 4,
+    "psicologica": 1
+   }
+  },
+  "3521606": {
+   "nomeSSP": "IRAPURU",
+   "vitimas": 38,
+   "casos": {
+    "ameaca": 20,
+    "dano": 5,
+    "medidaProtetiva": 7,
+    "lesao": 12,
+    "injuria": 8,
+    "perseguicao": 2
+   }
+  },
+  "3521705": {
+   "nomeSSP": "ITABERA",
+   "vitimas": 85,
+   "casos": {
+    "lesao": 26,
+    "ameaca": 46,
+    "medidaProtetiva": 12,
+    "dano": 5,
+    "injuria": 28,
+    "perseguicao": 7,
+    "psicologica": 2
+   }
+  },
+  "3521804": {
+   "nomeSSP": "ITAI",
+   "vitimas": 159,
+   "casos": {
+    "lesao": 73,
+    "ameaca": 68,
+    "injuria": 36,
+    "medidaProtetiva": 34,
+    "dano": 17,
+    "mausTratos": 2,
+    "perseguicao": 18
+   }
+  },
+  "3521903": {
+   "nomeSSP": "ITAJOBI",
+   "vitimas": 73,
+   "casos": {
+    "ameaca": 37,
+    "lesao": 29,
+    "injuria": 23,
+    "medidaProtetiva": 4,
+    "dano": 5,
+    "dignidadeSexual": 1,
+    "perseguicao": 3
+   }
+  },
+  "3522000": {
+   "nomeSSP": "ITAJU",
+   "vitimas": 15,
+   "casos": {
+    "injuria": 8,
+    "ameaca": 12,
+    "lesao": 5,
+    "perseguicao": 2,
+    "dano": 1
+   }
+  },
+  "3522109": {
+   "nomeSSP": "ITANHAEM",
+   "vitimas": 636,
+   "casos": {
+    "injuria": 349,
+    "ameaca": 381,
+    "medidaProtetiva": 23,
+    "lesao": 249,
+    "dano": 38,
+    "perseguicao": 33,
+    "psicologica": 3,
+    "dignidadeSexual": 5,
+    "constrangimento": 1,
+    "invasao": 2
+   }
+  },
+  "3522158": {
+   "nomeSSP": "ITAOCA",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 4,
+    "dano": 1,
+    "perseguicao": 1,
+    "lesao": 1
+   }
+  },
+  "3522208": {
+   "nomeSSP": "ITAPECERICA DA SERRA",
+   "vitimas": 737,
+   "casos": {
+    "ameaca": 492,
+    "injuria": 285,
+    "perseguicao": 87,
+    "dano": 24,
+    "lesao": 290,
+    "medidaProtetiva": 41,
+    "mausTratos": 4,
+    "imagensIntimas": 2,
+    "invasao": 6,
+    "psicologica": 3,
+    "dignidadeSexual": 2
+   }
+  },
+  "3522307": {
+   "nomeSSP": "ITAPETININGA",
+   "vitimas": 815,
+   "casos": {
+    "ameaca": 455,
+    "perseguicao": 166,
+    "injuria": 277,
+    "psicologica": 24,
+    "lesao": 261,
+    "dano": 56,
+    "mausTratos": 4,
+    "medidaProtetiva": 87,
+    "invasao": 26
+   }
+  },
+  "3522406": {
+   "nomeSSP": "ITAPEVA",
+   "vitimas": 441,
+   "casos": {
+    "medidaProtetiva": 65,
+    "perseguicao": 55,
+    "lesao": 130,
+    "ameaca": 193,
+    "injuria": 108,
+    "psicologica": 32,
+    "dano": 25,
+    "invasao": 4,
+    "constrangimento": 3,
+    "mausTratos": 3
+   }
+  },
+  "3522505": {
+   "nomeSSP": "ITAPEVI",
+   "vitimas": 1229,
+   "casos": {
+    "injuria": 473,
+    "ameaca": 698,
+    "lesao": 445,
+    "psicologica": 19,
+    "perseguicao": 95,
+    "dignidadeSexual": 4,
+    "medidaProtetiva": 70,
+    "imagensIntimas": 3,
+    "invasao": 11,
+    "dano": 31,
+    "mausTratos": 3
+   }
+  },
+  "3522604": {
+   "nomeSSP": "ITAPIRA",
+   "vitimas": 319,
+   "casos": {
+    "medidaProtetiva": 28,
+    "injuria": 41,
+    "perseguicao": 54,
+    "ameaca": 171,
+    "lesao": 85,
+    "invasao": 14,
+    "dano": 8,
+    "psicologica": 2,
+    "imagensIntimas": 2
+   }
+  },
+  "3522653": {
+   "nomeSSP": "ITAPIRAPUA PAULISTA",
+   "vitimas": 2,
+   "casos": {
+    "lesao": 2,
+    "ameaca": 1
+   }
+  },
+  "3522703": {
+   "nomeSSP": "ITAPOLIS",
+   "vitimas": 161,
+   "casos": {
+    "injuria": 34,
+    "perseguicao": 9,
+    "ameaca": 83,
+    "lesao": 69,
+    "dano": 17,
+    "medidaProtetiva": 17,
+    "mausTratos": 2,
+    "invasao": 2,
+    "constrangimento": 1
+   }
+  },
+  "3522802": {
+   "nomeSSP": "ITAPORANGA",
+   "vitimas": 70,
+   "casos": {
+    "ameaca": 43,
+    "lesao": 28,
+    "psicologica": 4,
+    "injuria": 10,
+    "dignidadeSexual": 3,
+    "perseguicao": 3,
+    "medidaProtetiva": 6
+   }
+  },
+  "3522901": {
+   "nomeSSP": "ITAPUI",
+   "vitimas": 64,
+   "casos": {
+    "ameaca": 34,
+    "lesao": 32,
+    "injuria": 18,
+    "dano": 5,
+    "perseguicao": 2,
+    "medidaProtetiva": 3
+   }
+  },
+  "3523008": {
+   "nomeSSP": "ITAPURA",
+   "vitimas": 27,
+   "casos": {
+    "injuria": 12,
+    "lesao": 7,
+    "psicologica": 3,
+    "ameaca": 20,
+    "perseguicao": 1,
+    "medidaProtetiva": 3,
+    "dano": 3
+   }
+  },
+  "3523107": {
+   "nomeSSP": "ITAQUAQUECETUBA",
+   "vitimas": 1555,
+   "casos": {
+    "medidaProtetiva": 84,
+    "ameaca": 1029,
+    "lesao": 635,
+    "perseguicao": 128,
+    "dano": 80,
+    "injuria": 609,
+    "mausTratos": 9,
+    "psicologica": 7,
+    "imagensIntimas": 4,
+    "invasao": 13,
+    "constrangimento": 3,
+    "dignidadeSexual": 10
+   }
+  },
+  "3523206": {
+   "nomeSSP": "ITARARE",
+   "vitimas": 351,
+   "casos": {
+    "injuria": 67,
+    "lesao": 107,
+    "ameaca": 181,
+    "medidaProtetiva": 65,
+    "perseguicao": 29,
+    "psicologica": 24,
+    "dano": 31,
+    "mausTratos": 3,
+    "constrangimento": 1,
+    "invasao": 2
+   }
+  },
+  "3523305": {
+   "nomeSSP": "ITARIRI",
+   "vitimas": 60,
+   "casos": {
+    "ameaca": 37,
+    "perseguicao": 3,
+    "injuria": 24,
+    "medidaProtetiva": 15,
+    "lesao": 14,
+    "mausTratos": 1
+   }
+  },
+  "3523404": {
+   "nomeSSP": "ITATIBA",
+   "vitimas": 524,
+   "casos": {
+    "injuria": 275,
+    "ameaca": 274,
+    "lesao": 191,
+    "perseguicao": 73,
+    "medidaProtetiva": 42,
+    "invasao": 7,
+    "dano": 29,
+    "mausTratos": 3,
+    "dignidadeSexual": 2,
+    "psicologica": 5,
+    "imagensIntimas": 1
+   }
+  },
+  "3523503": {
+   "nomeSSP": "ITATINGA",
+   "vitimas": 77,
+   "casos": {
+    "ameaca": 36,
+    "dano": 8,
+    "lesao": 35,
+    "medidaProtetiva": 10,
+    "perseguicao": 4,
+    "injuria": 20,
+    "psicologica": 6,
+    "invasao": 1
+   }
+  },
+  "3523602": {
+   "nomeSSP": "ITIRAPINA",
+   "vitimas": 82,
+   "casos": {
+    "ameaca": 39,
+    "medidaProtetiva": 9,
+    "lesao": 42,
+    "perseguicao": 3,
+    "injuria": 8,
+    "dano": 4,
+    "psicologica": 2
+   }
+  },
+  "3523701": {
+   "nomeSSP": "ITIRAPUA",
+   "vitimas": 16,
+   "casos": {
+    "injuria": 6,
+    "ameaca": 13,
+    "medidaProtetiva": 1,
+    "lesao": 5
+   }
+  },
+  "3523800": {
+   "nomeSSP": "ITOBI",
+   "vitimas": 59,
+   "casos": {
+    "ameaca": 48,
+    "perseguicao": 4,
+    "injuria": 5,
+    "medidaProtetiva": 4,
+    "lesao": 30,
+    "dignidadeSexual": 1,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3523909": {
+   "nomeSSP": "ITU",
+   "vitimas": 762,
+   "casos": {
+    "injuria": 304,
+    "dano": 67,
+    "ameaca": 378,
+    "lesao": 213,
+    "psicologica": 107,
+    "medidaProtetiva": 60,
+    "perseguicao": 139,
+    "dignidadeSexual": 4,
+    "invasao": 17,
+    "mausTratos": 2,
+    "constrangimento": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3524006": {
+   "nomeSSP": "ITUPEVA",
+   "vitimas": 333,
+   "casos": {
+    "lesao": 134,
+    "ameaca": 207,
+    "injuria": 81,
+    "dano": 12,
+    "perseguicao": 27,
+    "psicologica": 15,
+    "medidaProtetiva": 23,
+    "dignidadeSexual": 2,
+    "invasao": 1
+   }
+  },
+  "3524105": {
+   "nomeSSP": "ITUVERAVA",
+   "vitimas": 180,
+   "casos": {
+    "injuria": 59,
+    "ameaca": 99,
+    "lesao": 60,
+    "perseguicao": 20,
+    "constrangimento": 1,
+    "dano": 16,
+    "medidaProtetiva": 25,
+    "invasao": 2,
+    "dignidadeSexual": 1,
+    "psicologica": 2
+   }
+  },
+  "3524204": {
+   "nomeSSP": "JABORANDI",
+   "vitimas": 22,
+   "casos": {
+    "injuria": 10,
+    "lesao": 6,
+    "ameaca": 15,
+    "perseguicao": 1,
+    "medidaProtetiva": 3
+   }
+  },
+  "3524303": {
+   "nomeSSP": "JABOTICABAL",
+   "vitimas": 404,
+   "casos": {
+    "lesao": 121,
+    "ameaca": 221,
+    "injuria": 119,
+    "perseguicao": 33,
+    "medidaProtetiva": 33,
+    "dano": 11,
+    "invasao": 2
+   }
+  },
+  "3524402": {
+   "nomeSSP": "JACAREI",
+   "vitimas": 1119,
+   "casos": {
+    "injuria": 474,
+    "lesao": 382,
+    "ameaca": 565,
+    "medidaProtetiva": 87,
+    "perseguicao": 230,
+    "dignidadeSexual": 3,
+    "dano": 63,
+    "mausTratos": 4,
+    "invasao": 10,
+    "psicologica": 8,
+    "constrangimento": 2
+   }
+  },
+  "3524501": {
+   "nomeSSP": "JACI",
+   "vitimas": 37,
+   "casos": {
+    "lesao": 13,
+    "ameaca": 15,
+    "medidaProtetiva": 8,
+    "dano": 6,
+    "injuria": 3,
+    "perseguicao": 7,
+    "psicologica": 4
+   }
+  },
+  "3524600": {
+   "nomeSSP": "JACUPIRANGA",
+   "vitimas": 119,
+   "casos": {
+    "lesao": 37,
+    "injuria": 57,
+    "ameaca": 72,
+    "dano": 8,
+    "perseguicao": 23,
+    "psicologica": 28,
+    "medidaProtetiva": 24,
+    "invasao": 2,
+    "mausTratos": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3524709": {
+   "nomeSSP": "JAGUARIUNA",
+   "vitimas": 285,
+   "casos": {
+    "injuria": 171,
+    "ameaca": 148,
+    "lesao": 64,
+    "perseguicao": 36,
+    "medidaProtetiva": 21,
+    "dano": 12,
+    "imagensIntimas": 2,
+    "psicologica": 4,
+    "invasao": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3524808": {
+   "nomeSSP": "JALES",
+   "vitimas": 405,
+   "casos": {
+    "injuria": 169,
+    "ameaca": 246,
+    "lesao": 152,
+    "dano": 51,
+    "invasao": 10,
+    "medidaProtetiva": 47,
+    "perseguicao": 27,
+    "mausTratos": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3524907": {
+   "nomeSSP": "JAMBEIRO",
+   "vitimas": 12,
+   "casos": {
+    "ameaca": 4,
+    "injuria": 3,
+    "lesao": 9,
+    "perseguicao": 1,
+    "medidaProtetiva": 1,
+    "dignidadeSexual": 2,
+    "psicologica": 1
+   }
+  },
+  "3525003": {
+   "nomeSSP": "JANDIRA",
+   "vitimas": 557,
+   "casos": {
+    "injuria": 213,
+    "ameaca": 314,
+    "lesao": 247,
+    "dano": 20,
+    "perseguicao": 73,
+    "invasao": 9,
+    "medidaProtetiva": 33,
+    "psicologica": 9,
+    "mausTratos": 3,
+    "dignidadeSexual": 1,
+    "imagensIntimas": 2
+   }
+  },
+  "3525102": {
+   "nomeSSP": "JARDINOPOLIS",
+   "vitimas": 235,
+   "casos": {
+    "injuria": 45,
+    "ameaca": 143,
+    "lesao": 80,
+    "medidaProtetiva": 39,
+    "perseguicao": 21,
+    "imagensIntimas": 4,
+    "dano": 14,
+    "invasao": 5,
+    "psicologica": 4,
+    "dignidadeSexual": 1
+   }
+  },
+  "3525201": {
+   "nomeSSP": "JARINU",
+   "vitimas": 105,
+   "casos": {
+    "perseguicao": 13,
+    "ameaca": 50,
+    "lesao": 57,
+    "injuria": 21,
+    "medidaProtetiva": 9,
+    "psicologica": 7,
+    "dano": 3,
+    "imagensIntimas": 2,
+    "invasao": 1
+   }
+  },
+  "3525300": {
+   "nomeSSP": "JAU",
+   "vitimas": 696,
+   "casos": {
+    "lesao": 260,
+    "medidaProtetiva": 85,
+    "perseguicao": 70,
+    "ameaca": 365,
+    "injuria": 202,
+    "dano": 61,
+    "invasao": 7,
+    "psicologica": 17,
+    "dignidadeSexual": 3,
+    "constrangimento": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3525409": {
+   "nomeSSP": "JERIQUARA",
+   "vitimas": 24,
+   "casos": {
+    "dano": 3,
+    "ameaca": 15,
+    "perseguicao": 1,
+    "medidaProtetiva": 2,
+    "lesao": 4,
+    "injuria": 1
+   }
+  },
+  "3525508": {
+   "nomeSSP": "JOANOPOLIS",
+   "vitimas": 85,
+   "casos": {
+    "perseguicao": 17,
+    "ameaca": 21,
+    "injuria": 16,
+    "psicologica": 33,
+    "invasao": 3,
+    "medidaProtetiva": 13,
+    "dano": 4,
+    "dignidadeSexual": 1,
+    "lesao": 5
+   }
+  },
+  "3525607": {
+   "nomeSSP": "JOAO RAMALHO",
+   "vitimas": 29,
+   "casos": {
+    "lesao": 8,
+    "ameaca": 20,
+    "injuria": 3,
+    "invasao": 1,
+    "perseguicao": 1
+   }
+  },
+  "3525706": {
+   "nomeSSP": "JOSE BONIFACIO",
+   "vitimas": 193,
+   "casos": {
+    "lesao": 80,
+    "ameaca": 106,
+    "medidaProtetiva": 25,
+    "injuria": 62,
+    "dano": 21,
+    "perseguicao": 11,
+    "psicologica": 6,
+    "invasao": 5
+   }
+  },
+  "3525805": {
+   "nomeSSP": "JULIO MESQUITA",
+   "vitimas": 21,
+   "casos": {
+    "medidaProtetiva": 2,
+    "ameaca": 12,
+    "lesao": 6,
+    "injuria": 6,
+    "perseguicao": 3,
+    "dano": 5,
+    "mausTratos": 1
+   }
+  },
+  "3525854": {
+   "nomeSSP": "JUMIRIM",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 2,
+    "injuria": 1,
+    "perseguicao": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3525904": {
+   "nomeSSP": "JUNDIAI",
+   "vitimas": 1830,
+   "casos": {
+    "ameaca": 1024,
+    "medidaProtetiva": 164,
+    "perseguicao": 322,
+    "lesao": 560,
+    "injuria": 924,
+    "dignidadeSexual": 9,
+    "invasao": 22,
+    "dano": 83,
+    "imagensIntimas": 5,
+    "psicologica": 9,
+    "mausTratos": 4,
+    "constrangimento": 4
+   }
+  },
+  "3526001": {
+   "nomeSSP": "JUNQUEIROPOLIS",
+   "vitimas": 131,
+   "casos": {
+    "lesao": 39,
+    "injuria": 29,
+    "perseguicao": 12,
+    "medidaProtetiva": 17,
+    "ameaca": 62,
+    "dano": 11,
+    "psicologica": 11,
+    "mausTratos": 2,
+    "invasao": 1
+   }
+  },
+  "3526100": {
+   "nomeSSP": "JUQUIA",
+   "vitimas": 152,
+   "casos": {
+    "lesao": 61,
+    "medidaProtetiva": 33,
+    "mausTratos": 1,
+    "injuria": 23,
+    "ameaca": 50,
+    "perseguicao": 10,
+    "dano": 10,
+    "psicologica": 29,
+    "invasao": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3526209": {
+   "nomeSSP": "JUQUITIBA",
+   "vitimas": 123,
+   "casos": {
+    "ameaca": 60,
+    "psicologica": 11,
+    "perseguicao": 25,
+    "lesao": 53,
+    "injuria": 32,
+    "dano": 7,
+    "medidaProtetiva": 5,
+    "invasao": 1
+   }
+  },
+  "3526308": {
+   "nomeSSP": "LAGOINHA",
+   "vitimas": 18,
+   "casos": {
+    "lesao": 5,
+    "medidaProtetiva": 4,
+    "ameaca": 9,
+    "invasao": 2,
+    "dano": 3,
+    "injuria": 9,
+    "perseguicao": 3
+   }
+  },
+  "3526407": {
+   "nomeSSP": "LARANJAL PAULISTA",
+   "vitimas": 102,
+   "casos": {
+    "injuria": 14,
+    "ameaca": 42,
+    "lesao": 52,
+    "medidaProtetiva": 14,
+    "dano": 10,
+    "perseguicao": 13,
+    "psicologica": 8,
+    "invasao": 2
+   }
+  },
+  "3526506": {
+   "nomeSSP": "LAVINIA",
+   "vitimas": 23,
+   "casos": {
+    "ameaca": 17,
+    "injuria": 8,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "dano": 4,
+    "lesao": 2
+   }
+  },
+  "3526605": {
+   "nomeSSP": "LAVRINHAS",
+   "vitimas": 36,
+   "casos": {
+    "ameaca": 21,
+    "injuria": 16,
+    "lesao": 4,
+    "mausTratos": 1,
+    "perseguicao": 3,
+    "medidaProtetiva": 4,
+    "psicologica": 2
+   }
+  },
+  "3526704": {
+   "nomeSSP": "LEME",
+   "vitimas": 626,
+   "casos": {
+    "ameaca": 358,
+    "medidaProtetiva": 92,
+    "injuria": 119,
+    "lesao": 224,
+    "dano": 42,
+    "perseguicao": 27,
+    "psicologica": 9,
+    "invasao": 12,
+    "mausTratos": 7,
+    "dignidadeSexual": 2
+   }
+  },
+  "3526803": {
+   "nomeSSP": "LENCOIS PAULISTA",
+   "vitimas": 364,
+   "casos": {
+    "ameaca": 231,
+    "medidaProtetiva": 23,
+    "perseguicao": 65,
+    "dano": 25,
+    "invasao": 9,
+    "lesao": 103,
+    "injuria": 192,
+    "psicologica": 24,
+    "dignidadeSexual": 2
+   }
+  },
+  "3526902": {
+   "nomeSSP": "LIMEIRA",
+   "vitimas": 1040,
+   "casos": {
+    "ameaca": 572,
+    "perseguicao": 165,
+    "invasao": 16,
+    "medidaProtetiva": 116,
+    "injuria": 467,
+    "lesao": 319,
+    "psicologica": 62,
+    "dano": 59,
+    "dignidadeSexual": 2,
+    "mausTratos": 1,
+    "constrangimento": 1
+   }
+  },
+  "3527009": {
+   "nomeSSP": "LINDOIA",
+   "vitimas": 49,
+   "casos": {
+    "lesao": 19,
+    "injuria": 24,
+    "dano": 5,
+    "ameaca": 23,
+    "perseguicao": 4,
+    "medidaProtetiva": 2,
+    "psicologica": 2
+   }
+  },
+  "3527108": {
+   "nomeSSP": "LINS",
+   "vitimas": 487,
+   "casos": {
+    "ameaca": 286,
+    "lesao": 173,
+    "dano": 34,
+    "injuria": 157,
+    "perseguicao": 76,
+    "medidaProtetiva": 83,
+    "invasao": 2,
+    "psicologica": 5,
+    "imagensIntimas": 1
+   }
+  },
+  "3527207": {
+   "nomeSSP": "LORENA",
+   "vitimas": 377,
+   "casos": {
+    "injuria": 145,
+    "ameaca": 212,
+    "lesao": 87,
+    "dano": 22,
+    "psicologica": 13,
+    "perseguicao": 38,
+    "medidaProtetiva": 30,
+    "invasao": 10,
+    "constrangimento": 1
+   }
+  },
+  "3527256": {
+   "nomeSSP": "LOURDES",
+   "vitimas": 11,
+   "casos": {
+    "ameaca": 9,
+    "injuria": 4,
+    "lesao": 4
+   }
+  },
+  "3527306": {
+   "nomeSSP": "LOUVEIRA",
+   "vitimas": 194,
+   "casos": {
+    "lesao": 65,
+    "perseguicao": 25,
+    "dano": 15,
+    "ameaca": 106,
+    "injuria": 52,
+    "medidaProtetiva": 12,
+    "psicologica": 2,
+    "invasao": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3527405": {
+   "nomeSSP": "LUCELIA",
+   "vitimas": 112,
+   "casos": {
+    "ameaca": 72,
+    "lesao": 29,
+    "injuria": 32,
+    "psicologica": 2,
+    "perseguicao": 3,
+    "medidaProtetiva": 14,
+    "mausTratos": 2,
+    "dano": 9,
+    "invasao": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3527504": {
+   "nomeSSP": "LUCIANOPOLIS",
+   "vitimas": 3,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 3
+   }
+  },
+  "3527603": {
+   "nomeSSP": "LUIS ANTONIO",
+   "vitimas": 69,
+   "casos": {
+    "ameaca": 35,
+    "lesao": 22,
+    "injuria": 17,
+    "invasao": 1,
+    "medidaProtetiva": 10,
+    "dano": 1,
+    "perseguicao": 5,
+    "psicologica": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3527702": {
+   "nomeSSP": "LUIZIANIA",
+   "vitimas": 6,
+   "casos": {
+    "ameaca": 3,
+    "lesao": 5
+   }
+  },
+  "3527801": {
+   "nomeSSP": "LUPERCIO",
+   "vitimas": 16,
+   "casos": {
+    "lesao": 4,
+    "dano": 2,
+    "perseguicao": 4,
+    "medidaProtetiva": 3,
+    "ameaca": 7,
+    "injuria": 2,
+    "invasao": 1
+   }
+  },
+  "3527900": {
+   "nomeSSP": "LUTECIA",
+   "vitimas": 9,
+   "casos": {
+    "injuria": 2,
+    "ameaca": 5,
+    "lesao": 4,
+    "dano": 1
+   }
+  },
+  "3528007": {
+   "nomeSSP": "MACATUBA",
+   "vitimas": 46,
+   "casos": {
+    "lesao": 22,
+    "ameaca": 21,
+    "injuria": 7,
+    "dano": 2,
+    "invasao": 5,
+    "medidaProtetiva": 5,
+    "perseguicao": 6,
+    "psicologica": 3
+   }
+  },
+  "3528106": {
+   "nomeSSP": "MACAUBAL",
+   "vitimas": 30,
+   "casos": {
+    "perseguicao": 5,
+    "ameaca": 16,
+    "medidaProtetiva": 6,
+    "injuria": 7,
+    "psicologica": 4,
+    "lesao": 8,
+    "dano": 1
+   }
+  },
+  "3528205": {
+   "nomeSSP": "MACEDONIA",
+   "vitimas": 9,
+   "casos": {
+    "ameaca": 6,
+    "lesao": 5,
+    "medidaProtetiva": 1,
+    "injuria": 2,
+    "dano": 1
+   }
+  },
+  "3528304": {
+   "nomeSSP": "MAGDA",
+   "vitimas": 13,
+   "casos": {
+    "lesao": 6,
+    "psicologica": 3,
+    "ameaca": 3,
+    "perseguicao": 1,
+    "injuria": 6,
+    "dano": 1
+   }
+  },
+  "3528403": {
+   "nomeSSP": "MAIRINQUE",
+   "vitimas": 238,
+   "casos": {
+    "ameaca": 122,
+    "injuria": 72,
+    "lesao": 79,
+    "perseguicao": 38,
+    "medidaProtetiva": 16,
+    "dano": 16,
+    "psicologica": 5,
+    "invasao": 1
+   }
+  },
+  "3528502": {
+   "nomeSSP": "MAIRIPORA",
+   "vitimas": 400,
+   "casos": {
+    "injuria": 122,
+    "medidaProtetiva": 28,
+    "lesao": 222,
+    "ameaca": 219,
+    "dano": 30,
+    "perseguicao": 43,
+    "invasao": 9,
+    "psicologica": 5,
+    "mausTratos": 2,
+    "dignidadeSexual": 1,
+    "constrangimento": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3528601": {
+   "nomeSSP": "MANDURI",
+   "vitimas": 30,
+   "casos": {
+    "injuria": 13,
+    "ameaca": 23,
+    "mausTratos": 1,
+    "lesao": 12,
+    "psicologica": 1,
+    "dano": 1,
+    "medidaProtetiva": 4,
+    "perseguicao": 2
+   }
+  },
+  "3528700": {
+   "nomeSSP": "MARABA PAULISTA",
+   "vitimas": 13,
+   "casos": {
+    "ameaca": 8,
+    "injuria": 11,
+    "lesao": 5,
+    "dano": 3,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3528809": {
+   "nomeSSP": "MARACAI",
+   "vitimas": 36,
+   "casos": {
+    "ameaca": 20,
+    "injuria": 4,
+    "medidaProtetiva": 5,
+    "psicologica": 1,
+    "lesao": 8,
+    "perseguicao": 4,
+    "imagensIntimas": 1,
+    "dano": 1
+   }
+  },
+  "3528858": {
+   "nomeSSP": "MARAPOAMA",
+   "vitimas": 29,
+   "casos": {
+    "ameaca": 21,
+    "injuria": 14,
+    "lesao": 8,
+    "psicologica": 2,
+    "medidaProtetiva": 2,
+    "perseguicao": 1
+   }
+  },
+  "3528908": {
+   "nomeSSP": "MARIAPOLIS",
+   "vitimas": 14,
+   "casos": {
+    "dano": 3,
+    "ameaca": 7,
+    "lesao": 4,
+    "psicologica": 1,
+    "injuria": 3
+   }
+  },
+  "3529005": {
+   "nomeSSP": "MARILIA",
+   "vitimas": 1636,
+   "casos": {
+    "ameaca": 1046,
+    "lesao": 560,
+    "injuria": 741,
+    "medidaProtetiva": 230,
+    "dano": 120,
+    "invasao": 23,
+    "perseguicao": 200,
+    "dignidadeSexual": 11,
+    "psicologica": 9,
+    "mausTratos": 4,
+    "constrangimento": 4,
+    "imagensIntimas": 2
+   }
+  },
+  "3529104": {
+   "nomeSSP": "MARINOPOLIS",
+   "vitimas": 3,
+   "casos": {
+    "injuria": 3,
+    "lesao": 2
+   }
+  },
+  "3529203": {
+   "nomeSSP": "MARTINOPOLIS",
+   "vitimas": 138,
+   "casos": {
+    "ameaca": 74,
+    "medidaProtetiva": 23,
+    "lesao": 35,
+    "injuria": 31,
+    "dano": 8,
+    "perseguicao": 9,
+    "invasao": 5,
+    "mausTratos": 1,
+    "psicologica": 1
+   }
+  },
+  "3529302": {
+   "nomeSSP": "MATAO",
+   "vitimas": 274,
+   "casos": {
+    "ameaca": 154,
+    "lesao": 129,
+    "injuria": 19,
+    "perseguicao": 17,
+    "medidaProtetiva": 49,
+    "dano": 13,
+    "invasao": 5,
+    "dignidadeSexual": 2,
+    "psicologica": 7
+   }
+  },
+  "3529401": {
+   "nomeSSP": "MAUA",
+   "vitimas": 1594,
+   "casos": {
+    "ameaca": 1107,
+    "lesao": 637,
+    "perseguicao": 231,
+    "injuria": 414,
+    "constrangimento": 4,
+    "medidaProtetiva": 92,
+    "dano": 116,
+    "invasao": 41,
+    "psicologica": 43,
+    "mausTratos": 12,
+    "imagensIntimas": 5,
+    "dignidadeSexual": 4
+   }
+  },
+  "3529500": {
+   "nomeSSP": "MENDONCA",
+   "vitimas": 42,
+   "casos": {
+    "perseguicao": 1,
+    "injuria": 16,
+    "lesao": 23,
+    "ameaca": 31,
+    "dano": 5,
+    "invasao": 3,
+    "medidaProtetiva": 5,
+    "mausTratos": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3529609": {
+   "nomeSSP": "MERIDIANO",
+   "vitimas": 13,
+   "casos": {
+    "perseguicao": 4,
+    "lesao": 7,
+    "injuria": 6,
+    "ameaca": 3,
+    "psicologica": 1
+   }
+  },
+  "3529658": {
+   "nomeSSP": "MESOPOLIS",
+   "vitimas": 11,
+   "casos": {
+    "ameaca": 8,
+    "lesao": 5,
+    "injuria": 5,
+    "perseguicao": 1,
+    "dano": 1
+   }
+  },
+  "3529708": {
+   "nomeSSP": "MIGUELOPOLIS",
+   "vitimas": 110,
+   "casos": {
+    "ameaca": 65,
+    "lesao": 42,
+    "medidaProtetiva": 18,
+    "psicologica": 2,
+    "injuria": 17,
+    "perseguicao": 6,
+    "dano": 9
+   }
+  },
+  "3529807": {
+   "nomeSSP": "MINEIROS DO TIETE",
+   "vitimas": 44,
+   "casos": {
+    "perseguicao": 3,
+    "ameaca": 20,
+    "dano": 6,
+    "injuria": 11,
+    "lesao": 20,
+    "medidaProtetiva": 7
+   }
+  },
+  "3530003": {
+   "nomeSSP": "MIRA ESTRELA",
+   "vitimas": 17,
+   "casos": {
+    "lesao": 7,
+    "dignidadeSexual": 1,
+    "perseguicao": 2,
+    "ameaca": 9,
+    "injuria": 9
+   }
+  },
+  "3529906": {
+   "nomeSSP": "MIRACATU",
+   "vitimas": 110,
+   "casos": {
+    "lesao": 38,
+    "ameaca": 75,
+    "medidaProtetiva": 17,
+    "injuria": 36,
+    "dano": 17,
+    "perseguicao": 12,
+    "invasao": 2,
+    "dignidadeSexual": 3,
+    "psicologica": 5
+   }
+  },
+  "3530102": {
+   "nomeSSP": "MIRANDOPOLIS",
+   "vitimas": 100,
+   "casos": {
+    "injuria": 33,
+    "ameaca": 65,
+    "lesao": 25,
+    "mausTratos": 1,
+    "dano": 10,
+    "perseguicao": 3,
+    "medidaProtetiva": 9,
+    "psicologica": 1
+   }
+  },
+  "3530201": {
+   "nomeSSP": "MIRANTE PARANAPANEMA",
+   "vitimas": 120,
+   "casos": {
+    "perseguicao": 18,
+    "ameaca": 67,
+    "lesao": 44,
+    "medidaProtetiva": 13,
+    "dignidadeSexual": 2,
+    "dano": 11,
+    "injuria": 37,
+    "invasao": 10
+   }
+  },
+  "3530300": {
+   "nomeSSP": "MIRASSOL",
+   "vitimas": 281,
+   "casos": {
+    "medidaProtetiva": 55,
+    "ameaca": 150,
+    "lesao": 85,
+    "injuria": 51,
+    "perseguicao": 34,
+    "dano": 13,
+    "psicologica": 3,
+    "invasao": 1
+   }
+  },
+  "3530409": {
+   "nomeSSP": "MIRASSOLANDIA",
+   "vitimas": 17,
+   "casos": {
+    "ameaca": 7,
+    "lesao": 5,
+    "medidaProtetiva": 2,
+    "injuria": 5,
+    "perseguicao": 5,
+    "dano": 2
+   }
+  },
+  "3530508": {
+   "nomeSSP": "MOCOCA",
+   "vitimas": 539,
+   "casos": {
+    "medidaProtetiva": 70,
+    "lesao": 164,
+    "ameaca": 311,
+    "invasao": 8,
+    "injuria": 118,
+    "psicologica": 6,
+    "perseguicao": 46,
+    "dano": 30,
+    "dignidadeSexual": 3,
+    "constrangimento": 1
+   }
+  },
+  "3530607": {
+   "nomeSSP": "MOGI DAS CRUZES",
+   "vitimas": 1902,
+   "casos": {
+    "psicologica": 50,
+    "injuria": 827,
+    "ameaca": 1010,
+    "lesao": 712,
+    "perseguicao": 343,
+    "dignidadeSexual": 6,
+    "dano": 115,
+    "imagensIntimas": 7,
+    "medidaProtetiva": 178,
+    "invasao": 19,
+    "mausTratos": 2,
+    "constrangimento": 1
+   }
+  },
+  "3530706": {
+   "nomeSSP": "MOGI GUACU",
+   "vitimas": 520,
+   "casos": {
+    "psicologica": 9,
+    "ameaca": 296,
+    "lesao": 126,
+    "medidaProtetiva": 55,
+    "perseguicao": 83,
+    "dignidadeSexual": 3,
+    "injuria": 111,
+    "invasao": 11,
+    "dano": 26,
+    "mausTratos": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3530805": {
+   "nomeSSP": "MOGI MIRIM",
+   "vitimas": 457,
+   "casos": {
+    "ameaca": 250,
+    "lesao": 131,
+    "medidaProtetiva": 53,
+    "injuria": 175,
+    "perseguicao": 56,
+    "invasao": 11,
+    "dano": 11,
+    "mausTratos": 1,
+    "dignidadeSexual": 3,
+    "psicologica": 3
+   }
+  },
+  "3530904": {
+   "nomeSSP": "MOMBUCA",
+   "vitimas": 18,
+   "casos": {
+    "injuria": 3,
+    "lesao": 10,
+    "ameaca": 9,
+    "dano": 2
+   }
+  },
+  "3531001": {
+   "nomeSSP": "MONCOES",
+   "vitimas": 11,
+   "casos": {
+    "ameaca": 8,
+    "injuria": 1,
+    "psicologica": 2,
+    "perseguicao": 2,
+    "dano": 2,
+    "lesao": 1,
+    "invasao": 1
+   }
+  },
+  "3531100": {
+   "nomeSSP": "MONGAGUA",
+   "vitimas": 387,
+   "casos": {
+    "injuria": 162,
+    "lesao": 198,
+    "perseguicao": 40,
+    "ameaca": 188,
+    "medidaProtetiva": 34,
+    "invasao": 11,
+    "dano": 28,
+    "constrangimento": 4,
+    "imagensIntimas": 2,
+    "psicologica": 5,
+    "dignidadeSexual": 3
+   }
+  },
+  "3531209": {
+   "nomeSSP": "MONTE ALEGRE DO SUL",
+   "vitimas": 34,
+   "casos": {
+    "lesao": 16,
+    "injuria": 17,
+    "medidaProtetiva": 5,
+    "ameaca": 15,
+    "dano": 2,
+    "psicologica": 6
+   }
+  },
+  "3531308": {
+   "nomeSSP": "MONTE ALTO",
+   "vitimas": 168,
+   "casos": {
+    "ameaca": 90,
+    "medidaProtetiva": 15,
+    "perseguicao": 22,
+    "lesao": 49,
+    "injuria": 59,
+    "dano": 12,
+    "invasao": 1
+   }
+  },
+  "3531407": {
+   "nomeSSP": "MONTE APRAZIVEL",
+   "vitimas": 128,
+   "casos": {
+    "injuria": 44,
+    "lesao": 47,
+    "ameaca": 64,
+    "perseguicao": 15,
+    "medidaProtetiva": 22,
+    "constrangimento": 1,
+    "dano": 13,
+    "psicologica": 3,
+    "invasao": 1
+   }
+  },
+  "3531506": {
+   "nomeSSP": "MONTE AZUL PAULISTA",
+   "vitimas": 118,
+   "casos": {
+    "ameaca": 66,
+    "lesao": 43,
+    "injuria": 23,
+    "dano": 8,
+    "medidaProtetiva": 13,
+    "psicologica": 1,
+    "perseguicao": 1,
+    "invasao": 1
+   }
+  },
+  "3531605": {
+   "nomeSSP": "MONTE CASTELO",
+   "vitimas": 24,
+   "casos": {
+    "lesao": 10,
+    "injuria": 8,
+    "medidaProtetiva": 2,
+    "ameaca": 16,
+    "perseguicao": 2,
+    "dano": 2
+   }
+  },
+  "3531803": {
+   "nomeSSP": "MONTE MOR",
+   "vitimas": 288,
+   "casos": {
+    "medidaProtetiva": 29,
+    "ameaca": 162,
+    "lesao": 125,
+    "injuria": 89,
+    "dano": 15,
+    "perseguicao": 18,
+    "invasao": 6,
+    "psicologica": 7,
+    "constrangimento": 1,
+    "mausTratos": 3
+   }
+  },
+  "3531704": {
+   "nomeSSP": "MONTEIRO LOBATO",
+   "vitimas": 24,
+   "casos": {
+    "lesao": 5,
+    "injuria": 12,
+    "ameaca": 12,
+    "medidaProtetiva": 4,
+    "perseguicao": 3,
+    "dano": 2,
+    "invasao": 3,
+    "psicologica": 1,
+    "constrangimento": 1
+   }
+  },
+  "3531902": {
+   "nomeSSP": "MORRO AGUDO",
+   "vitimas": 176,
+   "casos": {
+    "ameaca": 114,
+    "injuria": 91,
+    "lesao": 72,
+    "medidaProtetiva": 30,
+    "dano": 11,
+    "perseguicao": 4,
+    "psicologica": 2
+   }
+  },
+  "3532009": {
+   "nomeSSP": "MORUNGABA",
+   "vitimas": 39,
+   "casos": {
+    "injuria": 9,
+    "lesao": 10,
+    "ameaca": 25,
+    "dano": 2,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "perseguicao": 1
+   }
+  },
+  "3532058": {
+   "nomeSSP": "MOTUCA",
+   "vitimas": 5,
+   "casos": {
+    "injuria": 3,
+    "ameaca": 3,
+    "perseguicao": 2
+   }
+  },
+  "3532108": {
+   "nomeSSP": "MURUTINGA DO SUL",
+   "vitimas": 19,
+   "casos": {
+    "ameaca": 10,
+    "lesao": 14,
+    "injuria": 7,
+    "dano": 1
+   }
+  },
+  "3532157": {
+   "nomeSSP": "NANTES",
+   "vitimas": 9,
+   "casos": {
+    "ameaca": 5,
+    "lesao": 5,
+    "dano": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3532207": {
+   "nomeSSP": "NARANDIBA",
+   "vitimas": 47,
+   "casos": {
+    "lesao": 27,
+    "ameaca": 22,
+    "medidaProtetiva": 2,
+    "dano": 1,
+    "injuria": 1
+   }
+  },
+  "3532306": {
+   "nomeSSP": "NATIVIDADE DA SERRA",
+   "vitimas": 12,
+   "casos": {
+    "ameaca": 3,
+    "injuria": 5,
+    "dano": 1,
+    "psicologica": 1,
+    "perseguicao": 4,
+    "invasao": 1,
+    "lesao": 3,
+    "medidaProtetiva": 1
+   }
+  },
+  "3532405": {
+   "nomeSSP": "NAZARE PAULISTA",
+   "vitimas": 58,
+   "casos": {
+    "perseguicao": 7,
+    "dano": 4,
+    "psicologica": 2,
+    "medidaProtetiva": 4,
+    "ameaca": 36,
+    "injuria": 10,
+    "lesao": 22
+   }
+  },
+  "3532504": {
+   "nomeSSP": "NEVES PAULISTA",
+   "vitimas": 48,
+   "casos": {
+    "medidaProtetiva": 5,
+    "lesao": 25,
+    "ameaca": 23,
+    "dignidadeSexual": 2,
+    "injuria": 13,
+    "perseguicao": 10
+   }
+  },
+  "3532603": {
+   "nomeSSP": "NHANDEARA",
+   "vitimas": 45,
+   "casos": {
+    "ameaca": 27,
+    "invasao": 1,
+    "injuria": 14,
+    "dano": 5,
+    "lesao": 11,
+    "medidaProtetiva": 4,
+    "perseguicao": 8
+   }
+  },
+  "3532702": {
+   "nomeSSP": "NIPOA",
+   "vitimas": 36,
+   "casos": {
+    "lesao": 12,
+    "invasao": 2,
+    "ameaca": 20,
+    "injuria": 5,
+    "medidaProtetiva": 5
+   }
+  },
+  "3532801": {
+   "nomeSSP": "NOVA ALIANCA",
+   "vitimas": 32,
+   "casos": {
+    "lesao": 12,
+    "dano": 3,
+    "injuria": 6,
+    "ameaca": 19,
+    "medidaProtetiva": 3,
+    "perseguicao": 6
+   }
+  },
+  "3532827": {
+   "nomeSSP": "NOVA CAMPINA",
+   "vitimas": 27,
+   "casos": {
+    "perseguicao": 11,
+    "injuria": 2,
+    "ameaca": 7,
+    "lesao": 5,
+    "medidaProtetiva": 4,
+    "psicologica": 1
+   }
+  },
+  "3532843": {
+   "nomeSSP": "NOVA CANAA PAULISTA",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 3,
+    "perseguicao": 1,
+    "lesao": 1,
+    "injuria": 1
+   }
+  },
+  "3532868": {
+   "nomeSSP": "NOVA CASTILHO",
+   "vitimas": 7,
+   "casos": {
+    "medidaProtetiva": 1,
+    "lesao": 3,
+    "perseguicao": 1,
+    "psicologica": 1,
+    "ameaca": 3
+   }
+  },
+  "3532900": {
+   "nomeSSP": "NOVA EUROPA",
+   "vitimas": 42,
+   "casos": {
+    "lesao": 20,
+    "ameaca": 25,
+    "injuria": 8,
+    "dano": 9,
+    "medidaProtetiva": 4,
+    "invasao": 1,
+    "perseguicao": 3,
+    "imagensIntimas": 2
+   }
+  },
+  "3533007": {
+   "nomeSSP": "NOVA GRANADA",
+   "vitimas": 92,
+   "casos": {
+    "ameaca": 64,
+    "injuria": 25,
+    "invasao": 1,
+    "lesao": 30,
+    "dano": 12,
+    "medidaProtetiva": 6,
+    "perseguicao": 9
+   }
+  },
+  "3533106": {
+   "nomeSSP": "NOVA GUATAPORANGA",
+   "vitimas": 14,
+   "casos": {
+    "mausTratos": 2,
+    "lesao": 6,
+    "perseguicao": 1,
+    "injuria": 3,
+    "ameaca": 8
+   }
+  },
+  "3533205": {
+   "nomeSSP": "NOVA INDEPENDENCIA",
+   "vitimas": 19,
+   "casos": {
+    "injuria": 6,
+    "ameaca": 8,
+    "dignidadeSexual": 1,
+    "medidaProtetiva": 1,
+    "perseguicao": 2,
+    "lesao": 6,
+    "dano": 1,
+    "invasao": 1
+   }
+  },
+  "3533304": {
+   "nomeSSP": "NOVA LUZITANIA",
+   "vitimas": 10,
+   "casos": {
+    "dano": 2,
+    "injuria": 4,
+    "ameaca": 8,
+    "medidaProtetiva": 1,
+    "lesao": 1
+   }
+  },
+  "3533403": {
+   "nomeSSP": "NOVA ODESSA",
+   "vitimas": 278,
+   "casos": {
+    "ameaca": 164,
+    "psicologica": 12,
+    "injuria": 63,
+    "dano": 24,
+    "lesao": 109,
+    "invasao": 7,
+    "medidaProtetiva": 32,
+    "perseguicao": 29,
+    "dignidadeSexual": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3533254": {
+   "nomeSSP": "NOVAIS",
+   "vitimas": 30,
+   "casos": {
+    "ameaca": 19,
+    "lesao": 13,
+    "injuria": 8,
+    "medidaProtetiva": 5,
+    "perseguicao": 6,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3533502": {
+   "nomeSSP": "NOVO HORIZONTE",
+   "vitimas": 267,
+   "casos": {
+    "ameaca": 147,
+    "dano": 28,
+    "perseguicao": 36,
+    "lesao": 66,
+    "injuria": 80,
+    "medidaProtetiva": 27,
+    "imagensIntimas": 1,
+    "psicologica": 2,
+    "invasao": 3,
+    "dignidadeSexual": 5,
+    "mausTratos": 3
+   }
+  },
+  "3533601": {
+   "nomeSSP": "NUPORANGA",
+   "vitimas": 64,
+   "casos": {
+    "ameaca": 36,
+    "perseguicao": 14,
+    "invasao": 2,
+    "lesao": 25,
+    "injuria": 18,
+    "dano": 8,
+    "medidaProtetiva": 7,
+    "dignidadeSexual": 1
+   }
+  },
+  "3533700": {
+   "nomeSSP": "OCAUCU",
+   "vitimas": 21,
+   "casos": {
+    "lesao": 8,
+    "dano": 7,
+    "ameaca": 16,
+    "injuria": 13,
+    "medidaProtetiva": 1,
+    "invasao": 1,
+    "perseguicao": 1
+   }
+  },
+  "3533809": {
+   "nomeSSP": "OLEO",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 2,
+    "injuria": 3,
+    "lesao": 4
+   }
+  },
+  "3533908": {
+   "nomeSSP": "OLIMPIA",
+   "vitimas": 363,
+   "casos": {
+    "lesao": 85,
+    "ameaca": 231,
+    "medidaProtetiva": 54,
+    "injuria": 113,
+    "perseguicao": 24,
+    "dano": 17,
+    "psicologica": 1,
+    "invasao": 1,
+    "imagensIntimas": 1,
+    "mausTratos": 1,
+    "dignidadeSexual": 3
+   }
+  },
+  "3534005": {
+   "nomeSSP": "ONDA VERDE",
+   "vitimas": 19,
+   "casos": {
+    "injuria": 6,
+    "ameaca": 10,
+    "lesao": 8,
+    "medidaProtetiva": 2,
+    "dano": 1
+   }
+  },
+  "3534104": {
+   "nomeSSP": "ORIENTE",
+   "vitimas": 30,
+   "casos": {
+    "lesao": 5,
+    "dano": 3,
+    "perseguicao": 7,
+    "injuria": 4,
+    "ameaca": 18,
+    "medidaProtetiva": 4,
+    "invasao": 1,
+    "mausTratos": 1
+   }
+  },
+  "3534203": {
+   "nomeSSP": "ORINDIUVA",
+   "vitimas": 17,
+   "casos": {
+    "perseguicao": 6,
+    "ameaca": 7,
+    "lesao": 9,
+    "injuria": 2,
+    "medidaProtetiva": 1
+   }
+  },
+  "3534302": {
+   "nomeSSP": "ORLANDIA",
+   "vitimas": 154,
+   "casos": {
+    "lesao": 43,
+    "ameaca": 82,
+    "injuria": 46,
+    "medidaProtetiva": 23,
+    "dano": 13,
+    "invasao": 3,
+    "perseguicao": 23,
+    "psicologica": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3534401": {
+   "nomeSSP": "OSASCO",
+   "vitimas": 2955,
+   "casos": {
+    "invasao": 74,
+    "ameaca": 1794,
+    "lesao": 1193,
+    "injuria": 1459,
+    "medidaProtetiva": 158,
+    "perseguicao": 467,
+    "dano": 197,
+    "imagensIntimas": 12,
+    "dignidadeSexual": 15,
+    "psicologica": 27,
+    "mausTratos": 12,
+    "constrangimento": 4
+   }
+  },
+  "3534500": {
+   "nomeSSP": "OSCAR BRESSANE",
+   "vitimas": 13,
+   "casos": {
+    "ameaca": 7,
+    "injuria": 3,
+    "lesao": 4,
+    "dano": 3
+   }
+  },
+  "3534609": {
+   "nomeSSP": "OSVALDO CRUZ",
+   "vitimas": 146,
+   "casos": {
+    "injuria": 23,
+    "perseguicao": 27,
+    "ameaca": 97,
+    "lesao": 48,
+    "medidaProtetiva": 13,
+    "invasao": 2,
+    "dano": 10,
+    "psicologica": 3
+   }
+  },
+  "3534708": {
+   "nomeSSP": "OURINHOS",
+   "vitimas": 862,
+   "casos": {
+    "dano": 107,
+    "injuria": 433,
+    "lesao": 316,
+    "ameaca": 460,
+    "mausTratos": 11,
+    "medidaProtetiva": 93,
+    "perseguicao": 75,
+    "psicologica": 7,
+    "invasao": 8,
+    "constrangimento": 1,
+    "dignidadeSexual": 6,
+    "imagensIntimas": 1
+   }
+  },
+  "3534807": {
+   "nomeSSP": "OURO VERDE",
+   "vitimas": 55,
+   "casos": {
+    "ameaca": 17,
+    "lesao": 16,
+    "injuria": 14,
+    "dano": 5,
+    "medidaProtetiva": 12,
+    "perseguicao": 12
+   }
+  },
+  "3534757": {
+   "nomeSSP": "OUROESTE",
+   "vitimas": 65,
+   "casos": {
+    "dano": 7,
+    "injuria": 29,
+    "ameaca": 39,
+    "lesao": 24,
+    "perseguicao": 10,
+    "medidaProtetiva": 8
+   }
+  },
+  "3534906": {
+   "nomeSSP": "PACAEMBU",
+   "vitimas": 57,
+   "casos": {
+    "ameaca": 31,
+    "lesao": 10,
+    "medidaProtetiva": 8,
+    "injuria": 14,
+    "dano": 6,
+    "psicologica": 2,
+    "perseguicao": 8,
+    "invasao": 1
+   }
+  },
+  "3535002": {
+   "nomeSSP": "PALESTINA",
+   "vitimas": 35,
+   "casos": {
+    "ameaca": 21,
+    "medidaProtetiva": 6,
+    "injuria": 8,
+    "perseguicao": 5,
+    "lesao": 12,
+    "dano": 2,
+    "psicologica": 1
+   }
+  },
+  "3535101": {
+   "nomeSSP": "PALMARES PAULISTA",
+   "vitimas": 81,
+   "casos": {
+    "lesao": 25,
+    "injuria": 24,
+    "perseguicao": 20,
+    "ameaca": 43,
+    "dano": 5,
+    "psicologica": 1,
+    "medidaProtetiva": 3,
+    "invasao": 1
+   }
+  },
+  "3535200": {
+   "nomeSSP": "PALMEIRA D OESTE",
+   "vitimas": 41,
+   "casos": {
+    "ameaca": 31,
+    "lesao": 15,
+    "injuria": 16,
+    "dano": 6,
+    "psicologica": 2,
+    "medidaProtetiva": 2
+   }
+  },
+  "3535309": {
+   "nomeSSP": "PALMITAL",
+   "vitimas": 123,
+   "casos": {
+    "ameaca": 87,
+    "injuria": 34,
+    "lesao": 51,
+    "medidaProtetiva": 14,
+    "dano": 6,
+    "perseguicao": 5
+   }
+  },
+  "3535408": {
+   "nomeSSP": "PANORAMA",
+   "vitimas": 102,
+   "casos": {
+    "ameaca": 57,
+    "injuria": 29,
+    "lesao": 34,
+    "dano": 16,
+    "perseguicao": 13,
+    "medidaProtetiva": 11,
+    "invasao": 4
+   }
+  },
+  "3535507": {
+   "nomeSSP": "PARAGUACU PAULISTA",
+   "vitimas": 300,
+   "casos": {
+    "lesao": 93,
+    "ameaca": 191,
+    "medidaProtetiva": 50,
+    "injuria": 101,
+    "dano": 23,
+    "perseguicao": 20,
+    "dignidadeSexual": 1,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3535606": {
+   "nomeSSP": "PARAIBUNA",
+   "vitimas": 80,
+   "casos": {
+    "injuria": 13,
+    "dano": 5,
+    "lesao": 22,
+    "medidaProtetiva": 14,
+    "ameaca": 39,
+    "dignidadeSexual": 2,
+    "perseguicao": 9,
+    "psicologica": 1,
+    "invasao": 2
+   }
+  },
+  "3535705": {
+   "nomeSSP": "PARAISO",
+   "vitimas": 32,
+   "casos": {
+    "medidaProtetiva": 4,
+    "perseguicao": 2,
+    "ameaca": 22,
+    "lesao": 15,
+    "injuria": 8,
+    "psicologica": 2
+   }
+  },
+  "3535804": {
+   "nomeSSP": "PARANAPANEMA",
+   "vitimas": 80,
+   "casos": {
+    "medidaProtetiva": 8,
+    "lesao": 46,
+    "ameaca": 34,
+    "injuria": 34,
+    "dano": 9,
+    "perseguicao": 11,
+    "psicologica": 6,
+    "dignidadeSexual": 1,
+    "invasao": 1,
+    "constrangimento": 1
+   }
+  },
+  "3535903": {
+   "nomeSSP": "PARANAPUA",
+   "vitimas": 43,
+   "casos": {
+    "medidaProtetiva": 7,
+    "ameaca": 28,
+    "injuria": 15,
+    "lesao": 14,
+    "dano": 7,
+    "invasao": 3,
+    "perseguicao": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3536000": {
+   "nomeSSP": "PARAPUA",
+   "vitimas": 38,
+   "casos": {
+    "injuria": 9,
+    "ameaca": 27,
+    "lesao": 15,
+    "medidaProtetiva": 5,
+    "perseguicao": 3,
+    "dano": 3
+   }
+  },
+  "3536109": {
+   "nomeSSP": "PARDINHO",
+   "vitimas": 37,
+   "casos": {
+    "perseguicao": 3,
+    "ameaca": 23,
+    "injuria": 15,
+    "lesao": 9,
+    "invasao": 1,
+    "medidaProtetiva": 5,
+    "dano": 5
+   }
+  },
+  "3536208": {
+   "nomeSSP": "PARIQUERA-ACU",
+   "vitimas": 124,
+   "casos": {
+    "lesao": 42,
+    "ameaca": 65,
+    "injuria": 35,
+    "perseguicao": 19,
+    "dano": 13,
+    "psicologica": 11,
+    "medidaProtetiva": 17,
+    "mausTratos": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3536257": {
+   "nomeSSP": "PARISI",
+   "vitimas": 15,
+   "casos": {
+    "ameaca": 9,
+    "medidaProtetiva": 4,
+    "perseguicao": 2,
+    "injuria": 3,
+    "lesao": 7,
+    "dano": 1
+   }
+  },
+  "3536307": {
+   "nomeSSP": "PATROCINIO PAULISTA",
+   "vitimas": 82,
+   "casos": {
+    "ameaca": 50,
+    "perseguicao": 7,
+    "lesao": 18,
+    "medidaProtetiva": 16,
+    "injuria": 7,
+    "dano": 4
+   }
+  },
+  "3536406": {
+   "nomeSSP": "PAULICEIA",
+   "vitimas": 39,
+   "casos": {
+    "ameaca": 20,
+    "perseguicao": 1,
+    "medidaProtetiva": 3,
+    "injuria": 9,
+    "lesao": 21,
+    "dano": 1
+   }
+  },
+  "3536505": {
+   "nomeSSP": "PAULINIA",
+   "vitimas": 501,
+   "casos": {
+    "perseguicao": 69,
+    "injuria": 116,
+    "lesao": 225,
+    "ameaca": 229,
+    "dano": 24,
+    "psicologica": 38,
+    "medidaProtetiva": 38,
+    "constrangimento": 3,
+    "invasao": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3536570": {
+   "nomeSSP": "PAULISTANIA",
+   "vitimas": 6,
+   "casos": {
+    "lesao": 2,
+    "ameaca": 5,
+    "mausTratos": 1,
+    "injuria": 2
+   }
+  },
+  "3536604": {
+   "nomeSSP": "PAULO DE FARIA",
+   "vitimas": 31,
+   "casos": {
+    "dano": 5,
+    "injuria": 8,
+    "ameaca": 24,
+    "lesao": 20,
+    "medidaProtetiva": 4,
+    "perseguicao": 3,
+    "invasao": 2
+   }
+  },
+  "3536703": {
+   "nomeSSP": "PEDERNEIRAS",
+   "vitimas": 272,
+   "casos": {
+    "perseguicao": 50,
+    "ameaca": 169,
+    "psicologica": 28,
+    "lesao": 93,
+    "injuria": 127,
+    "medidaProtetiva": 27,
+    "invasao": 13,
+    "dano": 26,
+    "mausTratos": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3536802": {
+   "nomeSSP": "PEDRA BELA",
+   "vitimas": 15,
+   "casos": {
+    "invasao": 1,
+    "lesao": 5,
+    "dano": 3,
+    "ameaca": 7,
+    "injuria": 2,
+    "medidaProtetiva": 1,
+    "perseguicao": 1
+   }
+  },
+  "3536901": {
+   "nomeSSP": "PEDRANOPOLIS",
+   "vitimas": 2,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 1,
+    "perseguicao": 1
+   }
+  },
+  "3537008": {
+   "nomeSSP": "PEDREGULHO",
+   "vitimas": 84,
+   "casos": {
+    "medidaProtetiva": 12,
+    "ameaca": 42,
+    "lesao": 36,
+    "injuria": 18,
+    "dano": 8,
+    "perseguicao": 1,
+    "constrangimento": 4,
+    "psicologica": 1
+   }
+  },
+  "3537107": {
+   "nomeSSP": "PEDREIRA",
+   "vitimas": 203,
+   "casos": {
+    "invasao": 6,
+    "injuria": 70,
+    "ameaca": 118,
+    "perseguicao": 39,
+    "lesao": 63,
+    "medidaProtetiva": 19,
+    "dano": 13,
+    "psicologica": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3537156": {
+   "nomeSSP": "PEDRINHAS PAULISTA",
+   "vitimas": 6,
+   "casos": {
+    "dano": 1,
+    "lesao": 5,
+    "ameaca": 2,
+    "injuria": 1
+   }
+  },
+  "3537206": {
+   "nomeSSP": "PEDRO DE TOLEDO",
+   "vitimas": 34,
+   "casos": {
+    "injuria": 8,
+    "ameaca": 22,
+    "lesao": 13,
+    "perseguicao": 4,
+    "medidaProtetiva": 2,
+    "invasao": 2,
+    "dano": 3
+   }
+  },
+  "3537305": {
+   "nomeSSP": "PENAPOLIS",
+   "vitimas": 276,
+   "casos": {
+    "ameaca": 130,
+    "lesao": 61,
+    "medidaProtetiva": 51,
+    "perseguicao": 45,
+    "invasao": 6,
+    "injuria": 55,
+    "dignidadeSexual": 6,
+    "psicologica": 20,
+    "dano": 22
+   }
+  },
+  "3537404": {
+   "nomeSSP": "PEREIRA BARRETO",
+   "vitimas": 139,
+   "casos": {
+    "lesao": 43,
+    "ameaca": 74,
+    "medidaProtetiva": 19,
+    "injuria": 36,
+    "perseguicao": 10,
+    "dano": 4,
+    "psicologica": 2
+   }
+  },
+  "3537503": {
+   "nomeSSP": "PEREIRAS",
+   "vitimas": 32,
+   "casos": {
+    "ameaca": 15,
+    "lesao": 17,
+    "dano": 5,
+    "injuria": 7,
+    "medidaProtetiva": 3,
+    "perseguicao": 1
+   }
+  },
+  "3537602": {
+   "nomeSSP": "PERUIBE",
+   "vitimas": 573,
+   "casos": {
+    "ameaca": 351,
+    "imagensIntimas": 6,
+    "injuria": 310,
+    "medidaProtetiva": 84,
+    "perseguicao": 31,
+    "lesao": 133,
+    "dano": 19,
+    "invasao": 3,
+    "psicologica": 3,
+    "mausTratos": 3,
+    "constrangimento": 1
+   }
+  },
+  "3537701": {
+   "nomeSSP": "PIACATU",
+   "vitimas": 27,
+   "casos": {
+    "ameaca": 19,
+    "lesao": 9,
+    "injuria": 7,
+    "medidaProtetiva": 5,
+    "perseguicao": 1
+   }
+  },
+  "3537800": {
+   "nomeSSP": "PIEDADE",
+   "vitimas": 183,
+   "casos": {
+    "injuria": 67,
+    "perseguicao": 22,
+    "ameaca": 116,
+    "lesao": 57,
+    "medidaProtetiva": 12,
+    "psicologica": 6,
+    "dano": 13,
+    "invasao": 2
+   }
+  },
+  "3537909": {
+   "nomeSSP": "PILAR DO SUL",
+   "vitimas": 110,
+   "casos": {
+    "lesao": 32,
+    "ameaca": 57,
+    "injuria": 27,
+    "dano": 8,
+    "psicologica": 5,
+    "perseguicao": 24,
+    "medidaProtetiva": 12,
+    "invasao": 1
+   }
+  },
+  "3538006": {
+   "nomeSSP": "PINDAMONHANGABA",
+   "vitimas": 968,
+   "casos": {
+    "injuria": 523,
+    "lesao": 169,
+    "perseguicao": 145,
+    "ameaca": 583,
+    "medidaProtetiva": 106,
+    "psicologica": 87,
+    "dano": 24,
+    "invasao": 9,
+    "mausTratos": 8,
+    "dignidadeSexual": 5,
+    "constrangimento": 1
+   }
+  },
+  "3538105": {
+   "nomeSSP": "PINDORAMA",
+   "vitimas": 104,
+   "casos": {
+    "ameaca": 69,
+    "injuria": 55,
+    "lesao": 35,
+    "perseguicao": 20,
+    "medidaProtetiva": 7,
+    "dano": 8,
+    "psicologica": 2,
+    "mausTratos": 1
+   }
+  },
+  "3538204": {
+   "nomeSSP": "PINHALZINHO",
+   "vitimas": 46,
+   "casos": {
+    "dano": 2,
+    "lesao": 18,
+    "ameaca": 23,
+    "medidaProtetiva": 4,
+    "perseguicao": 2,
+    "injuria": 9
+   }
+  },
+  "3538303": {
+   "nomeSSP": "PIQUEROBI",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 3,
+    "injuria": 3,
+    "lesao": 3,
+    "perseguicao": 1
+   }
+  },
+  "3538501": {
+   "nomeSSP": "PIQUETE",
+   "vitimas": 45,
+   "casos": {
+    "lesao": 12,
+    "ameaca": 32,
+    "injuria": 16,
+    "perseguicao": 4,
+    "dano": 6,
+    "psicologica": 2,
+    "invasao": 2,
+    "medidaProtetiva": 5
+   }
+  },
+  "3538600": {
+   "nomeSSP": "PIRACAIA",
+   "vitimas": 151,
+   "casos": {
+    "perseguicao": 22,
+    "ameaca": 83,
+    "injuria": 45,
+    "lesao": 33,
+    "medidaProtetiva": 20,
+    "dano": 16,
+    "psicologica": 4,
+    "invasao": 5
+   }
+  },
+  "3538709": {
+   "nomeSSP": "PIRACICABA",
+   "vitimas": 817,
+   "casos": {
+    "injuria": 240,
+    "perseguicao": 184,
+    "ameaca": 390,
+    "medidaProtetiva": 168,
+    "lesao": 263,
+    "dano": 28,
+    "psicologica": 14,
+    "invasao": 16,
+    "imagensIntimas": 2,
+    "constrangimento": 2,
+    "mausTratos": 1
+   }
+  },
+  "3538808": {
+   "nomeSSP": "PIRAJU",
+   "vitimas": 158,
+   "casos": {
+    "lesao": 59,
+    "dano": 11,
+    "ameaca": 75,
+    "injuria": 50,
+    "medidaProtetiva": 24,
+    "invasao": 9,
+    "psicologica": 5,
+    "perseguicao": 14,
+    "constrangimento": 1
+   }
+  },
+  "3538907": {
+   "nomeSSP": "PIRAJUI",
+   "vitimas": 120,
+   "casos": {
+    "ameaca": 83,
+    "medidaProtetiva": 15,
+    "injuria": 68,
+    "lesao": 26,
+    "dano": 16,
+    "perseguicao": 28,
+    "constrangimento": 1,
+    "invasao": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3539004": {
+   "nomeSSP": "PIRANGI",
+   "vitimas": 37,
+   "casos": {
+    "ameaca": 31,
+    "injuria": 10,
+    "dano": 1,
+    "invasao": 2,
+    "medidaProtetiva": 2,
+    "lesao": 13,
+    "perseguicao": 2,
+    "psicologica": 1
+   }
+  },
+  "3539103": {
+   "nomeSSP": "PIRAPORA BOM JESUS",
+   "vitimas": 120,
+   "casos": {
+    "dignidadeSexual": 1,
+    "injuria": 43,
+    "ameaca": 69,
+    "lesao": 49,
+    "perseguicao": 17,
+    "dano": 19,
+    "medidaProtetiva": 3,
+    "invasao": 4,
+    "psicologica": 1,
+    "mausTratos": 3
+   }
+  },
+  "3539202": {
+   "nomeSSP": "PIRAPOZINHO",
+   "vitimas": 90,
+   "casos": {
+    "injuria": 34,
+    "ameaca": 53,
+    "lesao": 31,
+    "perseguicao": 10,
+    "medidaProtetiva": 11,
+    "psicologica": 3,
+    "dano": 12
+   }
+  },
+  "3539301": {
+   "nomeSSP": "PIRASSUNUNGA",
+   "vitimas": 379,
+   "casos": {
+    "ameaca": 206,
+    "lesao": 165,
+    "dano": 38,
+    "injuria": 82,
+    "medidaProtetiva": 45,
+    "perseguicao": 32,
+    "invasao": 11,
+    "psicologica": 7,
+    "imagensIntimas": 2
+   }
+  },
+  "3539400": {
+   "nomeSSP": "PIRATININGA",
+   "vitimas": 44,
+   "casos": {
+    "lesao": 16,
+    "injuria": 11,
+    "dano": 1,
+    "medidaProtetiva": 3,
+    "ameaca": 30,
+    "mausTratos": 1,
+    "perseguicao": 3
+   }
+  },
+  "3539509": {
+   "nomeSSP": "PITANGUEIRAS",
+   "vitimas": 147,
+   "casos": {
+    "lesao": 48,
+    "ameaca": 77,
+    "perseguicao": 21,
+    "injuria": 13,
+    "medidaProtetiva": 20,
+    "dignidadeSexual": 2,
+    "dano": 14,
+    "invasao": 2,
+    "psicologica": 1
+   }
+  },
+  "3539608": {
+   "nomeSSP": "PLANALTO",
+   "vitimas": 17,
+   "casos": {
+    "lesao": 10,
+    "ameaca": 14,
+    "injuria": 3,
+    "invasao": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3539707": {
+   "nomeSSP": "PLATINA",
+   "vitimas": 15,
+   "casos": {
+    "lesao": 8,
+    "ameaca": 9,
+    "injuria": 3,
+    "medidaProtetiva": 1
+   }
+  },
+  "3539806": {
+   "nomeSSP": "POA",
+   "vitimas": 461,
+   "casos": {
+    "ameaca": 272,
+    "injuria": 189,
+    "lesao": 172,
+    "perseguicao": 67,
+    "medidaProtetiva": 41,
+    "dano": 27,
+    "imagensIntimas": 2,
+    "invasao": 6,
+    "psicologica": 4,
+    "dignidadeSexual": 1
+   }
+  },
+  "3539905": {
+   "nomeSSP": "POLONI",
+   "vitimas": 13,
+   "casos": {
+    "injuria": 5,
+    "medidaProtetiva": 4,
+    "lesao": 1,
+    "ameaca": 9
+   }
+  },
+  "3540002": {
+   "nomeSSP": "POMPEIA",
+   "vitimas": 55,
+   "casos": {
+    "dano": 8,
+    "lesao": 27,
+    "injuria": 23,
+    "ameaca": 30,
+    "perseguicao": 4,
+    "medidaProtetiva": 6,
+    "psicologica": 4,
+    "mausTratos": 1
+   }
+  },
+  "3540101": {
+   "nomeSSP": "PONGAI",
+   "vitimas": 29,
+   "casos": {
+    "injuria": 15,
+    "lesao": 15,
+    "ameaca": 15,
+    "invasao": 1,
+    "perseguicao": 2,
+    "medidaProtetiva": 1
+   }
+  },
+  "3540200": {
+   "nomeSSP": "PONTAL",
+   "vitimas": 130,
+   "casos": {
+    "ameaca": 100,
+    "lesao": 49,
+    "medidaProtetiva": 9,
+    "injuria": 19,
+    "perseguicao": 9,
+    "dano": 1
+   }
+  },
+  "3540259": {
+   "nomeSSP": "PONTALINDA",
+   "vitimas": 23,
+   "casos": {
+    "ameaca": 15,
+    "injuria": 15,
+    "lesao": 5,
+    "dano": 5,
+    "invasao": 1,
+    "perseguicao": 1
+   }
+  },
+  "3540309": {
+   "nomeSSP": "PONTES GESTAL",
+   "vitimas": 5,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 2,
+    "lesao": 2,
+    "psicologica": 1
+   }
+  },
+  "3540408": {
+   "nomeSSP": "POPULINA",
+   "vitimas": 29,
+   "casos": {
+    "injuria": 6,
+    "ameaca": 15,
+    "medidaProtetiva": 6,
+    "lesao": 8,
+    "mausTratos": 1,
+    "dano": 1,
+    "perseguicao": 2
+   }
+  },
+  "3540507": {
+   "nomeSSP": "PORANGABA",
+   "vitimas": 46,
+   "casos": {
+    "lesao": 18,
+    "injuria": 15,
+    "psicologica": 2,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "ameaca": 24,
+    "perseguicao": 2,
+    "dano": 2
+   }
+  },
+  "3540606": {
+   "nomeSSP": "PORTO FELIZ",
+   "vitimas": 196,
+   "casos": {
+    "ameaca": 115,
+    "lesao": 73,
+    "dano": 10,
+    "perseguicao": 36,
+    "injuria": 33,
+    "medidaProtetiva": 9,
+    "mausTratos": 4,
+    "psicologica": 5,
+    "invasao": 1,
+    "dignidadeSexual": 2
+   }
+  },
+  "3540705": {
+   "nomeSSP": "PORTO FERREIRA",
+   "vitimas": 271,
+   "casos": {
+    "ameaca": 170,
+    "perseguicao": 25,
+    "lesao": 108,
+    "psicologica": 4,
+    "injuria": 35,
+    "medidaProtetiva": 29,
+    "dano": 14
+   }
+  },
+  "3540754": {
+   "nomeSSP": "POTIM",
+   "vitimas": 123,
+   "casos": {
+    "lesao": 47,
+    "ameaca": 75,
+    "invasao": 1,
+    "injuria": 60,
+    "medidaProtetiva": 8,
+    "dano": 16,
+    "perseguicao": 7,
+    "mausTratos": 1
+   }
+  },
+  "3540804": {
+   "nomeSSP": "POTIRENDABA",
+   "vitimas": 104,
+   "casos": {
+    "psicologica": 1,
+    "dano": 10,
+    "perseguicao": 16,
+    "lesao": 43,
+    "injuria": 18,
+    "ameaca": 52,
+    "medidaProtetiva": 17,
+    "invasao": 1
+   }
+  },
+  "3540853": {
+   "nomeSSP": "PRACINHA",
+   "vitimas": 12,
+   "casos": {
+    "ameaca": 6,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "injuria": 4,
+    "lesao": 2,
+    "perseguicao": 2
+   }
+  },
+  "3540903": {
+   "nomeSSP": "PRADOPOLIS",
+   "vitimas": 95,
+   "casos": {
+    "ameaca": 60,
+    "lesao": 51,
+    "medidaProtetiva": 7,
+    "dano": 12,
+    "injuria": 15,
+    "invasao": 6,
+    "perseguicao": 4
+   }
+  },
+  "3541000": {
+   "nomeSSP": "PRAIA GRANDE",
+   "vitimas": 1513,
+   "casos": {
+    "ameaca": 811,
+    "psicologica": 24,
+    "lesao": 618,
+    "perseguicao": 245,
+    "injuria": 700,
+    "medidaProtetiva": 61,
+    "dano": 72,
+    "invasao": 24,
+    "imagensIntimas": 2,
+    "dignidadeSexual": 6,
+    "mausTratos": 5,
+    "constrangimento": 1
+   }
+  },
+  "3541059": {
+   "nomeSSP": "PRATANIA",
+   "vitimas": 15,
+   "casos": {
+    "medidaProtetiva": 4,
+    "ameaca": 7,
+    "injuria": 4,
+    "lesao": 5,
+    "dano": 1
+   }
+  },
+  "3541109": {
+   "nomeSSP": "PRESIDENTE ALVES",
+   "vitimas": 6,
+   "casos": {
+    "ameaca": 3,
+    "lesao": 2,
+    "injuria": 2,
+    "dano": 1
+   }
+  },
+  "3541208": {
+   "nomeSSP": "PRESIDENTE BERNARDES",
+   "vitimas": 36,
+   "casos": {
+    "lesao": 17,
+    "injuria": 12,
+    "ameaca": 20,
+    "medidaProtetiva": 4,
+    "dano": 4,
+    "psicologica": 2,
+    "perseguicao": 2
+   }
+  },
+  "3541307": {
+   "nomeSSP": "PRESIDENTE EPITACIO",
+   "vitimas": 248,
+   "casos": {
+    "ameaca": 137,
+    "injuria": 109,
+    "lesao": 59,
+    "imagensIntimas": 2,
+    "medidaProtetiva": 39,
+    "perseguicao": 18,
+    "psicologica": 6,
+    "mausTratos": 2,
+    "dano": 21,
+    "invasao": 3,
+    "dignidadeSexual": 2
+   }
+  },
+  "3541406": {
+   "nomeSSP": "PRESIDENTE PRUDENTE",
+   "vitimas": 1488,
+   "casos": {
+    "lesao": 587,
+    "ameaca": 818,
+    "injuria": 710,
+    "dano": 134,
+    "medidaProtetiva": 225,
+    "perseguicao": 166,
+    "psicologica": 55,
+    "dignidadeSexual": 7,
+    "imagensIntimas": 5,
+    "mausTratos": 5,
+    "invasao": 15
+   }
+  },
+  "3541505": {
+   "nomeSSP": "PRESIDENTE VENCESLAU",
+   "vitimas": 222,
+   "casos": {
+    "ameaca": 127,
+    "injuria": 92,
+    "perseguicao": 29,
+    "lesao": 76,
+    "medidaProtetiva": 23,
+    "dano": 19,
+    "constrangimento": 5,
+    "psicologica": 13,
+    "invasao": 7,
+    "mausTratos": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3541604": {
+   "nomeSSP": "PROMISSAO",
+   "vitimas": 197,
+   "casos": {
+    "ameaca": 125,
+    "dano": 22,
+    "lesao": 66,
+    "injuria": 50,
+    "medidaProtetiva": 19,
+    "perseguicao": 6,
+    "invasao": 1,
+    "psicologica": 3,
+    "mausTratos": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3541653": {
+   "nomeSSP": "QUADRA",
+   "vitimas": 11,
+   "casos": {
+    "lesao": 3,
+    "ameaca": 7,
+    "injuria": 4,
+    "perseguicao": 1,
+    "medidaProtetiva": 2
+   }
+  },
+  "3541703": {
+   "nomeSSP": "QUATA",
+   "vitimas": 66,
+   "casos": {
+    "ameaca": 41,
+    "injuria": 12,
+    "perseguicao": 8,
+    "lesao": 28,
+    "dano": 6,
+    "medidaProtetiva": 7,
+    "psicologica": 1
+   }
+  },
+  "3541802": {
+   "nomeSSP": "QUEIROZ",
+   "vitimas": 22,
+   "casos": {
+    "ameaca": 16,
+    "medidaProtetiva": 3,
+    "injuria": 3,
+    "lesao": 9,
+    "invasao": 1,
+    "dano": 1
+   }
+  },
+  "3541901": {
+   "nomeSSP": "QUELUZ",
+   "vitimas": 71,
+   "casos": {
+    "lesao": 40,
+    "psicologica": 7,
+    "constrangimento": 1,
+    "perseguicao": 9,
+    "dano": 9,
+    "ameaca": 28,
+    "injuria": 26,
+    "mausTratos": 2,
+    "medidaProtetiva": 10
+   }
+  },
+  "3542008": {
+   "nomeSSP": "QUINTANA",
+   "vitimas": 22,
+   "casos": {
+    "ameaca": 12,
+    "lesao": 9,
+    "injuria": 10,
+    "perseguicao": 2
+   }
+  },
+  "3542107": {
+   "nomeSSP": "RAFARD",
+   "vitimas": 33,
+   "casos": {
+    "injuria": 8,
+    "ameaca": 16,
+    "lesao": 13,
+    "perseguicao": 1,
+    "psicologica": 3,
+    "medidaProtetiva": 3
+   }
+  },
+  "3542206": {
+   "nomeSSP": "RANCHARIA",
+   "vitimas": 51,
+   "casos": {
+    "psicologica": 7,
+    "medidaProtetiva": 15,
+    "dano": 2,
+    "ameaca": 16,
+    "lesao": 15,
+    "injuria": 5,
+    "perseguicao": 7,
+    "invasao": 1
+   }
+  },
+  "3542305": {
+   "nomeSSP": "REDENCAO DA SERRA",
+   "vitimas": 12,
+   "casos": {
+    "perseguicao": 1,
+    "lesao": 3,
+    "ameaca": 7,
+    "medidaProtetiva": 2
+   }
+  },
+  "3542404": {
+   "nomeSSP": "REGENTE FEIJO",
+   "vitimas": 116,
+   "casos": {
+    "injuria": 51,
+    "lesao": 31,
+    "ameaca": 68,
+    "dano": 12,
+    "medidaProtetiva": 15,
+    "invasao": 2,
+    "perseguicao": 4,
+    "psicologica": 2
+   }
+  },
+  "3542503": {
+   "nomeSSP": "REGINOPOLIS",
+   "vitimas": 19,
+   "casos": {
+    "ameaca": 14,
+    "injuria": 11,
+    "lesao": 7,
+    "medidaProtetiva": 1,
+    "perseguicao": 3,
+    "dano": 1
+   }
+  },
+  "3542602": {
+   "nomeSSP": "REGISTRO",
+   "vitimas": 384,
+   "casos": {
+    "perseguicao": 86,
+    "dano": 41,
+    "ameaca": 190,
+    "lesao": 121,
+    "psicologica": 57,
+    "injuria": 182,
+    "medidaProtetiva": 43,
+    "invasao": 3,
+    "mausTratos": 5
+   }
+  },
+  "3542701": {
+   "nomeSSP": "RESTINGA",
+   "vitimas": 32,
+   "casos": {
+    "ameaca": 18,
+    "medidaProtetiva": 5,
+    "injuria": 6,
+    "lesao": 12,
+    "perseguicao": 4,
+    "psicologica": 3
+   }
+  },
+  "3542800": {
+   "nomeSSP": "RIBEIRA",
+   "vitimas": 2,
+   "casos": {
+    "ameaca": 1,
+    "lesao": 1
+   }
+  },
+  "3542909": {
+   "nomeSSP": "RIBEIRAO BONITO",
+   "vitimas": 60,
+   "casos": {
+    "lesao": 20,
+    "medidaProtetiva": 10,
+    "injuria": 8,
+    "ameaca": 33,
+    "perseguicao": 7,
+    "dano": 2
+   }
+  },
+  "3543006": {
+   "nomeSSP": "RIBEIRAO BRANCO",
+   "vitimas": 52,
+   "casos": {
+    "lesao": 13,
+    "medidaProtetiva": 11,
+    "injuria": 8,
+    "perseguicao": 9,
+    "ameaca": 19,
+    "dano": 1,
+    "psicologica": 1
+   }
+  },
+  "3543105": {
+   "nomeSSP": "RIBEIRAO CORRENTE",
+   "vitimas": 20,
+   "casos": {
+    "dano": 2,
+    "lesao": 7,
+    "mausTratos": 1,
+    "ameaca": 14,
+    "medidaProtetiva": 1,
+    "perseguicao": 1,
+    "injuria": 1
+   }
+  },
+  "3543204": {
+   "nomeSSP": "RIBEIRAO DO SUL",
+   "vitimas": 21,
+   "casos": {
+    "ameaca": 17,
+    "lesao": 3,
+    "psicologica": 2,
+    "injuria": 7,
+    "medidaProtetiva": 2,
+    "perseguicao": 1
+   }
+  },
+  "3543253": {
+   "nomeSSP": "RIBEIRAO GRANDE",
+   "vitimas": 15,
+   "casos": {
+    "injuria": 4,
+    "medidaProtetiva": 1,
+    "lesao": 6,
+    "ameaca": 11,
+    "perseguicao": 1,
+    "dano": 1
+   }
+  },
+  "3543238": {
+   "nomeSSP": "RIBEIRAO INDIOS",
+   "vitimas": 4,
+   "casos": {
+    "ameaca": 3,
+    "injuria": 2,
+    "perseguicao": 2
+   }
+  },
+  "3543303": {
+   "nomeSSP": "RIBEIRAO PIRES",
+   "vitimas": 506,
+   "casos": {
+    "ameaca": 302,
+    "perseguicao": 68,
+    "lesao": 214,
+    "injuria": 169,
+    "invasao": 21,
+    "dano": 40,
+    "medidaProtetiva": 55,
+    "psicologica": 5,
+    "mausTratos": 5,
+    "imagensIntimas": 2,
+    "dignidadeSexual": 3
+   }
+  },
+  "3543402": {
+   "nomeSSP": "RIBEIRAO PRETO",
+   "vitimas": 3746,
+   "casos": {
+    "injuria": 1349,
+    "medidaProtetiva": 471,
+    "ameaca": 2184,
+    "lesao": 1167,
+    "perseguicao": 540,
+    "invasao": 34,
+    "dano": 160,
+    "mausTratos": 30,
+    "psicologica": 22,
+    "dignidadeSexual": 21,
+    "constrangimento": 6,
+    "imagensIntimas": 5
+   }
+  },
+  "3543600": {
+   "nomeSSP": "RIFAINA",
+   "vitimas": 23,
+   "casos": {
+    "ameaca": 18,
+    "injuria": 4,
+    "lesao": 8,
+    "medidaProtetiva": 1,
+    "dano": 1
+   }
+  },
+  "3543709": {
+   "nomeSSP": "RINCAO",
+   "vitimas": 48,
+   "casos": {
+    "medidaProtetiva": 10,
+    "injuria": 13,
+    "dano": 2,
+    "ameaca": 27,
+    "lesao": 13,
+    "psicologica": 3,
+    "perseguicao": 3,
+    "dignidadeSexual": 2
+   }
+  },
+  "3543808": {
+   "nomeSSP": "RINOPOLIS",
+   "vitimas": 45,
+   "casos": {
+    "ameaca": 28,
+    "lesao": 17,
+    "injuria": 12,
+    "medidaProtetiva": 9,
+    "dano": 2,
+    "psicologica": 1,
+    "perseguicao": 2
+   }
+  },
+  "3543907": {
+   "nomeSSP": "RIO CLARO",
+   "vitimas": 989,
+   "casos": {
+    "ameaca": 550,
+    "injuria": 198,
+    "lesao": 260,
+    "perseguicao": 147,
+    "dignidadeSexual": 7,
+    "medidaProtetiva": 87,
+    "psicologica": 36,
+    "invasao": 4,
+    "dano": 43,
+    "imagensIntimas": 1
+   }
+  },
+  "3544004": {
+   "nomeSSP": "RIO DAS PEDRAS",
+   "vitimas": 89,
+   "casos": {
+    "ameaca": 49,
+    "lesao": 43,
+    "psicologica": 1,
+    "injuria": 30,
+    "perseguicao": 14,
+    "dano": 10,
+    "medidaProtetiva": 7
+   }
+  },
+  "3544103": {
+   "nomeSSP": "RIO GRANDE DA SERRA",
+   "vitimas": 228,
+   "casos": {
+    "injuria": 85,
+    "ameaca": 126,
+    "lesao": 101,
+    "mausTratos": 5,
+    "perseguicao": 16,
+    "medidaProtetiva": 17,
+    "dano": 18,
+    "invasao": 7,
+    "psicologica": 1,
+    "dignidadeSexual": 4,
+    "imagensIntimas": 1
+   }
+  },
+  "3544202": {
+   "nomeSSP": "RIOLANDIA",
+   "vitimas": 56,
+   "casos": {
+    "injuria": 6,
+    "ameaca": 27,
+    "dano": 3,
+    "lesao": 20,
+    "perseguicao": 11,
+    "medidaProtetiva": 6,
+    "invasao": 1,
+    "mausTratos": 1
+   }
+  },
+  "3543501": {
+   "nomeSSP": "RIVERSUL",
+   "vitimas": 27,
+   "casos": {
+    "invasao": 1,
+    "medidaProtetiva": 4,
+    "ameaca": 18,
+    "perseguicao": 3,
+    "dano": 1,
+    "lesao": 4,
+    "injuria": 3
+   }
+  },
+  "3544251": {
+   "nomeSSP": "ROSANA",
+   "vitimas": 55,
+   "casos": {
+    "perseguicao": 8,
+    "ameaca": 41,
+    "invasao": 3,
+    "lesao": 31,
+    "dano": 7,
+    "injuria": 23,
+    "medidaProtetiva": 2
+   }
+  },
+  "3544301": {
+   "nomeSSP": "ROSEIRA",
+   "vitimas": 80,
+   "casos": {
+    "injuria": 24,
+    "ameaca": 54,
+    "lesao": 17,
+    "perseguicao": 3,
+    "dano": 5,
+    "invasao": 1,
+    "medidaProtetiva": 5
+   }
+  },
+  "3544400": {
+   "nomeSSP": "RUBIACEA",
+   "vitimas": 8,
+   "casos": {
+    "medidaProtetiva": 1,
+    "mausTratos": 1,
+    "perseguicao": 3,
+    "lesao": 2,
+    "ameaca": 2,
+    "dano": 1,
+    "injuria": 1
+   }
+  },
+  "3544509": {
+   "nomeSSP": "RUBINEIA",
+   "vitimas": 25,
+   "casos": {
+    "lesao": 12,
+    "ameaca": 15,
+    "dano": 2,
+    "medidaProtetiva": 4,
+    "injuria": 4,
+    "perseguicao": 1,
+    "psicologica": 1
+   }
+  },
+  "3545605": {
+   "nomeSSP": "S.ADELIA",
+   "vitimas": 112,
+   "casos": {
+    "ameaca": 82,
+    "lesao": 44,
+    "injuria": 43,
+    "dano": 9,
+    "medidaProtetiva": 8,
+    "perseguicao": 7,
+    "dignidadeSexual": 1
+   }
+  },
+  "3545704": {
+   "nomeSSP": "S.ALBERTINA",
+   "vitimas": 41,
+   "casos": {
+    "medidaProtetiva": 6,
+    "lesao": 17,
+    "invasao": 6,
+    "ameaca": 24,
+    "injuria": 9,
+    "dano": 4
+   }
+  },
+  "3547700": {
+   "nomeSSP": "S.ANASTACIO",
+   "vitimas": 79,
+   "casos": {
+    "ameaca": 50,
+    "injuria": 11,
+    "lesao": 27,
+    "medidaProtetiva": 10,
+    "dano": 10,
+    "perseguicao": 2,
+    "psicologica": 1,
+    "invasao": 1
+   }
+  },
+  "3547809": {
+   "nomeSSP": "S.ANDRE",
+   "vitimas": 2288,
+   "casos": {
+    "ameaca": 1260,
+    "injuria": 1011,
+    "lesao": 807,
+    "psicologica": 30,
+    "perseguicao": 467,
+    "medidaProtetiva": 198,
+    "dignidadeSexual": 16,
+    "mausTratos": 8,
+    "invasao": 28,
+    "dano": 94,
+    "imagensIntimas": 7,
+    "constrangimento": 2
+   }
+  },
+  "3547908": {
+   "nomeSSP": "S.ANTONIO DA ALEGRIA",
+   "vitimas": 27,
+   "casos": {
+    "ameaca": 12,
+    "lesao": 17,
+    "injuria": 2,
+    "medidaProtetiva": 5,
+    "dano": 2,
+    "perseguicao": 1
+   }
+  },
+  "3548054": {
+   "nomeSSP": "S.ANTONIO DE ARACANGUA",
+   "vitimas": 31,
+   "casos": {
+    "psicologica": 5,
+    "injuria": 4,
+    "lesao": 10,
+    "ameaca": 19,
+    "medidaProtetiva": 3,
+    "invasao": 1,
+    "perseguicao": 2,
+    "dano": 1
+   }
+  },
+  "3548005": {
+   "nomeSSP": "S.ANTONIO DE POSSE",
+   "vitimas": 127,
+   "casos": {
+    "ameaca": 69,
+    "medidaProtetiva": 14,
+    "perseguicao": 22,
+    "injuria": 49,
+    "lesao": 42,
+    "dano": 9
+   }
+  },
+  "3548104": {
+   "nomeSSP": "S.ANTONIO DO JARDIM",
+   "vitimas": 25,
+   "casos": {
+    "dano": 4,
+    "lesao": 7,
+    "perseguicao": 3,
+    "injuria": 4,
+    "ameaca": 14,
+    "medidaProtetiva": 3
+   }
+  },
+  "3548203": {
+   "nomeSSP": "S.ANTONIO DO PINHAL",
+   "vitimas": 16,
+   "casos": {
+    "perseguicao": 5,
+    "medidaProtetiva": 9,
+    "ameaca": 2,
+    "psicologica": 1
+   }
+  },
+  "3545803": {
+   "nomeSSP": "S.BARBARA D OESTE",
+   "vitimas": 644,
+   "casos": {
+    "ameaca": 316,
+    "injuria": 179,
+    "psicologica": 6,
+    "perseguicao": 92,
+    "lesao": 168,
+    "dano": 21,
+    "medidaProtetiva": 76,
+    "imagensIntimas": 1,
+    "invasao": 3,
+    "mausTratos": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3548609": {
+   "nomeSSP": "S.BENTO DO SAPUCAI",
+   "vitimas": 21,
+   "casos": {
+    "ameaca": 10,
+    "injuria": 8,
+    "mausTratos": 1,
+    "perseguicao": 2,
+    "psicologica": 4,
+    "lesao": 9,
+    "medidaProtetiva": 1,
+    "dano": 2,
+    "invasao": 1
+   }
+  },
+  "3548708": {
+   "nomeSSP": "S.BERNARDO DO CAMPO",
+   "vitimas": 3005,
+   "casos": {
+    "lesao": 1070,
+    "ameaca": 1637,
+    "perseguicao": 538,
+    "injuria": 1155,
+    "mausTratos": 14,
+    "invasao": 34,
+    "psicologica": 73,
+    "dignidadeSexual": 15,
+    "medidaProtetiva": 275,
+    "dano": 139,
+    "imagensIntimas": 9,
+    "constrangimento": 5
+   }
+  },
+  "3546009": {
+   "nomeSSP": "S.BRANCA",
+   "vitimas": 76,
+   "casos": {
+    "ameaca": 48,
+    "injuria": 34,
+    "lesao": 20,
+    "invasao": 2,
+    "medidaProtetiva": 8,
+    "mausTratos": 3,
+    "perseguicao": 6,
+    "dano": 2
+   }
+  },
+  "3548807": {
+   "nomeSSP": "S.CAETANO DO SUL",
+   "vitimas": 449,
+   "casos": {
+    "ameaca": 213,
+    "lesao": 134,
+    "injuria": 227,
+    "perseguicao": 77,
+    "psicologica": 45,
+    "medidaProtetiva": 36,
+    "dano": 22,
+    "invasao": 2,
+    "constrangimento": 2,
+    "dignidadeSexual": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3548906": {
+   "nomeSSP": "S.CARLOS",
+   "vitimas": 495,
+   "casos": {
+    "lesao": 166,
+    "injuria": 146,
+    "ameaca": 211,
+    "perseguicao": 111,
+    "medidaProtetiva": 105,
+    "dano": 29,
+    "psicologica": 4,
+    "invasao": 2,
+    "mausTratos": 1
+   }
+  },
+  "3546108": {
+   "nomeSSP": "S.CLARA D OESTE",
+   "vitimas": 18,
+   "casos": {
+    "ameaca": 10,
+    "injuria": 4,
+    "lesao": 5,
+    "medidaProtetiva": 6,
+    "dano": 2
+   }
+  },
+  "3546207": {
+   "nomeSSP": "S.CRUZ DA CONCEICAO",
+   "vitimas": 14,
+   "casos": {
+    "lesao": 8,
+    "injuria": 5,
+    "ameaca": 7,
+    "perseguicao": 3,
+    "psicologica": 1
+   }
+  },
+  "3546256": {
+   "nomeSSP": "S.CRUZ DA ESPERANCA",
+   "vitimas": 3,
+   "casos": {
+    "ameaca": 2,
+    "lesao": 2
+   }
+  },
+  "3546306": {
+   "nomeSSP": "S.CRUZ DAS PALMEIRAS",
+   "vitimas": 154,
+   "casos": {
+    "ameaca": 85,
+    "psicologica": 10,
+    "medidaProtetiva": 33,
+    "lesao": 43,
+    "dano": 17,
+    "perseguicao": 9,
+    "injuria": 14,
+    "invasao": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3546405": {
+   "nomeSSP": "S.CRUZ DO RIO PARDO",
+   "vitimas": 282,
+   "casos": {
+    "lesao": 122,
+    "dano": 24,
+    "perseguicao": 40,
+    "ameaca": 137,
+    "injuria": 60,
+    "dignidadeSexual": 4,
+    "medidaProtetiva": 23,
+    "mausTratos": 1,
+    "invasao": 6,
+    "psicologica": 1,
+    "constrangimento": 1
+   }
+  },
+  "3546504": {
+   "nomeSSP": "S.ERNESTINA",
+   "vitimas": 12,
+   "casos": {
+    "injuria": 1,
+    "ameaca": 5,
+    "perseguicao": 2,
+    "lesao": 6,
+    "dano": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3548302": {
+   "nomeSSP": "S.EXPEDITO",
+   "vitimas": 22,
+   "casos": {
+    "ameaca": 14,
+    "injuria": 10,
+    "lesao": 15,
+    "perseguicao": 1
+   }
+  },
+  "3546603": {
+   "nomeSSP": "S.FE DO SUL",
+   "vitimas": 240,
+   "casos": {
+    "ameaca": 135,
+    "lesao": 75,
+    "injuria": 78,
+    "medidaProtetiva": 25,
+    "perseguicao": 24,
+    "dano": 23,
+    "invasao": 2
+   }
+  },
+  "3549003": {
+   "nomeSSP": "S.FRANCISCO",
+   "vitimas": 14,
+   "casos": {
+    "injuria": 8,
+    "lesao": 5,
+    "ameaca": 7,
+    "invasao": 1,
+    "medidaProtetiva": 3,
+    "dano": 1
+   }
+  },
+  "3546702": {
+   "nomeSSP": "S.GERTRUDES",
+   "vitimas": 91,
+   "casos": {
+    "injuria": 7,
+    "lesao": 41,
+    "ameaca": 51,
+    "medidaProtetiva": 10,
+    "perseguicao": 7,
+    "dano": 1
+   }
+  },
+  "3546801": {
+   "nomeSSP": "S.ISABEL",
+   "vitimas": 231,
+   "casos": {
+    "injuria": 55,
+    "ameaca": 122,
+    "lesao": 67,
+    "mausTratos": 1,
+    "dano": 16,
+    "perseguicao": 28,
+    "medidaProtetiva": 20,
+    "psicologica": 4,
+    "invasao": 3
+   }
+  },
+  "3549102": {
+   "nomeSSP": "S.JOAO DA BOA VISTA",
+   "vitimas": 689,
+   "casos": {
+    "injuria": 324,
+    "ameaca": 398,
+    "lesao": 208,
+    "perseguicao": 64,
+    "mausTratos": 4,
+    "invasao": 13,
+    "medidaProtetiva": 98,
+    "dano": 62,
+    "dignidadeSexual": 7,
+    "psicologica": 11,
+    "imagensIntimas": 1
+   }
+  },
+  "3549250": {
+   "nomeSSP": "S.JOAO DE IRACEMA",
+   "vitimas": 6,
+   "casos": {
+    "ameaca": 5,
+    "injuria": 1,
+    "lesao": 1,
+    "psicologica": 1
+   }
+  },
+  "3549300": {
+   "nomeSSP": "S.JOAO DO PAU D ALHO",
+   "vitimas": 5,
+   "casos": {
+    "ameaca": 3,
+    "lesao": 2,
+    "injuria": 3
+   }
+  },
+  "3549201": {
+   "nomeSSP": "S.JOAO DUAS PONTES",
+   "vitimas": 8,
+   "casos": {
+    "dano": 2,
+    "ameaca": 5,
+    "lesao": 2,
+    "injuria": 3
+   }
+  },
+  "3549409": {
+   "nomeSSP": "S.JOAQUIM DA BARRA",
+   "vitimas": 323,
+   "casos": {
+    "medidaProtetiva": 41,
+    "injuria": 99,
+    "ameaca": 202,
+    "lesao": 131,
+    "dano": 51,
+    "perseguicao": 18,
+    "constrangimento": 2,
+    "psicologica": 4,
+    "dignidadeSexual": 3,
+    "invasao": 1,
+    "imagensIntimas": 1
+   }
+  },
+  "3549508": {
+   "nomeSSP": "S.JOSE DA BELA VISTA",
+   "vitimas": 27,
+   "casos": {
+    "injuria": 3,
+    "lesao": 13,
+    "ameaca": 13,
+    "dano": 2,
+    "medidaProtetiva": 3,
+    "perseguicao": 1
+   }
+  },
+  "3549607": {
+   "nomeSSP": "S.JOSE DO BARREIRO",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 6,
+    "injuria": 4,
+    "dano": 1,
+    "medidaProtetiva": 1,
+    "lesao": 1
+   }
+  },
+  "3549706": {
+   "nomeSSP": "S.JOSE DO RIO PARDO",
+   "vitimas": 211,
+   "casos": {
+    "ameaca": 108,
+    "medidaProtetiva": 46,
+    "injuria": 32,
+    "lesao": 57,
+    "perseguicao": 21,
+    "dano": 4,
+    "psicologica": 2,
+    "invasao": 3
+   }
+  },
+  "3549805": {
+   "nomeSSP": "S.JOSE DO RIO PRETO",
+   "vitimas": 2576,
+   "casos": {
+    "lesao": 691,
+    "injuria": 929,
+    "ameaca": 1470,
+    "perseguicao": 409,
+    "medidaProtetiva": 245,
+    "psicologica": 44,
+    "dano": 101,
+    "invasao": 11,
+    "mausTratos": 13,
+    "dignidadeSexual": 4,
+    "imagensIntimas": 2
+   }
+  },
+  "3549904": {
+   "nomeSSP": "S.JOSE DOS CAMPOS",
+   "vitimas": 2969,
+   "casos": {
+    "injuria": 1317,
+    "ameaca": 1625,
+    "dano": 123,
+    "medidaProtetiva": 363,
+    "psicologica": 52,
+    "lesao": 831,
+    "perseguicao": 470,
+    "invasao": 59,
+    "mausTratos": 23,
+    "imagensIntimas": 9,
+    "dignidadeSexual": 15
+   }
+  },
+  "3549953": {
+   "nomeSSP": "S.LOURENCO DA SERRA",
+   "vitimas": 51,
+   "casos": {
+    "lesao": 28,
+    "ameaca": 25,
+    "dano": 12,
+    "medidaProtetiva": 1,
+    "perseguicao": 5,
+    "injuria": 4,
+    "psicologica": 1
+   }
+  },
+  "3546900": {
+   "nomeSSP": "S.LUCIA",
+   "vitimas": 26,
+   "casos": {
+    "lesao": 7,
+    "ameaca": 19,
+    "injuria": 8,
+    "dano": 2,
+    "perseguicao": 2,
+    "medidaProtetiva": 2
+   }
+  },
+  "3550001": {
+   "nomeSSP": "S.LUIZ DO PARAITINGA",
+   "vitimas": 26,
+   "casos": {
+    "ameaca": 17,
+    "lesao": 6,
+    "injuria": 12,
+    "medidaProtetiva": 2,
+    "perseguicao": 2
+   }
+  },
+  "3550100": {
+   "nomeSSP": "S.MANUEL",
+   "vitimas": 272,
+   "casos": {
+    "dano": 13,
+    "ameaca": 142,
+    "injuria": 77,
+    "medidaProtetiva": 42,
+    "lesao": 55,
+    "perseguicao": 34,
+    "psicologica": 28,
+    "mausTratos": 4,
+    "invasao": 2,
+    "imagensIntimas": 1
+   }
+  },
+  "3547007": {
+   "nomeSSP": "S.MARIA DA SERRA",
+   "vitimas": 16,
+   "casos": {
+    "lesao": 10,
+    "invasao": 1,
+    "dano": 2,
+    "ameaca": 8,
+    "injuria": 2,
+    "perseguicao": 1,
+    "medidaProtetiva": 1
+   }
+  },
+  "3547106": {
+   "nomeSSP": "S.MERCEDES",
+   "vitimas": 11,
+   "casos": {
+    "ameaca": 10,
+    "medidaProtetiva": 2,
+    "perseguicao": 1,
+    "injuria": 4,
+    "psicologica": 1,
+    "lesao": 5,
+    "invasao": 1
+   }
+  },
+  "3550209": {
+   "nomeSSP": "S.MIGUEL ARCANJO",
+   "vitimas": 157,
+   "casos": {
+    "medidaProtetiva": 13,
+    "injuria": 75,
+    "dano": 14,
+    "ameaca": 93,
+    "invasao": 2,
+    "perseguicao": 7,
+    "lesao": 45,
+    "mausTratos": 2,
+    "psicologica": 4,
+    "constrangimento": 1
+   }
+  },
+  "3550308": {
+   "nomeSSP": "S.PAULO",
+   "vitimas": 41455,
+   "casos": {
+    "lesao": 17300,
+    "ameaca": 23782,
+    "perseguicao": 6888,
+    "injuria": 19797,
+    "dano": 1827,
+    "psicologica": 611,
+    "medidaProtetiva": 2008,
+    "imagensIntimas": 191,
+    "dignidadeSexual": 177,
+    "mausTratos": 155,
+    "invasao": 462,
+    "constrangimento": 28
+   }
+  },
+  "3550407": {
+   "nomeSSP": "S.PEDRO",
+   "vitimas": 155,
+   "casos": {
+    "ameaca": 84,
+    "injuria": 46,
+    "perseguicao": 12,
+    "medidaProtetiva": 17,
+    "lesao": 67,
+    "dano": 10,
+    "invasao": 3,
+    "psicologica": 8
+   }
+  },
+  "3550506": {
+   "nomeSSP": "S.PEDRO DO TURVO",
+   "vitimas": 46,
+   "casos": {
+    "injuria": 21,
+    "lesao": 24,
+    "ameaca": 27,
+    "medidaProtetiva": 5,
+    "dano": 5,
+    "perseguicao": 2
+   }
+  },
+  "3547403": {
+   "nomeSSP": "S.RITA D OESTE",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 4,
+    "injuria": 5,
+    "lesao": 3
+   }
+  },
+  "3547502": {
+   "nomeSSP": "S.RITA PASSA QUATRO",
+   "vitimas": 144,
+   "casos": {
+    "ameaca": 79,
+    "medidaProtetiva": 25,
+    "lesao": 37,
+    "injuria": 47,
+    "dano": 11,
+    "psicologica": 4,
+    "perseguicao": 19,
+    "mausTratos": 1,
+    "invasao": 1
+   }
+  },
+  "3550605": {
+   "nomeSSP": "S.ROQUE",
+   "vitimas": 378,
+   "casos": {
+    "lesao": 108,
+    "injuria": 93,
+    "perseguicao": 65,
+    "ameaca": 220,
+    "medidaProtetiva": 32,
+    "dano": 17,
+    "psicologica": 10,
+    "dignidadeSexual": 3,
+    "invasao": 3,
+    "mausTratos": 1
+   }
+  },
+  "3547601": {
+   "nomeSSP": "S.ROSA DE VITERBO",
+   "vitimas": 141,
+   "casos": {
+    "injuria": 23,
+    "lesao": 64,
+    "ameaca": 76,
+    "dano": 11,
+    "perseguicao": 8,
+    "medidaProtetiva": 18,
+    "psicologica": 1
+   }
+  },
+  "3547650": {
+   "nomeSSP": "S.SALETE",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 4,
+    "injuria": 6,
+    "lesao": 1,
+    "medidaProtetiva": 2
+   }
+  },
+  "3550704": {
+   "nomeSSP": "S.SEBASTIAO",
+   "vitimas": 438,
+   "casos": {
+    "ameaca": 196,
+    "perseguicao": 69,
+    "injuria": 143,
+    "dano": 16,
+    "lesao": 146,
+    "medidaProtetiva": 57,
+    "invasao": 11,
+    "constrangimento": 1,
+    "imagensIntimas": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3550803": {
+   "nomeSSP": "S.SEBASTIAO DA GRAMA",
+   "vitimas": 60,
+   "casos": {
+    "perseguicao": 11,
+    "medidaProtetiva": 12,
+    "ameaca": 22,
+    "mausTratos": 2,
+    "lesao": 12,
+    "dano": 3,
+    "injuria": 11,
+    "invasao": 2,
+    "psicologica": 1
+   }
+  },
+  "3550902": {
+   "nomeSSP": "S.SIMAO",
+   "vitimas": 70,
+   "casos": {
+    "ameaca": 52,
+    "lesao": 27,
+    "injuria": 16,
+    "dignidadeSexual": 1,
+    "dano": 1,
+    "perseguicao": 5,
+    "medidaProtetiva": 6
+   }
+  },
+  "3551009": {
+   "nomeSSP": "S.VICENTE",
+   "vitimas": 974,
+   "casos": {
+    "lesao": 362,
+    "medidaProtetiva": 43,
+    "injuria": 542,
+    "ameaca": 557,
+    "perseguicao": 124,
+    "dano": 50,
+    "psicologica": 38,
+    "dignidadeSexual": 6,
+    "imagensIntimas": 4,
+    "invasao": 9,
+    "mausTratos": 14,
+    "constrangimento": 2
+   }
+  },
+  "3544608": {
+   "nomeSSP": "SABINO",
+   "vitimas": 50,
+   "casos": {
+    "ameaca": 29,
+    "injuria": 26,
+    "medidaProtetiva": 8,
+    "perseguicao": 3,
+    "lesao": 23,
+    "dano": 12,
+    "psicologica": 4
+   }
+  },
+  "3544707": {
+   "nomeSSP": "SAGRES",
+   "vitimas": 9,
+   "casos": {
+    "ameaca": 3,
+    "medidaProtetiva": 2,
+    "lesao": 6,
+    "injuria": 2
+   }
+  },
+  "3544806": {
+   "nomeSSP": "SALES",
+   "vitimas": 33,
+   "casos": {
+    "ameaca": 20,
+    "lesao": 7,
+    "dano": 1,
+    "perseguicao": 4,
+    "medidaProtetiva": 2,
+    "injuria": 4,
+    "invasao": 1
+   }
+  },
+  "3544905": {
+   "nomeSSP": "SALES OLIVEIRA",
+   "vitimas": 47,
+   "casos": {
+    "ameaca": 25,
+    "lesao": 20,
+    "medidaProtetiva": 5,
+    "injuria": 21,
+    "dignidadeSexual": 1,
+    "perseguicao": 2,
+    "dano": 6,
+    "psicologica": 1
+   }
+  },
+  "3545001": {
+   "nomeSSP": "SALESOPOLIS",
+   "vitimas": 79,
+   "casos": {
+    "injuria": 43,
+    "ameaca": 43,
+    "medidaProtetiva": 8,
+    "lesao": 37,
+    "perseguicao": 6,
+    "dano": 5,
+    "psicologica": 1
+   }
+  },
+  "3545100": {
+   "nomeSSP": "SALMOURAO",
+   "vitimas": 22,
+   "casos": {
+    "injuria": 6,
+    "lesao": 6,
+    "ameaca": 6,
+    "perseguicao": 4,
+    "psicologica": 2,
+    "medidaProtetiva": 3
+   }
+  },
+  "3545159": {
+   "nomeSSP": "SALTINHO",
+   "vitimas": 25,
+   "casos": {
+    "injuria": 14,
+    "ameaca": 15,
+    "medidaProtetiva": 4,
+    "perseguicao": 2,
+    "lesao": 6,
+    "dano": 2,
+    "invasao": 2
+   }
+  },
+  "3545209": {
+   "nomeSSP": "SALTO",
+   "vitimas": 487,
+   "casos": {
+    "injuria": 185,
+    "ameaca": 263,
+    "lesao": 141,
+    "perseguicao": 78,
+    "psicologica": 44,
+    "dano": 34,
+    "medidaProtetiva": 25,
+    "invasao": 4,
+    "dignidadeSexual": 3,
+    "mausTratos": 1
+   }
+  },
+  "3545308": {
+   "nomeSSP": "SALTO DE PIRAPORA",
+   "vitimas": 167,
+   "casos": {
+    "psicologica": 2,
+    "lesao": 47,
+    "ameaca": 102,
+    "perseguicao": 30,
+    "dano": 13,
+    "medidaProtetiva": 9,
+    "injuria": 56,
+    "invasao": 3
+   }
+  },
+  "3545407": {
+   "nomeSSP": "SALTO GRANDE",
+   "vitimas": 66,
+   "casos": {
+    "injuria": 31,
+    "medidaProtetiva": 12,
+    "lesao": 26,
+    "ameaca": 33,
+    "perseguicao": 5,
+    "dano": 15,
+    "invasao": 2
+   }
+  },
+  "3545506": {
+   "nomeSSP": "SANDOVALINA",
+   "vitimas": 20,
+   "casos": {
+    "medidaProtetiva": 3,
+    "ameaca": 11,
+    "lesao": 10,
+    "dano": 4,
+    "injuria": 2,
+    "perseguicao": 1
+   }
+  },
+  "3547205": {
+   "nomeSSP": "SANTANA DA PONTE PENSA",
+   "vitimas": 3,
+   "casos": {
+    "injuria": 2,
+    "dano": 1,
+    "lesao": 2,
+    "ameaca": 2
+   }
+  },
+  "3547304": {
+   "nomeSSP": "SANTANA DE PARNAIBA",
+   "vitimas": 796,
+   "casos": {
+    "lesao": 313,
+    "injuria": 357,
+    "ameaca": 460,
+    "medidaProtetiva": 37,
+    "perseguicao": 81,
+    "dano": 47,
+    "invasao": 11,
+    "psicologica": 8,
+    "dignidadeSexual": 1,
+    "imagensIntimas": 1,
+    "mausTratos": 1
+   }
+  },
+  "3548401": {
+   "nomeSSP": "SANTOPOLIS DO AGUAPEI",
+   "vitimas": 14,
+   "casos": {
+    "ameaca": 10,
+    "lesao": 8,
+    "medidaProtetiva": 1,
+    "perseguicao": 1,
+    "psicologica": 1,
+    "injuria": 5,
+    "dano": 1
+   }
+  },
+  "3548500": {
+   "nomeSSP": "SANTOS",
+   "vitimas": 1327,
+   "casos": {
+    "perseguicao": 272,
+    "injuria": 550,
+    "lesao": 464,
+    "ameaca": 635,
+    "medidaProtetiva": 85,
+    "dano": 74,
+    "psicologica": 49,
+    "imagensIntimas": 4,
+    "mausTratos": 4,
+    "invasao": 7,
+    "dignidadeSexual": 3
+   }
+  },
+  "3551108": {
+   "nomeSSP": "SARAPUI",
+   "vitimas": 36,
+   "casos": {
+    "lesao": 11,
+    "injuria": 10,
+    "dano": 4,
+    "ameaca": 12,
+    "psicologica": 3,
+    "perseguicao": 12,
+    "medidaProtetiva": 5,
+    "constrangimento": 2
+   }
+  },
+  "3551207": {
+   "nomeSSP": "SARUTAIA",
+   "vitimas": 32,
+   "casos": {
+    "ameaca": 18,
+    "injuria": 14,
+    "lesao": 8,
+    "perseguicao": 5,
+    "invasao": 1,
+    "medidaProtetiva": 5,
+    "psicologica": 2,
+    "mausTratos": 2
+   }
+  },
+  "3551306": {
+   "nomeSSP": "SEBASTIANOPOLIS DO SUL",
+   "vitimas": 8,
+   "casos": {
+    "ameaca": 6,
+    "lesao": 2
+   }
+  },
+  "3551405": {
+   "nomeSSP": "SERRA AZUL",
+   "vitimas": 67,
+   "casos": {
+    "ameaca": 32,
+    "injuria": 15,
+    "lesao": 27,
+    "perseguicao": 6,
+    "medidaProtetiva": 13,
+    "dano": 2,
+    "psicologica": 3
+   }
+  },
+  "3551603": {
+   "nomeSSP": "SERRA NEGRA",
+   "vitimas": 182,
+   "casos": {
+    "lesao": 71,
+    "dano": 15,
+    "injuria": 68,
+    "ameaca": 96,
+    "medidaProtetiva": 18,
+    "perseguicao": 21,
+    "psicologica": 7,
+    "mausTratos": 2,
+    "invasao": 1
+   }
+  },
+  "3551504": {
+   "nomeSSP": "SERRANA",
+   "vitimas": 204,
+   "casos": {
+    "ameaca": 119,
+    "lesao": 80,
+    "perseguicao": 15,
+    "injuria": 37,
+    "dano": 14,
+    "medidaProtetiva": 28,
+    "invasao": 1
+   }
+  },
+  "3551702": {
+   "nomeSSP": "SERTAOZINHO",
+   "vitimas": 558,
+   "casos": {
+    "lesao": 170,
+    "ameaca": 300,
+    "perseguicao": 72,
+    "medidaProtetiva": 45,
+    "injuria": 125,
+    "imagensIntimas": 1,
+    "dano": 11,
+    "invasao": 5,
+    "mausTratos": 3
+   }
+  },
+  "3551801": {
+   "nomeSSP": "SETE BARRAS",
+   "vitimas": 74,
+   "casos": {
+    "ameaca": 45,
+    "psicologica": 5,
+    "injuria": 38,
+    "dano": 9,
+    "lesao": 29,
+    "medidaProtetiva": 10,
+    "invasao": 6,
+    "perseguicao": 7
+   }
+  },
+  "3551900": {
+   "nomeSSP": "SEVERINIA",
+   "vitimas": 77,
+   "casos": {
+    "injuria": 25,
+    "dano": 7,
+    "lesao": 24,
+    "ameaca": 45,
+    "perseguicao": 7,
+    "medidaProtetiva": 12
+   }
+  },
+  "3552007": {
+   "nomeSSP": "SILVEIRAS",
+   "vitimas": 7,
+   "casos": {
+    "perseguicao": 1,
+    "dano": 2,
+    "ameaca": 5,
+    "medidaProtetiva": 3,
+    "injuria": 4
+   }
+  },
+  "3552106": {
+   "nomeSSP": "SOCORRO",
+   "vitimas": 169,
+   "casos": {
+    "ameaca": 102,
+    "injuria": 55,
+    "lesao": 37,
+    "medidaProtetiva": 24,
+    "perseguicao": 20,
+    "dano": 3,
+    "psicologica": 2,
+    "invasao": 1
+   }
+  },
+  "3552205": {
+   "nomeSSP": "SOROCABA",
+   "vitimas": 4387,
+   "casos": {
+    "injuria": 1675,
+    "ameaca": 2508,
+    "lesao": 1189,
+    "perseguicao": 1062,
+    "psicologica": 83,
+    "invasao": 30,
+    "medidaProtetiva": 379,
+    "mausTratos": 30,
+    "dano": 194,
+    "dignidadeSexual": 28,
+    "imagensIntimas": 8
+   }
+  },
+  "3552304": {
+   "nomeSSP": "SUD MENNUCCI",
+   "vitimas": 47,
+   "casos": {
+    "injuria": 15,
+    "lesao": 16,
+    "ameaca": 26,
+    "invasao": 5,
+    "perseguicao": 2,
+    "medidaProtetiva": 6,
+    "psicologica": 2,
+    "dano": 4
+   }
+  },
+  "3552403": {
+   "nomeSSP": "SUMARE",
+   "vitimas": 1025,
+   "casos": {
+    "psicologica": 16,
+    "perseguicao": 117,
+    "ameaca": 588,
+    "injuria": 466,
+    "imagensIntimas": 6,
+    "lesao": 268,
+    "dano": 37,
+    "medidaProtetiva": 43,
+    "mausTratos": 8,
+    "invasao": 9
+   }
+  },
+  "3552551": {
+   "nomeSSP": "SUZANAPOLIS",
+   "vitimas": 25,
+   "casos": {
+    "ameaca": 16,
+    "lesao": 8,
+    "perseguicao": 4,
+    "medidaProtetiva": 3,
+    "injuria": 8,
+    "psicologica": 1,
+    "imagensIntimas": 1,
+    "dano": 2,
+    "invasao": 1
+   }
+  },
+  "3552502": {
+   "nomeSSP": "SUZANO",
+   "vitimas": 1430,
+   "casos": {
+    "ameaca": 769,
+    "injuria": 495,
+    "lesao": 527,
+    "perseguicao": 215,
+    "medidaProtetiva": 147,
+    "dano": 80,
+    "mausTratos": 8,
+    "invasao": 14,
+    "dignidadeSexual": 5,
+    "psicologica": 22,
+    "constrangimento": 3,
+    "imagensIntimas": 4
+   }
+  },
+  "3552601": {
+   "nomeSSP": "TABAPUA",
+   "vitimas": 79,
+   "casos": {
+    "injuria": 32,
+    "ameaca": 42,
+    "perseguicao": 10,
+    "psicologica": 11,
+    "dano": 6,
+    "medidaProtetiva": 10,
+    "lesao": 26,
+    "invasao": 4
+   }
+  },
+  "3552700": {
+   "nomeSSP": "TABATINGA",
+   "vitimas": 84,
+   "casos": {
+    "ameaca": 42,
+    "lesao": 34,
+    "perseguicao": 20,
+    "injuria": 12,
+    "invasao": 5,
+    "dano": 5,
+    "medidaProtetiva": 7,
+    "psicologica": 1
+   }
+  },
+  "3552809": {
+   "nomeSSP": "TABOAO DA SERRA",
+   "vitimas": 1229,
+   "casos": {
+    "injuria": 636,
+    "lesao": 572,
+    "ameaca": 710,
+    "medidaProtetiva": 94,
+    "perseguicao": 157,
+    "dano": 87,
+    "psicologica": 25,
+    "dignidadeSexual": 7,
+    "invasao": 20,
+    "imagensIntimas": 4,
+    "mausTratos": 2,
+    "constrangimento": 1
+   }
+  },
+  "3552908": {
+   "nomeSSP": "TACIBA",
+   "vitimas": 36,
+   "casos": {
+    "ameaca": 19,
+    "lesao": 6,
+    "injuria": 9,
+    "perseguicao": 3,
+    "medidaProtetiva": 7,
+    "invasao": 3,
+    "dano": 1
+   }
+  },
+  "3553005": {
+   "nomeSSP": "TAGUAI",
+   "vitimas": 68,
+   "casos": {
+    "injuria": 20,
+    "lesao": 29,
+    "mausTratos": 1,
+    "medidaProtetiva": 7,
+    "ameaca": 34,
+    "dano": 6,
+    "perseguicao": 4,
+    "psicologica": 4,
+    "invasao": 2,
+    "dignidadeSexual": 1
+   }
+  },
+  "3553104": {
+   "nomeSSP": "TAIACU",
+   "vitimas": 28,
+   "casos": {
+    "ameaca": 23,
+    "lesao": 11,
+    "dano": 4,
+    "medidaProtetiva": 1,
+    "injuria": 3,
+    "perseguicao": 1
+   }
+  },
+  "3553203": {
+   "nomeSSP": "TAIUVA",
+   "vitimas": 31,
+   "casos": {
+    "perseguicao": 7,
+    "lesao": 12,
+    "invasao": 2,
+    "injuria": 6,
+    "ameaca": 17,
+    "medidaProtetiva": 2,
+    "dano": 4
+   }
+  },
+  "3553302": {
+   "nomeSSP": "TAMBAU",
+   "vitimas": 144,
+   "casos": {
+    "ameaca": 92,
+    "medidaProtetiva": 25,
+    "injuria": 52,
+    "lesao": 54,
+    "invasao": 3,
+    "dano": 15,
+    "perseguicao": 18,
+    "psicologica": 6,
+    "mausTratos": 4,
+    "dignidadeSexual": 2
+   }
+  },
+  "3553401": {
+   "nomeSSP": "TANABI",
+   "vitimas": 177,
+   "casos": {
+    "ameaca": 92,
+    "lesao": 37,
+    "perseguicao": 21,
+    "medidaProtetiva": 44,
+    "dano": 10,
+    "injuria": 43,
+    "psicologica": 5,
+    "invasao": 4,
+    "constrangimento": 1
+   }
+  },
+  "3553500": {
+   "nomeSSP": "TAPIRAI",
+   "vitimas": 36,
+   "casos": {
+    "lesao": 12,
+    "medidaProtetiva": 5,
+    "injuria": 11,
+    "ameaca": 28,
+    "dano": 1,
+    "perseguicao": 5
+   }
+  },
+  "3553609": {
+   "nomeSSP": "TAPIRATIBA",
+   "vitimas": 54,
+   "casos": {
+    "ameaca": 31,
+    "injuria": 12,
+    "lesao": 23,
+    "medidaProtetiva": 5,
+    "perseguicao": 4,
+    "dano": 4
+   }
+  },
+  "3553658": {
+   "nomeSSP": "TAQUARAL",
+   "vitimas": 11,
+   "casos": {
+    "injuria": 6,
+    "lesao": 3,
+    "ameaca": 9,
+    "medidaProtetiva": 1
+   }
+  },
+  "3553708": {
+   "nomeSSP": "TAQUARITINGA",
+   "vitimas": 198,
+   "casos": {
+    "lesao": 82,
+    "medidaProtetiva": 44,
+    "ameaca": 101,
+    "dano": 14,
+    "perseguicao": 25,
+    "injuria": 28
+   }
+  },
+  "3553807": {
+   "nomeSSP": "TAQUARITUBA",
+   "vitimas": 122,
+   "casos": {
+    "lesao": 38,
+    "ameaca": 66,
+    "medidaProtetiva": 27,
+    "invasao": 1,
+    "perseguicao": 5,
+    "injuria": 21,
+    "dano": 7,
+    "mausTratos": 1,
+    "psicologica": 1
+   }
+  },
+  "3553856": {
+   "nomeSSP": "TAQUARIVAI",
+   "vitimas": 27,
+   "casos": {
+    "psicologica": 6,
+    "ameaca": 13,
+    "injuria": 12,
+    "medidaProtetiva": 4,
+    "lesao": 2,
+    "perseguicao": 2
+   }
+  },
+  "3553906": {
+   "nomeSSP": "TARABAI",
+   "vitimas": 69,
+   "casos": {
+    "injuria": 20,
+    "ameaca": 30,
+    "lesao": 22,
+    "perseguicao": 3,
+    "medidaProtetiva": 8,
+    "psicologica": 4
+   }
+  },
+  "3553955": {
+   "nomeSSP": "TARUMA",
+   "vitimas": 87,
+   "casos": {
+    "injuria": 22,
+    "lesao": 28,
+    "ameaca": 52,
+    "perseguicao": 5,
+    "medidaProtetiva": 5,
+    "dignidadeSexual": 1,
+    "invasao": 1,
+    "dano": 2,
+    "imagensIntimas": 1,
+    "psicologica": 2
+   }
+  },
+  "3554003": {
+   "nomeSSP": "TATUI",
+   "vitimas": 453,
+   "casos": {
+    "dano": 38,
+    "psicologica": 8,
+    "lesao": 170,
+    "ameaca": 230,
+    "injuria": 133,
+    "perseguicao": 51,
+    "medidaProtetiva": 30,
+    "invasao": 17,
+    "mausTratos": 6,
+    "imagensIntimas": 3,
+    "constrangimento": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3554102": {
+   "nomeSSP": "TAUBATE",
+   "vitimas": 688,
+   "casos": {
+    "medidaProtetiva": 173,
+    "injuria": 219,
+    "perseguicao": 147,
+    "ameaca": 291,
+    "lesao": 162,
+    "psicologica": 22,
+    "dano": 17,
+    "invasao": 5,
+    "imagensIntimas": 1,
+    "mausTratos": 1,
+    "constrangimento": 1
+   }
+  },
+  "3554201": {
+   "nomeSSP": "TEJUPA",
+   "vitimas": 22,
+   "casos": {
+    "lesao": 13,
+    "invasao": 1,
+    "ameaca": 18,
+    "injuria": 4,
+    "mausTratos": 1,
+    "dano": 8
+   }
+  },
+  "3554300": {
+   "nomeSSP": "TEODORO SAMPAIO",
+   "vitimas": 174,
+   "casos": {
+    "lesao": 78,
+    "injuria": 52,
+    "ameaca": 105,
+    "perseguicao": 13,
+    "mausTratos": 5,
+    "medidaProtetiva": 26,
+    "dano": 19,
+    "psicologica": 7,
+    "invasao": 4,
+    "dignidadeSexual": 1
+   }
+  },
+  "3554409": {
+   "nomeSSP": "TERRA ROXA",
+   "vitimas": 44,
+   "casos": {
+    "injuria": 13,
+    "ameaca": 28,
+    "invasao": 1,
+    "lesao": 12,
+    "medidaProtetiva": 7,
+    "dano": 2,
+    "perseguicao": 1
+   }
+  },
+  "3554508": {
+   "nomeSSP": "TIETE",
+   "vitimas": 143,
+   "casos": {
+    "injuria": 57,
+    "ameaca": 78,
+    "dano": 12,
+    "medidaProtetiva": 19,
+    "perseguicao": 16,
+    "lesao": 32,
+    "invasao": 3,
+    "psicologica": 3,
+    "imagensIntimas": 1
+   }
+  },
+  "3554607": {
+   "nomeSSP": "TIMBURI",
+   "vitimas": 2,
+   "casos": {
+    "injuria": 1,
+    "perseguicao": 1
+   }
+  },
+  "3554656": {
+   "nomeSSP": "TORRE DE PEDRA",
+   "vitimas": 6,
+   "casos": {
+    "ameaca": 5,
+    "injuria": 2,
+    "lesao": 2
+   }
+  },
+  "3554706": {
+   "nomeSSP": "TORRINHA",
+   "vitimas": 30,
+   "casos": {
+    "dano": 4,
+    "ameaca": 20,
+    "injuria": 11,
+    "perseguicao": 1,
+    "lesao": 15,
+    "psicologica": 1
+   }
+  },
+  "3554755": {
+   "nomeSSP": "TRABIJU",
+   "vitimas": 9,
+   "casos": {
+    "ameaca": 6,
+    "lesao": 4,
+    "medidaProtetiva": 1,
+    "injuria": 3,
+    "dano": 2
+   }
+  },
+  "3554805": {
+   "nomeSSP": "TREMEMBE",
+   "vitimas": 152,
+   "casos": {
+    "ameaca": 89,
+    "injuria": 60,
+    "perseguicao": 26,
+    "lesao": 38,
+    "psicologica": 6,
+    "dano": 3,
+    "medidaProtetiva": 9
+   }
+  },
+  "3554904": {
+   "nomeSSP": "TRES FRONTEIRAS",
+   "vitimas": 54,
+   "casos": {
+    "ameaca": 36,
+    "dano": 9,
+    "perseguicao": 6,
+    "injuria": 20,
+    "lesao": 17,
+    "invasao": 2,
+    "medidaProtetiva": 3
+   }
+  },
+  "3554953": {
+   "nomeSSP": "TUIUTI",
+   "vitimas": 29,
+   "casos": {
+    "ameaca": 19,
+    "injuria": 6,
+    "lesao": 12,
+    "medidaProtetiva": 6,
+    "mausTratos": 1,
+    "invasao": 1,
+    "dano": 3
+   }
+  },
+  "3555000": {
+   "nomeSSP": "TUPA",
+   "vitimas": 373,
+   "casos": {
+    "ameaca": 200,
+    "medidaProtetiva": 33,
+    "dano": 51,
+    "lesao": 124,
+    "injuria": 95,
+    "perseguicao": 58,
+    "psicologica": 3,
+    "mausTratos": 3,
+    "invasao": 4,
+    "constrangimento": 1,
+    "imagensIntimas": 1,
+    "dignidadeSexual": 1
+   }
+  },
+  "3555109": {
+   "nomeSSP": "TUPI PAULISTA",
+   "vitimas": 58,
+   "casos": {
+    "lesao": 25,
+    "dano": 2,
+    "injuria": 21,
+    "ameaca": 30,
+    "perseguicao": 2,
+    "medidaProtetiva": 7
+   }
+  },
+  "3555208": {
+   "nomeSSP": "TURIUBA",
+   "vitimas": 10,
+   "casos": {
+    "ameaca": 5,
+    "lesao": 4,
+    "medidaProtetiva": 2,
+    "injuria": 2,
+    "dano": 1,
+    "perseguicao": 1
+   }
+  },
+  "3555307": {
+   "nomeSSP": "TURMALINA",
+   "vitimas": 4,
+   "casos": {
+    "ameaca": 4,
+    "injuria": 1
+   }
+  },
+  "3555356": {
+   "nomeSSP": "UBARANA",
+   "vitimas": 25,
+   "casos": {
+    "medidaProtetiva": 6,
+    "injuria": 7,
+    "ameaca": 18,
+    "mausTratos": 2,
+    "dano": 4,
+    "lesao": 5,
+    "invasao": 1
+   }
+  },
+  "3555406": {
+   "nomeSSP": "UBATUBA",
+   "vitimas": 588,
+   "casos": {
+    "ameaca": 367,
+    "lesao": 243,
+    "injuria": 162,
+    "perseguicao": 104,
+    "medidaProtetiva": 31,
+    "invasao": 47,
+    "dano": 38,
+    "psicologica": 15,
+    "constrangimento": 1,
+    "dignidadeSexual": 4,
+    "mausTratos": 3
+   }
+  },
+  "3555505": {
+   "nomeSSP": "UBIRAJARA",
+   "vitimas": 18,
+   "casos": {
+    "ameaca": 9,
+    "perseguicao": 7,
+    "dano": 1,
+    "lesao": 5,
+    "injuria": 3,
+    "medidaProtetiva": 4
+   }
+  },
+  "3555604": {
+   "nomeSSP": "UCHOA",
+   "vitimas": 26,
+   "casos": {
+    "lesao": 5,
+    "ameaca": 18,
+    "medidaProtetiva": 3,
+    "injuria": 12,
+    "perseguicao": 3,
+    "dano": 1
+   }
+  },
+  "3555703": {
+   "nomeSSP": "UNIAO PAULISTA",
+   "vitimas": 4,
+   "casos": {
+    "injuria": 2,
+    "dano": 1,
+    "lesao": 2,
+    "ameaca": 1
+   }
+  },
+  "3555802": {
+   "nomeSSP": "URANIA",
+   "vitimas": 52,
+   "casos": {
+    "injuria": 20,
+    "ameaca": 33,
+    "lesao": 16,
+    "mausTratos": 4,
+    "dano": 9,
+    "psicologica": 5,
+    "perseguicao": 5,
+    "invasao": 2,
+    "medidaProtetiva": 6
+   }
+  },
+  "3555901": {
+   "nomeSSP": "URU",
+   "vitimas": 14,
+   "casos": {
+    "lesao": 3,
+    "ameaca": 7,
+    "dano": 2,
+    "medidaProtetiva": 1,
+    "injuria": 6,
+    "perseguicao": 1
+   }
+  },
+  "3556008": {
+   "nomeSSP": "URUPES",
+   "vitimas": 67,
+   "casos": {
+    "lesao": 25,
+    "injuria": 27,
+    "ameaca": 41,
+    "perseguicao": 5,
+    "medidaProtetiva": 6,
+    "dano": 11,
+    "invasao": 1
+   }
+  },
+  "3556107": {
+   "nomeSSP": "VALENTIM GENTIL",
+   "vitimas": 75,
+   "casos": {
+    "injuria": 10,
+    "ameaca": 42,
+    "lesao": 31,
+    "medidaProtetiva": 5,
+    "dano": 9,
+    "perseguicao": 8,
+    "invasao": 1,
+    "psicologica": 1
+   }
+  },
+  "3556206": {
+   "nomeSSP": "VALINHOS",
+   "vitimas": 501,
+   "casos": {
+    "ameaca": 277,
+    "dano": 33,
+    "injuria": 273,
+    "lesao": 127,
+    "medidaProtetiva": 42,
+    "perseguicao": 68,
+    "invasao": 6,
+    "dignidadeSexual": 9,
+    "constrangimento": 1,
+    "psicologica": 11,
+    "imagensIntimas": 2,
+    "mausTratos": 1
+   }
+  },
+  "3556305": {
+   "nomeSSP": "VALPARAISO",
+   "vitimas": 115,
+   "casos": {
+    "lesao": 39,
+    "ameaca": 61,
+    "medidaProtetiva": 25,
+    "injuria": 24,
+    "dano": 14,
+    "perseguicao": 7,
+    "psicologica": 4,
+    "dignidadeSexual": 1,
+    "invasao": 1,
+    "constrangimento": 1
+   }
+  },
+  "3556354": {
+   "nomeSSP": "VARGEM",
+   "vitimas": 34,
+   "casos": {
+    "ameaca": 19,
+    "injuria": 19,
+    "perseguicao": 1,
+    "lesao": 11,
+    "dano": 3,
+    "medidaProtetiva": 1
+   }
+  },
+  "3556404": {
+   "nomeSSP": "VARGEM GRANDE DO SUL",
+   "vitimas": 225,
+   "casos": {
+    "injuria": 42,
+    "perseguicao": 23,
+    "ameaca": 153,
+    "lesao": 80,
+    "dano": 16,
+    "medidaProtetiva": 29,
+    "psicologica": 2,
+    "invasao": 1
+   }
+  },
+  "3556453": {
+   "nomeSSP": "VARGEM GRANDE PAULISTA",
+   "vitimas": 173,
+   "casos": {
+    "injuria": 77,
+    "lesao": 71,
+    "ameaca": 106,
+    "dano": 6,
+    "perseguicao": 26,
+    "psicologica": 1,
+    "medidaProtetiva": 4,
+    "imagensIntimas": 1,
+    "invasao": 1
+   }
+  },
+  "3556503": {
+   "nomeSSP": "VARZEA PAULISTA",
+   "vitimas": 535,
+   "casos": {
+    "dano": 35,
+    "injuria": 157,
+    "lesao": 211,
+    "ameaca": 318,
+    "perseguicao": 56,
+    "medidaProtetiva": 42,
+    "psicologica": 14,
+    "imagensIntimas": 3,
+    "invasao": 5,
+    "dignidadeSexual": 1
+   }
+  },
+  "3556602": {
+   "nomeSSP": "VERA CRUZ",
+   "vitimas": 68,
+   "casos": {
+    "ameaca": 46,
+    "lesao": 24,
+    "injuria": 23,
+    "medidaProtetiva": 10,
+    "dano": 4,
+    "perseguicao": 7,
+    "psicologica": 1
+   }
+  },
+  "3556701": {
+   "nomeSSP": "VINHEDO",
+   "vitimas": 293,
+   "casos": {
+    "injuria": 108,
+    "perseguicao": 33,
+    "ameaca": 155,
+    "lesao": 87,
+    "psicologica": 34,
+    "medidaProtetiva": 31,
+    "dano": 23,
+    "invasao": 4,
+    "dignidadeSexual": 1
+   }
+  },
+  "3556800": {
+   "nomeSSP": "VIRADOURO",
+   "vitimas": 126,
+   "casos": {
+    "medidaProtetiva": 22,
+    "injuria": 43,
+    "ameaca": 79,
+    "perseguicao": 6,
+    "lesao": 40,
+    "dano": 10,
+    "invasao": 3,
+    "dignidadeSexual": 1
+   }
+  },
+  "3556909": {
+   "nomeSSP": "VISTA ALEGRE DO ALTO",
+   "vitimas": 27,
+   "casos": {
+    "lesao": 10,
+    "ameaca": 17,
+    "medidaProtetiva": 5,
+    "dano": 2,
+    "perseguicao": 1
+   }
+  },
+  "3556958": {
+   "nomeSSP": "VITORIA BRASIL",
+   "vitimas": 16,
+   "casos": {
+    "medidaProtetiva": 5,
+    "ameaca": 7,
+    "injuria": 5,
+    "dano": 1,
+    "perseguicao": 1,
+    "lesao": 2
+   }
+  },
+  "3557006": {
+   "nomeSSP": "VOTORANTIM",
+   "vitimas": 635,
+   "casos": {
+    "ameaca": 380,
+    "injuria": 356,
+    "lesao": 192,
+    "invasao": 36,
+    "perseguicao": 94,
+    "medidaProtetiva": 35,
+    "dano": 41,
+    "psicologica": 19,
+    "mausTratos": 2,
+    "dignidadeSexual": 1,
+    "imagensIntimas": 2
+   }
+  },
+  "3557105": {
+   "nomeSSP": "VOTUPORANGA",
+   "vitimas": 638,
+   "casos": {
+    "lesao": 189,
+    "ameaca": 337,
+    "perseguicao": 97,
+    "injuria": 150,
+    "medidaProtetiva": 78,
+    "dano": 38,
+    "mausTratos": 3,
+    "psicologica": 8,
+    "invasao": 8,
+    "dignidadeSexual": 2
+   }
+  },
+  "3557154": {
+   "nomeSSP": "ZACARIAS",
+   "vitimas": 11,
+   "casos": {
+    "lesao": 4,
+    "perseguicao": 6,
+    "psicologica": 2,
+    "injuria": 2,
+    "invasao": 1,
+    "ameaca": 3
+   }
+  }
+ },
+ "municipiosSemCodigo": []
+}

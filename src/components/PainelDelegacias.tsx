@@ -19,6 +19,7 @@ import {
   AnoDados,
   cidadeOutrosTipos,
   cidadeVitimasPorAno,
+  FONTE_2023,
   FONTE_DELEGACIAS,
   NOMES_TIPOS,
   TipoCrime,
@@ -57,7 +58,7 @@ import {
  * "menos de 5" para não expor casos isolados.
  */
 
-const ANOS: AnoDados[] = ['2024', '2025', '2026'];
+const ANOS: AnoDados[] = ['2023', '2024', '2025', '2026'];
 const ANO_PADRAO = FONTE_DELEGACIAS.anoCompleto;
 const MINIMO_EXIBIDO = 5;
 const DEFENSORIA_URL =
@@ -68,6 +69,10 @@ const numero = (valor: number, casas = 0) =>
     minimumFractionDigits: casas,
     maximumFractionDigits: casas,
   });
+
+/** Número ou "não disponível" (2023 não separa feminicídio e tentativa de homicídio). */
+const numeroOuND = (valor: number | null) =>
+  valor === null ? 'não disponível' : numero(valor);
 
 const rotuloAno = (ano: AnoDados) =>
   ano === FONTE_DELEGACIAS.anoParcial ? `${ano} (jan–ago)` : ano;
@@ -195,8 +200,8 @@ export function PainelDelegacias() {
       <Text style={styles.subtitle}>
         Relatório por área de delegacia: quantas mulheres foram vítimas,
         quais crimes foram registrados, como isso mudou com o tempo e onde
-        buscar atendimento perto dali. Dados da SSP-SP, de{' '}
-        {FONTE_DELEGACIAS.periodo}.
+        buscar atendimento perto dali. Dados da SSP-SP, de janeiro de 2023
+        a agosto de 2026.
       </Text>
 
       {/* Busca */}
@@ -390,10 +395,10 @@ export function PainelDelegacias() {
         <Text style={styles.cityText}>
           Alguns crimes não vêm separados por área na base. Na cidade toda, o
           painel da SSP registrou em {ANO_PADRAO}:{' '}
-          {numero(cidadeOutrosTipos.feminicidio[ANO_PADRAO])} feminicídios,{' '}
-          {numero(cidadeOutrosTipos.tentativaHomicidio[ANO_PADRAO])} tentativas
-          de homicídio, {numero(cidadeOutrosTipos.estupro[ANO_PADRAO])} estupros
-          e {numero(cidadeOutrosTipos.estuproVulneravel[ANO_PADRAO])} estupros
+          {numeroOuND(cidadeOutrosTipos.feminicidio[ANO_PADRAO])} feminicídios,{' '}
+          {numeroOuND(cidadeOutrosTipos.tentativaHomicidio[ANO_PADRAO])} tentativas
+          de homicídio, {numeroOuND(cidadeOutrosTipos.estupro[ANO_PADRAO])} estupros
+          e {numeroOuND(cidadeOutrosTipos.estuproVulneravel[ANO_PADRAO])} estupros
           de vulnerável (consumados e tentados).
         </Text>
       </View>
@@ -410,7 +415,8 @@ export function PainelDelegacias() {
             'Uma mesma vítima pode ter mais de um crime no mesmo boletim, por isso a soma dos tipos é maior que o número de vítimas.',
             'Números de 1 a 4 aparecem como "menos de 5", para não expor casos isolados.',
             'A base é de violência contra a mulher, mas cerca de 0,5% dos registros têm a vítima marcada com outro sexo. Eles foram mantidos, como faz o painel da SSP.',
-            `${numero(FONTE_DELEGACIAS.casosSemArea)} registros (1,5% do total) foram feitos em delegacias especializadas sem área própria e ficam só no total da cidade.`,
+            `${numero(FONTE_DELEGACIAS.casosSemArea)} registros de 2024 a 2026 (1,5% do total) e ${numero(FONTE_2023.casosSemArea)} de 2023 (${numero((FONTE_2023.casosSemArea / FONTE_2023.casosCidade) * 100, 0)}%) têm como responsável uma delegacia especializada sem área própria e ficam só no total da cidade.`,
+            '2023 vem de outra base da SSP, recebida por um pedido pela Lei de Acesso à Informação (Fala.SP). Os tipos de crime seguem a mesma regra de 2024 a 2026, mas o ano é o do registro do boletim, e não o da estatística oficial. As diferenças tendem a ser pequenas, mas compare 2023 com cautela.',
           ].map((item) => (
             <Text key={item} style={styles.infoText}>
               • {item}
@@ -428,6 +434,10 @@ export function PainelDelegacias() {
           perseguição, descumprimento de medida protetiva e outros crimes
           ligados à violência doméstica. Os totais da cidade conferem com o
           painel da SSP.
+        </Text>
+        <Text style={styles.sourceText}>
+          2023: {FONTE_2023.fonte}. Contado pelo {FONTE_2023.criterio}, com
+          a mesma regra de tipos de 2024 a 2026.
         </Text>
         <Text style={styles.sourceText}>
           Áreas das delegacias: Centro de Estudos da Metrópole (CEM/USP), base
@@ -525,6 +535,14 @@ function Relatorio({
         ))}
       </View>
 
+      {ano === FONTE_2023.ano && (
+        <Text style={styles.reportNote}>
+          2023 vem de outra base da SSP (pedido pela Lei de Acesso à
+          Informação) e é contado pelo ano de registro do boletim. 2024 a 2026
+          seguem o ano da estatística oficial. Compare com cautela.
+        </Text>
+      )}
+
       {/* 1. Total */}
       <View style={styles.detailStats}>
         <View style={styles.stat}>
@@ -572,7 +590,8 @@ function Relatorio({
             : `${variacao > 0 ? 'subiu' : 'caiu'} ${numero(Math.abs(variacao), 0)}%`}{' '}
           ({numero(v24)} → {numero(v25)}). Na cidade toda,{' '}
           {numero(cidadeVitimasPorAno['2024'])} → {numero(cidadeVitimasPorAno['2025'])}.
-          2026 tem só janeiro a agosto.
+          2026 tem só janeiro a agosto. 2023 vem de outra base, contada pela
+          data de registro do boletim.
         </Text>
       )}
 
@@ -611,12 +630,12 @@ function Relatorio({
           </Text>{' '}
           porque a SSP não publica esses números por delegacia. Isso não quer
           dizer que não aconteceram nesta área. Na cidade toda, em{' '}
-          {rotuloAno(ano)}, foram {numero(cidadeOutrosTipos.estupro[ano])}{' '}
-          estupros, {numero(cidadeOutrosTipos.estuproVulneravel[ano])} estupros
-          de vulnerável, {numero(cidadeOutrosTipos.feminicidio[ano])}{' '}
-          feminicídios e {numero(cidadeOutrosTipos.tentativaHomicidio[ano])}{' '}
-          tentativas de homicídio (estupros consumados e tentados; painel da
-          SSP).
+          {rotuloAno(ano)}, foram {numeroOuND(cidadeOutrosTipos.estupro[ano])}{' '}
+          estupros e {numeroOuND(cidadeOutrosTipos.estuproVulneravel[ano])}{' '}
+          estupros de vulnerável (consumados e tentados)
+          {cidadeOutrosTipos.feminicidio[ano] === null
+            ? '. Feminicídio e tentativa de homicídio não vêm separados na base de 2023.'
+            : `, ${numero(cidadeOutrosTipos.feminicidio[ano] ?? 0)} feminicídios e ${numero(cidadeOutrosTipos.tentativaHomicidio[ano] ?? 0)} tentativas de homicídio (painel da SSP).`}
         </Text>
       </View>
 

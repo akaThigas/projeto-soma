@@ -670,7 +670,10 @@ A tela tem dois mapas, escolhidos no topo: **Cidade de São Paulo** (o principal
 
 ## Estado de SP
 
-Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 2019 a 2023**.
+Dois dados, escolhidos no topo da tela:
+
+- **Violência contra a mulher (2023)** — o padrão: mulheres vítimas registradas em 2023 por município (ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva e outros crimes ligados à violência doméstica), em taxa por 100 mil habitantes ou número de vítimas. Ao tocar em um município: vítimas, taxa, comparação com a média do estado (425,9) e os crimes mais registrados. Contagens de 1 a 4 aparecem como "menos de 5" e, nesses municípios, a taxa não é mostrada. Fonte: base de 2023 da SSP-SP recebida por pedido no Fala.SP (ver abaixo).
+- **Feminicídio (2019–2023)** — vítimas de feminicídio por município:
 
 - mapa dos 645 municípios paulistas, colorido em cinco faixas;
 - dois modos: **taxa por 100 mil habitantes** (média anual) e **número de vítimas**;
@@ -682,6 +685,7 @@ Mostra as **vítimas de feminicídio por município do Estado de São Paulo, de 
 
 | Dado | Fonte |
 |---|---|
+| Violência contra a mulher por município, 2023 | SSP-SP — resposta ao pedido Fala.SP nº FALASP 2026092522204826, base do Sistema de Polícia Judiciária (SPJ), vítimas do sexo feminino |
 | Feminicídios por município | Ministério da Justiça e Segurança Pública — Sinesp VDE (via pacote BrazilCrime 0.2.1) |
 | População por município | Estimativas do Ministério da Saúde/RIPSA (DATASUS) |
 | Contornos dos municípios | Malha municipal do IBGE (simplificada) |

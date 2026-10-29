@@ -6,6 +6,11 @@ import {
   IndicadorMunicipio,
 } from '../data/mapaCalor/feminicidioSP';
 import {
+  IndicadorVCM,
+  violenciaMulherSP2023,
+  FONTE_VCM_SP,
+} from '../data/mapaCalor/violenciaMulherSP2023';
+import {
   MAPA_SP_ALTURA,
   MAPA_SP_LARGURA,
   municipiosSP,
@@ -17,6 +22,9 @@ import {
 } from './MapaInterativo';
 
 export type ModoMapa = 'taxa' | 'vitimas';
+
+/** O que o mapa do estado mostra. */
+export type IndicadorEstado = 'vcm' | 'feminicidio';
 
 export type FaixaLegenda = {
   cor: string;
@@ -95,6 +103,62 @@ export function indicadorDoMunicipio(id: string) {
   return indicadorPorId.get(id);
 }
 
+/* ---------- violência contra a mulher, 2023 ---------- */
+
+/** Abaixo disso o número aparece como "menos de 5", para não expor casos isolados. */
+export const MINIMO_EXIBIDO_VCM = 5;
+
+/** Faixas da taxa: o primeiro limite é a média do estado. */
+const LIMITES_TAXA_VCM = [FONTE_VCM_SP.taxaEstado, 550, 700];
+const LIMITES_VITIMAS_VCM = [4, 49, 499];
+
+const vcmPorId = new Map(violenciaMulherSP2023.map((item) => [item.id, item]));
+
+export function vcmDoMunicipio(id: string) {
+  return vcmPorId.get(id);
+}
+
+export function faixaVCM(indicador: IndicadorVCM, modo: ModoMapa): number {
+  if (indicador.vitimas === 0) return 0;
+  const valor = modo === 'taxa' ? indicador.taxa : indicador.vitimas;
+  const limites = modo === 'taxa' ? LIMITES_TAXA_VCM : LIMITES_VITIMAS_VCM;
+  if (valor <= limites[0]) return 1;
+  if (valor <= limites[1]) return 2;
+  if (valor <= limites[2]) return 3;
+  return 4;
+}
+
+const inteiro = (valor: number) => valor.toLocaleString('pt-BR');
+
+export function legendaVCM(modo: ModoMapa): FaixaLegenda[] {
+  if (modo === 'taxa') {
+    const [a, b, c] = LIMITES_TAXA_VCM;
+    return [
+      { cor: CORES_MAPA[1], rotulo: `Até ${formatarTaxa(a)} (média do estado)` },
+      { cor: CORES_MAPA[2], rotulo: `${formatarTaxa(a)} a ${inteiro(b)}` },
+      { cor: CORES_MAPA[3], rotulo: `${inteiro(b)} a ${inteiro(c)}` },
+      { cor: CORES_MAPA[4], rotulo: `Acima de ${inteiro(c)}` },
+    ];
+  }
+  return [
+    { cor: CORES_MAPA[1], rotulo: 'Menos de 5 vítimas' },
+    { cor: CORES_MAPA[2], rotulo: '5 a 49 vítimas' },
+    { cor: CORES_MAPA[3], rotulo: '50 a 499 vítimas' },
+    { cor: CORES_MAPA[4], rotulo: '500 vítimas ou mais' },
+  ];
+}
+
+/** Texto curto da etiqueta do mapa (respeita o "menos de 5"). */
+export function textoVCM(indicador: IndicadorVCM, modo: ModoMapa) {
+  if (indicador.vitimas < MINIMO_EXIBIDO_VCM) {
+    return `Menos de 5 vítimas em ${FONTE_VCM_SP.ano}`;
+  }
+  if (modo === 'taxa') {
+    return `${formatarTaxa(indicador.taxa)} vítimas por 100 mil hab. em ${FONTE_VCM_SP.ano}`;
+  }
+  return `${inteiro(indicador.vitimas)} vítimas em ${FONTE_VCM_SP.ano}`;
+}
+
 export type Enquadramento =
   | { tipo: 'estado' }
   | { tipo: 'capital' }
@@ -103,6 +167,7 @@ export type Enquadramento =
 const ID_CAPITAL = '3550308';
 
 type Props = {
+  indicador?: IndicadorEstado;
   modo: ModoMapa;
   enquadramento: Enquadramento;
   selecionadoId?: string;
@@ -111,6 +176,7 @@ type Props = {
 
 /** Mapa de calor dos 645 municípios do Estado de São Paulo. */
 export function MapaCalorSP({
+  indicador: indicadorMapa = 'feminicidio',
   modo,
   enquadramento,
   selecionadoId,
@@ -141,14 +207,22 @@ export function MapaCalorSP({
 
   const corDe = useCallback(
     (id: string) => {
+      if (indicadorMapa === 'vcm') {
+        const v = vcmPorId.get(id);
+        return CORES_MAPA[v ? faixaVCM(v, modo) : 0];
+      }
       const indicador = indicadorPorId.get(id);
       return CORES_MAPA[indicador ? faixaDoMunicipio(indicador, modo) : 0];
     },
-    [modo]
+    [modo, indicadorMapa]
   );
 
   const valorDe = useCallback(
     (id: string) => {
+      if (indicadorMapa === 'vcm') {
+        const v = vcmPorId.get(id);
+        return v ? textoVCM(v, modo) : 'Sem dado';
+      }
       const indicador = indicadorPorId.get(id);
 
       if (!indicador || indicador.feminicidios === 0) {
@@ -166,7 +240,7 @@ export function MapaCalorSP({
         ? '1 vítima (2019–2023)'
         : `${indicador.feminicidios.toLocaleString('pt-BR')} vítimas (2019–2023)`;
     },
-    [modo]
+    [modo, indicadorMapa]
   );
 
   return (
@@ -175,7 +249,7 @@ export function MapaCalorSP({
       larguraMapa={MAPA_SP_LARGURA}
       alturaMapa={MAPA_SP_ALTURA}
       corDe={corDe}
-      chaveCores={modo}
+      chaveCores={`${indicadorMapa}-${modo}`}
       valorDe={valorDe}
       vista={vista}
       selecionadoId={selecionadoId}

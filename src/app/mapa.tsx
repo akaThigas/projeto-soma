@@ -23,10 +23,14 @@ import {
 import {
   Enquadramento,
   FaixaLegenda,
+  IndicadorEstado,
   indicadorDoMunicipio,
   legendaDoMapa,
+  legendaVCM,
   MapaCalorSP,
+  MINIMO_EXIBIDO_VCM,
   ModoMapa,
+  vcmDoMunicipio,
 } from '../components/MapaCalorSP';
 import { PainelDelegacias } from '../components/PainelDelegacias';
 import {
@@ -48,6 +52,11 @@ import {
   FONTE_VIOLENCIA_CAPITAL,
   violenciaMulherCapital,
 } from '../data/mapaCalor/violenciaMulherCapital';
+import { NOMES_TIPOS, TipoCrime } from '../data/mapaCalor/violenciaDelegacias';
+import {
+  FONTE_VCM_SP,
+  violenciaMulherSP2023,
+} from '../data/mapaCalor/violenciaMulherSP2023';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
 import { voltar } from '../utils/voltar';
 
@@ -87,6 +96,14 @@ function buscarPorNome<T extends { nome: string }>(lista: T[], busca: string) {
 const maisVitimas = [...feminicidiosSP]
   .sort((a, b) => b.feminicidios - a.feminicidios)
   .slice(0, 5);
+
+const maisVitimasVCM = [...violenciaMulherSP2023]
+  .sort((a, b) => b.vitimas - a.vitimas)
+  .slice(0, 5);
+
+/** "menos de 5" para contagens de 1 a 4. */
+const contagemVCM = (valor: number) =>
+  valor > 0 && valor < MINIMO_EXIBIDO_VCM ? 'menos de 5' : numero(valor);
 
 const maioresCoeficientes = [...violenciaMulherCapital]
   .sort((a, b) => b.taxa - a.taxa)
@@ -202,6 +219,7 @@ export default function MapaScreen() {
 /* ------------------------------------------------------------------ */
 
 function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
+  const [indicador, setIndicador] = useState<IndicadorEstado>('vcm');
   const [modo, setModo] = useState<ModoMapa>('taxa');
   const [enquadramento, setEnquadramento] = useState<Enquadramento>({
     tipo: 'estado',
@@ -227,17 +245,33 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
   const selecionado = selecionadoId
     ? indicadorDoMunicipio(selecionadoId)
     : undefined;
+  const selecionadoVCM = selecionadoId ? vcmDoMunicipio(selecionadoId) : undefined;
+  const vcm = indicador === 'vcm';
 
   const taxaEstado = FONTE_FEMINICIDIO_SP.taxaEstado;
 
   return (
     <>
+      {/* Qual dado */}
+      <View style={styles.segmented} accessibilityRole="tablist">
+        <SegmentButton
+          label={`Violência contra a mulher (${FONTE_VCM_SP.ano})`}
+          active={vcm}
+          onPress={() => setIndicador('vcm')}
+        />
+        <SegmentButton
+          label={`Feminicídio (${FONTE_FEMINICIDIO_SP.periodo.replace(' a ', '–')})`}
+          active={!vcm}
+          onPress={() => setIndicador('feminicidio')}
+        />
+      </View>
+
       <Text
         style={[styles.subtitle, { fontSize: isCompactPhone ? 15 : 17 }]}
       >
-        Vítimas de feminicídio por município do Estado de São Paulo,
-        de {FONTE_FEMINICIDIO_SP.periodo}. Os dados são agregados por
-        município e não mostram a localização de nenhuma vítima.
+        {vcm
+          ? `Mulheres vítimas de violência registradas em ${FONTE_VCM_SP.ano}, por município do Estado de São Paulo: ameaça, lesão corporal, injúria, perseguição, descumprimento de medida protetiva e outros crimes ligados à violência doméstica. Os dados são agregados por município e não mostram a localização de nenhuma vítima.`
+          : `Vítimas de feminicídio por município do Estado de São Paulo, de ${FONTE_FEMINICIDIO_SP.periodo}. Os dados são agregados por município e não mostram a localização de nenhuma vítima.`}
       </Text>
 
       {/* O que o mapa mostra */}
@@ -274,9 +308,11 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
             >
               <Text style={styles.resultName}>{m.nome}</Text>
               <Text style={styles.resultValue}>
-                {m.feminicidios === 1
-                  ? '1 vítima'
-                  : `${numero(m.feminicidios)} vítimas`}
+                {vcm
+                  ? `${contagemVCM(vcmDoMunicipio(m.id)?.vitimas ?? 0)} vítimas`
+                  : m.feminicidios === 1
+                    ? '1 vítima'
+                    : `${numero(m.feminicidios)} vítimas`}
               </Text>
             </Pressable>
           ))}
@@ -292,6 +328,7 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
       {/* Mapa */}
       <View style={styles.mapCard}>
         <MapaCalorSP
+          indicador={indicador}
           modo={modo}
           enquadramento={enquadramento}
           selecionadoId={selecionadoId}
@@ -319,15 +356,26 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
 
       <Legenda
         titulo={
-          modo === 'taxa'
-            ? 'Vítimas por ano, a cada 100 mil habitantes'
-            : `Vítimas de ${FONTE_FEMINICIDIO_SP.periodo}`
+          vcm
+            ? modo === 'taxa'
+              ? `Mulheres vítimas em ${FONTE_VCM_SP.ano}, a cada 100 mil habitantes`
+              : `Mulheres vítimas em ${FONTE_VCM_SP.ano}`
+            : modo === 'taxa'
+              ? 'Vítimas por ano, a cada 100 mil habitantes'
+              : `Vítimas de ${FONTE_FEMINICIDIO_SP.periodo}`
         }
-        faixas={legendaDoMapa(modo)}
+        faixas={vcm ? legendaVCM(modo) : legendaDoMapa(modo)}
       />
 
       {/* Município selecionado */}
-      {selecionado ? (
+      {vcm && selecionadoVCM ? (
+        <CartaoMunicipioVCM
+          municipio={selecionadoVCM}
+          onFechar={() => setSelecionadoId(undefined)}
+          mostrarVerEstado={enquadramento.tipo === 'municipio'}
+          onVerEstado={() => setEnquadramento({ tipo: 'estado' })}
+        />
+      ) : !vcm && selecionado ? (
         <View style={styles.detailCard}>
           <View style={styles.detailHeader}>
             <Text style={styles.detailName}>{selecionado.nome}</Text>
@@ -385,7 +433,30 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
       )}
 
       {/* Ranking */}
-      <Text accessibilityRole="header" style={styles.sectionTitle}>Municípios com mais vítimas</Text>
+      <Text accessibilityRole="header" style={styles.sectionTitle}>
+        {vcm ? `Municípios com mais vítimas em ${FONTE_VCM_SP.ano}` : 'Municípios com mais vítimas'}
+      </Text>
+      {vcm ? (
+        <View style={styles.rankList}>
+          {maisVitimasVCM.map((m, indice) => (
+            <Pressable
+              accessibilityRole="button"
+              key={m.id}
+              style={({ pressed }) => [
+                styles.rankItem,
+                indice < maisVitimasVCM.length - 1 && styles.rankDivider,
+                pressed && styles.pressed,
+              ]}
+              onPress={() => escolherDaBusca(m.id)}
+            >
+              <Text style={styles.rankName}>{m.nome}</Text>
+              <Text style={styles.rankValue}>
+                {numero(m.vitimas)} vítimas · {numero(m.taxa, 1)} por 100 mil
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      ) : (
       <View style={styles.rankList}>
         {maisVitimas.map((m, indice) => (
           <Pressable
@@ -406,8 +477,21 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
           </Pressable>
         ))}
       </View>
+      )}
 
       {/* Como ler */}
+      {vcm ? (
+        <ComoLer
+          itens={[
+            'Cores mais claras não significam que um lugar é seguro. Os números mostram boletins registrados, e grande parte da violência contra a mulher nunca chega à polícia.',
+            `A taxa é o número de mulheres vítimas em ${FONTE_VCM_SP.ano} a cada 100 mil habitantes (população total estimada, homens e mulheres). Mais registros também podem indicar mais acesso a delegacias e mais confiança para denunciar.`,
+            'Lesão corporal, ameaça, injúria, dano e os demais tipos entram só quando o boletim marca violência doméstica; perseguição, violência psicológica e descumprimento de medida protetiva entram sempre — a mesma regra da base da SSP usada no mapa da cidade.',
+            'Cada vítima é contada no município onde o fato aconteceu, pela data de registro do boletim. Uma vítima pode ter mais de um crime no mesmo boletim, por isso a soma dos tipos é maior que o número de vítimas.',
+            'Números de 1 a 4 aparecem como "menos de 5", para não expor casos isolados.',
+            'Estupro, feminicídio e outros homicídios não entram neste mapa. Para feminicídio, escolha a opção "Feminicídio" acima.',
+          ]}
+        />
+      ) : (
       <ComoLer
         itens={[
           'Cores mais claras não significam que um lugar é seguro. A violência contra a mulher é subnotificada e o feminicídio é a forma mais extrema dela.',
@@ -415,10 +499,19 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
           'Este mapa usa apenas dados públicos e agregados. Não exibe endereços, ocorrências individuais nem relatos de usuárias.',
         ]}
       />
+      )}
 
       {/* Fonte */}
       <View style={styles.sourceBox}>
         <Text style={styles.sourceTitle}>Fontes</Text>
+        {vcm && (
+          <Text style={styles.sourceText}>
+            Violência contra a mulher ({FONTE_VCM_SP.ano}): {FONTE_VCM_SP.fonte}.
+            Total no estado: {numero(FONTE_VCM_SP.totalVitimas)} mulheres
+            vítimas; média de {numero(FONTE_VCM_SP.taxaEstado, 1)} por 100 mil
+            habitantes.
+          </Text>
+        )}
         <Text style={styles.sourceText}>
           Feminicídios: {FONTE_FEMINICIDIO_SP.fonteDados}
         </Text>
@@ -436,6 +529,89 @@ function PainelEstado({ isCompactPhone }: { isCompactPhone: boolean }) {
         </Text>
       </View>
     </>
+  );
+}
+
+function CartaoMunicipioVCM({
+  municipio,
+  onFechar,
+  mostrarVerEstado,
+  onVerEstado,
+}: {
+  municipio: (typeof violenciaMulherSP2023)[number];
+  onFechar: () => void;
+  mostrarVerEstado: boolean;
+  onVerEstado: () => void;
+}) {
+  const poucos = municipio.vitimas < MINIMO_EXIBIDO_VCM;
+  const tipos = (Object.entries(municipio.casos) as [TipoCrime, number][])
+    .filter(([, v]) => v > 0)
+    .slice(0, 5);
+  const media = FONTE_VCM_SP.taxaEstado;
+
+  return (
+    <View style={styles.detailCard}>
+      <View style={styles.detailHeader}>
+        <Text style={styles.detailName}>{municipio.nome}</Text>
+        <Pressable
+          accessibilityRole="button"
+          onPress={onFechar}
+          accessibilityLabel="Fechar detalhes do município"
+          hitSlop={8}
+        >
+          <Ionicons name="close" size={22} color={colors.primary} />
+        </Pressable>
+      </View>
+
+      <View style={styles.detailStats}>
+        <Stat
+          value={contagemVCM(municipio.vitimas)}
+          label={`mulheres vítimas em ${FONTE_VCM_SP.ano}`}
+        />
+        <Stat
+          value={poucos ? '—' : numero(municipio.taxa, 1)}
+          label="por 100 mil habitantes"
+        />
+      </View>
+
+      <Text style={styles.detailText}>
+        População estimada em 2023: {numero(municipio.populacao)} habitantes.{' '}
+        {poucos
+          ? 'Com tão poucos registros, a taxa não é mostrada.'
+          : municipio.taxa > media
+            ? `A taxa está acima da média do estado (${numero(media, 1)}).`
+            : `A taxa está igual ou abaixo da média do estado (${numero(media, 1)}). Isso não quer dizer que o município seja seguro.`}
+      </Text>
+
+      {tipos.length > 0 && (
+        <>
+          <Text style={styles.detailText}>Crimes mais registrados:</Text>
+          {tipos.map(([tipo, v]) => (
+            <Text key={tipo} style={styles.detailNote}>
+              • {NOMES_TIPOS[tipo]}: {contagemVCM(v)}
+            </Text>
+          ))}
+        </>
+      )}
+
+      {municipio.populacao < 20000 && !poucos && (
+        <Text style={styles.detailNote}>
+          Em municípios pequenos, poucos casos já mudam muito a taxa.
+          Compare também o número de vítimas.
+        </Text>
+      )}
+
+      {mostrarVerEstado && (
+        <Pressable
+          accessibilityRole="button"
+          style={styles.linkButton}
+          onPress={onVerEstado}
+        >
+          <Ionicons name="expand-outline" size={18} color={colors.primary} />
+          <Text style={styles.linkButtonText}>Ver o estado inteiro</Text>
+        </Pressable>
+      )}
+    </View>
   );
 }
 

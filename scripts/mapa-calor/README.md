@@ -2,7 +2,7 @@
 
 Como foram gerados os arquivos de `src/data/mapaCalor/`. A tela tem dois mapas:
 
-- **Estado de SP** — feminicídios por município (`feminicidioSP.ts`, `municipiosSP.ts`);
+- **Estado de SP** — violência contra a mulher por município em 2023 (`violenciaMulherSP2023.ts`) e feminicídios por município (`feminicidioSP.ts`, `municipiosSP.ts`);
 - **Cidade de São Paulo** — violência contra a mulher por distrito (`violenciaMulherCapital.ts`, `distritosSP.ts`).
 
 # Mapa do estado
@@ -94,6 +94,7 @@ As áreas de delegacia não coincidem com os distritos. A busca por distrito ind
 |---|---|
 | Vítimas e tipos de crime por área | SSP-SP — [base de dados Violência Contra a Mulher (dados a partir de 2024)](https://www.ssp.sp.gov.br/estatistica/violencia-contra-a-mulher), arquivo `Base_Violência contra mulher.xlsx`, aba `BASE_VD`, versão de 07/10/2026 (janeiro de 2024 a agosto de 2026) |
 | Feminicídio, tentativa de homicídio e estupro (só cidade inteira) | Painel da SSP-SP, coluna Capital (`dados/ssp_painel_capital_outros_tipos.json`) |
+| 2023 (vítimas e tipos por área; estupro na cidade) | SSP-SP — resposta ao pedido Fala.SP nº FALASP 2026092522204826 (ver "Base de 2023 (Fala.SP)" abaixo) |
 | Contornos das 93 áreas de delegacia | Centro de Estudos da Metrópole (CEM/USP), base [Distritos e Delegacias Policiais](https://centrodametropole.fflch.usp.br/pt-br/node/9956) 2021, arquivo `DISTPOL2021_MSP_CEM_V1`, fonte original SSP-SP, DOI 10.55881/CEM.db.dpo001, CC BY 4.0 |
 | Serviços de apoio | Prefeitura de São Paulo, Secretaria Municipal de Direitos Humanos e Cidadania: [Delegacias de Defesa da Mulher](https://prefeitura.sp.gov.br/web/direitos_humanos/w/mulheres/rede_de_protecao/seguranca_e_justica/357715) (29/09/2026), [Casa da Mulher e CDCM](https://prefeitura.sp.gov.br/web/direitos_humanos/mulheres/rede_de_protecao/casas_da_mulher/) (25/09 e 01/10/2026), [Defensoria/NUDEM](https://prefeitura.sp.gov.br/web/direitos_humanos/w/mulheres/rede_de_protecao/359280) |
 | Localização dos serviços | OpenStreetMap (Nominatim), a partir dos endereços oficiais, em 14/10/2026 |
@@ -135,9 +136,57 @@ Os totais da capital calculados a partir da base foram comparados, mês a mês (
 
 - O mapa mostra **número** de vítimas, não taxa: não há população por área de delegacia sem estimativa.
 - Os contornos do CEM são de 2021; se a SSP mudou alguma área depois, a diferença não aparece.
-- 3.067 casos (1,5%) foram registrados em delegacias especializadas sem área (DDMs, Delegacia da Mulher Online etc.) e ficam só no total da cidade.
+- 3.067 casos (1,5%) foram registrados em delegacias especializadas sem área (DDMs, Delegacia da Mulher Online etc.) e ficam só no total da cidade. Em 2023 são 8.967 (12%), porque o SPJ põe a DDM como delegacia responsável com mais frequência.
 - A distância até os serviços é em linha reta, a partir do centro da área, e a localização de vários serviços é aproximada (só a rua). A Casa da Mulher Maria de Lourdes Rodrigues não foi localizada e não entra na lista dos mais próximos.
 - A página da Prefeitura escreve o endereço da 2ª DDM como "Avenida Onze de julho, 89"; o OpenStreetMap registra o prédio (16º DP e 2ª DDM) na **Avenida Onze de Junho, 89**, que é o endereço usado no app.
+
+# Base de 2023 (Fala.SP)
+
+Usada em dois lugares: o ano de 2023 no relatório por área da cidade e a camada "Violência contra a mulher (2023)" do mapa do estado.
+
+## O que veio no pedido
+
+Resposta da SSP-SP ao pedido de acesso à informação **FALASP 2026092522204826** (vítimas do sexo feminino, rubricas de violência contra a mulher, todo o estado, pesquisa pela data de registro):
+
+| Arquivo | Período | Linhas | Usado? |
+|---|---|---:|---|
+| `SPJ 2023.xlsx` | registros de 2023 (Sistema de Polícia Judiciária) | 639.319 | **Sim** |
+| `RDO 2015 a 2022_parte 1-5.xlsx` | registros de 2015 a 2022 (Registro Digital de Ocorrências) | 800.000 | Não |
+| `RDO 2015 a 2022_parte 2-5.xlsx` | idem | 800.000 | Não |
+| `Metodologia.xlsx` | metodologia e dicionário de dados | — | Consulta |
+
+**Por que 2015–2022 ficou de fora**: só chegaram as partes 1 e 2 de 5. Os arquivos estão ordenados pelo código da delegacia que registrou o boletim (parte 1: códigos 10004 a 30223; parte 2: 30219 a 70114), não por ano ou município. Faltam, portanto, os boletins de várias delegacias do interior e os da Delegacia Eletrônica e da Delegacia da Mulher Online, que não aparecem em nenhuma das duas partes. Em 2023 (base completa), essas duas delegacias online responderam por 45% dos registros da capital (65.006 de 144.329 linhas). Não há município completo em 2015–2022 com só essas partes; usar esses anos mostraria números menores que os reais e tendências falsas (o registro online cresceu muito a partir de 2020).
+
+## Regra de contagem (`agregar_falasp_2023.py`)
+
+A mesma da base "Violência Contra a Mulher (dados a partir de 2024)" usada para 2024–2026, para que 2023 possa ficar ao lado desses anos:
+
+- **Tipos**: os 12 tipos da base, a partir da coluna `RUBRICA` (tabela `TIPOS` no script). "Outros crimes contra a dignidade sexual" = crimes do Título VI do Código Penal, exceto estupro (213), estupro de vulnerável (217-A) e divulgação de cena de estupro/nudez (218-C, que é "imagens íntimas").
+- **Violência doméstica**: lesão, ameaça, calúnia/difamação/injúria, dano, invasão, maus-tratos, constrangimento, imagens íntimas e dignidade sexual só entram quando `VIOLENCIA_DOMESTICA` está marcada; perseguição, violência psicológica e descumprimento de medida protetiva entram sempre (nota técnica da SSP).
+- **Casos** = linhas por natureza; **vítimas** = pessoas únicas (`ID_DELEGACIA` + `ANO_BO` + `NUM_BO` + `CONT_PESSOA`).
+- **Local**: `NOME_MUNICIPIO_CIRC` (município do fato) e, na capital, o número do DP em `NOME_DELEGACIA_CIRC`.
+- **Ano**: data do registro do boletim (`DATAHORA_REGISTRO_BO`), o critério do pedido. Para 2024–2026, o ano é `ANO_ESTATISTICA`; por isso o app avisa para comparar 2023 com cautela.
+- **Estupro e estupro de vulnerável**: todos os registros (consumados e tentados), como no painel, só como total da cidade.
+- **Fora**: homicídio (o arquivo não separa feminicídio nem tentativa de homicídio — no app aparecem como "não disponível" em 2023), homicídio culposo no trânsito, crimes do ECA e de leis especiais.
+- **Municípios**: os nomes da SSP vêm abreviados ("S.ANDRE", "PIRAPORA BOM JESUS"); o script troca as abreviações e só aceita quando o nome corresponde a um único município do IBGE (10 nomes estão numa lista manual). Os 645 foram encontrados.
+
+## Conferência
+
+- **Recontagem independente**: os totais do script foram recalculados com outro código (pandas) e batem: vítimas na capital (41.455), os 12 tipos na capital, vítimas dos DPs 1, 46, 92 e 100, casos sem área (8.967) e vítimas de Campinas, Guarulhos, Santo André, São José dos Campos, Ribeirão Preto e Borá.
+- **Comparação com 2024** (capital, mesma regra): ameaça 23.782 (2024: 22.255), injúria 19.797 (19.030), lesão 17.300 (14.533), dano 1.827 (1.939), invasão 462 (489), imagens íntimas 191 (195), maus-tratos 155 (175), estupro 900 (859), estupro de vulnerável 2.295 (2.162). Os valores ficam próximos, o que indica que a regra reproduz a base de 2024.
+
+## Mapa do estado (`gerar_estado_2023.py`)
+
+- **Taxa** = vítimas em 2023 ÷ população total estimada em 2023 × 100 mil (a mesma população do mapa de feminicídio). Média do estado: 195.288 vítimas ÷ população = **425,9**.
+- Faixas da taxa: até a média do estado, 425,9 a 550, 550 a 700, acima de 700. Faixas do número: menos de 5, 5 a 49, 50 a 499, 500 ou mais.
+- Contagens de 1 a 4 aparecem como "menos de 5", e a taxa desses municípios não é mostrada.
+
+## Passo a passo
+
+1. Colocar o `SPJ 2023.xlsx` em uma pasta fora do projeto (o arquivo tem endereços, coordenadas e dados pessoais e **não deve entrar no repositório**).
+2. `python3 scripts/mapa-calor/agregar_falasp_2023.py "CAMINHO/FALASP 2026092522204826 - SPJ 2023.xlsx"` → `dados/falasp_spj_2023_agregado.json` (só contagens).
+3. `python3 scripts/mapa-calor/gerar_delegacias.py CAMINHO/distritos-sp.geojson` → inclui 2023 em `violenciaDelegacias.ts`.
+4. `python3 scripts/mapa-calor/gerar_estado_2023.py` → `violenciaMulherSP2023.ts`.
 
 # Busca por lugares e "usar minha localização"
 
